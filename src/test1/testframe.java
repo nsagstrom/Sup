@@ -4,17 +4,32 @@
  */
 package test1;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+import javax.swing.JOptionPane;
+
+
 /**
- *
+                                                                                                                                                                                    *
  * @author nsags
  */
 public class testframe extends javax.swing.JFrame {
+    
+    private InfDB idb; 
 
     /**
      * Creates new form testframe
      */
     public testframe() {
         initComponents();
+        
+         try {
+            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+        } catch (InfException ex) {
+            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     /**
@@ -26,17 +41,17 @@ public class testframe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btn = new javax.swing.JButton();
         txt1 = new javax.swing.JTextField();
         txt2 = new javax.swing.JTextField();
         rubrik = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn.setText("jButton1");
+        btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnActionPerformed(evt);
             }
         });
 
@@ -46,7 +61,11 @@ public class testframe extends javax.swing.JFrame {
             }
         });
 
-        txt2.setText("jTextField2");
+        txt2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt2ActionPerformed(evt);
+            }
+        });
 
         rubrik.setText("All makt åt tengil ");
 
@@ -57,27 +76,27 @@ public class testframe extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
-                        .addGap(98, 98, 98)
-                        .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(rubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(98, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt1)
+                            .addComponent(btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(77, 77, 77)
+                        .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(rubrik)
-                .addGap(45, 45, 45)
-                .addComponent(jButton1)
-                .addGap(49, 49, 49)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(btn)
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         pack();
@@ -88,10 +107,30 @@ public class testframe extends javax.swing.JFrame {
      
     }//GEN-LAST:event_txt1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        
+        try {
+            String vem = txt1.getText();
+            int vemint = Integer.parseInt(vem);
+                 
+            String fraga = "Select namn FROM agent  WHERE Agent_ID =" + vemint;
+            String svar = idb.fetchSingle(fraga);
+            String resultat = svar;
+            txt2.setText(resultat);
+        } catch (InfException e) {
+      
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+        }
+        
+                
+    }//GEN-LAST:event_btnActionPerformed
+
+    private void txt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,7 +168,7 @@ public class testframe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn;
     private javax.swing.JLabel rubrik;
     private javax.swing.JTextField txt1;
     private javax.swing.JTextField txt2;
