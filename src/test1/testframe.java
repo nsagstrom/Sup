@@ -4,6 +4,7 @@
  */
 package test1;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import oru.inf.InfDB;
@@ -83,7 +84,7 @@ public class testframe extends javax.swing.JFrame {
                             .addComponent(btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(77, 77, 77)
                         .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,15 +114,17 @@ public class testframe extends javax.swing.JFrame {
         
         
         try {
-            String vem = txt1.getText();
-            int vemint = Integer.parseInt(vem);
+            String plats = txt1.getText();
+           
                  
-            String fraga = "Select namn FROM agent  WHERE Agent_ID =" + vemint;
-            String svar = idb.fetchSingle(fraga);
-            String resultat = svar;
-            txt2.setText(resultat);
+//            String fraga = "Select namn FROM alien  WHERE plats =" + plats;
+            ArrayList<String> svar = idb.fetchColumn("Select namn FROM alien  WHERE plats =" + plats);
+            ArrayList<String> resultat = svar;
+            String aa = resultat.toString();
+            
+            
         } catch (InfException e) {
-      
+            Logger.getLogger(testframe.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
         
