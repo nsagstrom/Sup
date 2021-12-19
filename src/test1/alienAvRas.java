@@ -4,8 +4,7 @@
  */
 package test1;
 
-import com.mysql.cj.jdbc.result.ResultSetMetaData;
-import com.mysql.cj.xdevapi.Statement;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
