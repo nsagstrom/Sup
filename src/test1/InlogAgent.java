@@ -191,7 +191,7 @@ public class InlogAgent extends javax.swing.JFrame {
             String lResultat = lSvar.toString();
             String losen = lResultat.replaceAll("[\\p{Ps}\\p{Pe}]", "");
 
-            if (agent.equals(anvand) && losenord.equals(losen)) {
+            if (agent.equals(anvand) && losenord.equals(losen) && (!anvand.isBlank()) && !losen.isBlank()) {
 //               JOptionPane.showMessageDialog(null, "HA HA SUCCESS");
                
                new agentSida(idb).setVisible(true);
