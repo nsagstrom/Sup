@@ -37,6 +37,7 @@ public class agentSida extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btnLoggaUt = new javax.swing.JButton();
+        btnNylosen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,15 +51,24 @@ public class agentSida extends javax.swing.JFrame {
             }
         });
 
+        btnNylosen.setText("Byt lösenord");
+        btnNylosen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNylosenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 379, Short.MAX_VALUE)
-                .addComponent(btnLoggaUt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnLoggaUt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNylosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
@@ -68,7 +78,9 @@ public class agentSida extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(btnLoggaUt))
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnNylosen)
+                .addContainerGap(323, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,6 +90,11 @@ public class agentSida extends javax.swing.JFrame {
         new forstaSida(idb).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnLoggaUtActionPerformed
+
+    private void btnNylosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNylosenActionPerformed
+        new NyttLosen(idb).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnNylosenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,6 +133,7 @@ public class agentSida extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaUt;
+    private javax.swing.JButton btnNylosen;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

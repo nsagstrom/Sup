@@ -18,6 +18,7 @@ public class InlogAgent extends javax.swing.JFrame {
 
     private InfDB idb;
     private static String agent;
+    private static String losen;
 
     public InlogAgent(InfDB idb) {
         this.idb = idb;
@@ -32,6 +33,11 @@ public class InlogAgent extends javax.swing.JFrame {
 
     public static String aNamn() {
         return agent;
+
+    }
+    
+        public static String aLosen() {
+        return losen;
 
     }
 
@@ -180,7 +186,7 @@ public class InlogAgent extends javax.swing.JFrame {
 
             ArrayList<String> lSvar = idb.fetchColumn(lFraga);
             String lResultat = lSvar.toString();
-            String losen = lResultat.replaceAll("[\\p{Ps}\\p{Pe}]", "");
+            losen = lResultat.replaceAll("[\\p{Ps}\\p{Pe}]", "");
 
             if (agent.equals(anvand) && losenord.equals(losen) && !anvand.isBlank() && !losen.isBlank()) {
 //               JOptionPane.showMessageDialog(null, "HA HA SUCCESS");
