@@ -6,12 +6,9 @@ package test1;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
-
 
 /**
  *
@@ -25,19 +22,17 @@ public class InlogAgent extends javax.swing.JFrame {
     public InlogAgent(InfDB idb) {
         this.idb = idb;
         initComponents();
-        
-        
-        
+
 //        try {
 //            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
 //        } catch (InfException ex) {
 //            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
 //        }
     }
-    
-    public static String aNamn(){
+
+    public static String aNamn() {
         return agent;
-        
+
     }
 
     private InlogAgent() {
@@ -170,39 +165,34 @@ public class InlogAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFAnvandarnamnActionPerformed
 
 
-    private void ok(){
-        
-    }
-    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
             String losenord = new String(txtLosen.getPassword());
             agent = txtFAnvandarnamn.getText();
-            
+
             String aFraga = "SELECT Namn FROM agent WHERE Namn = " + "'" + agent + "'";
             String lFraga = "SELECT Losenord FROM agent WHERE Namn = " + "'" + agent + "'";
-            
+
             ArrayList<String> aSvar = idb.fetchColumn(aFraga);
             String aResultat = aSvar.toString();
             String anvand = aResultat.replaceAll("[\\p{Ps}\\p{Pe}]", "");
-            
+
             ArrayList<String> lSvar = idb.fetchColumn(lFraga);
             String lResultat = lSvar.toString();
             String losen = lResultat.replaceAll("[\\p{Ps}\\p{Pe}]", "");
 
-            if (agent.equals(anvand) && losenord.equals(losen) && (!anvand.isBlank()) && !losen.isBlank()) {
+            if (agent.equals(anvand) && losenord.equals(losen) && !anvand.isBlank() && !losen.isBlank()) {
 //               JOptionPane.showMessageDialog(null, "HA HA SUCCESS");
-               
-               new agentSida(idb).setVisible(true);
-               dispose();
-            }
-            else{
-                JOptionPane.showMessageDialog(null,"Fel användarnamn eller lösenord");
+
+                new agentSida(idb).setVisible(true);
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Fel användarnamn eller lösenord");
             }
 
         } catch (InfException e) {
-            
+
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
 
@@ -210,11 +200,10 @@ public class InlogAgent extends javax.swing.JFrame {
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
-        
-        if(jCheckBox1.isSelected()){
-            txtLosen.setEchoChar((char)0);   
-       } 
-        else {
+
+        if (jCheckBox1.isSelected()) {
+            txtLosen.setEchoChar((char) 0);
+        } else {
             txtLosen.setEchoChar('*');
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
