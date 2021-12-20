@@ -36,11 +36,19 @@ public class agentSida extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        btnLoggaUt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("jLabel1");
+
+        btnLoggaUt.setText("Logga ut");
+        btnLoggaUt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoggaUtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -49,18 +57,27 @@ public class agentSida extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addComponent(jLabel1)
-                .addContainerGap(512, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 379, Short.MAX_VALUE)
+                .addComponent(btnLoggaUt)
+                .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addComponent(jLabel1)
-                .addContainerGap(356, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnLoggaUt))
+                .addContainerGap(355, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
+        new forstaSida(idb).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnLoggaUtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -98,6 +115,7 @@ public class agentSida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLoggaUt;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
