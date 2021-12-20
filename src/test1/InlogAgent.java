@@ -4,6 +4,7 @@
  */
 package test1;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -98,6 +99,11 @@ public class InlogAgent extends javax.swing.JFrame {
                 jCheckBox1ActionPerformed(evt);
             }
         });
+        jCheckBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCheckBox1KeyPressed(evt);
+            }
+        });
 
         jLabel2.setText("Användarnamn");
 
@@ -106,6 +112,11 @@ public class InlogAgent extends javax.swing.JFrame {
         txtLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLosenActionPerformed(evt);
+            }
+        });
+        txtLosen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtLosenKeyPressed(evt);
             }
         });
 
@@ -211,6 +222,20 @@ public class InlogAgent extends javax.swing.JFrame {
     private void txtLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLosenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLosenActionPerformed
+
+    private void txtLosenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLosenKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            jButton1.doClick();
+        }
+    }//GEN-LAST:event_txtLosenKeyPressed
+
+    private void jCheckBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox1KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            jButton1.doClick();
+        }
+    }//GEN-LAST:event_jCheckBox1KeyPressed
 
     /**
      * @param args the command line arguments
