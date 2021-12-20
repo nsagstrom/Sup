@@ -175,7 +175,7 @@ public class InlogAgent extends javax.swing.JFrame {
             }
 
         } catch (InfException e) {
-            Logger.getLogger(testframe.class.getName()).log(Level.SEVERE, null, e);
+            
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
 
