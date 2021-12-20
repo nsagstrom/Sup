@@ -162,7 +162,8 @@ public class InlogAgent extends javax.swing.JFrame {
             String losen = lResultat.replaceAll("[\\p{Ps}\\p{Pe}]", "");
 
             if (agent.equals(anvand) && losenord.equals(losen)) {
-               JOptionPane.showMessageDialog(null, "HA HA SUCCESS");
+               new alienAvRas().setVisible(true);
+               dispose();
             }
             else{
                 JOptionPane.showMessageDialog(null,"Fel användarnamn eller lösenord");
