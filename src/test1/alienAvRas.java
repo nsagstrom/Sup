@@ -35,12 +35,13 @@ public class alienAvRas extends javax.swing.JFrame {
         this.boglodite = "Boglodite";
         
         initComponents();
+        
 
-        try {
-            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-        } catch (InfException ex) {
-            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+//        } catch (InfException ex) {
+//            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
         laggTillRas();
         
