@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
+
 /**
  *
  * @author nsags
@@ -21,6 +22,8 @@ public class InlogAgent extends javax.swing.JFrame {
 
     public InlogAgent() {
         initComponents();
+        
+        
         
         try {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
@@ -163,6 +166,9 @@ public class InlogAgent extends javax.swing.JFrame {
 
             if (agent.equals(anvand) && losenord.equals(losen)) {
                JOptionPane.showMessageDialog(null, "HA HA SUCCESS");
+               
+               new alienAvRas().setVisible(true);
+               dispose();
             }
             else{
                 JOptionPane.showMessageDialog(null,"Fel användarnamn eller lösenord");
