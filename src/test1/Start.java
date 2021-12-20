@@ -20,6 +20,6 @@ public class Start {
             Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
         } 
         
-        new AllInfoEnAlien(idb).setVisible(true);
+        new forstaSida(idb).setVisible(true);
     } 
 }

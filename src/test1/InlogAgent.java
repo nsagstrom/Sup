@@ -19,17 +19,28 @@ import oru.inf.InfException;
 public class InlogAgent extends javax.swing.JFrame {
 
     private InfDB idb;
+    private static String agent;
 
-    public InlogAgent() {
+    public InlogAgent(InfDB idb) {
+        this.idb = idb;
         initComponents();
         
         
         
-        try {
-            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-        } catch (InfException ex) {
-            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+//        } catch (InfException ex) {
+//            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }
+    
+    public static String aNamn(){
+        return agent;
+        
+    }
+
+    private InlogAgent() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -147,11 +158,16 @@ public class InlogAgent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFAnvandarnamnActionPerformed
 
+
+    private void ok(){
+        
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
             String losenord = new String(txtLosen.getPassword());
-            String agent = txtFAnvandarnamn.getText();
+            agent = txtFAnvandarnamn.getText();
             
             String aFraga = "SELECT Namn FROM agent WHERE Namn = " + "'" + agent + "'";
             String lFraga = "SELECT Losenord FROM agent WHERE Namn = " + "'" + agent + "'";
@@ -165,9 +181,9 @@ public class InlogAgent extends javax.swing.JFrame {
             String losen = lResultat.replaceAll("[\\p{Ps}\\p{Pe}]", "");
 
             if (agent.equals(anvand) && losenord.equals(losen)) {
-               JOptionPane.showMessageDialog(null, "HA HA SUCCESS");
+//               JOptionPane.showMessageDialog(null, "HA HA SUCCESS");
                
-               new alienAvRas().setVisible(true);
+               new agentSida(idb).setVisible(true);
                dispose();
             }
             else{
