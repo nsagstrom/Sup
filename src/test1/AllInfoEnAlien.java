@@ -34,7 +34,7 @@ public class AllInfoEnAlien extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Länge leve konungen");
+        jLabel1.setText("Länge leve gnaget");
 
         jLabel2.setText("Sök Alien");
 
