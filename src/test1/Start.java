@@ -19,5 +19,7 @@ public class Start {
         } catch (InfException ex) {
             Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
         } 
+        
+        new AllInfoEnAlien(idb).setVisible(true);
     } 
 }
