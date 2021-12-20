@@ -18,9 +18,7 @@ import oru.inf.InfException;
 public class InlogAgent extends javax.swing.JFrame {
 
     private InfDB idb;
-    /**
-     * Creates new form InloggAlien
-     */
+
     public InlogAgent() {
         initComponents();
         
