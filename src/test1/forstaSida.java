@@ -24,7 +24,7 @@ public class forstaSida extends javax.swing.JFrame {
     /**
      * Creates new form forstaSida
      */
-    public  forstaSida(InfDB idb) {
+    public forstaSida(InfDB idb) {
         this.idb = idb;
         initComponents();
         this.agent = "Agent";
@@ -200,8 +200,9 @@ public class forstaSida extends javax.swing.JFrame {
                 if (inAnvandare.equals(aSvar) && inlosen.equals(alosen) && !aSvar.isBlank() && !alosen.isBlank()) {
 
                     String sysfraga = "SELECT Administrator FROM agent WHERE Namn = " + "'" + inAnvandare + "'";
+                    String sysSvar = idb.fetchSingle(sysfraga);
 
-                    if (sysfraga.equalsIgnoreCase("N")) {
+                    if (sysSvar.equals("N")) {
 
                         new agentSida(idb).setVisible(true);
                         dispose();
