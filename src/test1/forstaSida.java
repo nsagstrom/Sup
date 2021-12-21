@@ -207,7 +207,7 @@ public class forstaSida extends javax.swing.JFrame {
                         dispose();
                     }
                     else{
-                        new agentAdminSida(idb).setVisible(true);
+                        new agentAdminSida(idb,inAnvandare).setVisible(true);
                         dispose();
                     }
 

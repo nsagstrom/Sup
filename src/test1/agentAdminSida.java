@@ -13,12 +13,14 @@ import oru.inf.InfDB;
 public class agentAdminSida extends javax.swing.JFrame {
 
     private InfDB idb;
+    private String inAnvandare;
     /**
      * Creates new form agentAdminSida
      */
-    public agentAdminSida(InfDB idb) {
+    public agentAdminSida(InfDB idb, String inAnvandare) {
         this.idb = idb;
         initComponents();
+        this.inAnvandare = inAnvandare;
     }
 
     private agentAdminSida() {
