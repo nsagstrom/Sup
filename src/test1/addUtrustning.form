@@ -36,10 +36,12 @@
                           <Group type="102" attributes="0">
                               <Component id="benämning" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="utrustning" min="-2" pref="71" max="-2" attributes="0"/>
+                              <Component id="jTutrustning" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jKorrekt" min="-2" pref="51" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -52,8 +54,9 @@
               <Component id="titel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="utrustning" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTutrustning" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="benämning" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jKorrekt" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="registrerabutton" min="-2" max="-2" attributes="0"/>
@@ -71,12 +74,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrerabuttonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="utrustning">
+    <Component class="javax.swing.JTextField" name="jTutrustning">
       <Properties>
         <Property name="columns" type="int" value="4"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="utrustningActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTutrustningActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="titel">
@@ -91,6 +94,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ben&#xe4;mning:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jKorrekt">
     </Component>
   </SubComponents>
 </Form>
