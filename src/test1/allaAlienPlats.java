@@ -20,15 +20,15 @@ public class allaAlienPlats extends javax.swing.JFrame {
 
     private InfDB idb;
 
-    public allaAlienPlats() {
+    public allaAlienPlats(InfDB idb) {
         initComponents();
+        this.idb = idb;
 
-        try {
-            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-        } catch (InfException ex) {
-            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
-        }
         laggTillPlats();
+    }
+
+    private allaAlienPlats() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @SuppressWarnings("unchecked")

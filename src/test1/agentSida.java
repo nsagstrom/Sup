@@ -20,16 +20,16 @@ public class agentSida extends javax.swing.JFrame {
     public agentSida(InfDB idb) {
         this.idb = idb;
         initComponents();
-        
+        laggTillAtgard();
         jLabel1.setText("Välkommen " + InlogAgent.aNamn());
     }
     
     public void laggTillAtgard() {
         
     
-    cbKontrollAvAlien.addItem(boglodite);
-    cbKontrollAvAlien.addItem(sqiud);
-    cbKontrollAvAlien.addItem(worm);
+    cbKontrollAvAlien.addItem("Välj");
+    cbKontrollAvAlien.addItem("Alla Alier per ras");
+    cbKontrollAvAlien.addItem("Alla Alier per plats");
     
 
 
@@ -128,7 +128,22 @@ public class agentSida extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNylosenActionPerformed
 
     private void cbKontrollAvAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKontrollAvAlienActionPerformed
+              // Välj inloggningstyp
+        int i = cbKontrollAvAlien.getSelectedIndex();
+
+        if(i == 0){
+           
+        }
+        if(i == 1){
+            new alienAvRas(idb).setVisible(true);
+            dispose();
+        }
+        if(i == 2){
+            new allaAlienPlats(idb).setVisible(true);
+            dispose();
+        }
         
+    
     }//GEN-LAST:event_cbKontrollAvAlienActionPerformed
 
     /**
