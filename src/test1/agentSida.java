@@ -23,6 +23,17 @@ public class agentSida extends javax.swing.JFrame {
         
         jLabel1.setText("Välkommen " + InlogAgent.aNamn());
     }
+    
+    public void laggTillAtgard() {
+        
+    
+    cbKontrollAvAlien.addItem(boglodite);
+    cbKontrollAvAlien.addItem(sqiud);
+    cbKontrollAvAlien.addItem(worm);
+    
+
+
+    }
 
     private agentSida() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -38,6 +49,8 @@ public class agentSida extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnLoggaUt = new javax.swing.JButton();
         btnNylosen = new javax.swing.JButton();
+        cbKontrollAvAlien = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +71,14 @@ public class agentSida extends javax.swing.JFrame {
             }
         });
 
+        cbKontrollAvAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbKontrollAvAlienActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Kontroll av alien ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,11 +86,17 @@ public class agentSida extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnLoggaUt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNylosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(56, 56, 56))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbKontrollAvAlien, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(206, 206, 206))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,7 +107,11 @@ public class agentSida extends javax.swing.JFrame {
                     .addComponent(btnLoggaUt))
                 .addGap(18, 18, 18)
                 .addComponent(btnNylosen)
-                .addContainerGap(323, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(cbKontrollAvAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(252, Short.MAX_VALUE))
         );
 
         pack();
@@ -95,6 +126,10 @@ public class agentSida extends javax.swing.JFrame {
         new NyttLosen(idb).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnNylosenActionPerformed
+
+    private void cbKontrollAvAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKontrollAvAlienActionPerformed
+        
+    }//GEN-LAST:event_cbKontrollAvAlienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,6 +169,8 @@ public class agentSida extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaUt;
     private javax.swing.JButton btnNylosen;
+    private javax.swing.JComboBox<String> cbKontrollAvAlien;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

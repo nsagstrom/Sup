@@ -6,7 +6,6 @@ package test1;
 
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import javax.swing.event.DocumentListener;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
