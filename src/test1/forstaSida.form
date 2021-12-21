@@ -26,26 +26,20 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="85" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel4" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="pwfalt" max="32767" attributes="0"/>
+                          <Component id="txtVemInlogg" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cbVisaLosen" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbVem" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="btnLoggaIn" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnInlogg" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="pwfalt" max="32767" attributes="0"/>
-                                  <Component id="txtVemInlogg" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="cbVisaLosen" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cbVem" alignment="0" pref="119" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                              <Component id="btnLoggaIn" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
               </Group>
               <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
           </Group>
@@ -58,12 +52,9 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cbVem" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnInlogg" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="cbVem" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtVemInlogg" min="-2" max="-2" attributes="0"/>
@@ -76,7 +67,7 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="cbVisaLosen" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="72" max="32767" attributes="0"/>
+              <EmptySpace pref="96" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -89,14 +80,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="V&#xe4;lkommen till MIBs fucking inloggning"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnInlogg">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Agent"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInloggActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -119,6 +102,7 @@
     <Component class="javax.swing.JPasswordField" name="pwfalt">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pwfaltActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pwfaltKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtVemInlogg">
@@ -130,6 +114,10 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Visa l&#xf6;senord"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbVisaLosenActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cbVisaLosenKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>

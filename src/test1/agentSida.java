@@ -14,6 +14,7 @@ public class agentSida extends javax.swing.JFrame {
 
     private InfDB idb;
     
+    
     /**
      * Creates new form agentSida
      */
@@ -21,10 +22,12 @@ public class agentSida extends javax.swing.JFrame {
         this.idb = idb;
         initComponents();
         laggTillAtgard();
-        jLabel1.setText("Välkommen " + InlogAgent.aNamn());
+        
+        
+        jLabel1.setText("Välkommen " + forstaSida.aNamn());
     }
     
-    public void laggTillAtgard() {
+    public  void laggTillAtgard() {
         
     
     cbKontrollAvAlien.addItem("Välj");
@@ -86,7 +89,7 @@ public class agentSida extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnLoggaUt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNylosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

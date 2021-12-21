@@ -4,7 +4,10 @@
  */
 package test1;
 
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -14,13 +17,18 @@ import oru.inf.InfException;
  */
 public class forstaSida extends javax.swing.JFrame {
 
-    
+
     private InfDB idb;
     private String agent;
     private String alien;
     private static String inAnvandare;
     private static String inlosen;
+    private static String sysSvar;
+    private static boolean manniska;
     
+    
+    private Timer timer;
+
     /**
      * Creates new form forstaSida
      */
@@ -30,19 +38,34 @@ public class forstaSida extends javax.swing.JFrame {
         this.agent = "Agent";
         this.alien = "Alien";
         fyllLista();
-        
-        
     }
-        private void fyllLista(){
-            
+
+    private void fyllLista() {
         cbVem.addItem("Välj");
         cbVem.addItem(agent);
         cbVem.addItem(alien);
-            
-        } 
-        
-        
+    }
+
+    public static String aNamn() {
+        return inAnvandare;
+    }
+
+    public static String aLosen() {
+        return inlosen;
+    }
     
+    public static boolean arAdmin(){
+        boolean admin = false;
+        
+        if(sysSvar.equalsIgnoreCase("j")){
+            admin = true;
+        }
+        return admin;
+    }
+    
+    public static boolean arManniska(){
+    return manniska;
+}
 
     private forstaSida() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -56,7 +79,6 @@ public class forstaSida extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnInlogg = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cbVem = new javax.swing.JComboBox<>();
         pwfalt = new javax.swing.JPasswordField();
@@ -71,13 +93,6 @@ public class forstaSida extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Välkommen till MIBs fucking inloggning");
 
-        btnInlogg.setText("Agent");
-        btnInlogg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInloggActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Vem vill du logga in som");
 
         cbVem.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +106,11 @@ public class forstaSida extends javax.swing.JFrame {
                 pwfaltActionPerformed(evt);
             }
         });
+        pwfalt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pwfaltKeyPressed(evt);
+            }
+        });
 
         txtVemInlogg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +119,16 @@ public class forstaSida extends javax.swing.JFrame {
         });
 
         cbVisaLosen.setText("Visa lösenord");
+        cbVisaLosen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbVisaLosenActionPerformed(evt);
+            }
+        });
+        cbVisaLosen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbVisaLosenKeyPressed(evt);
+            }
+        });
 
         jLabel3.setText("Användarnamn");
 
@@ -118,22 +148,18 @@ public class forstaSida extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(85, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnInlogg)
-                        .addGap(57, 57, 57)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(pwfalt)
-                                    .addComponent(txtVemInlogg)
-                                    .addComponent(cbVisaLosen)
-                                    .addComponent(cbVem, 0, 119, Short.MAX_VALUE))
-                                .addGap(38, 38, 38)
-                                .addComponent(btnLoggaIn)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pwfalt)
+                            .addComponent(txtVemInlogg)
+                            .addComponent(cbVisaLosen)
+                            .addComponent(cbVem, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addComponent(btnLoggaIn))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
@@ -143,11 +169,9 @@ public class forstaSida extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(45, 45, 45)
                 .addComponent(jLabel2)
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbVem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInlogg))
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
+                .addComponent(cbVem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtVemInlogg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,17 +183,11 @@ public class forstaSida extends javax.swing.JFrame {
                     .addComponent(btnLoggaIn))
                 .addGap(18, 18, 18)
                 .addComponent(cbVisaLosen)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnInloggActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInloggActionPerformed
-        // TODO add your handling code here:
-        new InlogAgent(idb).setVisible(true);
-        
-    }//GEN-LAST:event_btnInloggActionPerformed
 
     private void cbVemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVemActionPerformed
         // TODO add your handling code here:
@@ -186,21 +204,21 @@ public class forstaSida extends javax.swing.JFrame {
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
          inlosen = new String(pwfalt.getPassword());
          inAnvandare = txtVemInlogg.getText();
-        
+
         try {
             if (cbVem.getSelectedItem().toString().equals(agent)) {
-                
+                manniska = true;
 
                 String aFraga = "SELECT Namn FROM agent WHERE Namn = " + "'" + inAnvandare + "'";
                 String lFraga = "SELECT Losenord FROM agent WHERE Namn = " + "'" + inAnvandare + "'";
-  
+
                 String aSvar = idb.fetchSingle(aFraga);
                 String alosen = idb.fetchSingle(lFraga);
 
                 if (inAnvandare.equals(aSvar) && inlosen.equals(alosen) && !aSvar.isBlank() && !alosen.isBlank()) {
 
                     String sysfraga = "SELECT Administrator FROM agent WHERE Namn = " + "'" + inAnvandare + "'";
-                    String sysSvar = idb.fetchSingle(sysfraga);
+                     sysSvar = idb.fetchSingle(sysfraga);
 
                     if (sysSvar.equals("N")) {
 
@@ -208,41 +226,59 @@ public class forstaSida extends javax.swing.JFrame {
                         dispose();
                     }
                     else{
-                        new agentAdminSida(idb,inAnvandare).setVisible(true);
+                        new agentAdminSida(idb).setVisible(true);
                         dispose();
                     }
-
-
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Fel användarnamn eller lösenord");
                 }
-                
             }
             else if(cbVem.getSelectedItem().toString().equals(alien)){
+                manniska = false;
                 
                 String alienFragaAnvandare = "SELECT Namn FROM alien WHERE Namn = " + "'" + inAnvandare + "'";
                 String alienFragaLosenord = "SELECT Losenord FROM alien WHERE Namn = " + "'" + inAnvandare + "'";
-                
+
                 String alienAnvandare = idb.fetchSingle(alienFragaAnvandare);
                 String alienLosen = idb.fetchSingle(alienFragaLosenord);
-                
+
                 if (inAnvandare.equals(alienAnvandare) && inlosen.equals(alienLosen) && !alienAnvandare.isBlank() && !alienLosen.isBlank()){
                      new alienSida(idb).setVisible(true);
                         dispose();
-                    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Fel användarnamn eller lösenord");
                 }
-   
+            } else {
+                JOptionPane.showMessageDialog(null, "Välj vem som ska logga in!");
             }
-
         } catch (InfException e) {
-
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
     }//GEN-LAST:event_btnLoggaInActionPerformed
+
+    private void pwfaltKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwfaltKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            btnLoggaIn.doClick();
+        }
+    }//GEN-LAST:event_pwfaltKeyPressed
+
+    private void cbVisaLosenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbVisaLosenKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            btnLoggaIn.doClick();
+        }
+    }//GEN-LAST:event_cbVisaLosenKeyPressed
+
+    private void cbVisaLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVisaLosenActionPerformed
+        if (cbVisaLosen.isSelected()) {
+            pwfalt.setEchoChar((char) 0);
+        } else {
+            pwfalt.setEchoChar('*');
+        }
+    }//GEN-LAST:event_cbVisaLosenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,7 +287,7 @@ public class forstaSida extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -280,7 +316,6 @@ public class forstaSida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnInlogg;
     private javax.swing.JButton btnLoggaIn;
     private javax.swing.JComboBox<String> cbVem;
     private javax.swing.JCheckBox cbVisaLosen;
