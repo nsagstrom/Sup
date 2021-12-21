@@ -4,6 +4,7 @@
  */
 package test1;
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -214,6 +215,9 @@ public class forstaSida extends javax.swing.JFrame {
 
 
                 }
+                else{
+                    JOptionPane.showMessageDialog(null, "Fel användarnamn eller lösenord");
+                }
                 
             }
             else if(cbVem.getSelectedItem().toString().equals(alien)){
@@ -229,17 +233,25 @@ public class forstaSida extends javax.swing.JFrame {
                         dispose();
                     
                 }
-                
+                else{
+                    JOptionPane.showMessageDialog(null, "Fel användarnamn eller lösenord");
+                }
+   
             }
-            
-            
+
+        } catch (InfException e) {
+
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
+<<<<<<< Updated upstream
            
             
             
             catch(InfException e){
                     
                     }
+=======
+>>>>>>> Stashed changes
     }//GEN-LAST:event_btnLoggaInActionPerformed
 
     /**
