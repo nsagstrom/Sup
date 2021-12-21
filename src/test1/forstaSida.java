@@ -18,13 +18,11 @@ public class forstaSida extends javax.swing.JFrame {
     private InfDB idb;
     private String agent;
     private String alien;
-    
     private static String inAnvandare;
     private static String inlosen;
     
     /**
      * Creates new form forstaSida
-     * @param idb
      */
     public forstaSida(InfDB idb) {
         this.idb = idb;
@@ -243,15 +241,6 @@ public class forstaSida extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
-<<<<<<< Updated upstream
-           
-            
-            
-            catch(InfException e){
-                    
-                    }
-=======
->>>>>>> Stashed changes
     }//GEN-LAST:event_btnLoggaInActionPerformed
 
     /**
