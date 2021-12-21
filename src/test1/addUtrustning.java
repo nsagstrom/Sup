@@ -84,8 +84,8 @@ public class addUtrustning extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTutrustning, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(126, 126, 126))))
+                        .addComponent(jKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,6 +118,10 @@ public class addUtrustning extends javax.swing.JFrame {
             String fraga = "insert into utrustning(Utrustnings_ID, Benamning) VALUES(" + nyID + "," + "'" + nyUtrustning + "')";
             idb.insert(fraga);
             System.out.println(fraga);
+            
+            
+                jKorrekt.setText(nyUtrustning + " registrerad!");
+            
 
         } catch (InfException e) {
             JOptionPane.showMessageDialog(rootPane, "Error");
