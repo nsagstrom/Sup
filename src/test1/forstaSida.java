@@ -5,6 +5,7 @@
 package test1;
 
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /**
  *
@@ -16,11 +17,13 @@ public class forstaSida extends javax.swing.JFrame {
     private InfDB idb;
     private String agent;
     private String alien;
+    
     private static String inAnvandare;
     private static String inlosen;
     
     /**
      * Creates new form forstaSida
+     * @param idb
      */
     public forstaSida(InfDB idb) {
         this.idb = idb;
@@ -234,7 +237,7 @@ public class forstaSida extends javax.swing.JFrame {
            
             
             
-            catch(Exception e){
+            catch(InfException e){
                     
                     }
     }//GEN-LAST:event_btnLoggaInActionPerformed
