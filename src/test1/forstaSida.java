@@ -24,7 +24,7 @@ public class forstaSida extends javax.swing.JFrame {
     /**
      * Creates new form forstaSida
      */
-    public forstaSida(InfDB idb) {
+    public  forstaSida(InfDB idb) {
         this.idb = idb;
         initComponents();
         this.agent = "Agent";
