@@ -4,17 +4,30 @@
  */
 package test1;
 
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /**
  *
  * @author timme
  */
 public class addUtrustning extends javax.swing.JFrame {
-
+    private InfDB idb;
     /**
      * Creates new form addUtrustning
      */
     public addUtrustning() {
         initComponents();
+        
+                try {
+            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+        } catch (InfException ex) {
+            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -27,9 +40,10 @@ public class addUtrustning extends javax.swing.JFrame {
     private void initComponents() {
 
         registrerabutton = new javax.swing.JButton();
-        utrustning = new javax.swing.JTextField();
+        jTutrustning = new javax.swing.JTextField();
         titel = new javax.swing.JLabel();
         benämning = new javax.swing.JLabel();
+        jKorrekt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,10 +54,10 @@ public class addUtrustning extends javax.swing.JFrame {
             }
         });
 
-        utrustning.setColumns(4);
-        utrustning.addActionListener(new java.awt.event.ActionListener() {
+        jTutrustning.setColumns(4);
+        jTutrustning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                utrustningActionPerformed(evt);
+                jTutrustningActionPerformed(evt);
             }
         });
 
@@ -68,15 +82,10 @@ public class addUtrustning extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(benämning)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-<<<<<<< HEAD
                                 .addComponent(jTutrustning, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(jKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38))))
-=======
-                                .addComponent(utrustning, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(195, 195, 195))))
->>>>>>> 094c5ef41b8fcdfcadccb5d09cfb426346c2643b
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,8 +94,9 @@ public class addUtrustning extends javax.swing.JFrame {
                 .addComponent(titel)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(utrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(benämning))
+                    .addComponent(jTutrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(benämning)
+                    .addComponent(jKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(registrerabutton)
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -97,7 +107,6 @@ public class addUtrustning extends javax.swing.JFrame {
 
     private void registrerabuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrerabuttonActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
         try {
 
             String nyUtrustning = jTutrustning.getText();
@@ -119,15 +128,19 @@ public class addUtrustning extends javax.swing.JFrame {
         }
 
 
-=======
-        
->>>>>>> 094c5ef41b8fcdfcadccb5d09cfb426346c2643b
     }//GEN-LAST:event_registrerabuttonActionPerformed
 
-    private void utrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utrustningActionPerformed
+    private void jTutrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTutrustningActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_utrustningActionPerformed
+            
+        
+            
+                
+            
+           
+        
+    }//GEN-LAST:event_jTutrustningActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,8 +179,9 @@ public class addUtrustning extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel benämning;
+    private javax.swing.JLabel jKorrekt;
+    private javax.swing.JTextField jTutrustning;
     private javax.swing.JButton registrerabutton;
     private javax.swing.JLabel titel;
-    private javax.swing.JTextField utrustning;
     // End of variables declaration//GEN-END:variables
 }
