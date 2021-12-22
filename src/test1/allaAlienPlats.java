@@ -188,11 +188,7 @@ public class allaAlienPlats extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
             System.out.println("Internt fel " + e.getMessage());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE Andra versionen");
-            System.out.println("Internt fel, andra versionen " + e.getMessage());
         }
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

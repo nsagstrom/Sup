@@ -175,6 +175,10 @@ public class agentSida extends javax.swing.JFrame {
             new addUtrustning(idb).setVisible(true);
             dispose();
         }
+        if (i == 2) {
+            new nyRegistreraAlien(idb).setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_cbAtgarderActionPerformed
 
     /**
