@@ -4,10 +4,8 @@
  */
 package test1;
 
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import javax.swing.Timer;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -27,7 +25,7 @@ public class forstaSida extends javax.swing.JFrame {
     private static boolean manniska;
     
     
-    private Timer timer;
+    
 
     /**
      * Creates new form forstaSida
