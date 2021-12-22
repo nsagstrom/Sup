@@ -10,35 +10,19 @@ import oru.inf.InfDB;
  *
  * @author nsags
  */
-public class agentSida extends javax.swing.JFrame {
+public class alienSida extends javax.swing.JFrame {
 
+    
     private InfDB idb;
-    
-    
     /**
-     * Creates new form agentSida
+     * Creates new form alienSida
      */
-    public agentSida(InfDB idb) {
+    public alienSida(InfDB idb) {
         this.idb = idb;
         initComponents();
-        laggTillAtgard();
-        
-        
-        jLabel1.setText("Välkommen " + forstaSida.aNamn());
-    }
-    
-    public  void laggTillAtgard() {
-        
-    
-    cbKontrollAvAlien.addItem("Välj");
-    cbKontrollAvAlien.addItem("Alla Alier per ras");
-    cbKontrollAvAlien.addItem("Alla Alier per plats");
-    
-
-
     }
 
-    private agentSida() {
+    private alienSida() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -52,8 +36,7 @@ public class agentSida extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnLoggaUt = new javax.swing.JButton();
         btnNylosen = new javax.swing.JButton();
-        cbKontrollAvAlien = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,32 +57,25 @@ public class agentSida extends javax.swing.JFrame {
             }
         });
 
-        cbKontrollAvAlien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbKontrollAvAlienActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Kontroll av alien ");
+        jLabel3.setText("ALIEN !!!!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(89, 89, 89)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnLoggaUt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnNylosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(56, 56, 56))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbKontrollAvAlien, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(206, 206, 206))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnLoggaUt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnNylosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(56, 56, 56))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,11 +86,9 @@ public class agentSida extends javax.swing.JFrame {
                     .addComponent(btnLoggaUt))
                 .addGap(18, 18, 18)
                 .addComponent(btnNylosen)
-                .addGap(15, 15, 15)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(cbKontrollAvAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel3)
+                .addContainerGap(281, Short.MAX_VALUE))
         );
 
         pack();
@@ -129,25 +103,6 @@ public class agentSida extends javax.swing.JFrame {
         new NyttLosen(idb).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnNylosenActionPerformed
-
-    private void cbKontrollAvAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKontrollAvAlienActionPerformed
-              // Välj inloggningstyp
-        int i = cbKontrollAvAlien.getSelectedIndex();
-
-        if(i == 0){
-           
-        }
-        if(i == 1){
-            new alienAvRas(idb).setVisible(true);
-            dispose();
-        }
-        if(i == 2){
-            new allaAlienPlats(idb).setVisible(true);
-            dispose();
-        }
-        
-    
-    }//GEN-LAST:event_cbKontrollAvAlienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,20 +121,20 @@ public class agentSida extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(agentSida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(alienSida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(agentSida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(alienSida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(agentSida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(alienSida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(agentSida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(alienSida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new agentSida().setVisible(true);
+                new alienSida().setVisible(true);
             }
         });
     }
@@ -187,8 +142,7 @@ public class agentSida extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaUt;
     private javax.swing.JButton btnNylosen;
-    private javax.swing.JComboBox<String> cbKontrollAvAlien;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

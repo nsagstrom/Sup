@@ -173,25 +173,39 @@ public class NyttLosen extends javax.swing.JFrame {
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
 
-        try {
-            if (nuvarandeLosen.equals(kontrollLosen)) {
-                String nyttlosen = new String(ltxtNyttLosen.getPassword());
-                if (InlogAgent.aLosen().equals(nuvarandeLosen)) {
-
-                    idb.update("UPDATE agent SET Losenord = " + "'" + nyttlosen + "'" + " WHERE Namn = " + "'" + InlogAgent.aNamn() + "'");
-                    System.out.println(InlogAgent.aNamn());
-                    dispose();
-                    new agentSida(idb).setVisible(true);
-                    JOptionPane.showMessageDialog(null, "Lösenord har ändrats");
-
+        try{
+            if(forstaSida.arManniska()){
+              if (nuvarandeLosen.equals(kontrollLosen)) {
+                    String nyttlosen = new String(ltxtNyttLosen.getPassword());
+                    if (forstaSida.aLosen().equals(nuvarandeLosen)) {
+                        idb.update("UPDATE agent SET Losenord = " + "'" + nyttlosen + "'" + " WHERE Namn = " + "'" + forstaSida.aNamn() + "'");
+                        if (forstaSida.arAdmin()) {
+                            dispose();
+                            new agentAdminSida(idb).setVisible(true);
+                            JOptionPane.showMessageDialog(null, "Lösenord har ändrats");
+                        } else {
+                            dispose();
+                            new agentSida(idb).setVisible(true);
+                            JOptionPane.showMessageDialog(null, "Lösenord har ändrats");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Gamla lösenordet stämmer ej");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Gamla lösenordet stämmer ej");
+                    JOptionPane.showMessageDialog(null, "Det gamla lösenordet stämmer ej med varandra");
                 }
-
             } else {
-                JOptionPane.showMessageDialog(null, "Det gamla lösenordet stämmer ej med varandra");
+                if (nuvarandeLosen.equals(kontrollLosen)) {
+                    String nyttlosenAlien = new String(ltxtNyttLosen.getPassword());
+                    if (forstaSida.aLosen().equals(nuvarandeLosen)) {
+                        idb.update("UPDATE alien SET Losenord = " + "'" + nyttlosenAlien + "'" + " WHERE Namn = " + "'" + forstaSida.aNamn() + "'");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Gamla lösenordet stämmer ej");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Det gamla lösenordet stämmer ej med varandra");
+                }
             }
-
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
@@ -200,8 +214,19 @@ public class NyttLosen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOkActionPerformed
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
-        new agentSida(idb).setVisible(true);
-        dispose();
+        
+        if (forstaSida.arManniska()) {
+            if (forstaSida.arAdmin()) {
+                new agentAdminSida(idb).setVisible(true);
+                dispose();
+            } else {
+                new agentSida(idb).setVisible(true);
+                dispose();
+            }
+        } else {
+            new alienSida(idb).setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_btnAvbrytActionPerformed
 
     private void cbVisaLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVisaLosenActionPerformed
