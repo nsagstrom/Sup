@@ -120,7 +120,7 @@ public class addUtrustning extends javax.swing.JFrame {
 
             String fraga = "insert into utrustning(Utrustnings_ID, Benamning) VALUES(" + nyID + "," + "'" + nyUtrustning + "')";
             idb.insert(fraga);
-            System.out.println(fraga);
+            
 
             jKorrekt.setText(nyUtrustning + " registrerad!");
 
