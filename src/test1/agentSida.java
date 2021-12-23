@@ -4,7 +4,11 @@
  */
 package test1;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /**
  *
@@ -13,6 +17,7 @@ import oru.inf.InfDB;
 public class agentSida extends javax.swing.JFrame {
 
     private InfDB idb;
+    String namn;
 
     /**
      * Creates new form agentSida
@@ -21,8 +26,9 @@ public class agentSida extends javax.swing.JFrame {
         this.idb = idb;
         initComponents();
         laggTill();
-
-        jLabel1.setText("Välkommen " + forstaSida.aNamn());
+        namn = forstaSida.aNamn();
+        jLabel1.setText("Välkommen " + namn);
+        listaAllUtrustning();
     }
 
     public void laggTill() {
@@ -55,6 +61,8 @@ public class agentSida extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cbAtgarder = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtfUtrustning = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +99,13 @@ public class agentSida extends javax.swing.JFrame {
 
         jLabel3.setText("Åtgärder");
 
+        txtfUtrustning.setEditable(false);
+        txtfUtrustning.setColumns(1);
+        txtfUtrustning.setRows(5);
+        txtfUtrustning.setToolTipText("");
+        jScrollPane1.setViewportView(txtfUtrustning);
+        txtfUtrustning.getAccessibleContext().setAccessibleParent(null);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,12 +122,13 @@ public class agentSida extends javax.swing.JFrame {
                             .addComponent(cbKontrollAvAlien, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(206, 206, 206))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnLoggaUt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnNylosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnNylosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(56, 56, 56))))
         );
         layout.setVerticalGroup(
@@ -132,12 +148,37 @@ public class agentSida extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbKontrollAvAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbAtgarder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void listaAllUtrustning(){
+        
+        ArrayList<HashMap<String, String>> allUtrustning;
+        try {
+            String id = idb.fetchSingle("SELECT Agent_id FROM agent WHERE Namn = '" + namn + "'");
+
+            String utFraga = "SELECT Benamning FROM utrustning\n"
+                    + "join innehar_utrustning iu on utrustning.Utrustnings_ID = iu.Utrustnings_ID WHERE Agent_ID = " + id;
+            allUtrustning = idb.fetchRows(utFraga);
+
+            for (HashMap<String, String> utR : allUtrustning) {
+
+                txtfUtrustning.append(utR.get("Benamning") + "\n");
+            
+         
+            }
+            
+            
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+        }
+    }
+    
     private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
         new forstaSida(idb).setVisible(true);
         dispose();
@@ -226,5 +267,7 @@ public class agentSida extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtfUtrustning;
     // End of variables declaration//GEN-END:variables
 }
