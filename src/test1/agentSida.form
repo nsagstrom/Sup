@@ -134,7 +134,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xe5;tg&#xe4;rder"/>
+        <Property name="text" type="java.lang.String" value="&#xc5;tg&#xe4;rder"/>
       </Properties>
     </Component>
   </SubComponents>

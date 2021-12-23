@@ -41,9 +41,9 @@
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="cbAnsvarigAgent" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="pwLosen" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pwLosen" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="cbRaser" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -53,25 +53,38 @@
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="btnLaggTill" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txtTillagd" min="-2" pref="0" max="-2" attributes="0"/>
-                                          </Group>
                                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbAnsvarigAgent" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="266" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbVisaLosen" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbRasInfo" min="-2" pref="117" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="btnLaggTill" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="lReggad" min="-2" pref="248" max="-2" attributes="0"/>
+                      <EmptySpace pref="277" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="137" pref="137" max="-2" attributes="0"/>
+                      <Component id="txtRasTill" min="-2" pref="71" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -98,15 +111,23 @@
                   <Component id="pwLosen" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+              <Component id="cbVisaLosen" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cbPlats" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbAnsvarigAgent" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtTillagd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbRaser" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="201" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Component id="lbRasInfo" min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="txtRasTill" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnLaggTill" max="32767" attributes="0"/>
+                  <Component id="lReggad" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="103" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -116,6 +137,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Tillbaka"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTillbakaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -128,9 +152,6 @@
     <Component class="javax.swing.JTextField" name="txtNamn">
     </Component>
     <Component class="javax.swing.JTextField" name="txtTelefon">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelefonActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbPlats">
       <Properties>
@@ -157,6 +178,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbAnsvarigAgentActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cbAnsvarigAgentKeyPressed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -186,22 +208,38 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="pwLosen">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pwLosenActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+    <Component class="javax.swing.JCheckBox" name="cbVisaLosen">
       <Properties>
         <Property name="text" type="java.lang.String" value="Visa L&#xf6;senord"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbVisaLosenActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtTillagd">
+    <Component class="javax.swing.JComboBox" name="cbRaser">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="1">
+            <StringItem index="0" value="V&#xe4;lj Ras"/>
+          </StringArray>
+        </Property>
+      </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTillagdActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbRaserActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtRasTill">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRasTillKeyPressed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbRasInfo">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lReggad">
     </Component>
   </SubComponents>
 </Form>

@@ -89,7 +89,7 @@ public class agentSida extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("åtgärder");
+        jLabel3.setText("Åtgärder");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

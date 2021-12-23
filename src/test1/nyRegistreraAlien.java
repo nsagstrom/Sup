@@ -4,12 +4,11 @@
  */
 package test1;
 
+import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -25,6 +24,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
     private String agentNr;
     private String datum;
     private String sqlfraga;
+    private String ett;
     /**
      * Creates new form nyRegistreraAlien
      */
@@ -33,14 +33,18 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
         initComponents();
         laggTillPlats();
         laggTillAgent();
-        
+        laggTillRas();
         datum();
-        System.out.println(sqlfraga);
-//        try {
-//            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-//        } catch (InfException ex) {
-//            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
-//        } 
+        txtRasTill.setVisible(false);
+    }
+    
+    
+        private void laggTillRas() {
+
+        cbRaser.addItem("Boglodite");
+        cbRaser.addItem("Sqiud");
+        cbRaser.addItem("Worm");
+
     }
 //        private void nummerAgent() {
 //        String vilkenAgent = cbAnsvarigAgent.getSelectedItem().toString();
@@ -82,21 +86,23 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         pwLosen = new javax.swing.JPasswordField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        txtTillagd = new javax.swing.JTextField();
+        cbVisaLosen = new javax.swing.JCheckBox();
+        cbRaser = new javax.swing.JComboBox<>();
+        txtRasTill = new javax.swing.JTextField();
+        lbRasInfo = new javax.swing.JLabel();
+        lReggad = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Registrera ny Alien");
-
-        txtTelefon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonActionPerformed(evt);
-            }
-        });
 
         cbPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj plats" }));
         cbPlats.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +115,11 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
         cbAnsvarigAgent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbAnsvarigAgentActionPerformed(evt);
+            }
+        });
+        cbAnsvarigAgent.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbAnsvarigAgentKeyPressed(evt);
             }
         });
 
@@ -125,22 +136,23 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
 
         jLabel4.setText("Telefon");
 
-        pwLosen.addActionListener(new java.awt.event.ActionListener() {
+        cbVisaLosen.setText("Visa Lösenord");
+        cbVisaLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pwLosenActionPerformed(evt);
+                cbVisaLosenActionPerformed(evt);
             }
         });
 
-        jCheckBox1.setText("Visa Lösenord");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbRaser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj Ras" }));
+        cbRaser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                cbRaserActionPerformed(evt);
             }
         });
 
-        txtTillagd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTillagdActionPerformed(evt);
+        txtRasTill.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtRasTillKeyPressed(evt);
             }
         });
 
@@ -164,9 +176,9 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbAnsvarigAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(pwLosen))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pwLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbRaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(52, 52, 52)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -174,17 +186,27 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
                                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnLaggTill)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txtTillagd, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabel4))
-                                        .addGap(0, 266, Short.MAX_VALUE))))
+                                            .addComponent(jLabel4)
+                                            .addComponent(cbAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox1)
-                                    .addComponent(jLabel3))
-                                .addGap(0, 0, Short.MAX_VALUE))))))
+                                    .addComponent(cbVisaLosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(lbRasInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnLaggTill)
+                        .addGap(28, 28, 28)
+                        .addComponent(lReggad, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(277, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(txtRasTill, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,14 +226,21 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
                     .addComponent(txtTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pwLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(cbVisaLosen)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLaggTill)
-                    .addComponent(txtTillagd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(201, Short.MAX_VALUE))
+                    .addComponent(cbRaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(lbRasInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRasTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnLaggTill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lReggad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         pack();
@@ -225,53 +254,157 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbAnsvarigAgentActionPerformed
 
-    private void pwLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwLosenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pwLosenActionPerformed
-
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    private void cbVisaLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVisaLosenActionPerformed
+        if (cbVisaLosen.isSelected()) {
+            pwLosen.setEchoChar((char) 0);
+        } else {
+            pwLosen.setEchoChar('*');
+        }
+    }//GEN-LAST:event_cbVisaLosenActionPerformed
 
     private void btnLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillActionPerformed
-        
+
         try {
-            
+
+            boolean ok = okUppgifter();
             String vilkenAgent = cbAnsvarigAgent.getSelectedItem().toString();
             String agentNrFraga = "SELECT Agent_ID FROM agent WHERE namn = '" + vilkenAgent + "'";
             agentNr = idb.fetchSingle(agentNrFraga);
-            
+
             String vilkenPlats = cbPlats.getSelectedItem().toString();
-            String vilkenPlatsNrFraga = "SELECT Plats_ID FROM plats WHERE Benamning = '" + vilkenPlats+"'";
+            String vilkenPlatsNrFraga = "SELECT Plats_ID FROM plats WHERE Benamning = '" + vilkenPlats + "'";
             String platsNr = idb.fetchSingle(vilkenPlatsNrFraga);
-            
-            
+
             String alienNamn = txtNamn.getText();
-            String alienLosenord = new String (pwLosen.getPassword());
+            String alienLosenord = new String(pwLosen.getPassword());
             String telefonNummer = txtTelefon.getText();
-            String fragaID = idb.fetchSingle("SELECT COUNT(*) FROM utrustning");
             
-             sqlfraga = "INSERT INTO alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon, Plats, Ansvarig_Agent) VALUES ('" + fragaID + "','" + datum +"','" + alienLosenord +"','" + alienNamn + "','" + telefonNummer + "','" +  platsNr + "','" + agentNr + "')";
+            String fragaIDstring = idb.fetchSingle("SELECT COUNT(*) FROM utrustning");
+            String fragaID = idb.getAutoIncrement("Alien", "Alien_ID");
+
             
-            idb.insert(sqlfraga);
-            
-            txtTillagd.setText("Alien "+ alienNamn + " är registrerad!");
-            
+            if (ok) {
+                sqlfraga = "INSERT INTO alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon, Plats, Ansvarig_Agent) VALUES (" + fragaID + ",'" + datum + "','" + alienLosenord + "','" + alienNamn + "','" + telefonNummer + "'," + platsNr + "," + agentNr + ")";
+
+                idb.insert(sqlfraga);
+                
+               
+                lReggad.setText("Alien " + alienNamn + " är registrerad!");
+
+                String vilkettilagg = txtRasTill.getText();
+
+                switch (cbRaser.getSelectedIndex()) {
+                    case 1:
+                        ett = "INSERT INTO boglodite (Alien_ID, Antal_Boogies) VALUES (" + fragaID + "," + vilkettilagg + ")";
+                        idb.insert(ett);
+                        break;
+                    case 2:
+                        ett = "INSERT INTO squid (alien_id, antal_armar) VALUES (" + fragaID + "," + vilkettilagg + ")";
+                        idb.insert(ett);
+                        break;
+                    case 3:
+                        ett = "INSERT INTO worm (Alien_ID) VALUES (" + fragaID + ")";
+                        idb.insert(ett);
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "Fel uppgifter");
+                        break;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Fel uppgifter");
+            }
+
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
             System.out.println(sqlfraga);
+            System.out.println(ett);
         }
     }//GEN-LAST:event_btnLaggTillActionPerformed
 
-    private void txtTelefonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonActionPerformed
+    private boolean okUppgifter(){
+        boolean ok = true;
+        
+         String alienLosenord2 = new String(pwLosen.getPassword());
+        
+        if(txtNamn.getText().isBlank()){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Namn saknas");
+        } else if (alienLosenord2.isBlank()) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Lösenord saknas");
+        } else if (alienLosenord2.length() > 6) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Lösenord får ej vara längre än sex tecken");
+        } else if (txtTelefon.getText().isBlank()) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
+        } else if (cbPlats.getSelectedIndex() == 0) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj plats");
+        } else if (cbRaser.getSelectedIndex() == 0) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj ras");
+        } else if (cbRaser.getSelectedIndex()== 1 || cbRaser.getSelectedIndex()== 2 ){
+            if(txtRasTill.getText().isBlank()){
+                ok = false;
+                JOptionPane.showMessageDialog(null, "Ange antal");
+            }
+        } else if(cbAnsvarigAgent.getSelectedIndex() == 0){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj agent");
+        }
+        return ok;
+    }
+     
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        if(forstaSida.arAdmin()){
+            new agentAdminSida(idb).setVisible(true);
+            dispose();
+        }
+        else{
+            new agentSida(idb).setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_btnTillbakaActionPerformed
 
-    private void txtTillagdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTillagdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTillagdActionPerformed
+    private void cbAnsvarigAgentKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbAnsvarigAgentKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
+            btnLaggTill.doClick();
+        }
+    }//GEN-LAST:event_cbAnsvarigAgentKeyPressed
 
+    private void cbRaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRaserActionPerformed
+        int i = cbRaser.getSelectedIndex();
+        
+        switch (i) {
+            case 0:
+                txtRasTill.setVisible(false);
+                lbRasInfo.setText("");
+                break;
+            case 1:
+                txtRasTill.setVisible(true);
+                lbRasInfo.setText("Antal boogies");
+                break;
+            case 2:
+                txtRasTill.setVisible(true);
+                lbRasInfo.setText("Antal armar");
+                break;
+            case 3:
+                txtRasTill.setVisible(false);
+                lbRasInfo.setText("");
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_cbRaserActionPerformed
+
+    private void txtRasTillKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRasTillKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            btnLaggTill.doClick();
+        }
+    }//GEN-LAST:event_txtRasTillKeyPressed
 
     private void laggTillPlats() {
         String fraga = "SELECT Benamning FROM plats";
@@ -345,14 +478,17 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
     private javax.swing.JButton btnTillbaka;
     private javax.swing.JComboBox<String> cbAnsvarigAgent;
     private javax.swing.JComboBox<String> cbPlats;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JComboBox<String> cbRaser;
+    private javax.swing.JCheckBox cbVisaLosen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lReggad;
+    private javax.swing.JLabel lbRasInfo;
     private javax.swing.JPasswordField pwLosen;
     private javax.swing.JTextField txtNamn;
+    private javax.swing.JTextField txtRasTill;
     private javax.swing.JTextField txtTelefon;
-    private javax.swing.JTextField txtTillagd;
     // End of variables declaration//GEN-END:variables
 }
