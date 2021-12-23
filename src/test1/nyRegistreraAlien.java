@@ -265,7 +265,6 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
             String alienLosenord = new String(pwLosen.getPassword());
             String telefonNummer = txtTelefon.getText();
             
-            String fragaIDstring = idb.fetchSingle("SELECT COUNT(*) FROM utrustning");
             String fragaID = idb.getAutoIncrement("Alien", "Alien_ID");
             
             if (ok) {
