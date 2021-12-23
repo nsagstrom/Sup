@@ -38,25 +38,12 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
         txtRasTill.setVisible(false);
     }
     
-    
         private void laggTillRas() {
 
         cbRaser.addItem("Boglodite");
         cbRaser.addItem("Sqiud");
         cbRaser.addItem("Worm");
-
     }
-//        private void nummerAgent() {
-//        String vilkenAgent = cbAnsvarigAgent.getSelectedItem().toString();
-//
-//        try {
-//            String agentNrFraga = "SELECT Agent_ID FROM agent WHERE namn = '" + vilkenAgent + "'";
-//            System.out.println(agentNrFraga);
-//            agentNr = idb.fetchSingle(agentNrFraga);
-//        } catch (InfException e) {
-//            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
-//        }
-//    }
 
     private void datum() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -265,7 +252,6 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
     private void btnLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillActionPerformed
 
         try {
-
             boolean ok = okUppgifter();
             String vilkenAgent = cbAnsvarigAgent.getSelectedItem().toString();
             String agentNrFraga = "SELECT Agent_ID FROM agent WHERE namn = '" + vilkenAgent + "'";
@@ -281,14 +267,11 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
             
             String fragaIDstring = idb.fetchSingle("SELECT COUNT(*) FROM utrustning");
             String fragaID = idb.getAutoIncrement("Alien", "Alien_ID");
-
             
             if (ok) {
                 sqlfraga = "INSERT INTO alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon, Plats, Ansvarig_Agent) VALUES (" + fragaID + ",'" + datum + "','" + alienLosenord + "','" + alienNamn + "','" + telefonNummer + "'," + platsNr + "," + agentNr + ")";
-
-                idb.insert(sqlfraga);
-                
-               
+                idb.insert(sqlfraga); 
+              
                 lReggad.setText("Alien " + alienNamn + " är registrerad!");
 
                 String vilkettilagg = txtRasTill.getText();
@@ -307,12 +290,9 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
                         idb.insert(ett);
                         break;
                     default:
-                        JOptionPane.showMessageDialog(null, "Fel uppgifter");
                         break;
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "Fel uppgifter");
-            }
+            } 
 
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
