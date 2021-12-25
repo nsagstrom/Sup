@@ -4,6 +4,9 @@
  */
 package test1;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -12,6 +15,8 @@ import javax.swing.JTextField;
  * @author isakw
  */
 public class ValideringsKlass {
+
+
 
     public static boolean textFaltHarVarde(JTextField rutaAttKolla) {
         boolean resultat = true;
@@ -37,5 +42,14 @@ public class ValideringsKlass {
 
         return resultat;
     }
+    
+    public static String datum(){
+           
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+         String datum = dateFormat.format(date);
+         return datum;
+    }
+    
 
 }

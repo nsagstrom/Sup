@@ -53,7 +53,7 @@ public class InlogAgent extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         txtFAnvandarnamn = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnOK = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -83,10 +83,10 @@ public class InlogAgent extends javax.swing.JFrame {
 
         jLabel1.setText("All makt åt tengil ");
 
-        jButton1.setText("OK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnOK.setText("OK");
+        btnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnOKActionPerformed(evt);
             }
         });
 
@@ -129,7 +129,7 @@ public class InlogAgent extends javax.swing.JFrame {
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtFAnvandarnamn)
-                    .addComponent(jButton1)
+                    .addComponent(btnOK)
                     .addComponent(jLabel1)
                     .addComponent(jCheckBox1)
                     .addComponent(jLabel2)
@@ -153,7 +153,7 @@ public class InlogAgent extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addComponent(jCheckBox1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnOK)
                 .addGap(60, 60, 60)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -167,7 +167,7 @@ public class InlogAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFAnvandarnamnActionPerformed
 
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
 
         try {
             String losenord = new String(txtLosen.getPassword());
@@ -198,7 +198,7 @@ public class InlogAgent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnOKActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
@@ -217,14 +217,14 @@ public class InlogAgent extends javax.swing.JFrame {
     private void txtLosenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLosenKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
-            jButton1.doClick();
+            btnOK.doClick();
         }
     }//GEN-LAST:event_txtLosenKeyPressed
 
     private void jCheckBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCheckBox1KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
-            jButton1.doClick();
+            btnOK.doClick();
         }
     }//GEN-LAST:event_jCheckBox1KeyPressed
 
@@ -264,8 +264,8 @@ public class InlogAgent extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnOK;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JDialog jDialog1;

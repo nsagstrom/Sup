@@ -39,8 +39,9 @@ public class agentAdminSida extends javax.swing.JFrame {
         cbKontrollAvAlien.addItem("Alla Alier per plats");
 
         cbAtgarder.addItem("Välj");
-        cbAtgarder.addItem("Lägg till vapen");
-        cbAtgarder.addItem("Lägg till alien");
+        cbAtgarder.addItem("Lägg till Vapen");
+        cbAtgarder.addItem("Lägg till Alien");
+        cbAtgarder.addItem("Lägg till Agent");
         
 
     }
@@ -197,6 +198,7 @@ public class agentAdminSida extends javax.swing.JFrame {
             new allaAlienPlats(idb).setVisible(true);
             dispose();
         }
+
         
 
     }//GEN-LAST:event_cbKontrollAvAlienActionPerformed
@@ -247,9 +249,11 @@ public class agentAdminSida extends javax.swing.JFrame {
         if (i == 1) {
             new addUtrustning(idb).setVisible(true);
             dispose();
-        }
-        else if (i == 2) {
+        } else if (i == 2) {
             new nyRegistreraAlien(idb).setVisible(true);
+            dispose();
+        } else if (i == 3) {
+            new addAgent(idb).setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_cbAtgarderActionPerformed

@@ -308,21 +308,28 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
         if(txtNamn.getText().isBlank()){
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
-        } else if (alienLosenord2.isBlank()) {
+            txtNamn.requestFocus();
+        }  else if (alienLosenord2.isBlank()) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
+            pwLosen.requestFocus();
         } else if (alienLosenord2.length() > 6) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord får ej vara längre än sex tecken");
-        } else if (txtTelefon.getText().isBlank()) {
+            pwLosen.requestFocus();
+            pwLosen.selectAll();
+        }  else if (txtTelefon.getText().isBlank()) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
+            txtTelefon.requestFocus();
         } else if (cbPlats.getSelectedIndex() == 0) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj plats");
+            cbPlats.requestFocus();
         } else if (cbRaser.getSelectedIndex() == 0) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj ras");
+            cbRaser.requestFocus();
         } else if (cbRaser.getSelectedIndex()== 1 || cbRaser.getSelectedIndex()== 2 ){
             if(txtRasTill.getText().isBlank()){
                 ok = false;
