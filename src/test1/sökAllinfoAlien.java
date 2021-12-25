@@ -39,7 +39,7 @@ private InfDB idb;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSök = new javax.swing.JButton();
+        btnOK = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTalien = new javax.swing.JTextField();
         jRubrik = new javax.swing.JLabel();
@@ -48,16 +48,21 @@ private InfDB idb;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jSök.setText("Sök");
-        jSök.addActionListener(new java.awt.event.ActionListener() {
+        btnOK.setText("Sök");
+        btnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jSökActionPerformed(evt);
+                btnOKActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Ange Alien:");
 
         jTalien.setColumns(4);
+        jTalien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTalienKeyPressed(evt);
+            }
+        });
 
         jRubrik.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jRubrik.setText("All info om Alien");
@@ -80,7 +85,7 @@ private InfDB idb;
                         .addGap(284, 284, 284))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSök)
+                            .addComponent(btnOK)
                             .addComponent(jTalien, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -98,7 +103,7 @@ private InfDB idb;
                     .addComponent(jLabel1)
                     .addComponent(jTalien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSök)
+                .addComponent(btnOK)
                 .addGap(70, 70, 70))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(68, Short.MAX_VALUE)
@@ -111,7 +116,7 @@ private InfDB idb;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jSökActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSökActionPerformed
+    private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         // TODO add your handling code here:
         try{
         String aNamn = jTalien.getText();
@@ -136,7 +141,11 @@ private InfDB idb;
         catch(InfException e){
             JOptionPane.showMessageDialog(rootPane, "Alien finns ej!");
         }
-    }//GEN-LAST:event_jSökActionPerformed
+    }//GEN-LAST:event_btnOKActionPerformed
+
+    private void jTalienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTalienKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTalienKeyPressed
 
     /**
      * @param args the command line arguments
@@ -174,10 +183,10 @@ private InfDB idb;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jRubrik;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jSök;
     private javax.swing.JTextField jTalien;
     private javax.swing.JTextArea jTextInfo;
     // End of variables declaration//GEN-END:variables
