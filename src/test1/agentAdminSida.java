@@ -37,6 +37,7 @@ public class agentAdminSida extends javax.swing.JFrame {
         cbKontrollAvAlien.addItem("Välj");
         cbKontrollAvAlien.addItem("Alla Alier per ras");
         cbKontrollAvAlien.addItem("Alla Alier per plats");
+        cbKontrollAvAlien.addItem("Alla Alier per datum");
 
         cbAtgarder.addItem("Välj");
         cbAtgarder.addItem("Lägg till Vapen");
@@ -190,13 +191,21 @@ public class agentAdminSida extends javax.swing.JFrame {
         if(i == 0){
 
         }
-        if(i == 1){
-            new alienAvRas(idb).setVisible(true);
-            dispose();
-        }
-        else if(i == 2){
-            new allaAlienPlats(idb).setVisible(true);
-            dispose();
+        switch (i) {
+            case 1:
+                new alienAvRas(idb).setVisible(true);
+                dispose();
+                break;
+            case 2:
+                new allaAlienPlats(idb).setVisible(true);
+                dispose();
+                break;
+            case 3:
+                new alienDatum(idb).setVisible(true);
+                dispose();
+                break;
+            default:
+                break;
         }
 
         
