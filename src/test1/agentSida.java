@@ -27,7 +27,7 @@ public class agentSida extends javax.swing.JFrame {
         initComponents();
         laggTill();
         namn = forstaSida.aNamn();
-        jLabel1.setText("Välkommen " + namn);
+        lblValkommen.setText("Välkommen " + namn);
         listaAllUtrustning();
     }
 
@@ -55,7 +55,7 @@ public class agentSida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblValkommen = new javax.swing.JLabel();
         btnLoggaUt = new javax.swing.JButton();
         btnNylosen = new javax.swing.JButton();
         cbKontrollAvAlien = new javax.swing.JComboBox<>();
@@ -67,8 +67,8 @@ public class agentSida extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("jLabel1");
+        lblValkommen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblValkommen.setText("jLabel1");
 
         btnLoggaUt.setText("Logga ut");
         btnLoggaUt.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +105,6 @@ public class agentSida extends javax.swing.JFrame {
         txtfUtrustning.setRows(5);
         txtfUtrustning.setToolTipText("");
         jScrollPane1.setViewportView(txtfUtrustning);
-        txtfUtrustning.getAccessibleContext().setAccessibleParent(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,7 +123,7 @@ public class agentSida extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(206, 206, 206))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblValkommen)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnLoggaUt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -137,7 +136,7 @@ public class agentSida extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblValkommen)
                     .addComponent(btnLoggaUt))
                 .addGap(18, 18, 18)
                 .addComponent(btnNylosen)
@@ -157,6 +156,8 @@ public class agentSida extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    
     private void listaAllUtrustning(){
         
         ArrayList<HashMap<String, String>> allUtrustning;
@@ -271,10 +272,10 @@ public class agentSida extends javax.swing.JFrame {
     private javax.swing.JButton btnNylosen;
     private javax.swing.JComboBox<String> cbAtgarder;
     private javax.swing.JComboBox<String> cbKontrollAvAlien;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblValkommen;
     private javax.swing.JTextArea txtfUtrustning;
     // End of variables declaration//GEN-END:variables
 }

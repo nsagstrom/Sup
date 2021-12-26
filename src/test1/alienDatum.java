@@ -223,6 +223,11 @@ public class alienDatum extends javax.swing.JFrame {
         });
 
         btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Reggade mellan datum");
 
@@ -310,7 +315,7 @@ public class alienDatum extends javax.swing.JFrame {
             Date slut = dateSlut.getDate();
 
             slutdate = dateFormat.format(slut);
-             fraga = "SELECT Namn, Registreringsdatum FROM alien WHERE Registreringsdatum > '" + stardate + " ' AND Registreringsdatum > '" + slutdate + "';";
+             fraga = "SELECT Namn, Registreringsdatum FROM alien WHERE Registreringsdatum > '" + stardate + " ' AND Registreringsdatum < '" + slutdate + "';";
 
             allaAlien = idb.fetchRows(fraga);
 
@@ -335,6 +340,16 @@ public class alienDatum extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_tbnOKActionPerformed
+
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        if (forstaSida.arAdmin()) {
+            new agentAdminSida(idb).setVisible(true);
+            dispose();
+        } else {
+            new agentSida(idb).setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
      * @param args the command line arguments

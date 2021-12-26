@@ -26,7 +26,7 @@ public class agentAdminSida extends javax.swing.JFrame {
         this.idb = idb;
         initComponents();
         namn = forstaSida.aNamn();
-        jLabel1.setText("Välkommen " + namn);
+        lblValkommen.setText("Välkommen " + namn);
         laggTillAtgard();
         listaAllUtrustning();
 
@@ -62,7 +62,7 @@ public class agentAdminSida extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         cbKontrollAvAlien = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblValkommen = new javax.swing.JLabel();
         btnLoggaUt = new javax.swing.JButton();
         btnNylosen = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -93,8 +93,8 @@ public class agentAdminSida extends javax.swing.JFrame {
 
         jLabel2.setText("Kontroll av alien ");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("jLabel1");
+        lblValkommen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblValkommen.setText("jLabel1");
 
         btnLoggaUt.setText("Logga ut");
         btnLoggaUt.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +135,7 @@ public class agentAdminSida extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(lblValkommen)
                     .addComponent(jLabel3)
                     .addComponent(cbAtgarder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
@@ -160,7 +160,7 @@ public class agentAdminSida extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblValkommen)
                     .addComponent(btnLoggaUt))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -308,13 +308,13 @@ public class agentAdminSida extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbAtgarder;
     private javax.swing.JComboBox<String> cbKontrollAvAlien;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblValkommen;
     private javax.swing.JTextArea txtfUtrustning;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,10 @@
  */
 package test1;
 
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /**
  *
@@ -14,12 +17,16 @@ public class alienSida extends javax.swing.JFrame {
 
     
     private InfDB idb;
+    private String namn;
     /**
      * Creates new form alienSida
      */
     public alienSida(InfDB idb) {
         this.idb = idb;
         initComponents();
+        namn = forstaSida.aNamn();
+        lblValkommen.setText("Välkommen " + namn);
+        omradeAgent();
     }
 
     private alienSida() {
@@ -33,15 +40,17 @@ public class alienSida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblValkommen = new javax.swing.JLabel();
         btnLoggaUt = new javax.swing.JButton();
         btnNylosen = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        luppgifter = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("jLabel1");
+        lblValkommen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblValkommen.setText("jLabel1");
 
         btnLoggaUt.setText("Logga ut");
         btnLoggaUt.addActionListener(new java.awt.event.ActionListener() {
@@ -59,6 +68,8 @@ public class alienSida extends javax.swing.JFrame {
 
         jLabel3.setText("ALIEN !!!!");
 
+        jLabel1.setText("Kontakta områdeschef:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,28 +78,41 @@ public class alienSida extends javax.swing.JFrame {
                 .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
+                        .addComponent(lblValkommen)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnLoggaUt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnNylosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(56, 56, 56))))
+                        .addGap(56, 56, 56))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(luppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addContainerGap(286, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(249, 249, 249))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblValkommen)
                     .addComponent(btnLoggaUt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnNylosen)
+                        .addGap(38, 38, 38))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(luppgifter)))
                 .addGap(18, 18, 18)
-                .addComponent(btnNylosen)
-                .addGap(26, 26, 26)
                 .addComponent(jLabel3)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
 
         pack();
@@ -103,6 +127,27 @@ public class alienSida extends javax.swing.JFrame {
         new NyttLosen(idb).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnNylosenActionPerformed
+
+    private void omradeAgent() {
+
+        try {
+            HashMap<String, String> kontakt;
+
+            String fraga = "SELECT a.Namn, a.Telefon FROM omrade\n"
+                    + "JOIN agent a on omrade.Omrades_ID = a.Omrade\n"
+                    + "JOIN alien a2 on a.Agent_ID = a2.Ansvarig_Agent\n"
+                    + "WHERE a2.Namn = '" + namn + "';";
+            kontakt = idb.fetchRow(fraga);
+            
+            luppgifter.setText(kontakt.get("Namn") + " " + kontakt.get("Telefon"));
+            System.out.println(kontakt);
+            System.out.println(fraga);
+
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+        }
+
+    }
 
     /**
      * @param args the command line arguments
@@ -144,5 +189,7 @@ public class alienSida extends javax.swing.JFrame {
     private javax.swing.JButton btnNylosen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblValkommen;
+    private javax.swing.JLabel luppgifter;
     // End of variables declaration//GEN-END:variables
 }
