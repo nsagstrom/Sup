@@ -140,8 +140,7 @@ public class alienSida extends javax.swing.JFrame {
             kontakt = idb.fetchRow(fraga);
             
             luppgifter.setText(kontakt.get("Namn") + " " + kontakt.get("Telefon"));
-            System.out.println(kontakt);
-            System.out.println(fraga);
+            
 
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
