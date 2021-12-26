@@ -92,11 +92,11 @@ public class VemOmradesChef extends javax.swing.JFrame {
             
             omradeChef = idb.fetchRows(fraga);
             
-            System.out.println(fraga);
-            txtChef.append("Namn" + " " + "Chef för;" + "\n");
+            
+            txtChef.append("Namn" + "   " + "Chef för;" + "\n");
             
             for(HashMap<String, String> chef : omradeChef){
-                txtChef.append(chef.get("Namn")+ " " + chef.get("Benamning") + "\n");
+                txtChef.append(chef.get("Namn")+ "   " + chef.get("Benamning") + "\n");
             }
             
         } catch (InfException e) {
