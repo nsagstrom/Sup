@@ -3,11 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package test1;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import static javax.swing.text.html.HTML.Tag.SELECT;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -17,10 +17,13 @@ import oru.inf.InfException;
  */
 public class AllInfoEnAgent extends javax.swing.JFrame {
 private InfDB idb;
+
     /**
+     * 
      * Creates new form AllInfoEnAgent
      */
     public AllInfoEnAgent() {
+//        laggTillAgent();
         initComponents();
         try {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
@@ -45,6 +48,7 @@ private InfDB idb;
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextInfo2 = new javax.swing.JTextArea();
+        cbAnsvarigAgent = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +69,11 @@ private InfDB idb;
         jLabel1.setText("Ange Agent:");
 
         jBTillbaka.setText("Tillbaka");
+        jBTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBTillbakaActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setText("Info om Agent");
@@ -72,6 +81,8 @@ private InfDB idb;
         jTextInfo2.setColumns(20);
         jTextInfo2.setRows(5);
         jScrollPane1.setViewportView(jTextInfo2);
+
+        cbAnsvarigAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,14 +97,18 @@ private InfDB idb;
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBTillbaka)
-                        .addGap(23, 23, 23))
+                        .addGap(261, 261, 261))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnOk)
                             .addComponent(jTAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(cbAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,18 +120,21 @@ private InfDB idb;
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnOk)
-                        .addGap(75, 75, 75))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52))))
+                        .addGap(32, 32, 32)
+                        .addComponent(cbAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())))
         );
 
         pack();
@@ -124,29 +142,64 @@ private InfDB idb;
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         // TODO add your handling code here:
+        
+        String fraAgent="";
+        String agent = "";
+        String fraOmrade = "";
+        String omrade = "";
+        String namn = jTAgent.getText();
         try{
         String aNamn = jTAgent.getText();
             HashMap<String, String> info2;
-            info2 = idb.fetchRow("SELECT * FROM agent WHERE NAMN = '"+ aNamn +"'" );
+            info2 = idb.fetchRow("SELECT Agent_ID FROM agent WHERE NAMN = '"+ aNamn +"'" );
             
-            String fraAgent = "SELECT Namn from agent JOIN omrade o on agent.Omrade = o.Omrades_ID WHERE Agent_ID = "+ info2.get("Namn") +"LIMIT 1";
-            String agent = idb.fetchSingle(fraAgent);
-            String fraOmrade = "SELECT Benamning FROM agent JOIN omrade o on agent.Omrade = o.Omrades_ID WHERE Agent_ID = "+ info2.get("Omrade") +"  LIMIT 1";
-            String omrade = idb.fetchSingle(fraOmrade);
+            fraAgent = "SELECT Namn from agent JOIN omrade o on agent.Omrade = o.Omrades_ID WHERE Agent_ID = '"+ namn +"' LIMIT 1";
+            agent = idb.fetchSingle(fraAgent);
+            fraOmrade = "SELECT Benamning FROM agent JOIN omrade o on agent.Omrade = o.Omrades_ID WHERE Agent_ID = "+ info2.get("Omrade") +"  LIMIT 1";
+            omrade = idb.fetchSingle(fraOmrade);
             
-            jTextInfo2.setText("Namn: " + info2.get("Namn") + "\n" + "Telefon: " + info2.get("Telefon") +  "\n" + "Anstallningsdatum: " + info2.get("Anstallningsdatum") + "\n" + "Administrator: " + 
-                    info2.get("Administrator") + "\n" + "Losenord: " + info2.get("Losenord") + "\n" + "Område: " + omrade);
+            System.out.println(fraAgent);
+            System.out.println(agent);
+            System.out.println(fraOmrade);
+            System.out.println(omrade);
+            
+            jTextInfo2.setText("Namn: " + info2.get("Namn") + "\n" + "Telefon: " + info2.get("Telefon") +  "\n" + "Anstallningsdatum: " + info2.get("Anstallningsdatum") + "\n" + "Administrator: " + info2.get("Administrator") + "\n" + "Losenord: " + info2.get("Losenord") + "\n" + "Område: " + omrade);
             
             
         
         } catch (InfException ex) {
         JOptionPane.showMessageDialog(rootPane, "Agent finns ej!");
+        System.out.println(fraAgent);
+            System.out.println(agent);
+            System.out.println(fraOmrade);
+            System.out.println(omrade);
     }
     }//GEN-LAST:event_btnOkActionPerformed
+    private void laggTillAgent() {
+        String agentFraga = "SELECT namn FROM agent";
+
+        ArrayList<String> allaAgenter;
+        try {
+            allaAgenter = idb.fetchColumn(agentFraga);
+
+            for (String a : allaAgenter) {
+                cbAnsvarigAgent.addItem(a);
+            }
+
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+
+        }
+    }
 
     private void jTAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTAgentActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTAgentActionPerformed
+
+    private void jBTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTillbakaActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jBTillbakaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,6 +238,7 @@ private InfDB idb;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOk;
+    private javax.swing.JComboBox<String> cbAnsvarigAgent;
     private javax.swing.JButton jBTillbaka;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
