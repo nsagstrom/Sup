@@ -43,6 +43,7 @@ public class agentSida extends javax.swing.JFrame {
         cbAtgarder.addItem("Lägg till vapen");
         cbAtgarder.addItem("Lägg till alien");
         cbAtgarder.addItem("Vem är chef");
+        cbAtgarder.addItem("Ändra alien");
 
     }
 
@@ -248,9 +249,7 @@ public class agentSida extends javax.swing.JFrame {
         // Välj inloggningstyp
         int i = cbKontrollAvAlien.getSelectedIndex();
 
-        if (i == 0) {
 
-        }
         switch (i) {
             case 1:
                 new alienAvRas(idb).setVisible(true);
@@ -272,21 +271,41 @@ public class agentSida extends javax.swing.JFrame {
     private void cbAtgarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAtgarderActionPerformed
         int i = cbAtgarder.getSelectedIndex();
 
-        if (i == 0) {
+        switch (i) {
+            case 1:
+                new addUtrustning(idb).setVisible(true);
+                dispose();
+                break;
+            case 2:
+                new nyRegistreraAlien(idb).setVisible(true);
+                dispose();
+                break;
+            case 3:
+                new VemOmradesChef(idb).setVisible(true);
+                dispose();
+                break;
+            case 4:
+                new AndraAlien(idb).setVisible(true);
+                dispose();
+                break;
+        }
 
-        }
-        if (i == 1) {
-            new addUtrustning(idb).setVisible(true);
-            dispose();
-        }
-        if (i == 2) {
-            new nyRegistreraAlien(idb).setVisible(true);
-            dispose();
-        }
-        if (i == 3 ){
-            new VemOmradesChef(idb).setVisible(true);
-            dispose();
-        }
+//        if (i == 0) {
+//
+//        }
+//        if (i == 1) {
+//            new addUtrustning(idb).setVisible(true);
+//            dispose();
+//        }
+//        if (i == 2) {
+//            new nyRegistreraAlien(idb).setVisible(true);
+//            dispose();
+//        }
+//        if (i == 3 ){
+//            new VemOmradesChef(idb).setVisible(true);
+//            dispose();
+//        }
+        
     }//GEN-LAST:event_cbAtgarderActionPerformed
 
     /**

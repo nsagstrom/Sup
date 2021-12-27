@@ -4,6 +4,12 @@
  */
 package test1;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /**
  *
  * @author nsags
@@ -13,8 +19,16 @@ public class AndraAlien extends javax.swing.JFrame {
     /**
      * Creates new form AndraAlien
      */
-    public AndraAlien() {
+    private InfDB idb;
+    
+    public AndraAlien(InfDB idb) {
+        this.idb = idb;
         initComponents();
+        info();
+    }
+
+    private AndraAlien() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -24,21 +38,105 @@ public class AndraAlien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAllInfo = new javax.swing.JTextArea();
+        btnTillbaka = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtAllInfo.setColumns(20);
+        txtAllInfo.setRows(5);
+        jScrollPane1.setViewportView(txtAllInfo);
+
+        btnTillbaka.setText("Tillbaka");
+        btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTillbakaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(513, 513, 513)
+                .addComponent(btnTillbaka)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(btnTillbaka)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+     private void info() {
+
+         ArrayList<HashMap<String, String>> allInfo;
+
+         try {
+             String fraga = "SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent FROM (\n"
+                     + "SELECT Alien_ID  , 'Worm' AS Ras FROM worm\n"
+                     + "UNION\n"
+                     + "SELECT Alien_ID  , 'Sqid' AS Ras FROM squid\n"
+                     + "UNION\n"
+                     + "SELECT Alien_ID, 'Boglodite' AS Ras FROM boglodite\n"
+                     + "UNION\n"
+                     + "(SELECT Alien_ID, 'SAKNAS' FROM alien\n"
+                     + "    WHERE Alien_ID NOT IN (SELECT Alien_ID AS id FROM alien\n"
+                     + "    WHERE Alien_ID  IN (SELECT id FROM\n"
+                     + "        (SELECT Alien_ID AS id  FROM squid\n"
+                     + "        UNION SELECT Alien_ID as id FROM worm\n"
+                     + "        UNION SELECT Alien_ID as id FROM boglodite) AS a)))) AS ras\n"
+                     + "JOIN alien on ras.alien_id = alien.alien_id\n"
+                     + "JOIN plats p on p.Plats_ID = alien.Plats\n"
+                     + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID;";
+             
+             allInfo = idb.fetchRows(fraga);
+             System.out.println(fraga);
+             System.out.println(allInfo);
+             
+             String rubrik = "Alien ID:" + "\t" + "Namn:"
+                     + "\t" + "Ras:" + "\t" + "Reg datum:"
+                     + "\t" + "Telefon:" + "\t" + "Lösenord:" + "\t"
+                     + "Plats:" + "\t" + "Agent:" + "\n";
+             
+             txtAllInfo.append(rubrik);
+             
+             for (HashMap<String, String> info : allInfo) {
+                 txtAllInfo.append(info.get("Alien_ID") + "\t" + info.get("Namn")
+                         + "\t" + info.get("Ras") + "\t" + info.get("Registreringsdatum")
+                         + "\t" + info.get("Telefon") + "\t" + info.get("Losenord") + "\t"
+                         + info.get("Benamning") + "\t" + info.get("Agent") + "\n");
+                 
+             }
+         } 
+         catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+        }
+    }
+    
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        if(forstaSida.arAdmin()){
+            new agentAdminSida(idb).setVisible(true);
+            dispose();
+        }
+        else{
+            new agentSida(idb).setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -76,5 +174,8 @@ public class AndraAlien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTillbaka;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtAllInfo;
     // End of variables declaration//GEN-END:variables
 }
