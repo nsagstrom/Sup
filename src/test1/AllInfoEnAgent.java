@@ -151,7 +151,7 @@ private InfDB idb;
         try{
         String aNamn = jTAgent.getText();
             HashMap<String, String> info2;
-            info2 = idb.fetchRow("SELECT Agent_ID FROM agent WHERE NAMN = '"+ aNamn +"'" );
+            info2 = idb.fetchRow("SELECT * FROM agent WHERE NAMN = '"+ aNamn +"'" );
             
             fraAgent = "SELECT Namn from agent JOIN omrade o on agent.Omrade = o.Omrades_ID WHERE Agent_ID = '"+ namn +"' LIMIT 1";
             agent = idb.fetchSingle(fraAgent);
