@@ -113,7 +113,9 @@ public class TaBortUtrustning extends javax.swing.JFrame {
             String utrustningbort = jTUtr.getText();
             
             HashMap<String, String> fragaUtr;
-            fragaUtr = idb.fetchRow("DELETE FROM utrustning WHERE Benamning = "+ utrustningbort );
+            fragaUtr = idb.fetchRow("SELECT * FROM utrustning");
+            String tabort = "DELETE FROM utrustning WHERE Benamning = '"+ utrustningbort +"'";
+            idb.insert(tabort);
             
             jTxtKorrekt.setText(utrustningbort + " borttagen!");
         }
