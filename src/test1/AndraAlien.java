@@ -38,6 +38,7 @@ public class AndraAlien extends javax.swing.JFrame {
         cbRaser.addItem("Boglodite");
         cbRaser.addItem("Sqiud");
         cbRaser.addItem("Worm");
+        cbRaser.addItem("Annat");
     }
 
     private void laggTillAgent() {
@@ -110,6 +111,7 @@ public class AndraAlien extends javax.swing.JFrame {
         txtRasTill = new javax.swing.JTextField();
         lbRasInfo = new javax.swing.JLabel();
         btnUppdatera = new javax.swing.JButton();
+        landrad = new javax.swing.JLabel();
 
         jScrollPane2.setViewportView(jEditorPane1);
 
@@ -170,6 +172,11 @@ public class AndraAlien extends javax.swing.JFrame {
         jLabel7.setText("Agent");
 
         jButton1.setText("Ändra");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Lösenord");
 
@@ -186,6 +193,15 @@ public class AndraAlien extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnUppdatera)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addGap(19, 19, 19))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -233,15 +249,10 @@ public class AndraAlien extends javax.swing.JFrame {
                     .addComponent(btnTillbaka)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, 70))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnUppdatera)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addGap(19, 19, 19))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(landrad, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,7 +304,9 @@ public class AndraAlien extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addGap(6, 6, 6)
                         .addComponent(txtTele, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(landrad, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
                 .addComponent(btnUppdatera)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,7 +328,7 @@ public class AndraAlien extends javax.swing.JFrame {
                      + "UNION\n"
                      + "SELECT Alien_ID, 'Boglodite' AS Ras, Antal_Boogies AS Antal FROM boglodite\n"
                      + "UNION\n"
-                     + "(SELECT Alien_ID, 'SAKNAS', null FROM alien\n"
+                     + "(SELECT Alien_ID, 'Annat' , null FROM alien\n"
                      + "    WHERE Alien_ID NOT IN (SELECT Alien_ID AS id FROM alien\n"
                      + "    WHERE Alien_ID  IN (SELECT id FROM\n"
                      + "        (SELECT Alien_ID AS id  FROM squid\n"
@@ -363,23 +376,32 @@ public class AndraAlien extends javax.swing.JFrame {
         
         switch (i) {
             case 0:
+                // Välj Ras
                 txtRasTill.setVisible(false);
                 lbRasInfo.setText("");
                 break;
             case 1:
+                // Boglodite
                 txtRasTill.setVisible(true);
                 lbRasInfo.setText("Antal boogies");
                 break;
             case 2:
+                // Sqiud
                 txtRasTill.setVisible(true);
                 lbRasInfo.setText("Antal armar");
                 break;
             case 3:
+                // Worm
                 txtRasTill.setVisible(false);
                 lbRasInfo.setText("");
                 break;
+            case 4:
+                // Annat
+                txtRasTill.setVisible(false);
+                lbRasInfo.setText("");   
             default:
                 break;
+
         }
     }//GEN-LAST:event_cbRaserActionPerformed
 
@@ -395,7 +417,7 @@ public class AndraAlien extends javax.swing.JFrame {
                      + "UNION\n"
                      + "SELECT Alien_ID, 'Boglodite' AS Ras, Antal_Boogies AS Antal FROM boglodite\n"
                      + "UNION\n"
-                     + "(SELECT Alien_ID, 'SAKNAS', null FROM alien\n"
+                     + "(SELECT Alien_ID, 'Annat', null FROM alien\n"
                      + "    WHERE Alien_ID NOT IN (SELECT Alien_ID AS id FROM alien\n"
                      + "    WHERE Alien_ID  IN (SELECT id FROM\n"
                      + "        (SELECT Alien_ID AS id  FROM squid\n"
@@ -408,7 +430,7 @@ public class AndraAlien extends javax.swing.JFrame {
            
             HashMap<String, String> uppgifter;
             uppgifter = idb.fetchRow(sok);
-            
+
             txtNamn.setText(uppgifter.get("Namn"));
             txtDatum.setText(uppgifter.get("Registreringsdatum"));
             txtLosen.setText(uppgifter.get("Losenord"));
@@ -416,9 +438,9 @@ public class AndraAlien extends javax.swing.JFrame {
             txtRasTill.setText(uppgifter.get("Antal"));
             cbAnsvarigAgent.setSelectedItem(uppgifter.get("Agent"));
             cbPlats.setSelectedItem(uppgifter.get("Benamning"));
-            
-            if (uppgifter.get("Ras").equals("SAKNAS")) {
-                cbRaser.setSelectedIndex(0);
+
+            if (uppgifter.get("Ras").equalsIgnoreCase("Annat")) {
+                cbRaser.setSelectedIndex(4);
             } else if (uppgifter.get("Ras").equalsIgnoreCase("Boglodite")) {
                 cbRaser.setSelectedIndex(1);
             } else if (uppgifter.get("Ras").equalsIgnoreCase("Sqid")) {
@@ -448,6 +470,83 @@ public class AndraAlien extends javax.swing.JFrame {
         info();
     }//GEN-LAST:event_btnUppdateraActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        boolean ok = true;
+        
+        if(ok){
+        andraGrund();
+        andraRas();                  
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void andraGrund(){
+        try {
+            String platsID = idb.fetchSingle("SELECT Plats_ID FROM plats WHERE Benamning = '" + cbPlats.getSelectedItem() + "';");
+            String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + cbAnsvarigAgent.getSelectedItem() + "';");
+
+            String uppdatera = "UPDATE alien\n"
+                    + "SET  Registreringsdatum = '" + txtDatum.getText() + "', Losenord =  '" + txtLosen.getText() + "', Namn = '" + txtNamn.getText()
+                    + "', Telefon = '" + txtTele.getText() + "', Plats = " + platsID + ", Ansvarig_Agent = " + agentID + " WHERE Alien_ID = " + txtID.getText() + ";";
+
+            idb.update(uppdatera);
+            landrad.setText("Ändring genomförd (Hoppas vi)");
+            
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "JÄVLA aaaaaaaa");
+
+        }
+    }
+    private void andraRas(){
+        
+        try {
+            int i = cbRaser.getSelectedIndex();
+            String tabortB = "DELETE FROM boglodite WHERE Alien_ID = " + txtID.getText() +";";
+            String tabortS = "DELETE FROM squid WHERE Alien_ID = " + txtID.getText() +";";
+            String tabortW = "DELETE FROM worm WHERE Alien_ID = " + txtID.getText() +";";
+            
+            String laggInB = "INSERT INTO boglodite (Alien_ID, Antal_Boogies) VALUES (" +txtID.getText() +"," + txtRasTill.getText() +");";
+            String laggInS = "INSERT INTO squid (Alien_ID, Antal_Armar) VALUES (" +txtID.getText() +"," + txtRasTill.getText() +");";
+            String laggInW = "INSERT INTO worm (Alien_ID) VALUES ("+ txtID.getText() +");";
+            
+            switch (i) {
+                case 1:
+                    // Boglodite
+                    idb.delete(tabortB);
+                    idb.delete(tabortS);
+                    idb.delete(tabortW);
+                    idb.insert(laggInB);
+
+                    break;
+                case 2:
+                    // Sqiud
+                    idb.delete(tabortB);
+                    idb.delete(tabortS);
+                    idb.delete(tabortW);
+                    idb.insert(laggInS);
+                    break;
+                 case 3:
+                    // Worm
+                    idb.delete(tabortB);
+                    idb.delete(tabortS);
+                    idb.delete(tabortW);
+                    idb.insert(laggInW);
+                    break;
+                 case 4:
+                    // Annat
+                    idb.delete(tabortB);
+                    idb.delete(tabortS);
+                    idb.delete(tabortW);
+                default:
+                    break;
+        }
+            
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "JÄVLA qqqqq");
+        }
+        
+            
+    }
     
     /**
      * @param args the command line arguments
@@ -504,6 +603,7 @@ public class AndraAlien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel landrad;
     private javax.swing.JLabel lbRasInfo;
     private javax.swing.JTextArea txtAllInfo;
     private javax.swing.JTextField txtDatum;
