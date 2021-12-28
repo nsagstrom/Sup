@@ -92,18 +92,8 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
         jLabel1.setText("Registrera ny Alien");
 
         cbPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj plats" }));
-        cbPlats.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbPlatsActionPerformed(evt);
-            }
-        });
 
         cbAnsvarigAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ansvarig" }));
-        cbAnsvarigAgent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbAnsvarigAgentActionPerformed(evt);
-            }
-        });
         cbAnsvarigAgent.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cbAnsvarigAgentKeyPressed(evt);
@@ -232,14 +222,6 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cbPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPlatsActionPerformed
-           
-    }//GEN-LAST:event_cbPlatsActionPerformed
-
-    private void cbAnsvarigAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAnsvarigAgentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbAnsvarigAgentActionPerformed
 
     private void cbVisaLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVisaLosenActionPerformed
         if (cbVisaLosen.isSelected()) {
