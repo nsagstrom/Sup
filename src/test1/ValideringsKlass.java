@@ -57,7 +57,7 @@ public class ValideringsKlass {
             arTal = true;
 
         } else {
-            JOptionPane.showMessageDialog(null, "Måste vara tal valid");
+            JOptionPane.showMessageDialog(null, "Måste vara tal");
             taltest.requestFocus();
         }
         return arTal;
