@@ -40,7 +40,7 @@ public class Metoder {
     public void laggTillRas(JComboBox cb) {
 
         cb.addItem("Boglodite");
-        cb.addItem("Sqiud");
+        cb.addItem("Squid");
         cb.addItem("Worm");
         cb.addItem("Annat");
     }

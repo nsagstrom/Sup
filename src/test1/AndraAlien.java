@@ -29,13 +29,12 @@ public class AndraAlien extends javax.swing.JFrame {
 //        laggTillRas();
 //        laggTillAgent();
 //        laggTillPlats();
-        
+
         Metoder m = new Metoder(idb);
         m.laggTillPlats(cbPlats);
         m.laggTillRas(cbRaser);
         m.laggTillAgent(cbAnsvarigAgent);
-        
-        
+
         txtRasTill.setVisible(false);
 
     }
@@ -43,11 +42,10 @@ public class AndraAlien extends javax.swing.JFrame {
 //    private void laggTillRas() {
 //
 //        cbRaser.addItem("Boglodite");
-//        cbRaser.addItem("Sqiud");
+//        cbRaser.addItem("Squid");
 //        cbRaser.addItem("Worm");
 //        cbRaser.addItem("Annat");
 //    }
-
 //    private void laggTillAgent() {
 //        String agentFraga = "SELECT namn FROM agent";
 //
@@ -391,7 +389,7 @@ public class AndraAlien extends javax.swing.JFrame {
                 lbRasInfo.setText("Antal boogies");
                 break;
             case 2:
-                // Sqiud
+                // Squid
                 txtRasTill.setVisible(true);
                 lbRasInfo.setText("Antal armar");
                 break;
@@ -587,7 +585,7 @@ public class AndraAlien extends javax.swing.JFrame {
 
                     break;
                 case 2:
-                    // Sqiud
+                    // Squid
                     idb.delete(tabortB);
                     idb.delete(tabortS);
                     idb.delete(tabortW);
