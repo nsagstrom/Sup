@@ -316,56 +316,54 @@ public class AndraAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     private void info() {
+    private void info() {
 
-         ArrayList<HashMap<String, String>> allInfo;
+        ArrayList<HashMap<String, String>> allInfo;
 
-         try {
-             String fraga = "SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\n"
-                     + "SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\n"
-                     + "UNION\n"
-                     + "SELECT Alien_ID  , 'Sqid' AS Ras, Antal_Armar AS Antal FROM squid\n"
-                     + "UNION\n"
-                     + "SELECT Alien_ID, 'Boglodite' AS Ras, Antal_Boogies AS Antal FROM boglodite\n"
-                     + "UNION\n"
-                     + "(SELECT Alien_ID, 'Annat' , null FROM alien\n"
-                     + "    WHERE Alien_ID NOT IN (SELECT Alien_ID AS id FROM alien\n"
-                     + "    WHERE Alien_ID  IN (SELECT id FROM\n"
-                     + "        (SELECT Alien_ID AS id  FROM squid\n"
-                     + "        UNION SELECT Alien_ID as id FROM worm\n"
-                     + "        UNION SELECT Alien_ID as id FROM boglodite) AS a)))) AS ras\n"
-                     + "JOIN alien on ras.alien_id = alien.alien_id\n"
-                     + "JOIN plats p on p.Plats_ID = alien.Plats\n"
-                     + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID;";
+        try {
+            String fraga = "SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\n"
+                    + "SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\n"
+                    + "UNION\n"
+                    + "SELECT Alien_ID  , 'Sqid' AS Ras, Antal_Armar AS Antal FROM squid\n"
+                    + "UNION\n"
+                    + "SELECT Alien_ID, 'Boglodite' AS Ras, Antal_Boogies AS Antal FROM boglodite\n"
+                    + "UNION\n"
+                    + "(SELECT Alien_ID, 'Annat' , null FROM alien\n"
+                    + "    WHERE Alien_ID NOT IN (SELECT Alien_ID AS id FROM alien\n"
+                    + "    WHERE Alien_ID  IN (SELECT id FROM\n"
+                    + "        (SELECT Alien_ID AS id  FROM squid\n"
+                    + "        UNION SELECT Alien_ID as id FROM worm\n"
+                    + "        UNION SELECT Alien_ID as id FROM boglodite) AS a)))) AS ras\n"
+                    + "JOIN alien on ras.alien_id = alien.alien_id\n"
+                    + "JOIN plats p on p.Plats_ID = alien.Plats\n"
+                    + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID;";
 
-             allInfo = idb.fetchRows(fraga);
+            allInfo = idb.fetchRows(fraga);
 
-             String rubrik = "Alien ID:" + "\t" + "Namn:"
-                     + "\t" + "Ras:" + "\t" + "Delar" +"\t" + "Reg datum:"
-                     + "\t" + "Telefon:" + "\t" + "Lösenord:" + "\t"
-                     + "Plats:" + "\t" + "Agent:" + "\n";
-             
-             txtAllInfo.append(rubrik);
-             
-             for (HashMap<String, String> info : allInfo) {
-                 txtAllInfo.append(info.get("Alien_ID") + "\t" + info.get("Namn")
-                         + "\t" + info.get("Ras") + "\t" + info.get("Antal") + "\t" + info.get("Registreringsdatum")
-                         + "\t" + info.get("Telefon") + "\t" + info.get("Losenord") + "\t"
-                         + info.get("Benamning") + "\t" + info.get("Agent") + "\n");
-                 
-             }
-         } 
-         catch (InfException e) {
+            String rubrik = "Alien ID:" + "\t" + "Namn:"
+                    + "\t" + "Ras:" + "\t" + "Delar" + "\t" + "Reg datum:"
+                    + "\t" + "Telefon:" + "\t" + "Lösenord:" + "\t"
+                    + "Plats:" + "\t" + "Agent:" + "\n";
+
+            txtAllInfo.append(rubrik);
+
+            for (HashMap<String, String> info : allInfo) {
+                txtAllInfo.append(info.get("Alien_ID") + "\t" + info.get("Namn")
+                        + "\t" + info.get("Ras") + "\t" + info.get("Antal") + "\t" + info.get("Registreringsdatum")
+                        + "\t" + info.get("Telefon") + "\t" + info.get("Losenord") + "\t"
+                        + info.get("Benamning") + "\t" + info.get("Agent") + "\n");
+
+            }
+        } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
     }
-    
+
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
-        if(forstaSida.arAdmin()){
+        if (forstaSida.arAdmin()) {
             new agentAdminSida(idb).setVisible(true);
             dispose();
-        }
-        else{
+        } else {
             new agentSida(idb).setVisible(true);
             dispose();
         }
@@ -373,7 +371,7 @@ public class AndraAlien extends javax.swing.JFrame {
 
     private void cbRaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRaserActionPerformed
         int i = cbRaser.getSelectedIndex();
-        
+
         switch (i) {
             case 0:
                 // Välj Ras
@@ -398,7 +396,7 @@ public class AndraAlien extends javax.swing.JFrame {
             case 4:
                 // Annat
                 txtRasTill.setVisible(false);
-                lbRasInfo.setText("");   
+                lbRasInfo.setText("");
             default:
                 break;
 
@@ -407,55 +405,60 @@ public class AndraAlien extends javax.swing.JFrame {
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         String sok = "";
-        
-       
-        try{
-             sok ="SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\n"
-                     + "SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\n"
-                     + "UNION\n"
-                     + "SELECT Alien_ID  , 'Sqid' AS Ras, Antal_Armar AS Antal FROM squid\n"
-                     + "UNION\n"
-                     + "SELECT Alien_ID, 'Boglodite' AS Ras, Antal_Boogies AS Antal FROM boglodite\n"
-                     + "UNION\n"
-                     + "(SELECT Alien_ID, 'Annat', null FROM alien\n"
-                     + "    WHERE Alien_ID NOT IN (SELECT Alien_ID AS id FROM alien\n"
-                     + "    WHERE Alien_ID  IN (SELECT id FROM\n"
-                     + "        (SELECT Alien_ID AS id  FROM squid\n"
-                     + "        UNION SELECT Alien_ID as id FROM worm\n"
-                     + "        UNION SELECT Alien_ID as id FROM boglodite) AS a)))) AS ras\n"
-                     + "JOIN alien on ras.alien_id = alien.alien_id\n"
-                     + "JOIN plats p on p.Plats_ID = alien.Plats\n"
-                     + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID\n"
-                    + "WHERE alien.Alien_ID = " +  txtID.getText() + " ;";
-           
-            HashMap<String, String> uppgifter;
-            uppgifter = idb.fetchRow(sok);
 
-            txtNamn.setText(uppgifter.get("Namn"));
-            txtDatum.setText(uppgifter.get("Registreringsdatum"));
-            txtLosen.setText(uppgifter.get("Losenord"));
-            txtTele.setText(uppgifter.get("Telefon"));
-            txtRasTill.setText(uppgifter.get("Antal"));
-            cbAnsvarigAgent.setSelectedItem(uppgifter.get("Agent"));
-            cbPlats.setSelectedItem(uppgifter.get("Benamning"));
+        System.out.println(tal());
 
-            if (uppgifter.get("Ras").equalsIgnoreCase("Annat")) {
-                cbRaser.setSelectedIndex(4);
-            } else if (uppgifter.get("Ras").equalsIgnoreCase("Boglodite")) {
-                cbRaser.setSelectedIndex(1);
-            } else if (uppgifter.get("Ras").equalsIgnoreCase("Sqid")) {
-                cbRaser.setSelectedIndex(2);
-            } else if (uppgifter.get("Ras").equalsIgnoreCase("Worm")) {
-                cbRaser.setSelectedIndex(3);
+        if (tal()) {
+            try {
+                sok = "SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\n"
+                        + "SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\n"
+                        + "UNION\n"
+                        + "SELECT Alien_ID  , 'Sqid' AS Ras, Antal_Armar AS Antal FROM squid\n"
+                        + "UNION\n"
+                        + "SELECT Alien_ID, 'Boglodite' AS Ras, Antal_Boogies AS Antal FROM boglodite\n"
+                        + "UNION\n"
+                        + "(SELECT Alien_ID, 'Annat', null FROM alien\n"
+                        + "    WHERE Alien_ID NOT IN (SELECT Alien_ID AS id FROM alien\n"
+                        + "    WHERE Alien_ID  IN (SELECT id FROM\n"
+                        + "        (SELECT Alien_ID AS id  FROM squid\n"
+                        + "        UNION SELECT Alien_ID as id FROM worm\n"
+                        + "        UNION SELECT Alien_ID as id FROM boglodite) AS a)))) AS ras\n"
+                        + "JOIN alien on ras.alien_id = alien.alien_id\n"
+                        + "JOIN plats p on p.Plats_ID = alien.Plats\n"
+                        + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID\n"
+                        + "WHERE alien.Alien_ID = " + txtID.getText() + " ;";
+
+                HashMap<String, String> uppgifter;
+                uppgifter = idb.fetchRow(sok);
+
+                txtNamn.setText(uppgifter.get("Namn"));
+                txtDatum.setText(uppgifter.get("Registreringsdatum"));
+                txtLosen.setText(uppgifter.get("Losenord"));
+                txtTele.setText(uppgifter.get("Telefon"));
+                txtRasTill.setText(uppgifter.get("Antal"));
+                cbAnsvarigAgent.setSelectedItem(uppgifter.get("Agent"));
+                cbPlats.setSelectedItem(uppgifter.get("Benamning"));
+
+                if (uppgifter.get("Ras").equalsIgnoreCase("Annat")) {
+                    cbRaser.setSelectedIndex(4);
+                } else if (uppgifter.get("Ras").equalsIgnoreCase("Boglodite")) {
+                    cbRaser.setSelectedIndex(1);
+                } else if (uppgifter.get("Ras").equalsIgnoreCase("Sqid")) {
+                    cbRaser.setSelectedIndex(2);
+                } else if (uppgifter.get("Ras").equalsIgnoreCase("Worm")) {
+                    cbRaser.setSelectedIndex(3);
+                }
+
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+
             }
-
-            
-           
-
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
-            
+        } else {
+            JOptionPane.showMessageDialog(null, "Måste vara tal");
+            txtID.requestFocus();
         }
+
+
     }//GEN-LAST:event_btnOKActionPerformed
 
     private void txtIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyPressed
@@ -471,16 +474,77 @@ public class AndraAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUppdateraActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         boolean ok = true;
-        
-        if(ok){
-        andraGrund();
-        andraRas();                  
+
+        if (ok) {
+            andraGrund();
+            andraRas();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void andraGrund(){
+    private boolean tal() {
+        boolean arTal = false;
+        String idid = txtID.getText();
+
+        if (idid.matches("\\d+")) {
+            arTal = true;
+
+        }
+        return arTal;
+    }
+
+    private boolean okUppgifter() {
+        boolean ok = true;
+
+        if (txtID.getText().isBlank()) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Ange id");
+            txtID.requestFocus();
+        } else if (!tal()) {
+            JOptionPane.showMessageDialog(null, "Tal ditt mongo");
+            txtID.requestFocus();
+        } else if (txtNamn.getText().isBlank()) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Namn saknas");
+            txtNamn.requestFocus();
+        } else if (txtLosen.getText().isBlank()) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Lösenord saknas");
+            txtLosen.requestFocus();
+        } else if (txtLosen.getText().length() > 6) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Lösenord får ej vara längre än sex tecken");
+            txtLosen.requestFocus();
+            txtLosen.selectAll();
+        } else if (txtTele.getText().isBlank()) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
+            txtTele.requestFocus();
+        } else if (cbPlats.getSelectedIndex() == 0) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj plats");
+            cbPlats.requestFocus();
+        } else if (cbRaser.getSelectedIndex() == 0) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj ras");
+            cbRaser.requestFocus();
+        } else if (cbRaser.getSelectedIndex() == 1 || cbRaser.getSelectedIndex() == 2) {
+            if (txtRasTill.getText().isBlank()) {
+                ok = false;
+                JOptionPane.showMessageDialog(null, "Ange antal");
+            }
+        } else if (cbAnsvarigAgent.getSelectedIndex() == 0) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj agent");
+        } else if (txtDatum.getText().isBlank()) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Ange datum");
+        }
+        return ok;
+    }
+
+    private void andraGrund() {
         try {
             String platsID = idb.fetchSingle("SELECT Plats_ID FROM plats WHERE Benamning = '" + cbPlats.getSelectedItem() + "';");
             String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + cbAnsvarigAgent.getSelectedItem() + "';");
@@ -491,24 +555,25 @@ public class AndraAlien extends javax.swing.JFrame {
 
             idb.update(uppdatera);
             landrad.setText("Ändring genomförd (Hoppas vi)");
-            
+
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "JÄVLA aaaaaaaa");
 
         }
     }
-    private void andraRas(){
-        
+
+    private void andraRas() {
+
         try {
             int i = cbRaser.getSelectedIndex();
-            String tabortB = "DELETE FROM boglodite WHERE Alien_ID = " + txtID.getText() +";";
-            String tabortS = "DELETE FROM squid WHERE Alien_ID = " + txtID.getText() +";";
-            String tabortW = "DELETE FROM worm WHERE Alien_ID = " + txtID.getText() +";";
-            
-            String laggInB = "INSERT INTO boglodite (Alien_ID, Antal_Boogies) VALUES (" +txtID.getText() +"," + txtRasTill.getText() +");";
-            String laggInS = "INSERT INTO squid (Alien_ID, Antal_Armar) VALUES (" +txtID.getText() +"," + txtRasTill.getText() +");";
-            String laggInW = "INSERT INTO worm (Alien_ID) VALUES ("+ txtID.getText() +");";
-            
+            String tabortB = "DELETE FROM boglodite WHERE Alien_ID = " + txtID.getText() + ";";
+            String tabortS = "DELETE FROM squid WHERE Alien_ID = " + txtID.getText() + ";";
+            String tabortW = "DELETE FROM worm WHERE Alien_ID = " + txtID.getText() + ";";
+
+            String laggInB = "INSERT INTO boglodite (Alien_ID, Antal_Boogies) VALUES (" + txtID.getText() + "," + txtRasTill.getText() + ");";
+            String laggInS = "INSERT INTO squid (Alien_ID, Antal_Armar) VALUES (" + txtID.getText() + "," + txtRasTill.getText() + ");";
+            String laggInW = "INSERT INTO worm (Alien_ID) VALUES (" + txtID.getText() + ");";
+
             switch (i) {
                 case 1:
                     // Boglodite
@@ -525,29 +590,28 @@ public class AndraAlien extends javax.swing.JFrame {
                     idb.delete(tabortW);
                     idb.insert(laggInS);
                     break;
-                 case 3:
+                case 3:
                     // Worm
                     idb.delete(tabortB);
                     idb.delete(tabortS);
                     idb.delete(tabortW);
                     idb.insert(laggInW);
                     break;
-                 case 4:
+                case 4:
                     // Annat
                     idb.delete(tabortB);
                     idb.delete(tabortS);
                     idb.delete(tabortW);
                 default:
                     break;
-        }
-            
+            }
+
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "JÄVLA qqqqq");
         }
-        
-            
+
     }
-    
+
     /**
      * @param args the command line arguments
      */
