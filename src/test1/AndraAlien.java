@@ -404,13 +404,12 @@ public class AndraAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_cbRaserActionPerformed
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
-        String sok = "";
 
         System.out.println(tal());
 
-        if (tal()) {
+        if (ValideringsKlass.taltest(txtID)) {
             try {
-                sok = "SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\n"
+                String sok = "SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\n"
                         + "SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\n"
                         + "UNION\n"
                         + "SELECT Alien_ID  , 'Sqid' AS Ras, Antal_Armar AS Antal FROM squid\n"

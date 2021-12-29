@@ -16,8 +16,6 @@ import javax.swing.JTextField;
  */
 public class ValideringsKlass {
 
-
-
     public static boolean textFaltHarVarde(JTextField rutaAttKolla) {
         boolean resultat = true;
         if (rutaAttKolla.getText().isEmpty()) {
@@ -42,14 +40,27 @@ public class ValideringsKlass {
 
         return resultat;
     }
-    
-    public static String datum(){
-           
+
+    public static String datum() {
+
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
-         String datum = dateFormat.format(date);
-         return datum;
+        String datum = dateFormat.format(date);
+        return datum;
     }
-    
 
+    public static boolean taltest(JTextField taltest) {
+        boolean arTal = false;
+        String idid = taltest.getText();
+
+        if (idid.matches("\\d+")) {
+            arTal = true;
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Måste vara tal valid");
+            taltest.requestFocus();
+        }
+        return arTal;
+
+    }
 }
