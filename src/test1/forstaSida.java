@@ -94,26 +94,9 @@ public class forstaSida extends javax.swing.JFrame {
 
         jLabel2.setText("Vem vill du logga in som");
 
-        cbVem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbVemActionPerformed(evt);
-            }
-        });
-
-        pwfalt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pwfaltActionPerformed(evt);
-            }
-        });
         pwfalt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 pwfaltKeyPressed(evt);
-            }
-        });
-
-        txtVemInlogg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVemInloggActionPerformed(evt);
             }
         });
 
@@ -200,18 +183,6 @@ public class forstaSida extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cbVemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbVemActionPerformed
-
-    private void txtVemInloggActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVemInloggActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtVemInloggActionPerformed
-
-    private void pwfaltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwfaltActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pwfaltActionPerformed
 
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
          inlosen = new String(pwfalt.getPassword());

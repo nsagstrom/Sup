@@ -43,7 +43,9 @@ public class agentAdminSida extends javax.swing.JFrame {
         cbAtgarder.addItem("Lägg till Vapen");
         cbAtgarder.addItem("Lägg till Alien");
         cbAtgarder.addItem("Lägg till Agent");
-        
+        cbAtgarder.addItem("Ändra alien");
+        cbAtgarder.addItem("Ändra agent");
+        cbAtgarder.addItem("Ändra chef");
 
     }
 
@@ -255,15 +257,33 @@ public class agentAdminSida extends javax.swing.JFrame {
         if (i == 0) {
 
         }
-        if (i == 1) {
-            new addUtrustning(idb).setVisible(true);
-            dispose();
-        } else if (i == 2) {
-            new nyRegistreraAlien(idb).setVisible(true);
-            dispose();
-        } else if (i == 3) {
-            new addAgent(idb).setVisible(true);
-            dispose();
+        switch (i) {
+            case 1:
+                new addUtrustning(idb).setVisible(true);
+                dispose();
+                break;
+            case 2:
+                new nyRegistreraAlien(idb).setVisible(true);
+                dispose();
+                break;
+            case 3:
+                new addAgent(idb).setVisible(true);
+                dispose();
+                break;
+            case 4:
+                new AndraAlien(idb).setVisible(true);
+                dispose();
+                break;
+            case 5:
+                new AndraAgent(idb).setVisible(true);
+                dispose();
+                break;
+            case 6:
+                new AndraChef(idb).setVisible(true);
+                dispose();
+                break;
+            default:
+                break;
         }
     }//GEN-LAST:event_cbAtgarderActionPerformed
 

@@ -61,5 +61,20 @@ public class Metoder {
 
         }
     }
+    
+     public void laggTillOmrade(JComboBox cb) {
+        String fraga = "SELECT Benamning FROM omrade";
+
+        ArrayList<String> allaPlatser;
+        try {
+            allaPlatser = idb.fetchColumn(fraga);
+
+            for (String p : allaPlatser) {
+                cb.addItem(p);
+            }
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+        }
+    }
 
 }
