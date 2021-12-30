@@ -18,18 +18,21 @@ public class agentSida extends javax.swing.JFrame {
 
     private InfDB idb;
     String namn;
+    private SqlFragor sql;
 
     /**
      * Creates new form agentSida
      */
     public agentSida(InfDB idb) {
         this.idb = idb;
+        sql = new SqlFragor(idb);
         initComponents();
         laggTill();
         namn = forstaSida.aNamn();
         lblValkommen.setText("Välkommen " + namn);
         listaAllUtrustning();
         toppLista();
+         
     }
 
     public void laggTill() {
@@ -210,26 +213,39 @@ public class agentSida extends javax.swing.JFrame {
     }
     
     
-    private void listaAllUtrustning(){
-        
-        ArrayList<HashMap<String, String>> allUtrustning;
-        try {
-            String id = idb.fetchSingle("SELECT Agent_id FROM agent WHERE Namn = '" + namn + "'");
+//    private void listaAllUtrustning(){
+//        
+//        ArrayList<HashMap<String, String>> allUtrustning;
+//        try {
+//            String id = idb.fetchSingle("SELECT Agent_id FROM agent WHERE Namn = '" + namn + "'");
+//
+//            String utFraga = "SELECT Benamning FROM utrustning\n"
+//                    + "join innehar_utrustning iu on utrustning.Utrustnings_ID = iu.Utrustnings_ID WHERE Agent_ID = " + id;
+//            allUtrustning = idb.fetchRows(utFraga);
+//
+//            for (HashMap<String, String> utR : allUtrustning) {
+//
+//                txtfUtrustning.append(utR.get("Benamning") + "\n");
+//            
+//         
+//            }
+//            
+//            
+//        } catch (InfException e) {
+//            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+//        }
+//    }
+    
+    
+         private void listaAllUtrustning() {
 
-            String utFraga = "SELECT Benamning FROM utrustning\n"
-                    + "join innehar_utrustning iu on utrustning.Utrustnings_ID = iu.Utrustnings_ID WHERE Agent_ID = " + id;
-            allUtrustning = idb.fetchRows(utFraga);
+        String id = sql.fragaSingel("SELECT Agent_id FROM agent WHERE Namn = '" + namn + "';");
+        String utFraga = "SELECT Benamning FROM utrustning join innehar_utrustning iu on utrustning.Utrustnings_ID = iu.Utrustnings_ID WHERE Agent_ID = " + id + ";";
 
-            for (HashMap<String, String> utR : allUtrustning) {
+        ArrayList<HashMap<String, String>> allUtrustning = sql.fragaRader(utFraga);
 
-                txtfUtrustning.append(utR.get("Benamning") + "\n");
-            
-         
-            }
-            
-            
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+        for (HashMap<String, String> utR : allUtrustning) {
+            txtfUtrustning.append(utR.get("Benamning") + "\n");
         }
     }
     
