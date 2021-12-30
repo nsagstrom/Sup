@@ -4,6 +4,8 @@
  */
 package test1;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -178,23 +180,45 @@ public class AndraChef extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int i = cbBefattning.getSelectedIndex();
         boolean ok = true;
+        boolean finns = true;
 
         String nyChefID = "";
         String omradeID = "";
         String nuvarandeID = "";
+        ArrayList<HashMap<String, String>> allaNuvarandeID = null;
 
         try {
             if (ok) {
                 nyChefID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + cbAgenter.getSelectedItem() + "';");
+                allaNuvarandeID = idb.fetchRows("SELECT Agent_ID FROM omradeschef");
 
                 switch (i) {
                     case 1:
-                        omradeID = idb.fetchSingle("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + cbVart.getSelectedItem() + "';");
-                        nuvarandeID = idb.fetchSingle("SELECT Agent_ID FROM omradeschef WHERE Omrade = " + omradeID + ";");
+                        for (HashMap<String, String> a : allaNuvarandeID) {
+                            String idcheck = a.get("Agent_ID");
 
-                        idb.delete("DELETE FROM omradeschef WHERE Agent_ID = " + nuvarandeID + ";");
-                        idb.insert("INSERT INTO omradeschef (Agent_ID, Omrade) VALUES (" + nyChefID + "," + omradeID + ");");
-                        landrad.setText("Ändring genomförd (Hoppas vi)");
+                            if (idcheck.equals(nyChefID)) {
+                                finns = true;
+                                break;
+                            } else {
+                                finns = false;
+                            }
+                        }
+
+                        if (!finns) {
+                            omradeID = idb.fetchSingle("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + cbVart.getSelectedItem() + "';");
+                            nuvarandeID = idb.fetchSingle("SELECT Agent_ID FROM omradeschef WHERE Omrade = " + omradeID + ";");
+
+                            idb.delete("DELETE FROM omradeschef WHERE Agent_ID = " + nuvarandeID + ";");
+                            idb.insert("INSERT INTO omradeschef (Agent_ID, Omrade) VALUES (" + nyChefID + "," + omradeID + ");");
+                            landrad.setText("Ändring genomförd (Hoppas vi)");
+                            
+                        } else {
+                           String benamning =  idb.fetchSingle("SELECT Benamning FROM omradeschef\n"
+                                    + "JOIN omrade o on o.Omrades_ID = omradeschef.Omrade\n"
+                                    + "WHERE Agent_ID = 1");
+                            JOptionPane.showMessageDialog(null, "Vald agent är redan chef för " +benamning);
+                        }
                         break;
                     case 2:
                         
@@ -207,9 +231,11 @@ public class AndraChef extends javax.swing.JFrame {
             }
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
-            System.out.println(nyChefID);
-            System.out.println(omradeID);
-            System.out.println(nuvarandeID);
+            System.out.println("ny chef id " +nyChefID);
+            System.out.println("områdesID "+ omradeID);
+            System.out.println("nuvarandeID " +nuvarandeID);
+            System.out.println(finns);
+            System.out.println("lista alla id " +allaNuvarandeID);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
