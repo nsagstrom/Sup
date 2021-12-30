@@ -19,40 +19,17 @@ import oru.inf.InfException;
 public class alienAvRas extends javax.swing.JFrame {
 
     private InfDB idb;
-    private String sqiud;
-    private String boglodite;
-    private String worm;
 
     /**
      * Creates new form alienAvRas
      */
     public alienAvRas(InfDB idb) {
         this.idb = idb;
-        this.sqiud = "Squid";
-        this.worm = "Worm";
-        this.boglodite = "Boglodite";
-
         initComponents();
 
-//        try {
-//            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-//        } catch (InfException ex) {
-//            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        laggTillRas();
-
-    }
-
-    private alienAvRas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void laggTillRas() {
-
-        cbRaser.addItem(boglodite);
-        cbRaser.addItem(sqiud);
-        cbRaser.addItem(worm);
-
+        Metoder m = new Metoder(idb);
+        m.laggTillRas(cbRaser);
+        cbRaser.removeItemAt(3);
     }
 
     /**
@@ -156,50 +133,15 @@ public class alienAvRas extends javax.swing.JFrame {
     }//GEN-LAST:event_cbRaserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(forstaSida.arAdmin()){
+        if (forstaSida.arAdmin()) {
             new agentAdminSida(idb).setVisible(true);
             dispose();
-        }
-        else{
+        } else {
             new agentSida(idb).setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(alienAvRas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(alienAvRas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(alienAvRas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(alienAvRas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new alienAvRas().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbRaser;
