@@ -4,7 +4,6 @@
  */
 package test1;
 
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -15,13 +14,13 @@ import oru.inf.InfException;
  *
  * @author timme
  */
-public class TaBortUtrustning extends javax.swing.JFrame {
+public class TaBortAlien extends javax.swing.JFrame {
     private InfDB idb;
 
     /**
-     * Creates new form TaBortUtrustning
+     * Creates new form TaBortAlien
      */
-    public TaBortUtrustning() {
+    public TaBortAlien() {
         initComponents();
         try {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
@@ -41,15 +40,15 @@ public class TaBortUtrustning extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btnTillbaka = new javax.swing.JButton();
+        jLAlien = new javax.swing.JLabel();
+        jTAlien = new javax.swing.JTextField();
         btnTaBort = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jTUtr = new javax.swing.JTextField();
-        jTxtKorrekt = new javax.swing.JLabel();
+        jLKorrekt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel1.setText("Ta bort utrustning");
+        jLabel1.setText("Ta bort alien");
 
         btnTillbaka.setText("Tillbaka");
         btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +57,8 @@ public class TaBortUtrustning extends javax.swing.JFrame {
             }
         });
 
+        jLAlien.setText("Alien:");
+
         btnTaBort.setText("Ta bort");
         btnTaBort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,48 +66,43 @@ public class TaBortUtrustning extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Utrustning:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(99, 99, 99)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnTillbaka)
-                .addGap(45, 45, 45))
+                .addGap(52, 52, 52))
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnTaBort)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTUtr, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(37, 37, 37)
-                .addComponent(jTxtKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(59, 59, 59)
+                .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(btnTillbaka)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTUtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTxtKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addComponent(btnTillbaka))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLAlien)
+                    .addComponent(jTAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(btnTaBort)
-                .addGap(150, 150, 150))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         pack();
@@ -115,47 +111,42 @@ public class TaBortUtrustning extends javax.swing.JFrame {
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
         // TODO add your handling code here:
         try {
+            String alienbort = jTAlien.getText();
+            String taBort = "SELECT Alien_ID FROM Alien WHERE Namn = '" + alienbort + "'";
+            String idbort = idb.fetchSingle(taBort);
+            String avCheck = "SELECT * FROM Alien WHERE Alien_ID = " + idbort;
 
-            String utrustningbort = jTUtr.getText();
-            String idbortsql = "SELECT Utrustnings_ID FROM Utrustning WHERE Benamning = '" + utrustningbort + "'";
-            String idbort = idb.fetchSingle(idbortsql);
-            String check = "SELECT * FROM Utrustning WHERE Utrustnings_ID = " + idbort;
-
-            if (idb.fetchSingle(check) == null) {
-                JOptionPane.showMessageDialog(rootPane, "Utrustningen finns ej!");
+            if (idb.fetchSingle(taBort) == null) {
+                JOptionPane.showMessageDialog(rootPane, "Alien finns ej!");
             } else {
-                String tabortutr = "DELETE FROM utrustning WHERE Utrustnings_ID = " + idbort;
-                String tabortvpn = "DELETE FROM vapen WHERE Utrustnings_ID = " + idbort;
-                String taborttek = "DELETE FROM teknik WHERE Utrustnings_ID = " + idbort;
-                String tabortkom = "DELETE FROM kommunikation WHERE Utrustnings_ID = " + idbort;
-                String tabortinnehar = "DELETE FROM Innehar_Utrustning WHERE Utrustnings_ID = " + idbort;
-                
+                String tabortAlien = "DELETE FROM alien WHERE Alien_ID = " + idbort;
+                String tabortBog = "DELETE FROM  boglodite WHERE Alien_ID = " + idbort;
+                String tabortSquid = "DELETE FROM  squid WHERE Alien_ID = " + idbort;
+                String tabortWorm = "DELETE FROM  worm WHERE Alien_ID = " + idbort;
 
-                idb.delete(tabortinnehar);
-                idb.delete(tabortvpn);
-                idb.delete(taborttek);
-                idb.delete(tabortkom);
-                idb.delete(tabortutr);
-                jTxtKorrekt.setText(utrustningbort + " borttagen!");
+                idb.delete(tabortAlien);
+                idb.delete(tabortBog);
+                idb.delete(tabortSquid);
+                idb.delete(tabortWorm);
+
+                jLKorrekt.setText(alienbort + " borttagen!");
+
             }
 
         } catch (InfException e) {
             System.out.println(e.getMessage());
         }
-
-
     }//GEN-LAST:event_btnTaBortActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         // TODO add your handling code here:
-         if (forstaSida.arAdmin()) {
+        if (forstaSida.arAdmin()) {
             new agentAdminSida(idb).setVisible(true);
             dispose();
         } else {
             new agentSida(idb).setVisible(true);
             dispose();
         }
-    
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     /**
@@ -175,20 +166,20 @@ public class TaBortUtrustning extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TaBortUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaBortAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TaBortUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaBortAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TaBortUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaBortAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TaBortUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaBortAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TaBortUtrustning().setVisible(true);
+                new TaBortAlien().setVisible(true);
             }
         });
     }
@@ -196,9 +187,9 @@ public class TaBortUtrustning extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaBort;
     private javax.swing.JButton btnTillbaka;
+    private javax.swing.JLabel jLAlien;
+    private javax.swing.JLabel jLKorrekt;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTUtr;
-    private javax.swing.JLabel jTxtKorrekt;
+    private javax.swing.JTextField jTAlien;
     // End of variables declaration//GEN-END:variables
 }
