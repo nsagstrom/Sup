@@ -19,7 +19,9 @@ public class Start {
         } catch (InfException ex) {
             Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
         } 
-        
+        SqlFragor.setDatabas(idb);
         new forstaSida(idb).setVisible(true);
-    } 
+    }
+    
+    
 }

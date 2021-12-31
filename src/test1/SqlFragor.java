@@ -17,25 +17,25 @@ import oru.inf.InfException;
 
 public class SqlFragor {
 
-    private InfDB idb;
+private static InfDB idb;
 
-    public SqlFragor(InfDB idb) {
-        this.idb = idb;
+    public static void setDatabas(InfDB idb) {
+        SqlFragor.idb = idb;
 
     }
 
-    public String fragaSingel(String fraga) {
+    public static String fragaSingel(String fraga) {
 
-        String svar = "";
+         String svar = "";
         try {
-            svar = idb.fetchSingle(fraga);
+             svar = idb.fetchSingle(fraga);
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
         return svar;
     }
 
-    public ArrayList<HashMap<String, String>> fragaRader(String fraga) {
+    public static ArrayList<HashMap<String, String>> fragaRader(String fraga) {
 
         ArrayList<HashMap<String, String>> svar = null;
         try {
