@@ -16,15 +16,13 @@ import oru.inf.InfException;
  */
 public class AndraChef extends javax.swing.JFrame {
 
-    private InfDB idb;
     private Metoder m;
+
     /**
      * Creates new form AndraChef
      */
-    public AndraChef(InfDB idb) {
-        this.idb = idb;
+    public AndraChef() {
         initComponents();
-//        m = new Metoder(idb);
         Metoder.laggTillAgent(cbAgenter);
     }
 
@@ -147,27 +145,22 @@ public class AndraChef extends javax.swing.JFrame {
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         if (forstaSida.arAdmin()) {
-            new agentAdminSida(idb).setVisible(true);
+            new agentAdminSida().setVisible(true);
             dispose();
         } else {
-            new agentSida(idb).setVisible(true);
+            new agentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     private void cbBefattningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBefattningActionPerformed
         int i = cbBefattning.getSelectedIndex();
-//
-//        if (i == 1) {
-//            m.laggTillOmrade(cbAgenter);
-//        } else if (i == 2 ){
-//            m.laggTillPlats(cbAgenter);
-//        }
+
         switch (i) {
             case 1:
                 cbVart.removeAllItems();
                 cbVart.addItem("Välj plats");
-                m.laggTillOmrade(cbVart);
+                Metoder.laggTillOmrade(cbVart);
                 break;
             case 2:
                 cbVart.removeAllItems();
@@ -187,58 +180,48 @@ public class AndraChef extends javax.swing.JFrame {
         String nuvarandeID = "";
         ArrayList<HashMap<String, String>> allaNuvarandeID = null;
 
-        try {
-            if (ok) {
-                nyChefID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + cbAgenter.getSelectedItem() + "';");
-                allaNuvarandeID = idb.fetchRows("SELECT Agent_ID FROM omradeschef");
+        if (ok) {
+            nyChefID = SqlFragor.fragaSingel("SELECT Agent_ID FROM agent WHERE Namn = '" + cbAgenter.getSelectedItem() + "';");
+            allaNuvarandeID = SqlFragor.fragaRader("SELECT Agent_ID FROM omradeschef");
 
-                switch (i) {
-                    case 1:
-                        for (HashMap<String, String> a : allaNuvarandeID) {
-                            String idcheck = a.get("Agent_ID");
+            switch (i) {
+                case 1:
+                    for (HashMap<String, String> a : allaNuvarandeID) {
+                        String idcheck = a.get("Agent_ID");
 
-                            if (idcheck.equals(nyChefID)) {
-                                finns = true;
-                                break;
-                            } else {
-                                finns = false;
-                            }
-                        }
-
-                        if (!finns) {
-                            omradeID = idb.fetchSingle("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + cbVart.getSelectedItem() + "';");
-                            nuvarandeID = idb.fetchSingle("SELECT Agent_ID FROM omradeschef WHERE Omrade = " + omradeID + ";");
-
-                            idb.delete("DELETE FROM omradeschef WHERE Agent_ID = " + nuvarandeID + ";");
-                            idb.insert("INSERT INTO omradeschef (Agent_ID, Omrade) VALUES (" + nyChefID + "," + omradeID + ");");
-                            landrad.setText("Ändring genomförd (Hoppas vi)");
-                            
+                        if (idcheck.equals(nyChefID)) {
+                            finns = true;
+                            break;
                         } else {
-                           String benamning =  idb.fetchSingle("SELECT Benamning FROM omradeschef\n"
-                                    + "JOIN omrade o on o.Omrades_ID = omradeschef.Omrade\n"
-                                    + "WHERE Agent_ID = 1");
-                            JOptionPane.showMessageDialog(null, "Vald agent är redan chef för " +benamning);
+                            finns = false;
                         }
-                        break;
-                    case 2:
-                        
-                        nuvarandeID = idb.fetchSingle("SELECT Agent_ID FROM kontorschef WHERE Kontorsbeteckning = '" + cbVart.getSelectedItem() + "';");
-                        idb.delete("DELETE FROM kontorschef WHERE Agent_ID = " + nuvarandeID + ";");
-                        idb.insert("INSERT INTO kontorschef (Agent_ID, Kontorsbeteckning) VALUES (" + nyChefID + ",'" + cbVart.getSelectedItem() + "');");
+                    }
+
+                    if (!finns) {
+                        omradeID = SqlFragor.fragaSingel("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + cbVart.getSelectedItem() + "';");
+                        nuvarandeID = SqlFragor.fragaSingel("SELECT Agent_ID FROM omradeschef WHERE Omrade = " + omradeID + ";");
+
+                        SqlFragor.taBort("DELETE FROM omradeschef WHERE Agent_ID = " + nuvarandeID + ";");
+                        SqlFragor.laggTill("INSERT INTO omradeschef (Agent_ID, Omrade) VALUES (" + nyChefID + "," + omradeID + ");");
                         landrad.setText("Ändring genomförd (Hoppas vi)");
-                        break;
-                }
+
+                    } else {
+                        String benamning = SqlFragor.fragaSingel("SELECT Benamning FROM omradeschef\n"
+                                + "JOIN omrade o on o.Omrades_ID = omradeschef.Omrade\n"
+                                + "WHERE Agent_ID = 1");
+                        JOptionPane.showMessageDialog(null, "Vald agent är redan chef för " + benamning);
+                    }
+                    break;
+                case 2:
+
+                    nuvarandeID = SqlFragor.fragaSingel("SELECT Agent_ID FROM kontorschef WHERE Kontorsbeteckning = '" + cbVart.getSelectedItem() + "';");
+                    SqlFragor.taBort("DELETE FROM kontorschef WHERE Agent_ID = " + nuvarandeID + ";");
+                    SqlFragor.laggTill("INSERT INTO kontorschef (Agent_ID, Kontorsbeteckning) VALUES (" + nyChefID + ",'" + cbVart.getSelectedItem() + "');");
+                    landrad.setText("Ändring genomförd (Hoppas vi)");
+                    break;
             }
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
-            System.out.println("ny chef id " +nyChefID);
-            System.out.println("områdesID "+ omradeID);
-            System.out.println("nuvarandeID " +nuvarandeID);
-            System.out.println(finns);
-            System.out.println("lista alla id " +allaNuvarandeID);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

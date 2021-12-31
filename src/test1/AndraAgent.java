@@ -17,17 +17,14 @@ import oru.inf.InfException;
  */
 public class AndraAgent extends javax.swing.JFrame {
 
-    private InfDB idb;
     private String admin;
 
     /**
      * Creates new form AndraAgent
      */
-    public AndraAgent(InfDB idb) {
-        this.idb = idb;
+    public AndraAgent() {
         initComponents();
         info();
-//        Metoder m = new Metoder(idb);
         Metoder.laggTillOmrade(cbOmrade);
     }
 
@@ -239,30 +236,25 @@ public class AndraAgent extends javax.swing.JFrame {
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
 
         if (ValideringsKlass.taltest(txtID)) {
-            try {
-                String sok = "SELECT Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Benamning FROM agent\n"
-                        + "JOIN omrade o on agent.Omrade = o.Omrades_ID\n"
-                        + "WHERE Agent_ID = " + txtID.getText() + " ;";
+            String sok = "SELECT Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Benamning FROM agent\n"
+                    + "JOIN omrade o on agent.Omrade = o.Omrades_ID\n"
+                    + "WHERE Agent_ID = " + txtID.getText() + " ;";
 
-                HashMap<String, String> uppgifter;
-                uppgifter = idb.fetchRow(sok);
+            HashMap<String, String> uppgifter;
+            uppgifter = SqlFragor.fragaRad(sok);
 
-                txtNamn.setText(uppgifter.get("Namn"));
-                txtDatum.setText(uppgifter.get("Anstallningsdatum"));
-                txtLosen.setText(uppgifter.get("Losenord"));
-                txtTele.setText(uppgifter.get("Telefon"));
-                cbOmrade.setSelectedItem(uppgifter.get("Benamning"));
+            txtNamn.setText(uppgifter.get("Namn"));
+            txtDatum.setText(uppgifter.get("Anstallningsdatum"));
+            txtLosen.setText(uppgifter.get("Losenord"));
+            txtTele.setText(uppgifter.get("Telefon"));
+            cbOmrade.setSelectedItem(uppgifter.get("Benamning"));
 
-                if (uppgifter.get("Administrator").equals("J")) {
-                    checkAdmin.setSelected(true);
-                    admin = "J";
-                } else {
-                    checkAdmin.setSelected(false);
-                    admin = "N";
-                }
-
-            } catch (InfException e) {
-                JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+            if (uppgifter.get("Administrator").equals("J")) {
+                checkAdmin.setSelected(true);
+                admin = "J";
+            } else {
+                checkAdmin.setSelected(false);
+                admin = "N";
             }
         }
 
@@ -271,35 +263,30 @@ public class AndraAgent extends javax.swing.JFrame {
     private void info() {
 
         ArrayList<HashMap<String, String>> allInfo;
+        String fraga = "SELECT Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Benamning FROM agent\n"
+                + "JOIN omrade o on agent.Omrade = o.Omrades_ID ORDER BY Agent_ID;";
 
-        try {
-            String fraga = "SELECT Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Benamning FROM agent\n"
-                    + "JOIN omrade o on agent.Omrade = o.Omrades_ID ORDER BY Agent_ID;";
+        allInfo = SqlFragor.fragaRader(fraga);
 
-            allInfo = idb.fetchRows(fraga);
+        String rubrik = "Agent ID:"
+                + "\t" + "Namn:"
+                + "\t" + "Telefon:"
+                + "\t" + "Anst datum:"
+                + "\t" + "Admin:"
+                + "\t" + "Lösenord:"
+                + "\t" + "Område:" + "\n";
 
-            String rubrik = "Agent ID:"
-                    + "\t" + "Namn:"
-                    + "\t" + "Telefon:"
-                    + "\t" + "Anst datum:"
-                    + "\t" + "Admin:"
-                    + "\t" + "Lösenord:"
-                    + "\t" + "Område:" + "\n";
+        txtAllInfo.append(rubrik);
 
-            txtAllInfo.append(rubrik);
+        for (HashMap<String, String> info : allInfo) {
+            txtAllInfo.append(info.get("Agent_ID")
+                    + "\t" + info.get("Namn")
+                    + "\t" + info.get("Telefon")
+                    + "\t" + info.get("Anstallningsdatum")
+                    + "\t" + info.get("Administrator")
+                    + "\t" + info.get("Losenord")
+                    + "\t" + info.get("Benamning") + "\n");
 
-            for (HashMap<String, String> info : allInfo) {
-                txtAllInfo.append(info.get("Agent_ID")
-                        + "\t" + info.get("Namn")
-                        + "\t" + info.get("Telefon")
-                        + "\t" + info.get("Anstallningsdatum")
-                        + "\t" + info.get("Administrator")
-                        + "\t" + info.get("Losenord")
-                        + "\t" + info.get("Benamning") + "\n");
-
-            }
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
     }
 
@@ -343,21 +330,15 @@ public class AndraAgent extends javax.swing.JFrame {
 
     private void andraGrund() {
 
-        try {
-            String omradeID = idb.fetchSingle("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + cbOmrade.getSelectedItem() + "';");
+        String omradeID = SqlFragor.fragaSingel("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + cbOmrade.getSelectedItem() + "';");
 
-            String uppdatera = "UPDATE agent\n"
-                    + "SET Anstallningsdatum = '" + txtDatum.getText() + "', Losenord =  '" + txtLosen.getText() + "', Namn = '" + txtNamn.getText()
-                    + "', Telefon = '" + txtTele.getText() + "', Omrade = " + omradeID + ", Administrator = '" + admin + "' WHERE Agent_ID = " + txtID.getText() + ";";
+        String uppdatera = "UPDATE agent\n"
+                + "SET Anstallningsdatum = '" + txtDatum.getText() + "', Losenord =  '" + txtLosen.getText() + "', Namn = '" + txtNamn.getText()
+                + "', Telefon = '" + txtTele.getText() + "', Omrade = " + omradeID + ", Administrator = '" + admin + "' WHERE Agent_ID = " + txtID.getText() + ";";
 
-            idb.update(uppdatera);
+        SqlFragor.uppdatera(uppdatera);
 
-            landrad.setText("Ändring genomförd (Hoppas vi)");
-
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA aaaaaaaa");
-
-        }
+        landrad.setText("Ändring genomförd (Hoppas vi)");
     }
 
 
@@ -376,10 +357,10 @@ public class AndraAgent extends javax.swing.JFrame {
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         if (forstaSida.arAdmin()) {
-            new agentAdminSida(idb).setVisible(true);
+            new agentAdminSida().setVisible(true);
             dispose();
         } else {
-            new agentSida(idb).setVisible(true);
+            new agentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed

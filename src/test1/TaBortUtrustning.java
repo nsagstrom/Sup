@@ -4,30 +4,22 @@
  */
 package test1;
 
-import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-import oru.inf.InfException;
+
 
 /**
  *
  * @author timme
  */
 public class TaBortUtrustning extends javax.swing.JFrame {
-    private InfDB idb;
 
     /**
      * Creates new form TaBortUtrustning
      */
     public TaBortUtrustning() {
         initComponents();
-        try {
-            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-        } catch (InfException ex) {
-            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
 
     /**
@@ -114,14 +106,14 @@ public class TaBortUtrustning extends javax.swing.JFrame {
 
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
         // TODO add your handling code here:
-        try {
+
 
             String utrustningbort = jTUtr.getText();
             String idbortsql = "SELECT Utrustnings_ID FROM Utrustning WHERE Benamning = '" + utrustningbort + "'";
-            String idbort = idb.fetchSingle(idbortsql);
+            String idbort = SqlFragor.fragaSingel(idbortsql);
             String check = "SELECT * FROM Utrustning WHERE Utrustnings_ID = " + idbort;
 
-            if (idb.fetchSingle(check) == null) {
+            if (SqlFragor.fragaSingel(check) == null) {
                 JOptionPane.showMessageDialog(rootPane, "Utrustningen finns ej!");
             } else {
                 String tabortutr = "DELETE FROM utrustning WHERE Utrustnings_ID = " + idbort;
@@ -131,17 +123,14 @@ public class TaBortUtrustning extends javax.swing.JFrame {
                 String tabortinnehar = "DELETE FROM Innehar_Utrustning WHERE Utrustnings_ID = " + idbort;
                 
 
-                idb.delete(tabortinnehar);
-                idb.delete(tabortvpn);
-                idb.delete(taborttek);
-                idb.delete(tabortkom);
-                idb.delete(tabortutr);
+                SqlFragor.taBort(tabortinnehar);
+                SqlFragor.taBort(tabortvpn);
+                SqlFragor.taBort(taborttek);
+                SqlFragor.taBort(tabortkom);
+                SqlFragor.taBort(tabortutr);
                 jTxtKorrekt.setText(utrustningbort + " borttagen!");
             }
 
-        } catch (InfException e) {
-            System.out.println(e.getMessage());
-        }
 
 
     }//GEN-LAST:event_btnTaBortActionPerformed
@@ -149,49 +138,16 @@ public class TaBortUtrustning extends javax.swing.JFrame {
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         // TODO add your handling code here:
          if (forstaSida.arAdmin()) {
-            new agentAdminSida(idb).setVisible(true);
+            new agentAdminSida().setVisible(true);
             dispose();
         } else {
-            new agentSida(idb).setVisible(true);
+            new agentSida().setVisible(true);
             dispose();
         }
     
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TaBortUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TaBortUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TaBortUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TaBortUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TaBortUtrustning().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaBort;

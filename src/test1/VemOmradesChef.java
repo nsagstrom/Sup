@@ -6,9 +6,6 @@ package test1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-import oru.inf.InfException;
 
 /**
  *
@@ -16,19 +13,14 @@ import oru.inf.InfException;
  */
 public class VemOmradesChef extends javax.swing.JFrame {
 
-    private InfDB idb;
     
     /**
      * Creates new form VemOmradesChef
      */
-    public VemOmradesChef(InfDB idb) {
-        this.idb = idb;
+    public VemOmradesChef() {
+
         initComponents();
         vemArChef();
-    }
-
-    private VemOmradesChef() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -82,75 +74,34 @@ public class VemOmradesChef extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void vemArChef(){
-        try{
-            
-            ArrayList<HashMap<String, String>> omradeChef;
-
-            String fraga = "SELECT Namn , Benamning FROM agent\n"
-                    + "JOIN omradeschef o on agent.Agent_ID = o.Agent_ID\n"
-                    + "JOIN omrade o2 on o2.Omrades_ID = agent.Omrade;";
-            
-            omradeChef = idb.fetchRows(fraga);
-            
-            
-            txtChef.append("Namn" + "   " + "Chef för;" + "\n");
-            
-            for(HashMap<String, String> chef : omradeChef){
-                txtChef.append(chef.get("Namn")+ "   " + chef.get("Benamning") + "\n");
-            }
-            
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
-        }
-            
         
+        ArrayList<HashMap<String, String>> omradeChef;
+
+        String fraga = "SELECT Namn , Benamning FROM agent\n"
+                + "JOIN omradeschef o on agent.Agent_ID = o.Agent_ID\n"
+                + "JOIN omrade o2 on o2.Omrades_ID = agent.Omrade;";
+
+        omradeChef = SqlFragor.fragaRader(fraga);
+
+        txtChef.append("Namn" + "   " + "Chef för;" + "\n");
+
+        for (HashMap<String, String> chef : omradeChef) {
+            txtChef.append(chef.get("Namn") + "   " + chef.get("Benamning") + "\n");
+        }
+
     }
-    
-    
+
+
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         if (forstaSida.arAdmin()) {
-            new agentAdminSida(idb).setVisible(true);
+            new agentAdminSida().setVisible(true);
             dispose();
         } else {
-            new agentSida(idb).setVisible(true);
+            new agentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VemOmradesChef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VemOmradesChef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VemOmradesChef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VemOmradesChef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VemOmradesChef().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTillbaka;

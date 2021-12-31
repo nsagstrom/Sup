@@ -70,4 +70,39 @@ public class SqlFragor {
 
     }
 
+    public static void taBort(String fraga) {
+        try {
+            idb.delete(fraga);
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+        }
+    }
+
+    public static void uppdatera(String fraga) {
+        try {
+            idb.update(fraga);
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+        }
+    }
+
+    public static void laggTill(String fraga) {
+        try {
+            idb.insert(fraga);
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+        }
+    }
+
+    public static String nyID(String tabell, String kolumn) {
+
+        String svar = "";
+        try {
+            svar = idb.getAutoIncrement(tabell, kolumn);
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+        }
+        return svar;
+    }
+
 }

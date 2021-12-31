@@ -6,11 +6,7 @@ package test1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-import oru.inf.InfException;
+
 
 /**
  *
@@ -23,7 +19,7 @@ public class alienAvRas extends javax.swing.JFrame {
      */
     public alienAvRas() {
         initComponents();
-//        Metoder m = new Metoder(idb);
+
         Metoder.laggTillRas(cbRaser);
         cbRaser.removeItemAt(3);
     }

@@ -200,7 +200,7 @@ public class InlogAgent extends javax.swing.JFrame {
             if (agent.equals(anvand) && losenord.equals(losen) && !anvand.isBlank() && !losen.isBlank()) {
 //               JOptionPane.showMessageDialog(null, "HA HA SUCCESS");
 
-                new agentSida(idb).setVisible(true);
+                new agentSida().setVisible(true);
                 dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Fel användarnamn eller lösenord");

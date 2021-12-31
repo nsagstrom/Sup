@@ -15,18 +15,14 @@ import oru.inf.InfException;
  * @author timme
  */
 public class TaBortAlien extends javax.swing.JFrame {
-    private InfDB idb;
+
 
     /**
      * Creates new form TaBortAlien
      */
     public TaBortAlien() {
         initComponents();
-        try {
-            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-        } catch (InfException ex) {
-            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
 
     /**
@@ -110,13 +106,12 @@ public class TaBortAlien extends javax.swing.JFrame {
 
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
         // TODO add your handling code here:
-        try {
             String alienbort = jTAlien.getText();
             String taBort = "SELECT Alien_ID FROM Alien WHERE Namn = '" + alienbort + "'";
-            String idbort = idb.fetchSingle(taBort);
+            String idbort = SqlFragor.fragaSingel(taBort);
             String avCheck = "SELECT * FROM Alien WHERE Alien_ID = " + idbort;
 
-            if (idb.fetchSingle(taBort) == null) {
+            if (SqlFragor.fragaSingel(taBort) == null) {
                 JOptionPane.showMessageDialog(rootPane, "Alien finns ej!");
             } else {
                 String tabortAlien = "DELETE FROM alien WHERE Alien_ID = " + idbort;
@@ -124,65 +119,27 @@ public class TaBortAlien extends javax.swing.JFrame {
                 String tabortSquid = "DELETE FROM  squid WHERE Alien_ID = " + idbort;
                 String tabortWorm = "DELETE FROM  worm WHERE Alien_ID = " + idbort;
 
-                idb.delete(tabortAlien);
-                idb.delete(tabortBog);
-                idb.delete(tabortSquid);
-                idb.delete(tabortWorm);
+                SqlFragor.taBort(tabortAlien);
+                SqlFragor.taBort(tabortBog);
+                SqlFragor.taBort(tabortSquid);
+                SqlFragor.taBort(tabortWorm);
 
                 jLKorrekt.setText(alienbort + " borttagen!");
 
             }
-
-        } catch (InfException e) {
-            System.out.println(e.getMessage());
-        }
     }//GEN-LAST:event_btnTaBortActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         // TODO add your handling code here:
         if (forstaSida.arAdmin()) {
-            new agentAdminSida(idb).setVisible(true);
+            new agentAdminSida().setVisible(true);
             dispose();
         } else {
-            new agentSida(idb).setVisible(true);
+            new agentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TaBortAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TaBortAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TaBortAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TaBortAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TaBortAlien().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaBort;

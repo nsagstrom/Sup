@@ -4,28 +4,21 @@
  */
 package test1;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-import oru.inf.InfException;
+
 
 /**
  *
  * @author timme
  */
 public class TaBortAgent extends javax.swing.JFrame {
-private InfDB idb;
     /**
      * Creates new form TaBortAgent
      */
     public TaBortAgent() {
         initComponents();
-        try {
-            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-        } catch (InfException ex) {
-            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
 
     /**
@@ -111,13 +104,13 @@ private InfDB idb;
 
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
         // TODO add your handling code here:
-        try {
+
             String agentbort = jTAgent.getText();
             String taBortA = "SELECT Agent_ID FROM Agent WHERE Namn = '" + agentbort + "'";
-            String idBortA = idb.fetchSingle(taBortA);
+            String idBortA = SqlFragor.fragaSingel(taBortA);
             String checking = "SELECT * FROM Agent WHERE Agent_ID = " + idBortA;
 
-            if (idb.fetchSingle(taBortA) == null) {
+            if (SqlFragor.fragaSingel(taBortA) == null) {
                 JOptionPane.showMessageDialog(rootPane, "Agent finns ej!");
             } else {
                 String tabortA = "DELETE FROM agent WHERE Agent_ID = " + idBortA;
@@ -127,66 +120,30 @@ private InfDB idb;
                 String tabortKC = "DELETE FROM kontorschef WHERE Agent_ID = " + idBortA;
                 String tabortOC = "DELETE FROM omradeschef WHERE Agent_ID = " + idBortA;
                 
-                idb.delete(tabortFA);
-                idb.delete(tabortIF);
-                idb.delete(tabortIU);
-                idb.delete(tabortKC);
-                idb.delete(tabortOC);
-                idb.delete(tabortA);
+                SqlFragor.taBort(tabortFA);
+                SqlFragor.taBort(tabortIF);
+                SqlFragor.taBort(tabortIU);
+                SqlFragor.taBort(tabortKC);
+                SqlFragor.taBort(tabortOC);
+                SqlFragor.taBort(tabortA);
 
                 jLKorrekt.setText(agentbort + " borttagen!");
 
             }
-        } catch (InfException e) {
-            System.out.println(e.getMessage());
-        }
     }//GEN-LAST:event_btnTaBortActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         // TODO add your handling code here:
         if (forstaSida.arAdmin()) {
-            new agentAdminSida(idb).setVisible(true);
+            new agentAdminSida().setVisible(true);
             dispose();
         } else {
-            new agentSida(idb).setVisible(true);
+            new agentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TaBortAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TaBortAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TaBortAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TaBortAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TaBortAgent().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaBort;
