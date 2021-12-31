@@ -14,10 +14,9 @@ import oru.inf.InfException;
  *
  * @author nsags
  */
-
 public class SqlFragor {
 
-private static InfDB idb;
+    private static InfDB idb;
 
     public static void setDatabas(InfDB idb) {
         SqlFragor.idb = idb;
@@ -26,9 +25,9 @@ private static InfDB idb;
 
     public static String fragaSingel(String fraga) {
 
-         String svar = "";
+        String svar = "";
         try {
-             svar = idb.fetchSingle(fraga);
+            svar = idb.fetchSingle(fraga);
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
@@ -46,4 +45,29 @@ private static InfDB idb;
         return svar;
 
     }
+
+    public static HashMap<String, String> fragaRad(String fraga) {
+
+        HashMap<String, String> svar = null;
+        try {
+            svar = idb.fetchRow(fraga);
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+        }
+        return svar;
+
+    }
+
+    public static ArrayList<String> fragaKolumn(String fraga) {
+
+        ArrayList<String> svar = null;
+        try {
+            svar = idb.fetchColumn(fraga);
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+        }
+        return svar;
+
+    }
+
 }

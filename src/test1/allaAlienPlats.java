@@ -18,17 +18,13 @@ import javax.swing.JOptionPane;
  */
 public class allaAlienPlats extends javax.swing.JFrame {
 
-    private InfDB idb;
 
-    public allaAlienPlats(InfDB idb) {
+
+    public allaAlienPlats() {
         initComponents();
-        this.idb = idb;
+
 
         laggTillPlats();
-    }
-
-    private allaAlienPlats() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @SuppressWarnings("unchecked")
@@ -111,31 +107,27 @@ public class allaAlienPlats extends javax.swing.JFrame {
         txtAreaVisaAlienPlats.setText("");
 
         ArrayList<HashMap<String, String>> SoktaMedlemmar;
-
-        try {
             String valdPlats = cbValjPlats.getSelectedItem().toString();
             String fraga = "SELECT * FROM plats\n"
                     + "JOIN alien a on plats.Plats_ID = a.Plats\n"
                     + "WHERE Benamning =" + "'" + valdPlats + "'";
-            SoktaMedlemmar = idb.fetchRows(fraga);
+            SoktaMedlemmar = SqlFragor.fragaRader(fraga);
 
             for (HashMap<String, String> m : SoktaMedlemmar) {
                 txtAreaVisaAlienPlats.append(m.get("Namn") + "\n");
             }
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
-        }
+
 
 
     }//GEN-LAST:event_cbValjPlatsActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(forstaSida.arAdmin()){
-            new agentAdminSida(idb).setVisible(true);
+            new agentAdminSida().setVisible(true);
             dispose();
         }
         else{
-            new agentSida(idb).setVisible(true);
+            new agentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed

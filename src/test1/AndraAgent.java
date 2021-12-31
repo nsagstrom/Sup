@@ -27,8 +27,8 @@ public class AndraAgent extends javax.swing.JFrame {
         this.idb = idb;
         initComponents();
         info();
-        Metoder m = new Metoder(idb);
-        m.laggTillOmrade(cbOmrade);
+//        Metoder m = new Metoder(idb);
+        Metoder.laggTillOmrade(cbOmrade);
     }
 
     /**

@@ -18,17 +18,13 @@ import oru.inf.InfException;
  */
 public class alienAvRas extends javax.swing.JFrame {
 
-    private InfDB idb;
-
     /**
      * Creates new form alienAvRas
      */
-    public alienAvRas(InfDB idb) {
-        this.idb = idb;
+    public alienAvRas() {
         initComponents();
-
-        Metoder m = new Metoder(idb);
-        m.laggTillRas(cbRaser);
+//        Metoder m = new Metoder(idb);
+        Metoder.laggTillRas(cbRaser);
         cbRaser.removeItemAt(3);
     }
 
@@ -116,28 +112,24 @@ public class alienAvRas extends javax.swing.JFrame {
 
         ArrayList<HashMap<String, String>> SoktaAlien;
 
-        try {
-            String valdPlats = cbRaser.getSelectedItem().toString();
-            String fraga = "SELECT Namn  FROM alien join " + valdPlats + " x on alien.Alien_ID = x.Alien_ID";
+        String valdPlats = cbRaser.getSelectedItem().toString();
+        String fraga = "SELECT Namn  FROM alien join " + valdPlats + " x on alien.Alien_ID = x.Alien_ID";
 
-            SoktaAlien = idb.fetchRows(fraga);
+        SoktaAlien = SqlFragor.fragaRader(fraga);
 
-            for (HashMap<String, String> a : SoktaAlien) {
-                txtAreaAlienRas.append(a.get("Namn") + "\n");
-            }
-
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+        for (HashMap<String, String> a : SoktaAlien) {
+            txtAreaAlienRas.append(a.get("Namn") + "\n");
         }
+
 
     }//GEN-LAST:event_cbRaserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (forstaSida.arAdmin()) {
-            new agentAdminSida(idb).setVisible(true);
+            new agentAdminSida().setVisible(true);
             dispose();
         } else {
-            new agentSida(idb).setVisible(true);
+            new agentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed

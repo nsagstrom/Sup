@@ -6,9 +6,7 @@ package test1;
 
 import java.util.ArrayList;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-import oru.inf.InfException;
+
 
 /**
  *
@@ -16,28 +14,22 @@ import oru.inf.InfException;
  */
 public class Metoder {
 
-    private InfDB idb;
 
-    public Metoder(InfDB idb) {
-        this.idb = idb;
-    }
 
-    public void laggTillPlats(JComboBox cb) {
+    public static void laggTillPlats(JComboBox cb) {
         String fraga = "SELECT Benamning FROM plats";
 
         ArrayList<String> allaPlatser;
-        try {
-            allaPlatser = idb.fetchColumn(fraga);
+
+            allaPlatser = SqlFragor.fragaKolumn(fraga);
 
             for (String p : allaPlatser) {
                 cb.addItem(p);
             }
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
-        }
+
     }
 
-    public void laggTillRas(JComboBox cb) {
+    public static void laggTillRas(JComboBox cb) {
 
         cb.addItem("Boglodite");
         cb.addItem("Squid");
@@ -45,36 +37,29 @@ public class Metoder {
         cb.addItem("Annat");
     }
 
-    public void laggTillAgent(JComboBox cb) {
+    public static void laggTillAgent(JComboBox cb) {
         String agentFraga = "SELECT namn FROM agent";
 
         ArrayList<String> allaAgenter;
-        try {
-            allaAgenter = idb.fetchColumn(agentFraga);
+
+            allaAgenter = SqlFragor.fragaKolumn(agentFraga);
 
             for (String a : allaAgenter) {
                 cb.addItem(a);
             }
-
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
-
-        }
     }
     
-     public void laggTillOmrade(JComboBox cb) {
+     public static void laggTillOmrade(JComboBox cb) {
         String fraga = "SELECT Benamning FROM omrade";
 
         ArrayList<String> allaPlatser;
-        try {
-            allaPlatser = idb.fetchColumn(fraga);
+
+            allaPlatser = SqlFragor.fragaKolumn(fraga);
 
             for (String p : allaPlatser) {
                 cb.addItem(p);
             }
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
-        }
+        
     }
 
 }

@@ -6,9 +6,6 @@ package test1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-import oru.inf.InfException;
 
 /**
  *
@@ -26,9 +23,7 @@ public class Test1 extends javax.swing.JFrame {
 //        this.idb = idb;
 //        sql = new SqlFragor(idb);
         listaAllUtrustning();
-        
-        
-        
+
     }
 
     /**
@@ -110,31 +105,23 @@ public class Test1 extends javax.swing.JFrame {
         jTextField1.setText(aa);
         String bb = "SELECT Benamning FROM utrustning join innehar_utrustning iu on utrustning.Utrustnings_ID = iu.Utrustnings_ID WHERE Agent_ID = 1";
         System.out.println(SqlFragor.fragaRader(bb));
-        
-        
-       
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
-        private void listaAllUtrustning(){
-        
-        
-        
-            String id = SqlFragor.fragaSingel("SELECT Agent_id FROM agent WHERE Namn = 'Agent O'");
+    private void listaAllUtrustning() {
+
+        String id = SqlFragor.fragaSingel("SELECT Agent_id FROM agent WHERE Namn = 'Agent O'");
 
 //            txtfUtrustning.setLineWrap(true);
-            
-            String utFraga = "SELECT Benamning FROM utrustning join innehar_utrustning iu on utrustning.Utrustnings_ID = iu.Utrustnings_ID WHERE Agent_ID = " + id + ";";
-            ArrayList<HashMap<String, String>> allUtrustning = SqlFragor.fragaRader(utFraga);
+        String utFraga = "SELECT Benamning FROM utrustning join innehar_utrustning iu on utrustning.Utrustnings_ID = iu.Utrustnings_ID WHERE Agent_ID = " + id + ";";
+        ArrayList<HashMap<String, String>> allUtrustning = SqlFragor.fragaRader(utFraga);
 
-            for (HashMap<String, String> utR : allUtrustning) {
+        for (HashMap<String, String> utR : allUtrustning) {
 
-                jTextArea1.append(utR.get("Benamning") + "\n");
-            
-         
-            }
-            
-          
+            jTextArea1.append(utR.get("Benamning") + "\n");
+
+        }
 
     }
 

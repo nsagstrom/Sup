@@ -24,8 +24,8 @@ public class AndraChef extends javax.swing.JFrame {
     public AndraChef(InfDB idb) {
         this.idb = idb;
         initComponents();
-        m = new Metoder(idb);
-        m.laggTillAgent(cbAgenter);
+//        m = new Metoder(idb);
+        Metoder.laggTillAgent(cbAgenter);
     }
 
     /**

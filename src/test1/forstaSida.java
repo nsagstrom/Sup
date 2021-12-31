@@ -7,7 +7,6 @@ package test1;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
-import oru.inf.InfException;
 
 /**
  *
@@ -30,8 +29,8 @@ public class forstaSida extends javax.swing.JFrame {
     /**
      * Creates new form forstaSida
      */
-    public forstaSida(InfDB idb) {
-        this.idb = idb;
+    public forstaSida() {
+
         initComponents();
         this.agent = "Agent";
         this.alien = "Alien";
@@ -201,21 +200,20 @@ public class forstaSida extends javax.swing.JFrame {
     private void btnLoggaInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaInActionPerformed
          inlosen = new String(pwfalt.getPassword());
          inAnvandare = txtVemInlogg.getText();
-
-        try {
+         
             if (cbVem.getSelectedItem().toString().equals(agent)) {
                 manniska = true;
 
                 String aFraga = "SELECT Namn FROM agent WHERE Namn = " + "'" + inAnvandare + "'";
                 String lFraga = "SELECT Losenord FROM agent WHERE Namn = " + "'" + inAnvandare + "'";
 
-                String aSvar = idb.fetchSingle(aFraga);
-                String alosen = idb.fetchSingle(lFraga);
+                String aSvar = SqlFragor.fragaSingel(aFraga);
+                String alosen = SqlFragor.fragaSingel(lFraga);
 
                 if (inAnvandare.equals(aSvar) && inlosen.equals(alosen) && !aSvar.isBlank() && !alosen.isBlank()) {
 
                     String sysfraga = "SELECT Administrator FROM agent WHERE Namn = " + "'" + inAnvandare + "'";
-                     sysSvar = idb.fetchSingle(sysfraga);
+                     sysSvar = SqlFragor.fragaSingel(sysfraga);
 
                     if (sysSvar.equals("N")) {
 
@@ -223,7 +221,7 @@ public class forstaSida extends javax.swing.JFrame {
                         dispose();
                     }
                     else{
-                        new agentAdminSida(idb).setVisible(true);
+                        new agentAdminSida().setVisible(true);
                         dispose();
                     }
                 }
@@ -237,8 +235,8 @@ public class forstaSida extends javax.swing.JFrame {
                 String alienFragaAnvandare = "SELECT Namn FROM alien WHERE Namn = " + "'" + inAnvandare + "'";
                 String alienFragaLosenord = "SELECT Losenord FROM alien WHERE Namn = " + "'" + inAnvandare + "'";
 
-                String alienAnvandare = idb.fetchSingle(alienFragaAnvandare);
-                String alienLosen = idb.fetchSingle(alienFragaLosenord);
+                String alienAnvandare = SqlFragor.fragaSingel(alienFragaAnvandare);
+                String alienLosen = SqlFragor.fragaSingel(alienFragaLosenord);
 
                 if (inAnvandare.equals(alienAnvandare) && inlosen.equals(alienLosen) && !alienAnvandare.isBlank() && !alienLosen.isBlank()){
                      new alienSida(idb).setVisible(true);
@@ -250,9 +248,8 @@ public class forstaSida extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Välj vem som ska logga in!");
             }
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
-        }
+        
+
     }//GEN-LAST:event_btnLoggaInActionPerformed
 
     private void pwfaltKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwfaltKeyPressed

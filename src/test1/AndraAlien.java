@@ -30,10 +30,10 @@ public class AndraAlien extends javax.swing.JFrame {
 //        laggTillAgent();
 //        laggTillPlats();
 
-        Metoder m = new Metoder(idb);
-        m.laggTillPlats(cbPlats);
-        m.laggTillRas(cbRaser);
-        m.laggTillAgent(cbAnsvarigAgent);
+//        Metoder m = new Metoder(idb);
+        Metoder.laggTillPlats(cbPlats);
+        Metoder.laggTillRas(cbRaser);
+        Metoder.laggTillAgent(cbAnsvarigAgent);
 
         txtRasTill.setVisible(false);
 
