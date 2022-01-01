@@ -117,6 +117,8 @@ public class AndraAlien extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jScrollPane1.setAutoscrolls(true);
+
         txtAllInfo.setEditable(false);
         txtAllInfo.setColumns(20);
         txtAllInfo.setRows(5);
