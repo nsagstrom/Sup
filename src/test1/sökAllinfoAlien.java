@@ -4,13 +4,8 @@
  */
 package test1;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-import oru.inf.InfException;
+
 
 /**
  *
@@ -23,6 +18,7 @@ public class sökAllinfoAlien extends javax.swing.JFrame {
      */
     public sökAllinfoAlien() {
         initComponents();
+        Metoder.laggTillAlien(cbAlien);
 
     }
 
@@ -37,9 +33,9 @@ public class sökAllinfoAlien extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTalien = new javax.swing.JTextField();
         jRubrik = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         jTextInfo = new javax.swing.JTextArea();
         btnTillbaka = new javax.swing.JButton();
+        cbAlien = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,7 +58,7 @@ public class sökAllinfoAlien extends javax.swing.JFrame {
         jRubrik.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jRubrik.setText("All info om Alien");
 
-        jTextInfo.setColumns(20);
+        jTextInfo.setColumns(2);
         jTextInfo.setRows(5);
 
         btnTillbaka.setText("Tillbaka");
@@ -72,28 +68,37 @@ public class sökAllinfoAlien extends javax.swing.JFrame {
             }
         });
 
+        cbAlien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj Alien" }));
+        cbAlien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbAlienActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(82, 97, Short.MAX_VALUE)
+                .addComponent(jRubrik)
+                .addGap(146, 146, 146)
+                .addComponent(btnTillbaka)
+                .addGap(63, 63, 63))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 9, Short.MAX_VALUE)
-                        .addComponent(jRubrik)
-                        .addGap(146, 146, 146)
-                        .addComponent(btnTillbaka))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnOK)
-                            .addComponent(jTalien, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTalien, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cbAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
@@ -103,20 +108,21 @@ public class sökAllinfoAlien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnTillbaka)
                     .addComponent(jRubrik))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jTextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(79, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(cbAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jTalien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnOK)
-                        .addGap(70, 70, 70))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(82, 82, 82))))
+                        .addGap(32, 32, 32))))
         );
 
         pack();
@@ -124,17 +130,17 @@ public class sökAllinfoAlien extends javax.swing.JFrame {
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         // TODO add your handling code here:
-        String aNamn = jTalien.getText();
-        HashMap<String, String> info;
-        info = SqlFragor.fragaRad("SELECT * FROM alien WHERE NAMN = '" + aNamn + "'");
-
-        String fragaAnsvarig = "SELECT agent.Namn FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
-        String ansvarig = SqlFragor.fragaSingel(fragaAnsvarig);
-        String fragaPlats = "SELECT Benamning FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
-        String plats = SqlFragor.fragaSingel(fragaPlats);
-
-        jTextInfo.setText("Namn: " + info.get("Namn") + "\n" + "Registreringsdatum: " + info.get("Registreringsdatum") + "\n" + "Telefon: "
-                + info.get("Telefon") + "\n" + "Plats: " + plats + "\n" + "Ansvarig agent: " + ansvarig);
+//        String aNamn = jTalien.getText();
+//        HashMap<String, String> info;
+//        info = SqlFragor.fragaRad("SELECT * FROM alien WHERE NAMN = '" + aNamn + "'");
+//
+//        String fragaAnsvarig = "SELECT agent.Namn FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
+//        String ansvarig = SqlFragor.fragaSingel(fragaAnsvarig);
+//        String fragaPlats = "SELECT Benamning FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
+//        String plats = SqlFragor.fragaSingel(fragaPlats);
+//
+//        jTextInfo.setText("Namn: " + info.get("Namn") + "\n" + "Registreringsdatum: " + info.get("Registreringsdatum") + "\n" + "Telefon: "
+//                + info.get("Telefon") + "\n" + "Plats: " + plats + "\n" + "Ansvarig agent: " + ansvarig);
 
     }//GEN-LAST:event_btnOKActionPerformed
 
@@ -152,13 +158,27 @@ public class sökAllinfoAlien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
+    private void cbAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAlienActionPerformed
+        String aNamn = cbAlien.getSelectedItem().toString();
+        HashMap<String, String> info;
+        info = SqlFragor.fragaRad("SELECT * FROM alien WHERE NAMN = '" + aNamn + "'");
+
+        String fragaAnsvarig = "SELECT agent.Namn FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
+        String ansvarig = SqlFragor.fragaSingel(fragaAnsvarig);
+        String fragaPlats = "SELECT Benamning FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
+        String plats = SqlFragor.fragaSingel(fragaPlats);
+
+        jTextInfo.setText("Namn: " + info.get("Namn") + "\n" + "Registreringsdatum: " + info.get("Registreringsdatum") + "\n" + "Telefon: "
+                + info.get("Telefon") + "\n" + "Plats: " + plats + "\n" + "Ansvarig agent: " + ansvarig);
+    }//GEN-LAST:event_cbAlienActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOK;
     private javax.swing.JButton btnTillbaka;
+    private javax.swing.JComboBox<String> cbAlien;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jRubrik;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTalien;
     private javax.swing.JTextArea jTextInfo;
     // End of variables declaration//GEN-END:variables

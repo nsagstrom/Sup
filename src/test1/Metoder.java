@@ -7,25 +7,22 @@ package test1;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 
-
 /**
  *
  * @author nsags
  */
 public class Metoder {
 
-
-
     public static void laggTillPlats(JComboBox cb) {
         String fraga = "SELECT Benamning FROM plats";
 
         ArrayList<String> allaPlatser;
 
-            allaPlatser = SqlFragor.fragaKolumn(fraga);
+        allaPlatser = SqlFragor.fragaKolumn(fraga);
 
-            for (String p : allaPlatser) {
-                cb.addItem(p);
-            }
+        for (String p : allaPlatser) {
+            cb.addItem(p);
+        }
 
     }
 
@@ -42,24 +39,37 @@ public class Metoder {
 
         ArrayList<String> allaAgenter;
 
-            allaAgenter = SqlFragor.fragaKolumn(agentFraga);
+        allaAgenter = SqlFragor.fragaKolumn(agentFraga);
 
-            for (String a : allaAgenter) {
-                cb.addItem(a);
-            }
+        for (String a : allaAgenter) {
+            cb.addItem(a);
+        }
     }
-    
-     public static void laggTillOmrade(JComboBox cb) {
+
+    public static void laggTillOmrade(JComboBox cb) {
         String fraga = "SELECT Benamning FROM omrade";
 
-        ArrayList<String> allaPlatser;
+        ArrayList<String> allaOmraden;
 
-            allaPlatser = SqlFragor.fragaKolumn(fraga);
+        allaOmraden = SqlFragor.fragaKolumn(fraga);
 
-            for (String p : allaPlatser) {
-                cb.addItem(p);
-            }
-        
+        for (String p : allaOmraden) {
+            cb.addItem(p);
+        }
+
+    }
+
+    public static void laggTillAlien(JComboBox cb) {
+        String fraga = "SELECT Namn FROM alien";
+
+        ArrayList<String> allaAlien;
+
+        allaAlien = SqlFragor.fragaKolumn(fraga);
+
+        for (String p : allaAlien) {
+            cb.addItem(p);
+        }
+
     }
 
 }
