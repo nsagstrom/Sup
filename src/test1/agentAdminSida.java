@@ -6,8 +6,6 @@ package test1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import oru.inf.InfDB;
-
 
 /**
  *
@@ -23,9 +21,6 @@ public class agentAdminSida extends javax.swing.JFrame {
      * Creates new form agentAdminSida
      */
     public agentAdminSida() {
-
-//        sql = new SqlFragor(idb);
-
         initComponents();
         namn = forstaSida.aNamn();
         lblValkommen.setText("Välkommen " + namn);
