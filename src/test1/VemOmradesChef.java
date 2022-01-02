@@ -43,6 +43,7 @@ public class VemOmradesChef extends javax.swing.JFrame {
 
         txtChef.setColumns(2);
         txtChef.setRows(5);
+        txtChef.setTabSize(3);
         jScrollPane1.setViewportView(txtChef);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
