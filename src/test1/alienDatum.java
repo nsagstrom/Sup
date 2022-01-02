@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +22,7 @@ public class alienDatum extends javax.swing.JFrame {
      */
     public alienDatum() {
         initComponents();
+
     }
 
     /**
@@ -61,10 +63,10 @@ public class alienDatum extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         tbnOK = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         btnTillbaka = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         dateSlut = new com.toedter.calendar.JDateChooser();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
@@ -198,8 +200,14 @@ public class alienDatum extends javax.swing.JFrame {
 
         dateStart.setDateFormatString("yyyy-MM-dd");
 
-        txtArea.setColumns(20);
+        jScrollPane1.setToolTipText("");
+        jScrollPane1.setViewportView(null);
+
+        txtArea.setEditable(false);
+        txtArea.setColumns(2);
         txtArea.setRows(5);
+        txtArea.setTabSize(6);
+        txtArea.setAutoscrolls(false);
         jScrollPane1.setViewportView(txtArea);
 
         tbnOK.setText("Ok");
@@ -208,6 +216,8 @@ public class alienDatum extends javax.swing.JFrame {
                 tbnOKActionPerformed(evt);
             }
         });
+
+        jLabel2.setText("Startdatum");
 
         btnTillbaka.setText("Tillbaka");
         btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
@@ -219,8 +229,6 @@ public class alienDatum extends javax.swing.JFrame {
         jLabel1.setText("Reggade mellan datum");
 
         dateSlut.setDateFormatString("yyyy-MM-dd");
-
-        jLabel2.setText("Startdatum");
 
         jLabel3.setText("Slutdatum");
 
@@ -240,13 +248,15 @@ public class alienDatum extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(dateStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(dateSlut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
+                                .addComponent(dateSlut, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(tbnOK))
                             .addComponent(jLabel3))))
                 .addGap(1, 1, 1)
@@ -265,7 +275,7 @@ public class alienDatum extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(152, 152, 152)
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,36 +294,41 @@ public class alienDatum extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnOKActionPerformed
+
         txtArea.setText("");
 
         String stardate = "";
         String slutdate = "";
         String fraga = "";
 
-        ArrayList<HashMap<String, String>> allaAlien;
-
-        Date start = dateStart.getDate();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        stardate = dateFormat.format(start);
+        Date start = dateStart.getDate();
 
         Date slut = dateSlut.getDate();
 
-        slutdate = dateFormat.format(slut);
-        fraga = "SELECT Namn, Registreringsdatum FROM alien WHERE Registreringsdatum > '" + stardate + " ' AND Registreringsdatum < '" + slutdate + "';";
+        if (start != null) {
+            if (slut != null) {
+                stardate = dateFormat.format(start);
+                slutdate = dateFormat.format(slut);
 
-        allaAlien = SqlFragor.fragaRader(fraga);
+                ArrayList<HashMap<String, String>> allaAlien;
+                fraga = "SELECT Namn, Registreringsdatum FROM alien WHERE Registreringsdatum > '" + stardate + " ' AND Registreringsdatum < '" + slutdate + "';";
+                allaAlien = SqlFragor.fragaRader(fraga);
+                txtArea.append(("Namn") + "\t");
+                txtArea.append(("Registreringsdatum") + "\n");
 
-        System.out.println(stardate);
-        System.out.println(slutdate);
-        System.out.println(fraga);
+                for (HashMap<String, String> a : allaAlien) {
+                    txtArea.append(a.get("Namn") + "\t");
+                    txtArea.append(a.get("Registreringsdatum") + "\n");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Ange ett korrekt startdatum");
+                dateStart.requestFocus();
 
-        txtArea.append(("Namn") + "\t");
-        txtArea.append(("Registreringsdatum") + "\n");
-
-        for (HashMap<String, String> a : allaAlien) {
-
-            txtArea.append(a.get("Namn") + "\t");
-            txtArea.append(a.get("Registreringsdatum") + "\n");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ange ett korrekt startdatum");
+            dateSlut.requestFocus();
         }
     }//GEN-LAST:event_tbnOKActionPerformed
 

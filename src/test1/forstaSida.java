@@ -28,6 +28,7 @@ public class forstaSida extends javax.swing.JFrame {
         this.agent = "Agent";
         this.alien = "Alien";
         fyllLista();
+        cbVem.requestFocus();
     }
 
     private void fyllLista() {
