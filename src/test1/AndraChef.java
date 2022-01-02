@@ -20,6 +20,7 @@ public class AndraChef extends javax.swing.JFrame {
     public AndraChef() {
         initComponents();
         Metoder.laggTillAgent(cbAgenter);
+        vemArChef();
     }
 
     /**
@@ -39,6 +40,8 @@ public class AndraChef extends javax.swing.JFrame {
         cbAgenter = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         landrad = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtChef = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +78,11 @@ public class AndraChef extends javax.swing.JFrame {
 
         jLabel7.setText("Agent");
 
+        txtChef.setColumns(2);
+        txtChef.setRows(5);
+        txtChef.setTabSize(3);
+        jScrollPane1.setViewportView(txtChef);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,11 +110,13 @@ public class AndraChef extends javax.swing.JFrame {
                                     .addComponent(cbAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(60, 60, 60))
+                                    .addComponent(jLabel4)
                                     .addComponent(cbVart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(161, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +143,9 @@ public class AndraChef extends javax.swing.JFrame {
                             .addComponent(jButton1))))
                 .addGap(64, 64, 64)
                 .addComponent(landrad)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,15 +187,17 @@ public class AndraChef extends javax.swing.JFrame {
         String omradeID = "";
         String nuvarandeID = "";
         ArrayList<HashMap<String, String>> allaNuvarandeID = null;
+        String idcheck = "";
 
         if (ok) {
             nyChefID = SqlFragor.fragaSingel("SELECT Agent_ID FROM agent WHERE Namn = '" + cbAgenter.getSelectedItem() + "';");
             allaNuvarandeID = SqlFragor.fragaRader("SELECT Agent_ID FROM omradeschef");
+            
 
             switch (i) {
                 case 1:
                     for (HashMap<String, String> a : allaNuvarandeID) {
-                        String idcheck = a.get("Agent_ID");
+                        idcheck = a.get("Agent_ID");
 
                         if (idcheck.equals(nyChefID)) {
                             finns = true;
@@ -199,10 +213,25 @@ public class AndraChef extends javax.swing.JFrame {
                         SqlFragor.taBort("DELETE FROM omradeschef WHERE Agent_ID = " + nuvarandeID + ";");
                         SqlFragor.laggTill("INSERT INTO omradeschef (Agent_ID, Omrade) VALUES (" + nyChefID + "," + omradeID + ");");
                         landrad.setText("Ändring genomförd (Hoppas vi)");
+                        txtChef.setText("");
+                        vemArChef();
+                        
+                        System.out.println("DELETE FROM omradeschef WHERE Agent_ID = " + nuvarandeID + ";");
+                        System.out.println("INSERT INTO omradeschef (Agent_ID, Omrade) VALUES (" + nyChefID + "," + omradeID + ");");
+                        
+                        
+                        
+                        System.out.println(nyChefID + " ny chef id");
+                        System.out.println(omradeID + " områdes id");
+                        System.out.println(nuvarandeID + " nuvarande id" );
+                        System.out.println(allaNuvarandeID + " alla chefers id");
+                        System.out.println(idcheck + " test ");
+                        System.out.println();
+                        
                     } else {
                         String benamning = SqlFragor.fragaSingel("SELECT Benamning FROM omradeschef\n"
                                 + "JOIN omrade o on o.Omrades_ID = omradeschef.Omrade\n"
-                                + "WHERE Agent_ID = 1");
+                                + "WHERE Agent_ID = "+ nyChefID);
                         JOptionPane.showMessageDialog(null, "Vald agent är redan chef för " + benamning);
                     }
                     break;
@@ -216,6 +245,22 @@ public class AndraChef extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void vemArChef() {
+
+        ArrayList<HashMap<String, String>> omradeChef;
+
+        String fraga = "SELECT Namn, Benamning FROM omradeschef\n"
+                + "JOIN omrade o on o.Omrades_ID = omradeschef.Omrade\n"
+                + "JOIN agent a on a.Agent_ID = omradeschef.Agent_ID;";
+
+        omradeChef = SqlFragor.fragaRader(fraga);
+
+        txtChef.append("Namn" + "\t" + "Chef för;" + "\n");
+
+        for (HashMap<String, String> chef : omradeChef) {
+            txtChef.append(chef.get("Namn") + "\t" + chef.get("Benamning") + "\n");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTillbaka;
@@ -227,6 +272,8 @@ public class AndraChef extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel landrad;
+    private javax.swing.JTextArea txtChef;
     // End of variables declaration//GEN-END:variables
 }

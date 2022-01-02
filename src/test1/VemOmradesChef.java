@@ -75,16 +75,16 @@ public class VemOmradesChef extends javax.swing.JFrame {
 
         ArrayList<HashMap<String, String>> omradeChef;
 
-        String fraga = "SELECT Namn , Benamning FROM agent\n"
-                + "JOIN omradeschef o on agent.Agent_ID = o.Agent_ID\n"
-                + "JOIN omrade o2 on o2.Omrades_ID = agent.Omrade;";
+        String fraga = "SELECT Namn, Benamning FROM omradeschef\n"
+                + "JOIN omrade o on o.Omrades_ID = omradeschef.Omrade\n"
+                + "JOIN agent a on a.Agent_ID = omradeschef.Agent_ID;";
 
         omradeChef = SqlFragor.fragaRader(fraga);
 
-        txtChef.append("Namn" + "   " + "Chef för;" + "\n");
+        txtChef.append("Namn" + "\t" + "Chef för;" + "\n");
 
         for (HashMap<String, String> chef : omradeChef) {
-            txtChef.append(chef.get("Namn") + "   " + chef.get("Benamning") + "\n");
+            txtChef.append(chef.get("Namn") + "\t" + chef.get("Benamning") + "\n");
         }
     }
 
