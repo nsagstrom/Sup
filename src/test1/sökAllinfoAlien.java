@@ -6,7 +6,6 @@ package test1;
 
 import java.util.HashMap;
 
-
 /**
  *
  * @author timme
@@ -19,7 +18,7 @@ public class sökAllinfoAlien extends javax.swing.JFrame {
     public sökAllinfoAlien() {
         initComponents();
         Metoder.laggTillAlien(cbAlien);
-
+        
     }
 
     /**
@@ -108,12 +107,12 @@ public class sökAllinfoAlien extends javax.swing.JFrame {
         String aNamn = cbAlien.getSelectedItem().toString();
         HashMap<String, String> info;
         info = SqlFragor.fragaRad("SELECT * FROM alien WHERE NAMN = '" + aNamn + "'");
-
+        
         String fragaAnsvarig = "SELECT agent.Namn FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
         String ansvarig = SqlFragor.fragaSingel(fragaAnsvarig);
         String fragaPlats = "SELECT Benamning FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
         String plats = SqlFragor.fragaSingel(fragaPlats);
-
+        
         jTextInfo.setText("Namn: " + info.get("Namn") + "\n" + "Registreringsdatum: " + info.get("Registreringsdatum") + "\n" + "Telefon: "
                 + info.get("Telefon") + "\n" + "Plats: " + plats + "\n" + "Ansvarig agent: " + ansvarig);
     }//GEN-LAST:event_cbAlienActionPerformed

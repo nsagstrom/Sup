@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
  *
  * @author nsags
  */
+
 public class Metoder {
 
     public static void laggTillPlats(JComboBox cb) {
@@ -23,7 +24,6 @@ public class Metoder {
         for (String p : allaPlatser) {
             cb.addItem(p);
         }
-
     }
 
     public static void laggTillRas(JComboBox cb) {
@@ -56,7 +56,6 @@ public class Metoder {
         for (String p : allaOmraden) {
             cb.addItem(p);
         }
-
     }
 
     public static void laggTillAlien(JComboBox cb) {
@@ -69,7 +68,5 @@ public class Metoder {
         for (String p : allaAlien) {
             cb.addItem(p);
         }
-
     }
-
 }

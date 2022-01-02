@@ -7,16 +7,12 @@ package test1;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-import oru.inf.InfException;
 
 /**
  *
  * @author nsags
  */
 public class AndraChef extends javax.swing.JFrame {
-
-    private Metoder m;
 
     /**
      * Creates new form AndraChef

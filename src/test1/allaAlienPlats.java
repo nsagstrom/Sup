@@ -6,11 +6,6 @@ package test1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import oru.inf.InfDB;
-import oru.inf.InfException;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,13 +13,9 @@ import javax.swing.JOptionPane;
  */
 public class allaAlienPlats extends javax.swing.JFrame {
 
-
-
     public allaAlienPlats() {
         initComponents();
-
         Metoder.laggTillPlats(cbValjPlats);
-
     }
 
     @SuppressWarnings("unchecked")
@@ -107,48 +98,26 @@ public class allaAlienPlats extends javax.swing.JFrame {
         txtAreaVisaAlienPlats.setText("");
 
         ArrayList<HashMap<String, String>> SoktaMedlemmar;
-            String valdPlats = cbValjPlats.getSelectedItem().toString();
-            String fraga = "SELECT * FROM plats\n"
-                    + "JOIN alien a on plats.Plats_ID = a.Plats\n"
-                    + "WHERE Benamning =" + "'" + valdPlats + "'";
-            SoktaMedlemmar = SqlFragor.fragaRader(fraga);
+        String valdPlats = cbValjPlats.getSelectedItem().toString();
+        String fraga = "SELECT * FROM plats\n"
+                + "JOIN alien a on plats.Plats_ID = a.Plats\n"
+                + "WHERE Benamning =" + "'" + valdPlats + "'";
+        SoktaMedlemmar = SqlFragor.fragaRader(fraga);
 
-            for (HashMap<String, String> m : SoktaMedlemmar) {
-                txtAreaVisaAlienPlats.append(m.get("Namn") + "\n");
-            }
-
-
-
+        for (HashMap<String, String> m : SoktaMedlemmar) {
+            txtAreaVisaAlienPlats.append(m.get("Namn") + "\n");
+        }
     }//GEN-LAST:event_cbValjPlatsActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(forstaSida.arAdmin()){
+        if (forstaSida.arAdmin()) {
             new agentAdminSida().setVisible(true);
             dispose();
-        }
-        else{
+        } else {
             new agentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-
-
-//    private void laggTillPlats() {
-//        String fraga = "SELECT Benamning FROM plats";
-//
-//        ArrayList<String> allaPlatser;
-//        try {
-//            allaPlatser = idb.fetchColumn(fraga);
-//
-//            for (String p : allaPlatser) {
-//                cbValjPlats.addItem(p);
-//            }
-//        } catch (InfException e) {
-//            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
-//            System.out.println("Internt fel " + e.getMessage());
-//        }
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbValjPlats;

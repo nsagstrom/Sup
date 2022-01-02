@@ -13,9 +13,7 @@ import java.util.HashMap;
  */
 public class agentAdminSida extends javax.swing.JFrame {
 
-
     String namn;
-
 
     /**
      * Creates new form agentAdminSida
@@ -43,7 +41,6 @@ public class agentAdminSida extends javax.swing.JFrame {
         cbAtgarder.addItem("Ändra alien");
         cbAtgarder.addItem("Ändra agent");
         cbAtgarder.addItem("Ändra chef");
-
     }
 
     /**
@@ -183,7 +180,7 @@ public class agentAdminSida extends javax.swing.JFrame {
         // Välj inloggningstyp
         int i = cbKontrollAvAlien.getSelectedIndex();
 
-        if(i == 0){
+        if (i == 0) {
 
         }
         switch (i) {
@@ -206,13 +203,9 @@ public class agentAdminSida extends javax.swing.JFrame {
             default:
                 break;
         }
-
-        
-
     }//GEN-LAST:event_cbKontrollAvAlienActionPerformed
 
-
-     private void listaAllUtrustning() {
+    private void listaAllUtrustning() {
 
         String id = SqlFragor.fragaSingel("SELECT Agent_id FROM agent WHERE Namn = '" + namn + "';");
         String utFraga = "SELECT Benamning FROM utrustning join innehar_utrustning iu on utrustning.Utrustnings_ID = iu.Utrustnings_ID WHERE Agent_ID = " + id + ";";
@@ -224,8 +217,6 @@ public class agentAdminSida extends javax.swing.JFrame {
         }
     }
 
-
-    
     private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
         new forstaSida().setVisible(true);
         dispose();
@@ -271,7 +262,6 @@ public class agentAdminSida extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_cbAtgarderActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

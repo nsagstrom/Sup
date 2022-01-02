@@ -20,7 +20,6 @@ public class SqlFragor {
 
     public static void setDatabas(InfDB idb) {
         SqlFragor.idb = idb;
-
     }
 
     public static String fragaSingel(String fraga) {
@@ -43,7 +42,6 @@ public class SqlFragor {
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
         return svar;
-
     }
 
     public static HashMap<String, String> fragaRad(String fraga) {
@@ -55,7 +53,6 @@ public class SqlFragor {
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
         return svar;
-
     }
 
     public static ArrayList<String> fragaKolumn(String fraga) {
@@ -67,7 +64,6 @@ public class SqlFragor {
             JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
         }
         return svar;
-
     }
 
     public static void taBort(String fraga) {
@@ -104,5 +100,4 @@ public class SqlFragor {
         }
         return svar;
     }
-
 }

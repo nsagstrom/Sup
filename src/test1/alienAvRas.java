@@ -7,7 +7,6 @@ package test1;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 /**
  *
  * @author nsags
@@ -19,7 +18,6 @@ public class alienAvRas extends javax.swing.JFrame {
      */
     public alienAvRas() {
         initComponents();
-
         Metoder.laggTillRas(cbRaser);
         cbRaser.removeItemAt(3);
     }
@@ -116,8 +114,6 @@ public class alienAvRas extends javax.swing.JFrame {
         for (HashMap<String, String> a : SoktaAlien) {
             txtAreaAlienRas.append(a.get("Namn") + "\n");
         }
-
-
     }//GEN-LAST:event_cbRaserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

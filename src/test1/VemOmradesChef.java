@@ -13,12 +13,10 @@ import java.util.HashMap;
  */
 public class VemOmradesChef extends javax.swing.JFrame {
 
-    
     /**
      * Creates new form VemOmradesChef
      */
     public VemOmradesChef() {
-
         initComponents();
         vemArChef();
     }
@@ -73,8 +71,8 @@ public class VemOmradesChef extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void vemArChef(){
-        
+    private void vemArChef() {
+
         ArrayList<HashMap<String, String>> omradeChef;
 
         String fraga = "SELECT Namn , Benamning FROM agent\n"
@@ -88,7 +86,6 @@ public class VemOmradesChef extends javax.swing.JFrame {
         for (HashMap<String, String> chef : omradeChef) {
             txtChef.append(chef.get("Namn") + "   " + chef.get("Benamning") + "\n");
         }
-
     }
 
 

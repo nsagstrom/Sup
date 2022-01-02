@@ -4,19 +4,11 @@
  */
 package test1;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-import oru.inf.InfException;
-
 /**
  *
  * @author timme
  */
 public class addUtrustning extends javax.swing.JFrame {
-
-
 
     /**
      * Creates new form addUtrustning
@@ -113,19 +105,14 @@ public class addUtrustning extends javax.swing.JFrame {
     private void registrerabuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrerabuttonActionPerformed
         // TODO add your handling code here:
 
+        String nyUtrustning = jTutrustning.getText();
 
-            String nyUtrustning = jTutrustning.getText();
-            
-            String nyID = SqlFragor.nyID("utrustning", "Utrustnings_ID");
+        String nyID = SqlFragor.nyID("utrustning", "Utrustnings_ID");
 
-            String fraga = "insert into utrustning(Utrustnings_ID, Benamning) VALUES(" + nyID + "," + "'" + nyUtrustning + "')";
-            SqlFragor.laggTill(fraga);
-            
-            jKorrekt.setText(nyUtrustning + " registrerad!");
+        String fraga = "insert into utrustning(Utrustnings_ID, Benamning) VALUES(" + nyID + "," + "'" + nyUtrustning + "')";
+        SqlFragor.laggTill(fraga);
 
-
-
-
+        jKorrekt.setText(nyUtrustning + " registrerad!");
     }//GEN-LAST:event_registrerabuttonActionPerformed
 
     private void jTutrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTutrustningActionPerformed
@@ -135,11 +122,10 @@ public class addUtrustning extends javax.swing.JFrame {
     }//GEN-LAST:event_jTutrustningActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
-        if(forstaSida.arAdmin()){
+        if (forstaSida.arAdmin()) {
             new agentAdminSida().setVisible(true);
             dispose();
-        }
-        else{
+        } else {
             new agentSida().setVisible(true);
             dispose();
         }

@@ -37,7 +37,6 @@ public class ValideringsKlass {
             JOptionPane.showConfirmDialog(null, "Var god ange ett heltal!");
             rutaAttKolla.requestFocus();
         }
-
         return resultat;
     }
 
@@ -61,6 +60,5 @@ public class ValideringsKlass {
             taltest.requestFocus();
         }
         return arTal;
-
     }
 }

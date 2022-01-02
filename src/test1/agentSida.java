@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class agentSida extends javax.swing.JFrame {
 
     String namn;
-    
+
     /**
      * Creates new form agentSida
      */
@@ -26,7 +26,6 @@ public class agentSida extends javax.swing.JFrame {
         lblValkommen.setText("Välkommen " + namn);
         listaAllUtrustning();
         toppLista();
-       
     }
 
     public final void laggTillAtgard() {
@@ -42,7 +41,6 @@ public class agentSida extends javax.swing.JFrame {
         cbAtgarder.addItem("Lägg till alien");
         cbAtgarder.addItem("Vem är chef");
         cbAtgarder.addItem("Ändra alien");
-
     }
 
     /**
@@ -183,8 +181,7 @@ public class agentSida extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void toppLista(){
+    private void toppLista() {
 
         ArrayList<HashMap<String, String>> topp;
 
@@ -199,21 +196,21 @@ public class agentSida extends javax.swing.JFrame {
             txtTopp.append(t.get("Namn") + "   " + t.get("Antal") + "\n");
         }
     }
-    
-    private void listaAllUtrustning(){
-        
+
+    private void listaAllUtrustning() {
+
         ArrayList<HashMap<String, String>> allUtrustning;
 
-            String id = SqlFragor.fragaSingel("SELECT Agent_id FROM agent WHERE Namn = '" + namn + "'");
+        String id = SqlFragor.fragaSingel("SELECT Agent_id FROM agent WHERE Namn = '" + namn + "'");
 
-            String utFraga = "SELECT Benamning FROM utrustning\n"
-                    + "join innehar_utrustning iu on utrustning.Utrustnings_ID = iu.Utrustnings_ID WHERE Agent_ID = " + id;
-            allUtrustning = SqlFragor.fragaRader(utFraga);
+        String utFraga = "SELECT Benamning FROM utrustning\n"
+                + "join innehar_utrustning iu on utrustning.Utrustnings_ID = iu.Utrustnings_ID WHERE Agent_ID = " + id;
+        allUtrustning = SqlFragor.fragaRader(utFraga);
 
-            for (HashMap<String, String> utR : allUtrustning) {
+        for (HashMap<String, String> utR : allUtrustning) {
 
-                txtfUtrustning.append(utR.get("Benamning") + "\n");
-            }
+            txtfUtrustning.append(utR.get("Benamning") + "\n");
+        }
     }
 
     private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
@@ -229,7 +226,6 @@ public class agentSida extends javax.swing.JFrame {
     private void cbKontrollAvAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKontrollAvAlienActionPerformed
         // Välj inloggningstyp
         int i = cbKontrollAvAlien.getSelectedIndex();
-
 
         switch (i) {
             case 1:
@@ -273,9 +269,8 @@ public class agentSida extends javax.swing.JFrame {
                 new AndraAlien().setVisible(true);
                 dispose();
                 break;
-        }        
+        }
     }//GEN-LAST:event_cbAtgarderActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

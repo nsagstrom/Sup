@@ -10,18 +10,16 @@ import oru.inf.InfDB;
 import oru.inf.InfException;
 
 public class Start {
-    
+
     private static InfDB idb;
-    
+
     public static void main(String[] args) throws InfException {
         try {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
         } catch (InfException ex) {
             Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
         SqlFragor.setDatabas(idb);
         new forstaSida().setVisible(true);
     }
-    
-    
 }

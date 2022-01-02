@@ -8,8 +8,6 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-import oru.inf.InfException;
 
 /**
  *
@@ -257,7 +255,6 @@ public class AndraAgent extends javax.swing.JFrame {
                 admin = "N";
             }
         }
-
     }//GEN-LAST:event_btnOKActionPerformed
 
     private void info() {
@@ -286,7 +283,6 @@ public class AndraAgent extends javax.swing.JFrame {
                     + "\t" + info.get("Administrator")
                     + "\t" + info.get("Losenord")
                     + "\t" + info.get("Benamning") + "\n");
-
         }
     }
 

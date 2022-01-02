@@ -33,10 +33,10 @@ public class alienSida extends javax.swing.JFrame {
                 + "JOIN plats p on p.Plats_ID = alien.Plats\n"
                 + "JOIN omrade o on o.Omrades_ID = p.Finns_I\n"
                 + "WHERE Namn = '" + namn + "';");
-        
+
         String omradeNamn = SqlFragor.fragaSingel("SELECT Benamning FROM omrade WHERE Omrades_ID = " + omradeID + ";");
-        
-        lMittomrade.setText("Alien i "  + omradeNamn);
+
+        lMittomrade.setText("Alien i " + omradeNamn);
 
         ArrayList<HashMap<String, String>> allaAlien;
 
