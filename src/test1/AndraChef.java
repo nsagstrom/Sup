@@ -192,7 +192,6 @@ public class AndraChef extends javax.swing.JFrame {
                             finns = false;
                         }
                     }
-
                     if (!finns) {
                         omradeID = SqlFragor.fragaSingel("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + cbVart.getSelectedItem() + "';");
                         nuvarandeID = SqlFragor.fragaSingel("SELECT Agent_ID FROM omradeschef WHERE Omrade = " + omradeID + ";");
@@ -200,7 +199,6 @@ public class AndraChef extends javax.swing.JFrame {
                         SqlFragor.taBort("DELETE FROM omradeschef WHERE Agent_ID = " + nuvarandeID + ";");
                         SqlFragor.laggTill("INSERT INTO omradeschef (Agent_ID, Omrade) VALUES (" + nyChefID + "," + omradeID + ");");
                         landrad.setText("Ändring genomförd (Hoppas vi)");
-
                     } else {
                         String benamning = SqlFragor.fragaSingel("SELECT Benamning FROM omradeschef\n"
                                 + "JOIN omrade o on o.Omrades_ID = omradeschef.Omrade\n"
@@ -209,7 +207,6 @@ public class AndraChef extends javax.swing.JFrame {
                     }
                     break;
                 case 2:
-
                     nuvarandeID = SqlFragor.fragaSingel("SELECT Agent_ID FROM kontorschef WHERE Kontorsbeteckning = '" + cbVart.getSelectedItem() + "';");
                     SqlFragor.taBort("DELETE FROM kontorschef WHERE Agent_ID = " + nuvarandeID + ";");
                     SqlFragor.laggTill("INSERT INTO kontorschef (Agent_ID, Kontorsbeteckning) VALUES (" + nyChefID + ",'" + cbVart.getSelectedItem() + "');");
