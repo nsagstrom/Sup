@@ -6,8 +6,7 @@ package test1;
 
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import oru.inf.InfDB;
-import oru.inf.InfException;
+
 
 /**
  *
@@ -22,7 +21,6 @@ public class NyttLosen extends javax.swing.JFrame {
     /**
      * Creates new form NyttLosen
      *
-     * @param idb
      */
     public NyttLosen() {
         initComponents();
