@@ -207,6 +207,14 @@ public class agentAdminSida extends javax.swing.JFrame {
                 new TaBortAlien().setVisible(true);
                 dispose();
                 break;
+            case 6:
+                new TaBortAgent().setVisible(true);
+                dispose();
+                break;
+            case 7:
+                new TaBortUtrustning().setVisible(true);
+                dispose();
+                break;
             default:
                 break;
         }

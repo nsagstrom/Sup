@@ -4,6 +4,7 @@
  */
 package test1;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -54,6 +55,11 @@ public class TaBortAlien extends javax.swing.JFrame {
         });
 
         cbAlien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj Alien" }));
+        cbAlien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbAlienKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,6 +135,14 @@ public class TaBortAlien extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed
+
+    private void cbAlienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbAlienKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            btnTaBort.doClick();
+        }
+    }//GEN-LAST:event_cbAlienKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
