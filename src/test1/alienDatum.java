@@ -21,6 +21,7 @@ public class alienDatum extends javax.swing.JFrame {
      * Creates new form alienDatum
      */
     public alienDatum() {
+        
         initComponents();
 
     }
