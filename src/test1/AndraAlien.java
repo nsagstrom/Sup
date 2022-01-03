@@ -422,7 +422,6 @@ public class AndraAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ange id");
             txtID.requestFocus();
         } else if (!ValideringsKlass.taltest(txtID)) {
-            JOptionPane.showMessageDialog(null, "Tal ditt mongo");
             txtID.requestFocus();
         } else if (txtNamn.getText().isBlank()) {
             ok = false;
