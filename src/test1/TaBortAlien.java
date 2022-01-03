@@ -4,6 +4,7 @@
  */
 package test1;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +18,8 @@ public class TaBortAlien extends javax.swing.JFrame {
      */
     public TaBortAlien() {
         initComponents();
+        Metoder.laggTillAlien(cbAlien);
+                
     }
 
     /**
@@ -28,10 +31,9 @@ public class TaBortAlien extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btnTillbaka = new javax.swing.JButton();
-        jLAlien = new javax.swing.JLabel();
-        jTAlien = new javax.swing.JTextField();
         btnTaBort = new javax.swing.JButton();
         jLKorrekt = new javax.swing.JLabel();
+        cbAlien = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,12 +47,17 @@ public class TaBortAlien extends javax.swing.JFrame {
             }
         });
 
-        jLAlien.setText("Alien:");
-
         btnTaBort.setText("Ta bort");
         btnTaBort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTaBortActionPerformed(evt);
+            }
+        });
+
+        cbAlien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj Alien" }));
+        cbAlien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbAlienKeyPressed(evt);
             }
         });
 
@@ -64,17 +71,16 @@ public class TaBortAlien extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnTillbaka)
                 .addGap(52, 52, 52))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnTaBort)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(59, 59, 59)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(cbAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(btnTaBort)
+                .addGap(176, 176, 176))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(114, 114, 114))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,12 +91,11 @@ public class TaBortAlien extends javax.swing.JFrame {
                     .addComponent(btnTillbaka))
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLAlien)
-                    .addComponent(jTAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(btnTaBort)
-                .addContainerGap(136, Short.MAX_VALUE))
+                    .addComponent(cbAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTaBort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133))
         );
 
         pack();
@@ -98,13 +103,13 @@ public class TaBortAlien extends javax.swing.JFrame {
 
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
         // TODO add your handling code here:
-        String alienbort = jTAlien.getText();
+        String alienbort = cbAlien.getSelectedItem().toString();
         String taBort = "SELECT Alien_ID FROM Alien WHERE Namn = '" + alienbort + "'";
         String idbort = SqlFragor.fragaSingel(taBort);
         String avCheck = "SELECT * FROM Alien WHERE Alien_ID = " + idbort;
 
-        if (SqlFragor.fragaSingel(taBort) == null) {
-            JOptionPane.showMessageDialog(rootPane, "Alien finns ej!");
+        if (cbAlien.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Välj en alien!");
         } else {
             String tabortAlien = "DELETE FROM alien WHERE Alien_ID = " + idbort;
             String tabortBog = "DELETE FROM  boglodite WHERE Alien_ID = " + idbort;
@@ -131,13 +136,20 @@ public class TaBortAlien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
+    private void cbAlienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbAlienKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            btnTaBort.doClick();
+        }
+    }//GEN-LAST:event_cbAlienKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaBort;
     private javax.swing.JButton btnTillbaka;
-    private javax.swing.JLabel jLAlien;
+    private javax.swing.JComboBox<String> cbAlien;
     private javax.swing.JLabel jLKorrekt;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTAlien;
     // End of variables declaration//GEN-END:variables
 }
