@@ -224,12 +224,6 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="org.jdatepicker.impl.SqlDateModel" name="sqlDateModel1">
-    </Component>
-    <Component class="org.jdatepicker.JDateComponentFactory" name="jDateComponentFactory1">
-    </Component>
-    <Component class="org.jdatepicker.util.JDatePickerUtil" name="jDatePickerUtil1">
-    </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner1">
     </Component>
   </NonVisualComponents>

@@ -55,9 +55,6 @@ public class alienDatum extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jFrame3 = new javax.swing.JFrame();
         jDialog6 = new javax.swing.JDialog();
-        sqlDateModel1 = new org.jdatepicker.impl.SqlDateModel();
-        jDateComponentFactory1 = new org.jdatepicker.JDateComponentFactory();
-        jDatePickerUtil1 = new org.jdatepicker.util.JDatePickerUtil();
         jSpinner1 = new javax.swing.JSpinner();
         canvas1 = new java.awt.Canvas();
         dateStart = new com.toedter.calendar.JDateChooser();
@@ -355,8 +352,6 @@ public class alienDatum extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
-    private org.jdatepicker.JDateComponentFactory jDateComponentFactory1;
-    private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JDialog jDialog3;
@@ -381,7 +376,6 @@ public class alienDatum extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
-    private org.jdatepicker.impl.SqlDateModel sqlDateModel1;
     private javax.swing.JButton tbnOK;
     private javax.swing.JTextArea txtArea;
     // End of variables declaration//GEN-END:variables
