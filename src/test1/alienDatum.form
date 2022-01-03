@@ -224,12 +224,6 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="org.jdatepicker.impl.SqlDateModel" name="sqlDateModel1">
-    </Component>
-    <Component class="org.jdatepicker.JDateComponentFactory" name="jDateComponentFactory1">
-    </Component>
-    <Component class="org.jdatepicker.util.JDatePickerUtil" name="jDatePickerUtil1">
-    </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner1">
     </Component>
   </NonVisualComponents>
@@ -284,7 +278,6 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                               <Component id="canvas1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace pref="76" max="32767" attributes="0"/>

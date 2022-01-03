@@ -35,6 +35,8 @@ public class agentSida extends javax.swing.JFrame {
         cbKontrollAvAlien.addItem("Alla Alier per plats");
         cbKontrollAvAlien.addItem("Alla Alier per datum");
         cbKontrollAvAlien.addItem("Information om en alien");
+        cbKontrollAvAlien.addItem("Ta bort alien");
+        
 
         cbAtgarder.addItem("Välj");
         cbAtgarder.addItem("Lägg till vapen");
@@ -242,6 +244,10 @@ public class agentSida extends javax.swing.JFrame {
                 break;
             case 4:
                 new sökAllinfoAlien().setVisible(true);
+                dispose();
+                break;
+            case 5:
+                new TaBortAlien().setVisible(true);
                 dispose();
                 break;
             default:
