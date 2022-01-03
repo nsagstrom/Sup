@@ -55,19 +55,20 @@ public class alienDatum extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jFrame3 = new javax.swing.JFrame();
         jDialog6 = new javax.swing.JDialog();
+<<<<<<< Updated upstream
         sqlDateModel1 = new org.jdatepicker.impl.SqlDateModel();
         jDateComponentFactory1 = new org.jdatepicker.JDateComponentFactory();
         jDatePickerUtil1 = new org.jdatepicker.util.JDatePickerUtil();
         jSpinner1 = new javax.swing.JSpinner();
+=======
+>>>>>>> Stashed changes
         canvas1 = new java.awt.Canvas();
-        dateStart = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         tbnOK = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnTillbaka = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        dateSlut = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
@@ -199,8 +200,6 @@ public class alienDatum extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        dateStart.setDateFormatString("yyyy-MM-dd");
-
         jScrollPane1.setToolTipText("");
         jScrollPane1.setViewportView(null);
 
@@ -229,8 +228,6 @@ public class alienDatum extends javax.swing.JFrame {
 
         jLabel1.setText("Reggade mellan datum");
 
-        dateSlut.setDateFormatString("yyyy-MM-dd");
-
         jLabel3.setText("Slutdatum");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -238,6 +235,7 @@ public class alienDatum extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+<<<<<<< Updated upstream
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(81, 81, 81)
@@ -265,6 +263,28 @@ public class alienDatum extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnTillbaka)))
                 .addGap(52, 52, 52))
+=======
+                .addGap(59, 59, 59)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTillbaka)
+                .addGap(52, 52, 52))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(149, 149, 149)
+                                .addComponent(tbnOK))
+                            .addComponent(jLabel3))))
+                .addGap(1, 1, 1)
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(212, Short.MAX_VALUE))
+>>>>>>> Stashed changes
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,17 +297,14 @@ public class alienDatum extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
+                        .addGap(158, 158, 158)
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(155, 155, 155))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tbnOK)
-                            .addComponent(dateSlut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tbnOK)
                         .addGap(66, 66, 66)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -350,13 +367,9 @@ public class alienDatum extends javax.swing.JFrame {
     private javax.swing.JButton btnTillbaka;
     private javax.swing.ButtonGroup buttonGroup1;
     private java.awt.Canvas canvas1;
-    private com.toedter.calendar.JDateChooser dateSlut;
-    private com.toedter.calendar.JDateChooser dateStart;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
-    private org.jdatepicker.JDateComponentFactory jDateComponentFactory1;
-    private org.jdatepicker.util.JDatePickerUtil jDatePickerUtil1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JDialog jDialog3;
@@ -380,8 +393,11 @@ public class alienDatum extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
+<<<<<<< Updated upstream
     private javax.swing.JSpinner jSpinner1;
     private org.jdatepicker.impl.SqlDateModel sqlDateModel1;
+=======
+>>>>>>> Stashed changes
     private javax.swing.JButton tbnOK;
     private javax.swing.JTextArea txtArea;
     // End of variables declaration//GEN-END:variables
