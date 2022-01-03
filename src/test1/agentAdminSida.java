@@ -34,6 +34,8 @@ public class agentAdminSida extends javax.swing.JFrame {
         cbKontrollAvAlien.addItem("Alla Alier per datum");
         cbKontrollAvAlien.addItem("Information om en alien");
         cbKontrollAvAlien.addItem("Ta bort alien");
+        cbKontrollAvAlien.addItem("Ta bort agent");
+        cbKontrollAvAlien.addItem("Ta bort utrustning");
 
         cbAtgarder.addItem("Välj");
         cbAtgarder.addItem("Lägg till Vapen");

@@ -30,8 +30,6 @@ public class TaBortAlien extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btnTillbaka = new javax.swing.JButton();
-        jLAlien = new javax.swing.JLabel();
-        jTAlien = new javax.swing.JTextField();
         btnTaBort = new javax.swing.JButton();
         jLKorrekt = new javax.swing.JLabel();
         cbAlien = new javax.swing.JComboBox<>();
@@ -47,8 +45,6 @@ public class TaBortAlien extends javax.swing.JFrame {
                 btnTillbakaActionPerformed(evt);
             }
         });
-
-        jLAlien.setText("Alien:");
 
         btnTaBort.setText("Ta bort");
         btnTaBort.addActionListener(new java.awt.event.ActionListener() {
@@ -70,17 +66,8 @@ public class TaBortAlien extends javax.swing.JFrame {
                 .addComponent(btnTillbaka)
                 .addGap(52, 52, 52))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(cbAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jTAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(90, 90, 90)
+                .addComponent(cbAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(btnTaBort)
                 .addGap(176, 176, 176))
@@ -102,11 +89,7 @@ public class TaBortAlien extends javax.swing.JFrame {
                     .addComponent(btnTaBort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
                 .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addComponent(jLAlien)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addGap(133, 133, 133))
         );
 
         pack();
@@ -152,9 +135,7 @@ public class TaBortAlien extends javax.swing.JFrame {
     private javax.swing.JButton btnTaBort;
     private javax.swing.JButton btnTillbaka;
     private javax.swing.JComboBox<String> cbAlien;
-    private javax.swing.JLabel jLAlien;
     private javax.swing.JLabel jLKorrekt;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTAlien;
     // End of variables declaration//GEN-END:variables
 }
