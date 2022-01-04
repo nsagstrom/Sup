@@ -33,6 +33,7 @@ public class addUtrustning extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        registrerabutton.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         registrerabutton.setText("Registrera");
         registrerabutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -41,17 +42,20 @@ public class addUtrustning extends javax.swing.JFrame {
         });
 
         jTutrustning.setColumns(4);
+        jTutrustning.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jTutrustning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTutrustningActionPerformed(evt);
             }
         });
 
-        titel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        titel.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         titel.setText("Registrera utrustning");
 
+        benämning.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         benämning.setText("Benämning:");
 
+        btnTillbaka.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnTillbaka.setText("Tillbaka");
         btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +100,7 @@ public class addUtrustning extends javax.swing.JFrame {
                     .addComponent(jKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(registrerabutton)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
