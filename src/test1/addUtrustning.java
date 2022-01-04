@@ -4,6 +4,8 @@
  */
 package test1;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author timme
@@ -15,6 +17,14 @@ public class addUtrustning extends javax.swing.JFrame {
      */
     public addUtrustning() {
         initComponents();
+        laggTillTyper();
+        txtTill.setVisible(false);
+    }
+    
+    private void laggTillTyper(){
+        cbUtrustning.addItem("Vapen");
+        cbUtrustning.addItem("Teknik");
+        cbUtrustning.addItem("Kommunikation");
     }
 
     /**
@@ -24,7 +34,8 @@ public class addUtrustning extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        registrerabutton = new javax.swing.JButton();
+        jMenu1 = new javax.swing.JMenu();
+        btnRegistrera = new javax.swing.JButton();
         txtBenamning = new javax.swing.JTextField();
         titel = new javax.swing.JLabel();
         benämning = new javax.swing.JLabel();
@@ -34,13 +45,15 @@ public class addUtrustning extends javax.swing.JFrame {
         txtTill = new javax.swing.JTextField();
         lTyp = new javax.swing.JLabel();
 
+        jMenu1.setText("jMenu1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        registrerabutton.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        registrerabutton.setText("Registrera");
-        registrerabutton.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrera.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        btnRegistrera.setText("Registrera");
+        btnRegistrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrerabuttonActionPerformed(evt);
+                btnRegistreraActionPerformed(evt);
             }
         });
 
@@ -67,6 +80,17 @@ public class addUtrustning extends javax.swing.JFrame {
         });
 
         cbUtrustning.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Typ av utrustning" }));
+        cbUtrustning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbUtrustningActionPerformed(evt);
+            }
+        });
+
+        txtTill.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTillKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,71 +98,84 @@ public class addUtrustning extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(titel, javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titel)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(benämning)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTill, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtBenamning, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(41, 41, 41)
-                                        .addComponent(cbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(lTyp, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lTyp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtTill)
+                            .addComponent(cbUtrustning, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtBenamning))
+                        .addGap(1, 1, 1)
+                        .addComponent(jKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(registrerabutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnTillbaka, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(41, 41, 41))
+                    .addComponent(btnRegistrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(titel)
-                    .addComponent(btnTillbaka))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtBenamning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(benämning)
-                            .addComponent(cbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(titel)
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtBenamning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(benämning)))))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnTillbaka)
                         .addGap(39, 39, 39)
-                        .addComponent(registrerabutton)))
-                .addGap(24, 24, 24)
+                        .addComponent(btnRegistrera)
+                        .addGap(10, 10, 10)))
+                .addGap(18, 18, 18)
+                .addComponent(cbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(lTyp, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void registrerabuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrerabuttonActionPerformed
+    private void btnRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraActionPerformed
         // TODO add your handling code here:
 
-        String nyUtrustning = txtBenamning.getText();
-
+ 
         String nyID = SqlFragor.nyID("utrustning", "Utrustnings_ID");
 
-        String fraga = "insert into utrustning(Utrustnings_ID, Benamning) VALUES(" + nyID + "," + "'" + nyUtrustning + "')";
+        String fraga = "insert into utrustning(Utrustnings_ID, Benamning) VALUES(" + nyID + "," + "'" + txtBenamning.getText()+ "')";
         SqlFragor.laggTill(fraga);
 
-        jKorrekt.setText(nyUtrustning + " registrerad!");
-    }//GEN-LAST:event_registrerabuttonActionPerformed
+        jKorrekt.setText(txtBenamning.getText() + " registrerad!");
+
+        int i = cbUtrustning.getSelectedIndex();
+
+        switch (i) {
+            case 1:
+                //Vapen
+                SqlFragor.laggTill("INSERT INTO vapen (Utrustnings_ID, Kaliber) VALUES (" + nyID + "," + txtTill.getText() + ");");
+                break;
+            case 2:
+                //Teknik
+                SqlFragor.laggTill("INSERT INTO teknik (Utrustnings_ID, Kraftkalla) VALUES (" + nyID + ",'" + txtTill.getText() + "');");
+                break;
+            case 3:
+                //Kommunikation
+                SqlFragor.laggTill("INSERT INTO kommunikation (Utrustnings_ID, Overforingsteknik) VALUES (" + nyID + ",'" + txtTill.getText() + "');");
+                break;
+        }
+    }//GEN-LAST:event_btnRegistreraActionPerformed
 
     private void txtBenamningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBenamningActionPerformed
         // TODO add your handling code here:
@@ -156,14 +193,54 @@ public class addUtrustning extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
+    private void cbUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUtrustningActionPerformed
+        int i = cbUtrustning.getSelectedIndex();
+        
+        switch (i) {
+            case 0:
+                lTyp.setText("");
+                txtTill.setVisible(false);
+                break;
+            case 1:
+                //Vapen
+                lTyp.setText("Ange kaliber");
+                txtTill.setVisible(true);
+                txtTill.setText("");
+                txtTill.requestFocus();
+                break;
+            case 2:
+                //Teknik
+                lTyp.setText("Kraftkälla");
+                txtTill.setVisible(true);
+                txtTill.setText("");
+                txtTill.requestFocus();
+                break;
+            case 3:
+                //Kommunikation
+                lTyp.setText("Överföringsteknik");
+                txtTill.setVisible(true);
+                txtTill.setText("");
+                txtTill.requestFocus();
+                break;
+        }
+    }//GEN-LAST:event_cbUtrustningActionPerformed
+
+    private void txtTillKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTillKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            btnRegistrera.doClick();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTillKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel benämning;
+    private javax.swing.JButton btnRegistrera;
     private javax.swing.JButton btnTillbaka;
     private javax.swing.JComboBox<String> cbUtrustning;
     private javax.swing.JLabel jKorrekt;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JLabel lTyp;
-    private javax.swing.JButton registrerabutton;
     private javax.swing.JLabel titel;
     private javax.swing.JTextField txtBenamning;
     private javax.swing.JTextField txtTill;
