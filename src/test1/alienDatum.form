@@ -274,16 +274,9 @@
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                              <Component id="canvas1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="76" max="32767" attributes="0"/>
-                              <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Component id="canvas1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="160" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
@@ -323,10 +316,7 @@
                           <Component id="dateSlut" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="132" max="-2" attributes="0"/>
-                          <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jScrollPane1" min="-2" pref="132" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -401,8 +391,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Slutdatum"/>
       </Properties>
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
     </Component>
   </SubComponents>
 </Form>

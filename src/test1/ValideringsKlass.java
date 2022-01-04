@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -16,29 +17,39 @@ import javax.swing.JTextField;
  */
 public class ValideringsKlass {
 
-    public static boolean textFaltHarVarde(JTextField rutaAttKolla) {
+    public static boolean rutaHarText(JTextField ruta) {
         boolean resultat = true;
-        if (rutaAttKolla.getText().isEmpty()) {
+        if (ruta.getText().isEmpty()) {
             JOptionPane.showConfirmDialog(null, "Inmatningsrutan är tom!");
             resultat = false;
-            rutaAttKolla.requestFocus();
+            ruta.requestFocus();
         }
         return resultat;
     }
-
-    public static boolean isHelTal(JTextField rutaAttKolla) {
-        boolean resultat = true;
-
-        try {
-            String inStrang = rutaAttKolla.getText();
-            Integer.parseInt(inStrang);
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showConfirmDialog(null, "Var god ange ett heltal!");
-            rutaAttKolla.requestFocus();
+    public static boolean rutaTom(JTextField ruta){
+        boolean tom = false;
+        if(!ruta.getText().isEmpty()){
+            tom = true;
+        } else{
+            JOptionPane.showConfirmDialog(null, "Inmatningsrutan är tom!");
+            ruta.requestFocus();            
         }
-        return resultat;
+        return tom;
     }
+
+//    public static boolean isHelTal(JTextField rutaAttKolla) {
+//        boolean resultat = true;
+//
+//        try {
+//            String inStrang = rutaAttKolla.getText();
+//            Integer.parseInt(inStrang);
+//
+//        } catch (NumberFormatException e) {
+//            JOptionPane.showConfirmDialog(null, "Var god ange ett heltal!");
+//            rutaAttKolla.requestFocus();
+//        }
+//        return resultat;
+//    }
 
     public static String datum() {
 
@@ -61,4 +72,41 @@ public class ValideringsKlass {
         }
         return arTal;
     }
+    
+    public static boolean testLangd(JTextField namn){
+        boolean langdOk = false;
+        String langd = namn.getText();
+        
+        if(langd.length() > 1){
+            langdOk = true;
+        } else{
+        JOptionPane.showMessageDialog(null, "Namn måste va större än en karaktär");
+        namn.requestFocus();  
+        }
+        
+        return langdOk;
+    }
+    
+    public static boolean testLoA(JComboBox anvandare, JTextField losen, JTextField anvandarnamn){
+        boolean arOk = false;
+        
+        String inLosen = losen.getText();
+        String inAnvandare = anvandarnamn.getText();
+        
+        String aFraga = "SELECT Namn FROM " + anvandare.getSelectedItem().toString() + "WHERE Namn = " + "'" + inAnvandare + "'";
+        String lFraga = "SELECT Namn FROM " + anvandare.getSelectedItem().toString() + "WHERE Namn = " + "'" + inLosen + "'";
+        
+        String aSvar = SqlFragor.fragaSingel(aFraga);
+        String alosen = SqlFragor.fragaSingel(lFraga);
+        
+        if(inAnvandare.equals(aSvar) && inLosen.equals(alosen) && !aSvar.isBlank() && !alosen.isBlank()){
+          arOk = true;    
+        } else {
+            JOptionPane.showMessageDialog(null, "Fel användarnamn eller lösenord");
+            anvandare.requestFocus(); 
+        }
+        
+        return arOk;
+    }
+    
 }

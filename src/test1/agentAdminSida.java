@@ -6,6 +6,7 @@ package test1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.tree.TreePath;
 
 /**
  *
@@ -14,6 +15,8 @@ import java.util.HashMap;
 public class agentAdminSida extends javax.swing.JFrame {
 
     String namn;
+    private String typ;
+    private String fonster;
 
     /**
      * Creates new form agentAdminSida
@@ -24,6 +27,9 @@ public class agentAdminSida extends javax.swing.JFrame {
         lblValkommen.setText("Välkommen " + namn);
         laggTillAtgard();
         listaAllUtrustning();
+        for (int i = 0; i < jTree1.getRowCount(); i++) {
+            jTree1.expandRow(i);
+        }
     }
 
     private void laggTillAtgard() {
@@ -66,6 +72,8 @@ public class agentAdminSida extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtfUtrustning = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -119,61 +127,129 @@ public class agentAdminSida extends javax.swing.JFrame {
         txtfUtrustning.setColumns(1);
         txtfUtrustning.setRows(5);
         jScrollPane1.setViewportView(txtfUtrustning);
-        txtfUtrustning.getAccessibleContext().setAccessibleParent(null);
 
         jLabel5.setText("Utcheckad utustning");
+
+        jTree1.setBorder(null);
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("JTree");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Lägg till:");
+        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Alien");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Agent");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Utrustning");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Ändra:");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Alien");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Agent");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Chef");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Ta bort:");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Alien");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Agent");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Utrustning");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Sök upp:");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Alien per ras");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Registreringsdatum");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Plats");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Information:");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Alien");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Agent");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jTree1.setToolTipText("");
+        jTree1.setRootVisible(false);
+        jTree1.setShowsRootHandles(true);
+        jTree1.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jTree1ComponentAdded(evt);
+            }
+        });
+        jTree1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTree1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTree1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblValkommen)
-                    .addComponent(jLabel3)
-                    .addComponent(cbAtgarder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblValkommen)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbAtgarder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cbKontrollAvAlien, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(206, 206, 206))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane1)
-                                .addComponent(btnLoggaUt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnNylosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(45, 45, 45))))
+                            .addComponent(jLabel2))
+                        .addGap(108, 108, 108)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1)
+                        .addComponent(btnLoggaUt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNylosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblValkommen)
-                    .addComponent(btnLoggaUt))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNylosen)
-                    .addComponent(jLabel3))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbKontrollAvAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbAtgarder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(btnLoggaUt)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnNylosen)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(lblValkommen)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbAtgarder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbKontrollAvAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(87, 87, 87))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
@@ -278,6 +354,121 @@ public class agentAdminSida extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbAtgarderActionPerformed
 
+    private void jTree1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jTree1ComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTree1ComponentAdded
+
+    private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MouseClicked
+
+        TreePath aa = jTree1.getSelectionPath();
+        if (aa != null) {
+
+            String bb = aa.toString();
+            String string = bb.replaceAll("[\\[\\](){}]", "");
+            String[] parts = string.split(",");
+
+            if (parts.length > 2) {
+
+                //                String part1 = parts[0]; // root
+                String part2 = parts[1]; // parent
+                String part3 = parts[2]; // leaf
+
+                typ = part2.trim();
+                fonster = part3.trim();
+
+                System.out.println(typ);
+                System.out.println(fonster);
+
+                if (typ.equals("Lägg till:")) {
+                    switch (fonster) {
+                        case "Alien":
+                            new nyRegistreraAlien().setVisible(true);
+                            dispose();
+                            break;
+                        case "Agent":
+                            new addAgent().setVisible(true);
+                            dispose();
+                            break;
+                        case "Utrustning":
+                            new addUtrustning().setVisible(true);
+                            dispose();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (typ.equals("Ändra:")) {
+                    switch (fonster) {
+                        case "Alien":
+                            new AndraAlien().setVisible(true);
+                            dispose();
+                            break;
+                        case "Agent":
+                            new AndraAgent().setVisible(true);
+                            dispose();
+                            break;
+                        case "Chef":
+                            new AndraChef().setVisible(true);
+                            dispose();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (typ.equals("Ta bort:")) {
+                    switch (fonster) {
+                        case "Alien":
+                            new TaBortAlien().setVisible(true);
+                            dispose();
+                            break;
+                        case "Agent":
+                            new TaBortAgent().setVisible(true);
+                            dispose();
+                            break;
+                        case "Utrustning":
+                            new TaBortUtrustning().setVisible(true);
+                            dispose();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (typ.equals("Sök upp:")) {
+                    switch (fonster) {
+                        case "Alien per ras":
+                            new alienAvRas().setVisible(true);
+                            dispose();
+                            break;
+                        case "Registreringsdatum":
+                            new alienDatum().setVisible(true);
+                            dispose();
+                            break;
+                        case "Plats":
+                            new allaAlienPlats().setVisible(true);
+                            dispose();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (typ.equals("Information:")) {
+                    switch (fonster) {
+                        case "Alien":
+                            new sökAllinfoAlien().setVisible(true);
+                            dispose();
+                            break;
+                        case "Agent":
+                            new AllInfoEnAgent().setVisible(true);
+                            dispose();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jTree1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaUt;
@@ -291,6 +482,8 @@ public class agentAdminSida extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTree jTree1;
     private javax.swing.JLabel lblValkommen;
     private javax.swing.JTextArea txtfUtrustning;
     // End of variables declaration//GEN-END:variables

@@ -23,40 +23,36 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
+              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+          </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-              <Component id="jScrollPane2" min="-2" pref="164" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
+              <Component id="jScrollPane2" min="-2" pref="186" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField2" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="jTextField1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField2" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="jTextField1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -138,7 +134,7 @@
         <Component class="javax.swing.JTree" name="jTree1">
           <Properties>
             <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-              <TreeModel code="JTree&#xa; colors&#xa;  blue&#xa;  violet&#xa;  red&#xa;  yellow&#xa; sports&#xa;  basketball&#xa;  soccer&#xa;  football&#xa;  hockey&#xa; food&#xa;  hot dogs&#xa;  pizza&#xa;  ravioli&#xa;  bananas"/>
+              <TreeModel code="JTree&#xa; L&#xe4;gg till:&#xa;  Alien&#xa;  Agent&#xa;  Utrustning&#xa; &#xc4;ndra:&#xa;  Alien&#xa;  Agent&#xa;  Chef&#xa; Ta bort:&#xa;  Alien&#xa;  Agent&#xa;  Utrustning&#xa; S&#xf6;k up:&#xa;  Alien per ras&#xa;  Registreringsdatum&#xa;  Plats"/>
             </Property>
             <Property name="rootVisible" type="boolean" value="false"/>
             <Property name="showsRootHandles" type="boolean" value="true"/>
