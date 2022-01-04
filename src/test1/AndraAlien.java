@@ -450,20 +450,20 @@ public class AndraAlien extends javax.swing.JFrame {
 //        } else if (!ValideringsKlass.taltest(txtID)) {
 //            txtID.requestFocus();
 //        }  
-        if (txtNamn.getText().isBlank()) {
+        if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
-        } else if (txtLosen.getText().isBlank()) {
+        } else if (!ValideringsKlass.textFaltHarVarde(txtLosen)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
             txtLosen.requestFocus();
-        } else if (txtLosen.getText().length() > 6) {
+        } else if (!ValideringsKlass.testLangdLosen(txtLosen)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord får ej vara längre än sex tecken");
             txtLosen.requestFocus();
             txtLosen.selectAll();
-        } else if (txtTele.getText().isBlank()) {
+        } else if (!ValideringsKlass.textFaltHarVarde(txtTele)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
             txtTele.requestFocus();
@@ -483,7 +483,7 @@ public class AndraAlien extends javax.swing.JFrame {
         } else if (cbAnsvarigAgent.getSelectedIndex() == 0) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj agent");
-        } else if (txtDatum.getText().isBlank()) {
+        } else if (!ValideringsKlass.textFaltHarVarde(txtDatum)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Ange datum");
         }

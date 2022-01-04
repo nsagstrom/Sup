@@ -6,7 +6,9 @@ package test1;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -73,5 +75,37 @@ public class ValideringsKlass {
             langdOk = false;
         }
         return langdOk;
+    }
+    
+    public static boolean dublettAgentNamn(JTextField namn){
+        int i = 0;
+        boolean ejDublett = true;
+        
+        String nyNamn = namn.getText();
+        ArrayList<HashMap<String, String>> allaNuvarandeNamn = null;
+        String namnCheck = "";
+        
+        
+        
+        for(HashMap<String, String> a : allaNuvarandeNamn){
+            namnCheck = a.get("Namn");
+            
+            if(namnCheck.equals(nyNamn)){
+                ejDublett = false;
+            }
+
+        }
+        if (ejDublett) {
+            
+        }
+        
+        return ejDublett;
+    }
+    
+    public static boolean dublettAlienNamn(JTextField namn){
+        boolean ejDublett = true;
+        
+        
+        return ejDublett;
     }
 }
