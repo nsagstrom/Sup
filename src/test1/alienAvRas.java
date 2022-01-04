@@ -38,11 +38,13 @@ public class alienAvRas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         jLabel1.setText("Eat shit and die ");
 
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel2.setText("Välj ras");
 
+        cbRaser.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         cbRaser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbRaserActionPerformed(evt);
@@ -50,9 +52,11 @@ public class alienAvRas extends javax.swing.JFrame {
         });
 
         txtAreaAlienRas.setColumns(20);
+        txtAreaAlienRas.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         txtAreaAlienRas.setRows(5);
         jScrollPane1.setViewportView(txtAreaAlienRas);
 
+        jButton1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jButton1.setText("Tillbaka");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,8 +74,8 @@ public class alienAvRas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cbRaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(187, Short.MAX_VALUE))
@@ -88,7 +92,7 @@ public class alienAvRas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cbRaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

@@ -21,6 +21,7 @@ public class alienDatum extends javax.swing.JFrame {
      * Creates new form alienDatum
      */
     public alienDatum() {
+        
         initComponents();
 
     }
@@ -55,13 +56,16 @@ public class alienDatum extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jFrame3 = new javax.swing.JFrame();
         jDialog6 = new javax.swing.JDialog();
+        jSpinner1 = new javax.swing.JSpinner();
         canvas1 = new java.awt.Canvas();
+        dateStart = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         tbnOK = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnTillbaka = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        dateSlut = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
@@ -193,6 +197,8 @@ public class alienDatum extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        dateStart.setDateFormatString("yyyy-MM-dd");
+
         jScrollPane1.setToolTipText("");
         jScrollPane1.setViewportView(null);
 
@@ -203,6 +209,7 @@ public class alienDatum extends javax.swing.JFrame {
         txtArea.setAutoscrolls(false);
         jScrollPane1.setViewportView(txtArea);
 
+        tbnOK.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         tbnOK.setText("Ok");
         tbnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,8 +217,10 @@ public class alienDatum extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel2.setText("Startdatum");
 
+        btnTillbaka.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnTillbaka.setText("Tillbaka");
         btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,8 +228,12 @@ public class alienDatum extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         jLabel1.setText("Reggade mellan datum");
 
+        dateSlut.setDateFormatString("yyyy-MM-dd");
+
+        jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel3.setText("Slutdatum");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -228,26 +241,33 @@ public class alienDatum extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnTillbaka)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(dateStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(dateSlut, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tbnOK))
+                                    .addComponent(jLabel3))))
+                        .addGap(1, 1, 1)
+                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTillbaka)))
                 .addGap(52, 52, 52))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(149, 149, 149)
-                                .addComponent(tbnOK))
-                            .addComponent(jLabel3))))
-                .addGap(1, 1, 1)
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(212, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,18 +276,21 @@ public class alienDatum extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTillbaka)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
+                        .addGap(152, 152, 152)
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(155, 155, 155))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tbnOK)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tbnOK)
+                            .addComponent(dateSlut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(66, 66, 66)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -330,6 +353,8 @@ public class alienDatum extends javax.swing.JFrame {
     private javax.swing.JButton btnTillbaka;
     private javax.swing.ButtonGroup buttonGroup1;
     private java.awt.Canvas canvas1;
+    private com.toedter.calendar.JDateChooser dateSlut;
+    private com.toedter.calendar.JDateChooser dateStart;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
@@ -356,6 +381,7 @@ public class alienDatum extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JButton tbnOK;
     private javax.swing.JTextArea txtArea;
     // End of variables declaration//GEN-END:variables

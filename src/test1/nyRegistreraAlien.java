@@ -68,6 +68,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnTillbaka.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnTillbaka.setText("Tillbaka");
         btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,11 +76,17 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         jLabel1.setText("Registrera ny Alien");
 
+        txtNamn.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        txtTelefon.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        cbPlats.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         cbPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj plats" }));
 
+        cbAnsvarigAgent.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         cbAnsvarigAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ansvarig" }));
         cbAnsvarigAgent.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -87,6 +94,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
             }
         });
 
+        btnLaggTill.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnLaggTill.setText("Lägg till");
         btnLaggTill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,12 +102,18 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel2.setText("Namn");
 
+        jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel3.setText("Lösenord");
 
+        jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel4.setText("Telefon");
 
+        pwLosen.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        cbVisaLosen.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         cbVisaLosen.setText("Visa Lösenord");
         cbVisaLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +121,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
             }
         });
 
+        cbRaser.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         cbRaser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj Ras" }));
         cbRaser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +129,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
             }
         });
 
+        txtRasTill.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         txtRasTill.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtRasTillKeyPressed(evt);
@@ -136,7 +152,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2))
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -166,7 +182,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
                         .addComponent(btnLaggTill)
                         .addGap(28, 28, 28)
                         .addComponent(lReggad, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(277, Short.MAX_VALUE))
+                        .addContainerGap(266, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(txtRasTill, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,7 +220,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLaggTill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lReggad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         pack();

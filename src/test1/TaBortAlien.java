@@ -4,6 +4,7 @@
  */
 package test1;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +18,8 @@ public class TaBortAlien extends javax.swing.JFrame {
      */
     public TaBortAlien() {
         initComponents();
+        
+                
     }
 
     /**
@@ -28,16 +31,17 @@ public class TaBortAlien extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btnTillbaka = new javax.swing.JButton();
-        jLAlien = new javax.swing.JLabel();
-        jTAlien = new javax.swing.JTextField();
         btnTaBort = new javax.swing.JButton();
         jLKorrekt = new javax.swing.JLabel();
+        jAlien = new javax.swing.JLabel();
+        jTAlien = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         jLabel1.setText("Ta bort alien");
 
+        btnTillbaka.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnTillbaka.setText("Tillbaka");
         btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,8 +49,7 @@ public class TaBortAlien extends javax.swing.JFrame {
             }
         });
 
-        jLAlien.setText("Alien:");
-
+        btnTaBort.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnTaBort.setText("Ta bort");
         btnTaBort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,43 +57,54 @@ public class TaBortAlien extends javax.swing.JFrame {
             }
         });
 
+        jLKorrekt.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+
+        jAlien.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        jAlien.setText("Alien:");
+
+        jTAlien.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnTillbaka)
-                .addGap(52, 52, 52))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnTaBort)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(59, 59, 59)
-                .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(jAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(btnTaBort)))
+                        .addGap(43, 43, 43)
+                        .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jLabel1)
+                        .addGap(57, 57, 57)
+                        .addComponent(btnTillbaka)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(btnTillbaka))
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLAlien)
-                    .addComponent(jTAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jAlien)
+                        .addComponent(jTAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(32, 32, 32)
                 .addComponent(btnTaBort)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -103,8 +117,8 @@ public class TaBortAlien extends javax.swing.JFrame {
         String idbort = SqlFragor.fragaSingel(taBort);
         String avCheck = "SELECT * FROM Alien WHERE Alien_ID = " + idbort;
 
-        if (SqlFragor.fragaSingel(taBort) == null) {
-            JOptionPane.showMessageDialog(rootPane, "Alien finns ej!");
+        if (SqlFragor.fragaSingel(avCheck) == null) {
+            JOptionPane.showMessageDialog(rootPane, "Välj en alien!");
         } else {
             String tabortAlien = "DELETE FROM alien WHERE Alien_ID = " + idbort;
             String tabortBog = "DELETE FROM  boglodite WHERE Alien_ID = " + idbort;
@@ -135,7 +149,7 @@ public class TaBortAlien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaBort;
     private javax.swing.JButton btnTillbaka;
-    private javax.swing.JLabel jLAlien;
+    private javax.swing.JLabel jAlien;
     private javax.swing.JLabel jLKorrekt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTAlien;

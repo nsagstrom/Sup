@@ -31,21 +31,25 @@ public class allaAlienPlats extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 1, 20)); // NOI18N
         jLabel1.setText("Eat shit and die");
 
+        cbValjPlats.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         cbValjPlats.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbValjPlatsActionPerformed(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel2.setText("Välj plats");
 
         txtAreaVisaAlienPlats.setColumns(20);
+        txtAreaVisaAlienPlats.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         txtAreaVisaAlienPlats.setRows(5);
         jScrollPane1.setViewportView(txtAreaVisaAlienPlats);
 
+        jButton1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jButton1.setText("Tillbaka");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,7 +91,7 @@ public class allaAlienPlats extends javax.swing.JFrame {
                     .addComponent(cbValjPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();

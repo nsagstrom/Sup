@@ -51,8 +51,16 @@ public class addAgent extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Lägga till en jävla agent ");
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
+        jLabel1.setText("Lägg till agent ");
 
+        txtNamn.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        txtTelefon.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        pwLosen.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        cbVisaLosen.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         cbVisaLosen.setText("Visa lösenord");
         cbVisaLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +68,7 @@ public class addAgent extends javax.swing.JFrame {
             }
         });
 
+        cbOmrade.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         cbOmrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj område" }));
         cbOmrade.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -67,6 +76,7 @@ public class addAgent extends javax.swing.JFrame {
             }
         });
 
+        boxAdmin.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         boxAdmin.setText("Är admin");
         boxAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +89,7 @@ public class addAgent extends javax.swing.JFrame {
             }
         });
 
+        btnOK.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnOK.setText("OK");
         btnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,14 +97,19 @@ public class addAgent extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel2.setText("Namn");
 
+        jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel3.setText("Telefonummer");
 
+        jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel4.setText("Lösenord");
 
+        jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel5.setText("Område");
 
+        btnTillbaka.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnTillbaka.setText("Tillbaka");
         btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,13 +132,13 @@ public class addAgent extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(cbOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(44, 44, 44)
-                                        .addComponent(boxAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(31, 31, 31)
+                                        .addComponent(boxAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
                                 .addComponent(btnOK))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel2))
                                 .addGap(45, 45, 45)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,7 +187,7 @@ public class addAgent extends javax.swing.JFrame {
                     .addComponent(btnOK))
                 .addGap(33, 33, 33)
                 .addComponent(lReggad)
-                .addGap(0, 95, Short.MAX_VALUE))
+                .addGap(0, 89, Short.MAX_VALUE))
         );
 
         pack();

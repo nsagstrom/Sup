@@ -79,17 +79,24 @@ public class forstaSida extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         jLabel1.setText("Välkommen till MIBs fucking inloggning");
 
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel2.setText("Vem vill du logga in som");
 
+        cbVem.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        pwfalt.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         pwfalt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 pwfaltKeyPressed(evt);
             }
         });
 
+        txtVemInlogg.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        cbVisaLosen.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         cbVisaLosen.setText("Visa lösenord");
         cbVisaLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,10 +109,13 @@ public class forstaSida extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel3.setText("Användarnamn");
 
+        jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel4.setText("Lösenord");
 
+        btnLoggaIn.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnLoggaIn.setText("Logga in");
         btnLoggaIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +123,7 @@ public class forstaSida extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jButton1.setText("Avsluta");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +131,7 @@ public class forstaSida extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jButton2.setText("jButton2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,18 +144,18 @@ public class forstaSida extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
+                .addContainerGap(175, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton1))
-                                .addComponent(jLabel1)))
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel3))
                         .addGap(80, 80, 80))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -181,7 +193,7 @@ public class forstaSida extends javax.swing.JFrame {
                     .addComponent(jButton2))
                 .addGap(18, 18, 18)
                 .addComponent(cbVisaLosen)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();

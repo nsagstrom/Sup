@@ -36,7 +36,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtNamn" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                           <Component id="cbPlats" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -79,7 +79,7 @@
                       <Component id="btnLaggTill" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="lReggad" min="-2" pref="248" max="-2" attributes="0"/>
-                      <EmptySpace pref="277" max="32767" attributes="0"/>
+                      <EmptySpace pref="266" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="137" pref="137" max="-2" attributes="0"/>
@@ -127,7 +127,7 @@
                   <Component id="btnLaggTill" max="32767" attributes="0"/>
                   <Component id="lReggad" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="103" max="32767" attributes="0"/>
+              <EmptySpace pref="104" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -135,6 +135,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnTillbaka">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Book Antiqua" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Tillbaka"/>
       </Properties>
       <Events>
@@ -144,17 +147,30 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
+          <Font name="Book Antiqua" size="20" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Registrera ny Alien"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNamn">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="OCR A Extended" size="12" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTelefon">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="OCR A Extended" size="12" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbPlats">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="OCR A Extended" size="12" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
             <StringItem index="0" value="V&#xe4;lj plats"/>
@@ -167,6 +183,9 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="cbAnsvarigAgent">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="OCR A Extended" size="12" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
             <StringItem index="0" value="Ansvarig"/>
@@ -182,6 +201,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnLaggTill">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Book Antiqua" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="L&#xe4;gg till"/>
       </Properties>
       <Events>
@@ -190,23 +212,40 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Book Antiqua" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Namn"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Book Antiqua" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="L&#xf6;senord"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Book Antiqua" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Telefon"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="pwLosen">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="OCR A Extended" size="12" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="cbVisaLosen">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Book Antiqua" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Visa L&#xf6;senord"/>
       </Properties>
       <Events>
@@ -215,6 +254,9 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="cbRaser">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="OCR A Extended" size="12" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
             <StringItem index="0" value="V&#xe4;lj Ras"/>
@@ -229,6 +271,11 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRasTill">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="OCR A Extended" size="12" style="0"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRasTillKeyPressed"/>
       </Events>

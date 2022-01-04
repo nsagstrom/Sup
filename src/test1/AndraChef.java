@@ -45,6 +45,7 @@ public class AndraChef extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        cbBefattning.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         cbBefattning.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj befattning", "Områdeschef", "Kontorschef" }));
         cbBefattning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,8 +53,10 @@ public class AndraChef extends javax.swing.JFrame {
             }
         });
 
+        cbVart.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         cbVart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj plats" }));
 
+        btnTillbaka.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnTillbaka.setText("Tillbaka");
         btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,12 +64,16 @@ public class AndraChef extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         jLabel1.setText("Ändra chef");
 
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel2.setText("Vilken typ av chef");
 
+        jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel4.setText("Vart");
 
+        jButton1.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
         jButton1.setText("Ändra");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,11 +81,14 @@ public class AndraChef extends javax.swing.JFrame {
             }
         });
 
+        cbAgenter.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         cbAgenter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj Agent" }));
 
+        jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel7.setText("Agent");
 
         txtChef.setColumns(2);
+        txtChef.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         txtChef.setRows(5);
         txtChef.setTabSize(3);
         jScrollPane1.setViewportView(txtChef);
@@ -93,9 +103,7 @@ public class AndraChef extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(btnTillbaka))
+                        .addComponent(btnTillbaka)
                         .addGap(50, 50, 50))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -112,7 +120,9 @@ public class AndraChef extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(cbVart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(161, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,7 +140,9 @@ public class AndraChef extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbVart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbVart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnTillbaka)
@@ -138,14 +150,12 @@ public class AndraChef extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbBefattning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))))
+                        .addComponent(cbBefattning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(64, 64, 64)
                 .addComponent(landrad)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();

@@ -57,6 +57,7 @@ public class AndraAgent extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnOK.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnOK.setText("Ok");
         btnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,24 +65,36 @@ public class AndraAgent extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         jLabel1.setText("Ändra uppgifter");
 
+        txtID.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         txtID.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtIDKeyPressed(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel2.setText("Ange ID på agenten du vill ändra");
 
+        txtNamn.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        txtDatum.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel3.setText("Namn");
 
+        jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel4.setText("Anställ datum");
 
+        cbOmrade.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         cbOmrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj Område" }));
 
+        jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel6.setText("Plats");
 
+        jButton1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jButton1.setText("Ändra");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,10 +102,16 @@ public class AndraAgent extends javax.swing.JFrame {
             }
         });
 
+        txtLosen.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel8.setText("Lösenord");
+
+        txtTele.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
 
         txtAllInfo.setEditable(false);
         txtAllInfo.setColumns(20);
+        txtAllInfo.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         txtAllInfo.setRows(5);
         txtAllInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtAllInfo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -100,8 +119,10 @@ public class AndraAgent extends javax.swing.JFrame {
         txtAllInfo.setSelectionColor(new java.awt.Color(255, 0, 0));
         jScrollPane1.setViewportView(txtAllInfo);
 
+        jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel9.setText("Telefon");
 
+        btnTillbaka.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnTillbaka.setText("Tillbaka");
         btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +130,7 @@ public class AndraAgent extends javax.swing.JFrame {
             }
         });
 
+        btnUppdatera.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnUppdatera.setText("Uppdatera");
         btnUppdatera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +138,7 @@ public class AndraAgent extends javax.swing.JFrame {
             }
         });
 
+        checkAdmin.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         checkAdmin.setText("Admin");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -150,8 +173,8 @@ public class AndraAgent extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel4)
-                                    .addComponent(txtDatum, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                                    .addComponent(txtDatum))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
                                     .addComponent(txtLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
