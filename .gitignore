@@ -49,3 +49,4 @@ hs_err_pid*
 .mtj.tmp/
 build/built-jar.properties
 build/built-jar.properties
+*.properties
