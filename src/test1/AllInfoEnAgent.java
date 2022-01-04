@@ -19,8 +19,8 @@ public class AllInfoEnAgent extends javax.swing.JFrame {
      * Creates new form AllInfoEnAgent
      */
     public AllInfoEnAgent() {
-        Metoder.laggTillAgent(cbAnsvarigAgent);
         initComponents();
+        Metoder.laggTillAgent(cbAnsvarigAgent);
 
     }
 
