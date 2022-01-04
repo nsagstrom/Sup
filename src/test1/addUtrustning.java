@@ -25,11 +25,14 @@ public class addUtrustning extends javax.swing.JFrame {
     private void initComponents() {
 
         registrerabutton = new javax.swing.JButton();
-        jTutrustning = new javax.swing.JTextField();
+        txtBenamning = new javax.swing.JTextField();
         titel = new javax.swing.JLabel();
         benämning = new javax.swing.JLabel();
         jKorrekt = new javax.swing.JLabel();
         btnTillbaka = new javax.swing.JButton();
+        cbUtrustning = new javax.swing.JComboBox<>();
+        txtTill = new javax.swing.JTextField();
+        lTyp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,11 +44,11 @@ public class addUtrustning extends javax.swing.JFrame {
             }
         });
 
-        jTutrustning.setColumns(4);
-        jTutrustning.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        jTutrustning.addActionListener(new java.awt.event.ActionListener() {
+        txtBenamning.setColumns(4);
+        txtBenamning.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        txtBenamning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTutrustningActionPerformed(evt);
+                txtBenamningActionPerformed(evt);
             }
         });
 
@@ -63,28 +66,37 @@ public class addUtrustning extends javax.swing.JFrame {
             }
         });
 
+        cbUtrustning.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Typ av utrustning" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(titel, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(registrerabutton)
+                        .addComponent(benämning)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTill, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(benämning)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTutrustning, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(titel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnTillbaka)
-                        .addGap(18, 18, 18))))
+                                .addComponent(txtBenamning, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(41, 41, 41)
+                                        .addComponent(cbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lTyp, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(registrerabutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTillbaka, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,14 +105,23 @@ public class addUtrustning extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titel)
                     .addComponent(btnTillbaka))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTutrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(benämning)
-                    .addComponent(jKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(registrerabutton)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtBenamning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(benämning)
+                            .addComponent(cbUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(registrerabutton)))
+                .addGap(24, 24, 24)
+                .addComponent(lTyp, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
@@ -109,7 +130,7 @@ public class addUtrustning extends javax.swing.JFrame {
     private void registrerabuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrerabuttonActionPerformed
         // TODO add your handling code here:
 
-        String nyUtrustning = jTutrustning.getText();
+        String nyUtrustning = txtBenamning.getText();
 
         String nyID = SqlFragor.nyID("utrustning", "Utrustnings_ID");
 
@@ -119,11 +140,11 @@ public class addUtrustning extends javax.swing.JFrame {
         jKorrekt.setText(nyUtrustning + " registrerad!");
     }//GEN-LAST:event_registrerabuttonActionPerformed
 
-    private void jTutrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTutrustningActionPerformed
+    private void txtBenamningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBenamningActionPerformed
         // TODO add your handling code here:
 
 
-    }//GEN-LAST:event_jTutrustningActionPerformed
+    }//GEN-LAST:event_txtBenamningActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         if (forstaSida.arAdmin()) {
@@ -139,9 +160,12 @@ public class addUtrustning extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel benämning;
     private javax.swing.JButton btnTillbaka;
+    private javax.swing.JComboBox<String> cbUtrustning;
     private javax.swing.JLabel jKorrekt;
-    private javax.swing.JTextField jTutrustning;
+    private javax.swing.JLabel lTyp;
     private javax.swing.JButton registrerabutton;
     private javax.swing.JLabel titel;
+    private javax.swing.JTextField txtBenamning;
+    private javax.swing.JTextField txtTill;
     // End of variables declaration//GEN-END:variables
 }

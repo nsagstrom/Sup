@@ -74,6 +74,7 @@ public class AndraAlien extends javax.swing.JFrame {
         txtAllInfo.setColumns(20);
         txtAllInfo.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         txtAllInfo.setRows(5);
+        txtAllInfo.setTabSize(12);
         txtAllInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtAllInfo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtAllInfo.setEnabled(false);
@@ -407,7 +408,6 @@ public class AndraAlien extends javax.swing.JFrame {
         cbAnsvarigAgent.setSelectedItem(uppgifter.get("Agent"));
         cbPlats.setSelectedItem(uppgifter.get("Benamning"));
 
-        System.out.println(id);
 
         if (uppgifter.get("Ras").equalsIgnoreCase("Annat")) {
             cbRaser.setSelectedIndex(4);
