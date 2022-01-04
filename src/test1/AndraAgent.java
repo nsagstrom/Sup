@@ -289,27 +289,27 @@ public class AndraAgent extends javax.swing.JFrame {
     private boolean okUppgifter() {
         boolean ok = true;
 
-        if (txtID.getText().isBlank()) {
+        if (!ValideringsKlass.textFaltHarVarde(txtID)) {
             ok = false;
-            JOptionPane.showMessageDialog(null, "Ange id");
+            JOptionPane.showMessageDialog(null, "Ange ID");
             txtID.requestFocus();
         } else if (!ValideringsKlass.taltest(txtID)) {
-            JOptionPane.showMessageDialog(null, "Ange tal");
+            JOptionPane.showMessageDialog(null, "Ange korrekt ID");
             txtID.requestFocus();
-        } else if (txtNamn.getText().isBlank()) {
+        } else if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
-        } else if (txtLosen.getText().isBlank()) {
+        } else if (!ValideringsKlass.textFaltHarVarde(txtLosen)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
             txtLosen.requestFocus();
-        } else if (txtLosen.getText().length() > 6) {
+        } else if (!ValideringsKlass.testLangdLosen(txtLosen)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord får ej vara längre än sex tecken");
             txtLosen.requestFocus();
             txtLosen.selectAll();
-        } else if (txtTele.getText().isBlank()) {
+        } else if (!ValideringsKlass.textFaltHarVarde(txtTele)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
             txtTele.requestFocus();
@@ -317,7 +317,7 @@ public class AndraAgent extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj område");
             cbOmrade.requestFocus();
-        } else if (txtDatum.getText().isBlank()) {
+        } else if (!ValideringsKlass.textFaltHarVarde(txtDatum)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Ange datum");
         }

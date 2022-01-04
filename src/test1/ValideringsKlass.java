@@ -18,27 +18,21 @@ import javax.swing.JTextField;
  */
 public class ValideringsKlass {
 
-    public static boolean textFaltHarVarde(JTextField rutaAttKolla) {
-        boolean resultat = true;
-        if (rutaAttKolla.getText().isEmpty()) {
-            resultat = false;
-            rutaAttKolla.requestFocus();
+    public static boolean textFaltHarVarde(JTextField ruta) {
+        boolean rutaHarVarde = true;
+        if (ruta.getText().isEmpty()) {
+            rutaHarVarde = false;
+            ruta.requestFocus();
         }
-        return resultat;
+        return rutaHarVarde;
     }
-
-    public static boolean isHelTal(JTextField rutaAttKolla) {
-        boolean resultat = true;
-
-        try {
-            String inStrang = rutaAttKolla.getText();
-            Integer.parseInt(inStrang);
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showConfirmDialog(null, "Var god ange ett heltal!");
-            rutaAttKolla.requestFocus();
+    
+    public static boolean stringHarVarde(String instring){
+        boolean stringFinns = true;
+        if(instring.isEmpty()){
+            stringFinns = false;
         }
-        return resultat;
+        return stringFinns;
     }
 
     public static String datum() {
@@ -50,53 +44,34 @@ public class ValideringsKlass {
     }
 
     public static boolean taltest(JTextField taltest) {
-        boolean arTal = false;
+        boolean arTal = true;
         String idid = taltest.getText();
 
-        if (idid.matches("\\d+")) {
-            arTal = true;
+        if (!idid.matches("\\d+")) {
+            arTal = false;
 
         } else {
-            JOptionPane.showMessageDialog(null, "Måste vara tal");
             taltest.requestFocus();
         }
         return arTal;
     }
 
-    public static boolean testLangd(JTextField namn) {
-        boolean langdOk = false;
-        String langd = namn.getText();
-
-        if (langd.length() > 1) {
-            langdOk = true;
+    public static boolean testLangdLosen(JTextField losen) {
+        boolean langdOk = true;
+        String langd = losen.getText();
+        if (langd.length() > 6) {
+            langdOk = false;
         } else {
-            JOptionPane.showMessageDialog(null, "Namn måste va större än en karaktär");
-            namn.requestFocus();
+            losen.requestFocus();
         }
-
         return langdOk;
     }
-
-    public static boolean testLoA(JComboBox anvandare, JPasswordField losen, JTextField anvandarnamn) {
-        boolean arOk = false;
-
-        String inLosen = new String(losen.getPassword());
-        String inAnvandare = anvandarnamn.getText();
-
-        String aFraga = "SELECT Namn FROM " + anvandare.getSelectedItem().toString().toLowerCase() + "WHERE Namn = " + "'" + inAnvandare + "'";
-        String lFraga = "SELECT Losenord FROM " + anvandare.getSelectedItem().toString().toLowerCase() + "WHERE Namn = " + "'" + inLosen + "'";
-
-        String aSvar = SqlFragor.fragaSingel(aFraga);
-        String alosen = SqlFragor.fragaSingel(lFraga);
-
-        if (inAnvandare.equals(aSvar) && inLosen.equals(alosen) && !inLosen.isBlank() && !inAnvandare.isBlank()) {
-            arOk = true;
-        } else {
-            JOptionPane.showMessageDialog(null, "Fel användarnamn eller lösenord");
-            anvandare.requestFocus();
+    
+    public static boolean testLosenStrang(String losen){
+        boolean langdOk = true;
+        if(losen.length() < 7){
+            langdOk = false;
         }
-
-        return arOk;
+        return langdOk;
     }
-
 }

@@ -417,27 +417,27 @@ public class AndraAlien extends javax.swing.JFrame {
     private boolean okUppgifter() {
         boolean ok = true;
 
-        if (txtID.getText().isBlank()) {
+        if (!ValideringsKlass.textFaltHarVarde(txtID)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Ange id");
             txtID.requestFocus();
         } else if (!ValideringsKlass.taltest(txtID)) {
-            JOptionPane.showMessageDialog(null, "Tal ditt mongo");
+            JOptionPane.showMessageDialog(null, "Ange giltigt ID");
             txtID.requestFocus();
-        } else if (txtNamn.getText().isBlank()) {
+        } else if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
-        } else if (txtLosen.getText().isBlank()) {
+        } else if (!ValideringsKlass.textFaltHarVarde(txtLosen)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
             txtLosen.requestFocus();
-        } else if (txtLosen.getText().length() > 6) {
+        } else if (!ValideringsKlass.testLangdLosen(txtLosen)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord får ej vara längre än sex tecken");
             txtLosen.requestFocus();
             txtLosen.selectAll();
-        } else if (txtTele.getText().isBlank()) {
+        } else if (!ValideringsKlass.textFaltHarVarde(txtTele)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
             txtTele.requestFocus();
@@ -450,14 +450,14 @@ public class AndraAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Välj ras");
             cbRaser.requestFocus();
         } else if (cbRaser.getSelectedIndex() == 1 || cbRaser.getSelectedIndex() == 2) {
-            if (txtRasTill.getText().isBlank()) {
+            if (!ValideringsKlass.textFaltHarVarde(txtRasTill)) {
                 ok = false;
                 JOptionPane.showMessageDialog(null, "Ange antal");
             }
         } else if (cbAnsvarigAgent.getSelectedIndex() == 0) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj agent");
-        } else if (txtDatum.getText().isBlank()) {
+        } else if (!ValideringsKlass.textFaltHarVarde(txtDatum)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Ange datum");
         }

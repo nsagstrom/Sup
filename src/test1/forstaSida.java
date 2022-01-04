@@ -76,7 +76,6 @@ public class forstaSida extends javax.swing.JFrame {
         btnLoggaIn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,13 +127,6 @@ public class forstaSida extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Logga in 2");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,10 +151,8 @@ public class forstaSida extends javax.swing.JFrame {
                             .addComponent(txtVemInlogg)
                             .addComponent(cbVisaLosen)
                             .addComponent(cbVem, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnLoggaIn)
-                            .addComponent(jButton3))
+                        .addGap(48, 48, 48)
+                        .addComponent(btnLoggaIn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2)
                         .addGap(109, 109, 109))))
@@ -181,9 +171,7 @@ public class forstaSida extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtVemInlogg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                .addComponent(txtVemInlogg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -212,7 +200,7 @@ public class forstaSida extends javax.swing.JFrame {
             String aSvar = SqlFragor.fragaSingel(aFraga);
             String alosen = SqlFragor.fragaSingel(lFraga);
 
-            if (inAnvandare.equals(aSvar) && inlosen.equals(alosen) && !aSvar.isBlank() && !alosen.isBlank()) {
+            if (inAnvandare.equals(aSvar) && inlosen.equals(alosen) && ValideringsKlass.stringHarVarde(aSvar) && ValideringsKlass.stringHarVarde(alosen)) {
 
                 String sysfraga = "SELECT Administrator FROM agent WHERE Namn = " + "'" + inAnvandare + "'";
                 sysSvar = SqlFragor.fragaSingel(sysfraga);
@@ -237,7 +225,7 @@ public class forstaSida extends javax.swing.JFrame {
             String alienAnvandare = SqlFragor.fragaSingel(alienFragaAnvandare);
             String alienLosen = SqlFragor.fragaSingel(alienFragaLosenord);
 
-            if (inAnvandare.equals(alienAnvandare) && inlosen.equals(alienLosen) && !alienAnvandare.isBlank() && !alienLosen.isBlank()) {
+            if (inAnvandare.equals(alienAnvandare) && inlosen.equals(alienLosen) && ValideringsKlass.textFaltHarVarde(txtVemInlogg) && ValideringsKlass.textFaltHarVarde(pwfalt)) {
                 new alienSida().setVisible(true);
                 dispose();
             } else {
@@ -278,17 +266,6 @@ public class forstaSida extends javax.swing.JFrame {
         new Test1().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        if (ValideringsKlass.testLoA(cbVem, pwfalt, txtVemInlogg)) {
-            new agentSida().setVisible(true);
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Fel användarnamn eller lösenord");
-        }
-
-    }//GEN-LAST:event_jButton3ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaIn;
@@ -296,7 +273,6 @@ public class forstaSida extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbVisaLosen;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
