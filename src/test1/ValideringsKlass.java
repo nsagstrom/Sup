@@ -7,7 +7,9 @@ package test1;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -19,7 +21,6 @@ public class ValideringsKlass {
     public static boolean textFaltHarVarde(JTextField rutaAttKolla) {
         boolean resultat = true;
         if (rutaAttKolla.getText().isEmpty()) {
-            JOptionPane.showConfirmDialog(null, "Inmatningsrutan är tom!");
             resultat = false;
             rutaAttKolla.requestFocus();
         }
@@ -61,4 +62,43 @@ public class ValideringsKlass {
         }
         return arTal;
     }
+
+    public static boolean testLangd(JTextField namn) {
+        boolean langdOk = false;
+        String langd = namn.getText();
+
+        if (langd.length() > 1) {
+            langdOk = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Namn måste va större än en karaktär");
+            namn.requestFocus();
+        }
+
+        return langdOk;
+    }
+
+    public static boolean testLoA(JComboBox anvandare, JPasswordField losen, JTextField anvandarnamn) {
+        boolean arOk = false;
+
+        String inLosen = new String(losen.getPassword());
+        String inAnvandare = anvandarnamn.getText();
+
+        String aFraga = "SELECT Namn FROM " + "'" + anvandare.getSelectedItem().toString().toLowerCase() + "'" + "WHERE Namn = " + "'" + inAnvandare + "'";
+        String lFraga = "SELECT Namn FROM " + "'" + anvandare.getSelectedItem().toString().toLowerCase() + "'" + "WHERE Namn = " + "'" + inLosen + "'";
+
+        String aSvar = SqlFragor.fragaSingel(aFraga);
+        String alosen = SqlFragor.fragaSingel(lFraga);
+
+        if (inAnvandare.equals(aSvar) && inLosen.equals(alosen) && !inLosen.isBlank() && !inAnvandare.isBlank()) {
+            arOk = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Fel användarnamn eller lösenord");
+            anvandare.requestFocus();
+        }
+
+        return arOk;
+    }
+    
+
+
 }

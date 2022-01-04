@@ -28,7 +28,7 @@ public class SqlFragor {
         try {
             svar = idb.fetchSingle(fraga);
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE1");
         }
         return svar;
     }
@@ -39,7 +39,7 @@ public class SqlFragor {
         try {
             svar = idb.fetchRows(fraga);
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE2");
         }
         return svar;
     }
@@ -50,7 +50,7 @@ public class SqlFragor {
         try {
             svar = idb.fetchRow(fraga);
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE3");
         }
         return svar;
     }
@@ -61,7 +61,7 @@ public class SqlFragor {
         try {
             svar = idb.fetchColumn(fraga);
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE4");
         }
         return svar;
     }
@@ -70,7 +70,7 @@ public class SqlFragor {
         try {
             idb.delete(fraga);
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE5");
         }
     }
 
@@ -78,7 +78,7 @@ public class SqlFragor {
         try {
             idb.update(fraga);
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE6");
         }
     }
 
@@ -86,7 +86,7 @@ public class SqlFragor {
         try {
             idb.insert(fraga);
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE7");
         }
     }
 
@@ -96,7 +96,7 @@ public class SqlFragor {
         try {
             svar = idb.getAutoIncrement(tabell, kolumn);
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE");
+            JOptionPane.showMessageDialog(null, "JÄVLA PAPPSKALLE8");
         }
         return svar;
     }
