@@ -88,17 +88,20 @@ public class agentAdminSida extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        cbKontrollAvAlien.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         cbKontrollAvAlien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbKontrollAvAlienActionPerformed(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel2.setText("Kontroll av alien ");
 
-        lblValkommen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblValkommen.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         lblValkommen.setText("jLabel1");
 
+        btnLoggaUt.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnLoggaUt.setText("Logga ut");
         btnLoggaUt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +109,7 @@ public class agentAdminSida extends javax.swing.JFrame {
             }
         });
 
+        btnNylosen.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnNylosen.setText("Byt lösenord");
         btnNylosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,10 +117,13 @@ public class agentAdminSida extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel3.setText("Inloggad som administratör");
 
+        jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel4.setText("Åtgärder");
 
+        cbAtgarder.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         cbAtgarder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbAtgarderActionPerformed(evt);
@@ -125,12 +132,15 @@ public class agentAdminSida extends javax.swing.JFrame {
 
         txtfUtrustning.setEditable(false);
         txtfUtrustning.setColumns(1);
+        txtfUtrustning.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         txtfUtrustning.setRows(5);
         jScrollPane1.setViewportView(txtfUtrustning);
 
+        jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel5.setText("Utcheckad utustning");
 
         jTree1.setBorder(null);
+        jTree1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("JTree");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Lägg till:");
         javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Alien");
@@ -204,17 +214,17 @@ public class agentAdminSida extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbAtgarder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cbKontrollAvAlien, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2))
                         .addGap(108, 108, 108)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jScrollPane1)
                         .addComponent(btnLoggaUt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnNylosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnNylosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel5))
                 .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
@@ -226,8 +236,7 @@ public class agentAdminSida extends javax.swing.JFrame {
                         .addComponent(btnLoggaUt)
                         .addGap(18, 18, 18)
                         .addComponent(btnNylosen)
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel5))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(lblValkommen)
@@ -242,7 +251,9 @@ public class agentAdminSida extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(cbKontrollAvAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cbKontrollAvAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(87, 87, 87))

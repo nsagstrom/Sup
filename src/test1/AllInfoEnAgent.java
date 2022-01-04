@@ -39,6 +39,7 @@ public class AllInfoEnAgent extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jBTillbaka.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jBTillbaka.setText("Tillbaka");
         jBTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,13 +47,15 @@ public class AllInfoEnAgent extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         jLabel2.setText("Info om Agent");
 
         jTextInfo2.setColumns(20);
+        jTextInfo2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jTextInfo2.setRows(5);
         jScrollPane1.setViewportView(jTextInfo2);
 
+        cbAnsvarigAgent.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         cbAnsvarigAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj Agent" }));
         cbAnsvarigAgent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +75,7 @@ public class AllInfoEnAgent extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap(128, Short.MAX_VALUE)
+                                .addContainerGap(100, Short.MAX_VALUE)
                                 .addComponent(jLabel2)
                                 .addGap(52, 52, 52))
                             .addGroup(layout.createSequentialGroup()
@@ -92,7 +95,7 @@ public class AllInfoEnAgent extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(82, 82, 82)

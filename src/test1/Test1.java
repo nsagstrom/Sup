@@ -58,6 +58,7 @@ public class Test1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton1.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,12 +66,15 @@ public class Test1 extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jTextField1.setText("jTextField1");
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
+        jTree1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("JTree");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Lägg till:");
         javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Alien");
@@ -121,6 +125,7 @@ public class Test1 extends javax.swing.JFrame {
         jTree1.getAccessibleContext().setAccessibleName("");
         jTree1.getAccessibleContext().setAccessibleDescription("");
 
+        jButton2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jButton2.setText("jButton2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,8 +133,10 @@ public class Test1 extends javax.swing.JFrame {
             }
         });
 
+        jTextField2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jTextField2.setText("jTextField2");
 
+        jButton3.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jButton3.setText("jButton3");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,8 +144,10 @@ public class Test1 extends javax.swing.JFrame {
             }
         });
 
+        jTextField3.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jTextField3.setText("jTextField3");
 
+        jList1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -156,7 +165,7 @@ public class Test1 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(280, 280, 280)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(112, 112, 112))
             .addGroup(layout.createSequentialGroup()
@@ -183,7 +192,7 @@ public class Test1 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
