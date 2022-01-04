@@ -83,8 +83,8 @@ public class ValideringsKlass {
         String inLosen = new String(losen.getPassword());
         String inAnvandare = anvandarnamn.getText();
 
-        String aFraga = "SELECT Namn FROM " + "'" + anvandare.getSelectedItem().toString().toLowerCase() + "'" + "WHERE Namn = " + "'" + inAnvandare + "'";
-        String lFraga = "SELECT Namn FROM " + "'" + anvandare.getSelectedItem().toString().toLowerCase() + "'" + "WHERE Namn = " + "'" + inLosen + "'";
+        String aFraga = "SELECT Namn FROM " + anvandare.getSelectedItem().toString().toLowerCase() + "WHERE Namn = " + "'" + inAnvandare + "'";
+        String lFraga = "SELECT Losenord FROM " + anvandare.getSelectedItem().toString().toLowerCase() + "WHERE Namn = " + "'" + inLosen + "'";
 
         String aSvar = SqlFragor.fragaSingel(aFraga);
         String alosen = SqlFragor.fragaSingel(lFraga);
@@ -98,7 +98,5 @@ public class ValideringsKlass {
 
         return arOk;
     }
-    
-
 
 }
