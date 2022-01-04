@@ -52,6 +52,7 @@ private InfDB idb;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnOk.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnOk.setText("Sök");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,14 +61,17 @@ private InfDB idb;
         });
 
         jTAgent.setColumns(4);
+        jTAgent.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jTAgent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTAgentActionPerformed(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel1.setText("Ange Agent:");
 
+        jBTillbaka.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jBTillbaka.setText("Tillbaka");
         jBTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,13 +79,15 @@ private InfDB idb;
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         jLabel2.setText("Info om Agent");
 
         jTextInfo2.setColumns(20);
+        jTextInfo2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jTextInfo2.setRows(5);
         jScrollPane1.setViewportView(jTextInfo2);
 
+        cbAnsvarigAgent.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         cbAnsvarigAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent" }));
         cbAnsvarigAgent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +123,7 @@ private InfDB idb;
                                     .addGroup(layout.createSequentialGroup()
                                         .addContainerGap()
                                         .addComponent(cbAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(49, 49, 49))
         );
@@ -136,7 +142,7 @@ private InfDB idb;
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
