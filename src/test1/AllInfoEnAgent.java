@@ -31,9 +31,6 @@ public class AllInfoEnAgent extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnOk = new javax.swing.JButton();
-        jTAgent = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jBTillbaka = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -41,22 +38,6 @@ public class AllInfoEnAgent extends javax.swing.JFrame {
         cbAnsvarigAgent = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btnOk.setText("Sök");
-        btnOk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOkActionPerformed(evt);
-            }
-        });
-
-        jTAgent.setColumns(4);
-        jTAgent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTAgentActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Ange Agent:");
 
         jBTillbaka.setText("Tillbaka");
         jBTillbaka.addActionListener(new java.awt.event.ActionListener() {
@@ -90,20 +71,14 @@ public class AllInfoEnAgent extends javax.swing.JFrame {
                         .addComponent(jBTillbaka))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap(128, Short.MAX_VALUE)
                                 .addComponent(jLabel2)
                                 .addGap(52, 52, 52))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnOk)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(cbAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)))
+                                .addGap(74, 74, 74)
+                                .addComponent(cbAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(49, 49, 49))
         );
@@ -117,55 +92,25 @@ public class AllInfoEnAgent extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jScrollPane1)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addGap(82, 82, 82)
                         .addComponent(cbAnsvarigAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnOk)
-                        .addGap(43, 43, 43))))
+                        .addContainerGap(142, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        // TODO add your handling code here:
-
-        String fraAgent = "";
-        String agent = "";
-        String fraOmrade = "";
-        String omrade = "";
-//        String namn = jTAgent.getText();
-
-        HashMap<String, String> info2;
-        info2 = SqlFragor.fragaRad("SELECT * FROM agent WHERE NAMN = '" + cbAnsvarigAgent.getSelectedItem() + "'");
-
-        fraAgent = "SELECT Namn from agent JOIN omrade o on agent.Omrade = o.Omrades_ID WHERE Agent_ID = '"
-                + cbAnsvarigAgent.getSelectedItem() + "' LIMIT 1";
-        agent = SqlFragor.fragaSingel(fraAgent);
-        fraOmrade = "SELECT Benamning FROM agent JOIN omrade o on agent.Omrade = o.Omrades_ID WHERE Agent_ID = "
-                + info2.get("Omrade") + "  LIMIT 1";
-
-        omrade = SqlFragor.fragaSingel(fraOmrade);
-
-        jTextInfo2.setText("Namn: " + info2.get("Namn") + "\n" + "Telefon: " + info2.get("Telefon") + "\n" + "Anstallningsdatum: "
-                + info2.get("Anstallningsdatum") + "\n" + "Administrator: " + info2.get("Administrator") + "\n" + "Losenord: "
-                + info2.get("Losenord") + "\n" + "Område: " + omrade);
-    }//GEN-LAST:event_btnOkActionPerformed
-
-    private void jTAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTAgentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTAgentActionPerformed
-
     private void jBTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTillbakaActionPerformed
-        // TODO add your handling code here:
-
+        if (forstaSida.arAdmin()) {
+            new agentAdminSida().setVisible(true);
+            dispose();
+        } else {
+            new agentSida().setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jBTillbakaActionPerformed
 
     private void cbAnsvarigAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAnsvarigAgentActionPerformed
@@ -193,13 +138,10 @@ public class AllInfoEnAgent extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnOk;
     private javax.swing.JComboBox<String> cbAnsvarigAgent;
     private javax.swing.JButton jBTillbaka;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTAgent;
     private javax.swing.JTextArea jTextInfo2;
     // End of variables declaration//GEN-END:variables
 }
