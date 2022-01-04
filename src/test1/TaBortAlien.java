@@ -41,6 +41,7 @@ public class TaBortAlien extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         jLabel1.setText("Ta bort alien");
 
+        btnTillbaka.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnTillbaka.setText("Tillbaka");
         btnTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,6 +49,7 @@ public class TaBortAlien extends javax.swing.JFrame {
             }
         });
 
+        btnTaBort.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnTaBort.setText("Ta bort");
         btnTaBort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,8 +57,12 @@ public class TaBortAlien extends javax.swing.JFrame {
             }
         });
 
+        jLKorrekt.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+
         jAlien.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jAlien.setText("Alien:");
+
+        jTAlien.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,7 +87,7 @@ public class TaBortAlien extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(57, 57, 57)
                         .addComponent(btnTillbaka)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,7 +104,7 @@ public class TaBortAlien extends javax.swing.JFrame {
                     .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(btnTaBort)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();

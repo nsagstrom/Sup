@@ -45,9 +45,12 @@ public class NyttLosen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        rubrik.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lstammer.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+
+        rubrik.setFont(new java.awt.Font("Book Antiqua", 1, 20)); // NOI18N
         rubrik.setText("Byte av lösenord");
 
+        btnAvbryt.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnAvbryt.setText("Avbryt");
         btnAvbryt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +58,7 @@ public class NyttLosen extends javax.swing.JFrame {
             }
         });
 
+        btnOk.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnOk.setText("Ok");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,24 +66,30 @@ public class NyttLosen extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel2.setText("Ange nuvarande lösenord");
 
+        jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel3.setText("Ange nuvarande lösenord igen");
 
+        jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel4.setText("Ange nytt lösenord");
 
+        ltxtNuvarandelosen.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         ltxtNuvarandelosen.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 ltxtNuvarandelosenCaretUpdate(evt);
             }
         });
 
+        ltxtKontrollLosen.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         ltxtKontrollLosen.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 ltxtKontrollLosenCaretUpdate(evt);
             }
         });
 
+        ltxtNyttLosen.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         ltxtNyttLosen.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 ltxtNyttLosenCaretUpdate(evt);
@@ -91,6 +101,7 @@ public class NyttLosen extends javax.swing.JFrame {
             }
         });
 
+        cbVisaLosen.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         cbVisaLosen.setText("Visa lösenord");
         cbVisaLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +141,7 @@ public class NyttLosen extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(ltxtNuvarandelosen, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +167,7 @@ public class NyttLosen extends javax.swing.JFrame {
                     .addComponent(ltxtNyttLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(cbVisaLosen)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         pack();
