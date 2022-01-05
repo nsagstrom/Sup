@@ -246,7 +246,7 @@ public class addAgent extends javax.swing.JFrame {
 
         String alienLosenord2 = new String(pwLosen.getPassword());
 
-        if (txtNamn.getText().isBlank()) {
+        if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
@@ -254,15 +254,15 @@ public class addAgent extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn används redan av en annan agent");
             txtNamn.requestFocus();
-        } else if (txtTelefon.getText().isBlank()) {
+        } else if (!ValideringsKlass.textFaltHarVarde(txtTelefon)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
             txtTelefon.requestFocus();
-        } else if (alienLosenord2.isBlank()) {
+        } else if (!ValideringsKlass.stringHarVarde(alienLosenord2)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
             pwLosen.requestFocus();
-        } else if (alienLosenord2.length() > 6) {
+        } else if (!ValideringsKlass.testLosenStrang(alienLosenord2)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord får ej vara längre än sex tecken");
             pwLosen.requestFocus();

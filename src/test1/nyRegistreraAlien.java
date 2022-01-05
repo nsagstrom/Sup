@@ -283,20 +283,20 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
 
         String alienLosenord2 = new String(pwLosen.getPassword());
 
-        if (txtNamn.getText().isBlank()) {
+        if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
-        } else if (alienLosenord2.isBlank()) {
+        } else if (!ValideringsKlass.stringHarVarde(alienLosenord2)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
             pwLosen.requestFocus();
-        } else if (alienLosenord2.length() > 6) {
+        } else if (!ValideringsKlass.testLosenStrang(alienLosenord2)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord får ej vara längre än sex tecken");
             pwLosen.requestFocus();
             pwLosen.selectAll();
-        } else if (txtTelefon.getText().isBlank()) {
+        } else if (!ValideringsKlass.textFaltHarVarde(txtTelefon)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
             txtTelefon.requestFocus();
@@ -309,7 +309,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Välj ras");
             cbRaser.requestFocus();
         } else if (cbRaser.getSelectedIndex() == 1 || cbRaser.getSelectedIndex() == 2) {
-            if (txtRasTill.getText().isBlank()) {
+            if (!ValideringsKlass.textFaltHarVarde(txtRasTill)) {
                 ok = false;
                 JOptionPane.showMessageDialog(null, "Ange antal");
             }

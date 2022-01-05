@@ -19,7 +19,8 @@ public class alienAvRas extends javax.swing.JFrame {
     public alienAvRas() {
         initComponents();
         Metoder.laggTillRas(cbRaser);
-        cbRaser.removeItemAt(3);
+        
+//        cbRaser.removeItemAt(3);
     }
 
     /**
@@ -110,8 +111,24 @@ public class alienAvRas extends javax.swing.JFrame {
 
         ArrayList<HashMap<String, String>> SoktaAlien;
 
-        String valdPlats = cbRaser.getSelectedItem().toString();
-        String fraga = "SELECT Namn  FROM alien join " + valdPlats + " x on alien.Alien_ID = x.Alien_ID";
+        String valdRas = cbRaser.getSelectedItem().toString();
+        String fraga = "SELECT alien.Namn AS Namn FROM (\n"
+                + "SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\n"
+                + "UNION\n"
+                + "SELECT Alien_ID  , 'Squid' AS Ras, Antal_Armar AS Antal FROM squid\n"
+                + "UNION\n"
+                + "SELECT Alien_ID, 'Boglodite' AS Ras, Antal_Boogies AS Antal FROM boglodite\n"
+                + "UNION\n"
+                + "(SELECT Alien_ID, 'Annat', null FROM alien\n"
+                + "    WHERE Alien_ID NOT IN (SELECT Alien_ID AS id FROM alien\n"
+                + "    WHERE Alien_ID  IN (SELECT id FROM\n"
+                + "        (SELECT Alien_ID AS id  FROM squid\n"
+                + "        UNION SELECT Alien_ID as id FROM worm\n"
+                + "        UNION SELECT Alien_ID as id FROM boglodite) AS a)))) AS ras\n"
+                + "JOIN alien on ras.alien_id = alien.alien_id\n"
+                + "JOIN plats p on p.Plats_ID = alien.Plats\n"
+                + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID\n"
+                + "WHERE Ras= '" + valdRas + "';";
 
         SoktaAlien = SqlFragor.fragaRader(fraga);
 

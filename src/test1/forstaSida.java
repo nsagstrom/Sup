@@ -163,7 +163,7 @@ public class forstaSida extends javax.swing.JFrame {
                             .addComponent(txtVemInlogg)
                             .addComponent(cbVisaLosen)
                             .addComponent(cbVem, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38)
+                        .addGap(48, 48, 48)
                         .addComponent(btnLoggaIn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2)
@@ -212,7 +212,7 @@ public class forstaSida extends javax.swing.JFrame {
             String aSvar = SqlFragor.fragaSingel(aFraga);
             String alosen = SqlFragor.fragaSingel(lFraga);
 
-            if (inAnvandare.equals(aSvar) && inlosen.equals(alosen) && !aSvar.isBlank() && !alosen.isBlank()) {
+            if (inAnvandare.equals(aSvar) && inlosen.equals(alosen) && ValideringsKlass.stringHarVarde(aSvar) && ValideringsKlass.stringHarVarde(alosen)) {
 
                 String sysfraga = "SELECT Administrator FROM agent WHERE Namn = " + "'" + inAnvandare + "'";
                 sysSvar = SqlFragor.fragaSingel(sysfraga);
@@ -237,7 +237,7 @@ public class forstaSida extends javax.swing.JFrame {
             String alienAnvandare = SqlFragor.fragaSingel(alienFragaAnvandare);
             String alienLosen = SqlFragor.fragaSingel(alienFragaLosenord);
 
-            if (inAnvandare.equals(alienAnvandare) && inlosen.equals(alienLosen) && !alienAnvandare.isBlank() && !alienLosen.isBlank()) {
+            if (inAnvandare.equals(alienAnvandare) && inlosen.equals(alienLosen) && ValideringsKlass.textFaltHarVarde(txtVemInlogg) && ValideringsKlass.textFaltHarVarde(pwfalt)) {
                 new alienSida().setVisible(true);
                 dispose();
             } else {

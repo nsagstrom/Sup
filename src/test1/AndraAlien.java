@@ -74,6 +74,7 @@ public class AndraAlien extends javax.swing.JFrame {
         txtAllInfo.setColumns(20);
         txtAllInfo.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         txtAllInfo.setRows(5);
+        txtAllInfo.setTabSize(12);
         txtAllInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtAllInfo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtAllInfo.setEnabled(false);
@@ -228,13 +229,11 @@ public class AndraAlien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnUppdatera)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(12, 12, 12))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,7 +282,7 @@ public class AndraAlien extends javax.swing.JFrame {
                             .addComponent(txtRasTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1))))
                 .addGap(18, 18, 18)
-                .addComponent(landrad, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
+                .addComponent(landrad, javax.swing.GroupLayout.DEFAULT_SIZE, 10, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addComponent(btnUppdatera)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -407,7 +406,6 @@ public class AndraAlien extends javax.swing.JFrame {
         cbAnsvarigAgent.setSelectedItem(uppgifter.get("Agent"));
         cbPlats.setSelectedItem(uppgifter.get("Benamning"));
 
-        System.out.println(id);
 
         if (uppgifter.get("Ras").equalsIgnoreCase("Annat")) {
             cbRaser.setSelectedIndex(4);
