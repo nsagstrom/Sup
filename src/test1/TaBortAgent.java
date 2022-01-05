@@ -106,15 +106,19 @@ public class TaBortAgent extends javax.swing.JFrame {
 
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
         // TODO add your handling code here:
-
+        
+        //Det som skrivs in i jFramen "jTAgent" är den variabeln som vi använder i sql frågan för att specifera vilken alien som ska tas bort.
         String agentbort = jTAgent.getText();
         String taBortA = "SELECT Agent_ID FROM Agent WHERE Namn = '" + agentbort + "'";
+        //Kallar på metoden från SQLFragor-klassen för att ta bort Agent_ID för den finns i flera tabeller (främmande nyckel).
         String idBortA = SqlFragor.fragaSingel(taBortA);
         String checking = "SELECT * FROM Agent WHERE Agent_ID = " + idBortA;
 
-        if (SqlFragor.fragaSingel(checking) == null ) {
+        //Checkar ifall värdet som skrivs in är null eller inte.
+        if (SqlFragor.fragaSingel(checking) == null) {
             JOptionPane.showMessageDialog(rootPane, "Välj en agent!");
         } else {
+            
             String tabortA = "DELETE FROM agent WHERE Agent_ID = " + idBortA;
             String tabortFA = "DELETE FROM faltagent WHERE Agent_ID = " + idBortA;
             String tabortIF = "DELETE FROM innehar_fordon WHERE Agent_ID = " + idBortA;
@@ -122,6 +126,7 @@ public class TaBortAgent extends javax.swing.JFrame {
             String tabortKC = "DELETE FROM kontorschef WHERE Agent_ID = " + idBortA;
             String tabortOC = "DELETE FROM omradeschef WHERE Agent_ID = " + idBortA;
 
+            //Kallar på metoden från SQLFragor-klassen. Agent tas bort
             SqlFragor.taBort(tabortFA);
             SqlFragor.taBort(tabortIF);
             SqlFragor.taBort(tabortIU);

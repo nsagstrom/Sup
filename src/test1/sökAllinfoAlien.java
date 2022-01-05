@@ -107,15 +107,20 @@ public class sökAllinfoAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
     private void cbAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAlienActionPerformed
+        //För att en combobox skall kunna visa vilka Aliens det finns "på den" så skriver vi getSelectedItem().toString().
+        //För att hämta den valda alien samt att det ska stå i textform.
         String aNamn = cbAlien.getSelectedItem().toString();
+        //
         HashMap<String, String> info;
         info = SqlFragor.fragaRad("SELECT * FROM alien WHERE NAMN = '" + aNamn + "'");
         
         String fragaAnsvarig = "SELECT agent.Namn FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
+        //Metod från SQLFragor-klassen.
         String ansvarig = SqlFragor.fragaSingel(fragaAnsvarig);
         String fragaPlats = "SELECT Benamning FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
         String plats = SqlFragor.fragaSingel(fragaPlats);
         
+        //Texten som skrivs ut är det som står innanför parameterna. "\n" skjuter ner texten efter en rad.
         jTextInfo.setText("Namn: " + info.get("Namn") + "\n" + "Registreringsdatum: " + info.get("Registreringsdatum") + "\n" + "Telefon: "
                 + info.get("Telefon") + "\n" + "Plats: " + plats + "\n" + "Ansvarig agent: " + ansvarig);
     }//GEN-LAST:event_cbAlienActionPerformed
