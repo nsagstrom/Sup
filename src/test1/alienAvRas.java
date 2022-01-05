@@ -40,7 +40,7 @@ public class alienAvRas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
-        jLabel1.setText("Eat shit and die ");
+        jLabel1.setText("Alla alien per ras");
 
         jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel2.setText("Välj ras");
