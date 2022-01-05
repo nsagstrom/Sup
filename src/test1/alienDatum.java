@@ -229,7 +229,7 @@ public class alienDatum extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
-        jLabel1.setText("Reggade mellan datum");
+        jLabel1.setText("Registreringsdatum");
 
         dateSlut.setDateFormatString("yyyy-MM-dd");
 

@@ -32,7 +32,7 @@ public class allaAlienPlats extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Book Antiqua", 1, 20)); // NOI18N
-        jLabel1.setText("Eat shit and die");
+        jLabel1.setText("Alla aliens som finns i angiven plats");
 
         cbValjPlats.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         cbValjPlats.addActionListener(new java.awt.event.ActionListener() {
