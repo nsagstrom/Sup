@@ -18,6 +18,7 @@ public class TaBortAgent extends javax.swing.JFrame {
      */
     public TaBortAgent() {
         initComponents();
+        Metoder.laggTillAgent(cbAgenter);
         
     }
 
@@ -33,7 +34,7 @@ public class TaBortAgent extends javax.swing.JFrame {
         btnTillbaka = new javax.swing.JButton();
         jLKorrekt = new javax.swing.JLabel();
         jAgent = new javax.swing.JLabel();
-        jTAgent = new javax.swing.JTextField();
+        cbAgenter = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,7 +60,7 @@ public class TaBortAgent extends javax.swing.JFrame {
         jAgent.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jAgent.setText("Agent:");
 
-        jTAgent.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        cbAgenter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,20 +69,20 @@ public class TaBortAgent extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel1)
-                        .addGap(39, 39, 39)
-                        .addComponent(btnTillbaka))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jAgent)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabel1)
+                        .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnTaBort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTAgent))
-                        .addGap(55, 55, 55)
-                        .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                            .addComponent(btnTillbaka, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,15 +91,14 @@ public class TaBortAgent extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(btnTillbaka))
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jAgent)
-                        .addComponent(jTAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAgent)
+                    .addComponent(btnTaBort)
+                    .addComponent(cbAgenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnTaBort)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(jLKorrekt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
@@ -108,7 +108,7 @@ public class TaBortAgent extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         //Det som skrivs in i jFramen "jTAgent" är den variabeln som vi använder i sql frågan för att specifera vilken alien som ska tas bort.
-        String agentbort = jTAgent.getText();
+        String agentbort = cbAgenter.getSelectedItem().toString();
         String taBortA = "SELECT Agent_ID FROM Agent WHERE Namn = '" + agentbort + "'";
         //Kallar på metoden från SQLFragor-klassen för att ta bort Agent_ID för den finns i flera tabeller (främmande nyckel).
         String idBortA = SqlFragor.fragaSingel(taBortA);
@@ -153,9 +153,9 @@ public class TaBortAgent extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaBort;
     private javax.swing.JButton btnTillbaka;
+    private javax.swing.JComboBox<String> cbAgenter;
     private javax.swing.JLabel jAgent;
     private javax.swing.JLabel jLKorrekt;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTAgent;
     // End of variables declaration//GEN-END:variables
 }
