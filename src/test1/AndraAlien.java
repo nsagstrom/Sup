@@ -381,16 +381,10 @@ public class AndraAlien extends javax.swing.JFrame {
                 + "        UNION SELECT Alien_ID as id FROM boglodite) AS a)))) AS ras\n"
                 + "JOIN alien on ras.alien_id = alien.alien_id\n"
                 + "JOIN plats p on p.Plats_ID = alien.Plats\n"
-                + "JOIN (SELECT Namn AS Agent, Agent_I\n" +
-"//        if (ValideringsKlass.taltest(txtID)) {\n" +
-"        txtAllInfo.setText(\"\");\n" +
-"        info();\n" +
-"        String sok = \"SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\\n\"\n" +
-"                + \"SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\\n\"\n" +
-"                + \"UNION\\n\"\n" +
-"                + \"SELECT Alien_ID  , 'Sqid' AS Ras, Antal_Armar AS Antal FROM squid\\n\"\n" +
-"                + \"UNION\\n\"D FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID\n"
+                + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID\n"
                 + "WHERE alien.Namn = '" + txtNamn.getText() + "' ;";
+        
+        
 
         HashMap<String, String> uppgifter;
         uppgifter = SqlFragor.fragaRad(sok);
