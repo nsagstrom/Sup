@@ -323,7 +323,11 @@ public class AndraAgent extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
-        } else if (!ValideringsKlass.textFaltHarVarde(txtLosen)) {
+        } else if(!ValideringsKlass.dublettAgentNamn(txtNamn)){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Namn används redan av annan agent!");
+            txtNamn.requestFocus();
+        }else if (!ValideringsKlass.textFaltHarVarde(txtLosen)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
             txtLosen.requestFocus();

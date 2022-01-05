@@ -71,7 +71,7 @@ public class ValideringsKlass {
     
     public static boolean testLosenStrang(String losen){
         boolean langdOk = true;
-        if(losen.length() < 7){
+        if(losen.length() > 6){
             langdOk = false;
         }
         return langdOk;

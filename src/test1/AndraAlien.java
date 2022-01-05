@@ -454,6 +454,10 @@ public class AndraAlien extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
+        } else if(!ValideringsKlass.dublettAlienNamn(txtNamn)){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Finns redan alien med detta namn");
+            txtNamn.requestFocus();
         } else if (!ValideringsKlass.textFaltHarVarde(txtLosen)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
