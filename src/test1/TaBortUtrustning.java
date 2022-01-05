@@ -111,21 +111,26 @@ public class TaBortUtrustning extends javax.swing.JFrame {
 
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
         // TODO add your handling code here:
-
+        
+        //Det som skrivs in i jFramen "jTUtr" är den variabeln som vi använder i sql frågan för att specifera vilken alien som ska tas bort.
         String utrustningbort = jTUtr.getText();
         String idbortsql = "SELECT Utrustnings_ID FROM Utrustning WHERE Benamning = '" + utrustningbort + "'";
+        //Kallar på metoden från SQLFragor-klassen för att ta bort Utrustnings_ID i flera tabeller (främmande nyckel).
         String idbort = SqlFragor.fragaSingel(idbortsql);
         String check = "SELECT * FROM Utrustning WHERE Utrustnings_ID = " + idbort;
 
+        //Checkar ifall värdet som skrivs in är null eller inte.
         if (SqlFragor.fragaSingel(check) == null) {
             JOptionPane.showMessageDialog(rootPane, "Utrustningen finns ej!");
         } else {
+            
             String tabortutr = "DELETE FROM utrustning WHERE Utrustnings_ID = " + idbort;
             String tabortvpn = "DELETE FROM vapen WHERE Utrustnings_ID = " + idbort;
             String taborttek = "DELETE FROM teknik WHERE Utrustnings_ID = " + idbort;
             String tabortkom = "DELETE FROM kommunikation WHERE Utrustnings_ID = " + idbort;
             String tabortinnehar = "DELETE FROM Innehar_Utrustning WHERE Utrustnings_ID = " + idbort;
 
+            //Kallar på metoden från SQLFragor-klassen. Utrustning tas bort
             SqlFragor.taBort(tabortinnehar);
             SqlFragor.taBort(tabortvpn);
             SqlFragor.taBort(taborttek);

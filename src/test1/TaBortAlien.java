@@ -112,19 +112,25 @@ public class TaBortAlien extends javax.swing.JFrame {
 
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
         // TODO add your handling code here:
+        
+        //Det som skrivs in i jFramen "jTAlien" är den variabeln som vi använder i sql frågan för att specifera vilken alien som ska tas bort.
         String alienbort = jTAlien.getText();
         String taBort = "SELECT Alien_ID FROM Alien WHERE Namn = '" + alienbort + "'";
+        //Kallar på metoden från SQLFragor-klassen för att ta bort Alien_ID för den finns i flera tabeller (främmande nyckel).
         String idbort = SqlFragor.fragaSingel(taBort);
         String avCheck = "SELECT * FROM Alien WHERE Alien_ID = " + idbort;
-
+       
+        //Checkar ifall värdet som skrivs in är null eller inte.
         if (SqlFragor.fragaSingel(avCheck) == null) {
             JOptionPane.showMessageDialog(rootPane, "Välj en alien!");
         } else {
+            
             String tabortAlien = "DELETE FROM alien WHERE Alien_ID = " + idbort;
             String tabortBog = "DELETE FROM  boglodite WHERE Alien_ID = " + idbort;
             String tabortSquid = "DELETE FROM  squid WHERE Alien_ID = " + idbort;
             String tabortWorm = "DELETE FROM  worm WHERE Alien_ID = " + idbort;
-
+            
+            //Kallar på metoden från SQLFragor-klassen.Alien tas bort
             SqlFragor.taBort(tabortAlien);
             SqlFragor.taBort(tabortBog);
             SqlFragor.taBort(tabortSquid);

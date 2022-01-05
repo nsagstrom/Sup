@@ -117,23 +117,20 @@ public class AllInfoEnAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_jBTillbakaActionPerformed
 
     private void cbAnsvarigAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAnsvarigAgentActionPerformed
-                String fraAgent = "";
-        String agent = "";
-        String fraOmrade = "";
-        String omrade = "";
-//        String namn = jTAgent.getText();
-
+         //HashMaplista som får en metod från SQLFragor-klassen.
         HashMap<String, String> info2;
         info2 = SqlFragor.fragaRad("SELECT * FROM agent WHERE NAMN = '" + cbAnsvarigAgent.getSelectedItem() + "'");
-
-        fraAgent = "SELECT Namn from agent JOIN omrade o on agent.Omrade = o.Omrades_ID WHERE Agent_ID = '"
+        
+        
+        String fraAgent = "SELECT Namn from agent JOIN omrade o on agent.Omrade = o.Omrades_ID WHERE Agent_ID = '"
                 + cbAnsvarigAgent.getSelectedItem() + "' LIMIT 1";
-        agent = SqlFragor.fragaSingel(fraAgent);
-        fraOmrade = "SELECT Benamning FROM agent JOIN omrade o on agent.Omrade = o.Omrades_ID WHERE Agent_ID = "
+        //Metod från SQLFragor-klassen.
+        String agent = SqlFragor.fragaSingel(fraAgent);
+        String fraOmrade = "SELECT Benamning FROM agent JOIN omrade o on agent.Omrade = o.Omrades_ID WHERE Agent_ID = "
                 + info2.get("Omrade") + "  LIMIT 1";
+        String omrade = SqlFragor.fragaSingel(fraOmrade);
 
-        omrade = SqlFragor.fragaSingel(fraOmrade);
-
+        //Texten som skrivs ut är det som står innanför parameterna. "\n" skjuter ner texten efter en rad.
         jTextInfo2.setText("Namn: " + info2.get("Namn") + "\n" + "Telefon: " + info2.get("Telefon") + "\n" + "Anstallningsdatum: "
                 + info2.get("Anstallningsdatum") + "\n" + "Administrator: " + info2.get("Administrator") + "\n" + "Losenord: "
                 + info2.get("Losenord") + "\n" + "Område: " + omrade);
