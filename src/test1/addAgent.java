@@ -250,11 +250,19 @@ public class addAgent extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
-        } else if (finns != 0) {
+        } else if(!ValideringsKlass.dublettAgentNamn(txtNamn)){
             ok = false;
-            JOptionPane.showMessageDialog(null, "Namn används redan av en annan agent");
+            JOptionPane.showMessageDialog(null, "Namn används redan av annan agent!");
             txtNamn.requestFocus();
-        } else if (!ValideringsKlass.textFaltHarVarde(txtTelefon)) {
+        }
+        
+//        else if (finns != 0) {
+//            ok = false;
+//            JOptionPane.showMessageDialog(null, "Namn används redan av en annan agent");
+//            txtNamn.requestFocus();
+//        } 
+        
+        else if (!ValideringsKlass.textFaltHarVarde(txtTelefon)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
             txtTelefon.requestFocus();

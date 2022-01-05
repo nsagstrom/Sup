@@ -85,7 +85,7 @@ public class ValideringsKlass {
         ArrayList<HashMap<String, String>> allaNuvarandeNamn = null;
         String namnCheck = "";
         
-        
+        allaNuvarandeNamn = SqlFragor.fragaRader("SELECT Namn FROM agent");
         
         for(HashMap<String, String> a : allaNuvarandeNamn){
             namnCheck = a.get("Namn");
@@ -93,19 +93,29 @@ public class ValideringsKlass {
             if(namnCheck.equals(nyNamn)){
                 ejDublett = false;
             }
-
         }
-        if (ejDublett) {
-            
-        }
-        
+        System.out.println(namnCheck);
         return ejDublett;
     }
     
-    public static boolean dublettAlienNamn(JTextField namn){
+    public static boolean dublettAlienNamn(JTextField namn) {
         boolean ejDublett = true;
-        
-        
+        int i = 0;
+
+        String nyNamn = namn.getText();
+        ArrayList<HashMap<String, String>> allaNuvarandeNamn = null;
+        String namnCheck = "";
+
+        allaNuvarandeNamn = SqlFragor.fragaRader("SELECT Namn FROM alien");
+
+        for (HashMap<String, String> a : allaNuvarandeNamn) {
+            namnCheck = a.get("Namn");
+
+            if (namnCheck.equals(nyNamn)) {
+                ejDublett = false;
+            }
+        }
+
         return ejDublett;
     }
 }
