@@ -23,7 +23,7 @@ public class AndraAlien extends javax.swing.JFrame {
 
     public AndraAlien() {
         initComponents();
-        info();
+//        info();
         Metoder.laggTillPlats(cbPlats);
         Metoder.laggTillRas(cbRaser);
         Metoder.laggTillAgent(cbAnsvarigAgent);
@@ -61,7 +61,6 @@ public class AndraAlien extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtRasTill = new javax.swing.JTextField();
         lbRasInfo = new javax.swing.JLabel();
-        btnUppdatera = new javax.swing.JButton();
         landrad = new javax.swing.JLabel();
 
         jScrollPane2.setViewportView(jEditorPane1);
@@ -159,14 +158,6 @@ public class AndraAlien extends javax.swing.JFrame {
 
         txtRasTill.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
 
-        btnUppdatera.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        btnUppdatera.setText("Uppdatera");
-        btnUppdatera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUppdateraActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -228,11 +219,7 @@ public class AndraAlien extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnUppdatera)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1)
                 .addGap(12, 12, 12))
         );
         layout.setVerticalGroup(
@@ -282,10 +269,8 @@ public class AndraAlien extends javax.swing.JFrame {
                             .addComponent(txtRasTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1))))
                 .addGap(18, 18, 18)
-                .addComponent(landrad, javax.swing.GroupLayout.DEFAULT_SIZE, 10, Short.MAX_VALUE)
-                .addGap(8, 8, 8)
-                .addComponent(btnUppdatera)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(landrad, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -312,7 +297,9 @@ public class AndraAlien extends javax.swing.JFrame {
                 + "        UNION SELECT Alien_ID as id FROM boglodite) AS a)))) AS ras\n"
                 + "JOIN alien on ras.alien_id = alien.alien_id\n"
                 + "JOIN plats p on p.Plats_ID = alien.Plats\n"
-                + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID;";
+                + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID "
+                + "WHERE namn = '" + txtNamn.getText() + "';";
+        
 
         allInfo = SqlFragor.fragaRader(fraga);
 
@@ -377,6 +364,8 @@ public class AndraAlien extends javax.swing.JFrame {
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
 
 //        if (ValideringsKlass.taltest(txtID)) {
+        txtAllInfo.setText("");
+        info();
         String sok = "SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\n"
                 + "SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\n"
                 + "UNION\n"
@@ -392,7 +381,15 @@ public class AndraAlien extends javax.swing.JFrame {
                 + "        UNION SELECT Alien_ID as id FROM boglodite) AS a)))) AS ras\n"
                 + "JOIN alien on ras.alien_id = alien.alien_id\n"
                 + "JOIN plats p on p.Plats_ID = alien.Plats\n"
-                + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID\n"
+                + "JOIN (SELECT Namn AS Agent, Agent_I\n" +
+"//        if (ValideringsKlass.taltest(txtID)) {\n" +
+"        txtAllInfo.setText(\"\");\n" +
+"        info();\n" +
+"        String sok = \"SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\\n\"\n" +
+"                + \"SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\\n\"\n" +
+"                + \"UNION\\n\"\n" +
+"                + \"SELECT Alien_ID  , 'Sqid' AS Ras, Antal_Armar AS Antal FROM squid\\n\"\n" +
+"                + \"UNION\\n\"D FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID\n"
                 + "WHERE alien.Namn = '" + txtNamn.getText() + "' ;";
 
         HashMap<String, String> uppgifter;
@@ -419,15 +416,12 @@ public class AndraAlien extends javax.swing.JFrame {
 //    }
     }//GEN-LAST:event_btnOKActionPerformed
 
-    private void btnUppdateraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUppdateraActionPerformed
-        txtAllInfo.setText("");
-        info();
-    }//GEN-LAST:event_btnUppdateraActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (okUppgifter()) {
             andraGrund();
             andraRas();
+            txtAllInfo.setText("");
+            info();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -548,7 +542,6 @@ public class AndraAlien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOK;
     private javax.swing.JButton btnTillbaka;
-    private javax.swing.JButton btnUppdatera;
     private javax.swing.JComboBox<String> cbAnsvarigAgent;
     private javax.swing.JComboBox<String> cbPlats;
     private javax.swing.JComboBox<String> cbRaser;

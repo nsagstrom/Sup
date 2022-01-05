@@ -19,8 +19,6 @@ public class alienAvRas extends javax.swing.JFrame {
     public alienAvRas() {
         initComponents();
         Metoder.laggTillRas(cbRaser);
-        
-//        cbRaser.removeItemAt(3);
     }
 
     /**
