@@ -65,7 +65,6 @@ public class alienSida extends javax.swing.JFrame {
         lblValkommen = new javax.swing.JLabel();
         btnLoggaUt = new javax.swing.JButton();
         btnNylosen = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         luppgifter = new javax.swing.JLabel();
         lMittomrade = new javax.swing.JLabel();
@@ -74,9 +73,10 @@ public class alienSida extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblValkommen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblValkommen.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         lblValkommen.setText("jLabel1");
 
+        btnLoggaUt.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnLoggaUt.setText("Logga ut");
         btnLoggaUt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +84,7 @@ public class alienSida extends javax.swing.JFrame {
             }
         });
 
+        btnNylosen.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         btnNylosen.setText("Byt lösenord");
         btnNylosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,16 +92,16 @@ public class alienSida extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("ALIEN !!!!");
-
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel1.setText("Kontakta områdeschef:");
 
+        lMittomrade.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         lMittomrade.setText("Alien i mitt område");
 
         txtAlienOmrade.setEditable(false);
         txtAlienOmrade.setColumns(2);
+        txtAlienOmrade.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         txtAlienOmrade.setRows(5);
-        txtAlienOmrade.setPreferredSize(new java.awt.Dimension(23, 84));
         jScrollPane2.setViewportView(txtAlienOmrade);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -122,10 +123,6 @@ public class alienSida extends javax.swing.JFrame {
                             .addComponent(luppgifter, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addContainerGap(286, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(249, 249, 249))
             .addGroup(layout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,11 +146,9 @@ public class alienSida extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(luppgifter)))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(26, 26, 26)
+                .addGap(60, 60, 60)
                 .addComponent(lMittomrade)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
         );
@@ -189,7 +184,6 @@ public class alienSida extends javax.swing.JFrame {
     private javax.swing.JButton btnLoggaUt;
     private javax.swing.JButton btnNylosen;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lMittomrade;
     private javax.swing.JLabel lblValkommen;
