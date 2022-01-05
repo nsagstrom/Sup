@@ -285,7 +285,11 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
-        } else if (!ValideringsKlass.stringHarVarde(alienLosenord2)) {
+        } else if(!ValideringsKlass.dublettAlienNamn(txtNamn)){
+            ok = false;
+            JOptionPane.showMessageDialog(null,"Finns redan alien med detta namn");
+            txtNamn.requestFocus();
+        }else if (!ValideringsKlass.stringHarVarde(alienLosenord2)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
             pwLosen.requestFocus();
