@@ -1,4 +1,4 @@
-/*
+  /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -55,6 +55,11 @@ public class addAgent extends javax.swing.JFrame {
         jLabel1.setText("Lägg till agent ");
 
         txtNamn.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        txtNamn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNamnActionPerformed(evt);
+            }
+        });
 
         txtTelefon.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
 
@@ -294,6 +299,10 @@ public class addAgent extends javax.swing.JFrame {
         new agentAdminSida().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnTillbakaActionPerformed
+
+    private void txtNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNamnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
