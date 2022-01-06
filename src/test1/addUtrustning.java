@@ -199,8 +199,8 @@ public class addUtrustning extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ange kaliber i siffror");
                 txtTill.requestFocus();
             }
-        } else if (cbUtrustning.getSelectedIndex() != 0 && cbUtrustning.getSelectedIndex() != 4) {
-            if (ValideringsKlass.textFaltHarVarde(txtTill)) {
+        }  else if (cbUtrustning.getSelectedIndex() > 1 && cbUtrustning.getSelectedIndex() < 4) {
+            if (!ValideringsKlass.textFaltHarVarde(txtTill)) {
                 ok = false;
                 JOptionPane.showMessageDialog(null, "Ange värde");
                 txtTill.requestFocus();
@@ -254,6 +254,12 @@ public class addUtrustning extends javax.swing.JFrame {
                 txtTill.setVisible(true);
                 txtTill.setText("");
                 txtTill.requestFocus();
+                break;
+            case 4:
+                //Annat
+                lTyp.setText("");
+                txtTill.setVisible(false);
+                txtTill.setText("");
                 break;
         }
     }//GEN-LAST:event_cbUtrustningActionPerformed
