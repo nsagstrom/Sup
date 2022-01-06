@@ -221,7 +221,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
 
     private void btnLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillActionPerformed
 
-        boolean ok = okUppgifter();
+//        boolean ok = okUppgifter();
 
         String vilkenAgent = cbAnsvarigAgent.getSelectedItem().toString();
         String agentNrFraga = "SELECT Agent_ID FROM agent WHERE namn = '" + vilkenAgent + "'";
@@ -237,13 +237,16 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
 
         String fragaID = SqlFragor.nyID("Alien", "Alien_ID");
 
-        if (ok) {
+
+        if (okUppgifter()) {
             sqlfraga = "INSERT INTO alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon, Plats, Ansvarig_Agent) VALUES (" + fragaID + ",'" + datum + "','" + alienLosenord + "','" + alienNamn + "','" + telefonNummer + "'," + platsNr + "," + agentNr + ")";
             SqlFragor.laggTill(sqlfraga);
 
             lReggad.setText("Alien " + alienNamn + " är registrerad!");
 
             String vilkettilagg = txtRasTill.getText();
+            
+            
 
             switch (cbRaser.getSelectedIndex()) {
                 case 1:
@@ -266,6 +269,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
 
     private boolean okUppgifter() {
         boolean ok = true;
+        
 
         String alienLosenord2 = new String(pwLosen.getPassword());
 
@@ -298,14 +302,14 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj ras");
             cbRaser.requestFocus();
+        } else if (cbAnsvarigAgent.getSelectedIndex() == 0) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj agent");
         } else if (cbRaser.getSelectedIndex() == 1 || cbRaser.getSelectedIndex() == 2) {
             if (!ValideringsKlass.textFaltHarVarde(txtRasTill)) {
                 ok = false;
                 JOptionPane.showMessageDialog(null, "Ange antal");
             }
-        } else if (cbAnsvarigAgent.getSelectedIndex() == 0) {
-            ok = false;
-            JOptionPane.showMessageDialog(null, "Välj agent");
         }
         return ok;
     }

@@ -440,11 +440,6 @@ public class AndraAlien extends javax.swing.JFrame {
 //        }  
 
         String namnTest = SqlFragor.fragaSingel("SELECT Namn FROM alien WHERE Alien_ID = " + id + " AND Namn = '" +txtNamn.getText() +"';");
-        
-        
-        System.out.println("SELECT Namn FROM alien WHERE Alien_ID = " + id + " AND Namn = '" +txtNamn.getText() +"';");
-        
-        System.out.println(namnTest);
 
         if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
             ok = false;
@@ -482,17 +477,17 @@ public class AndraAlien extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj ras");
             cbRaser.requestFocus();
-        } else if (cbRaser.getSelectedIndex() == 1 || cbRaser.getSelectedIndex() == 2) {
-            if (txtRasTill.getText().isBlank()) {
-                ok = false;
-                JOptionPane.showMessageDialog(null, "Ange antal");
-            }
         } else if (cbAnsvarigAgent.getSelectedIndex() == 0) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj agent");
         } else if (!ValideringsKlass.textFaltHarVarde(txtDatum)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Ange datum");
+        } else if (cbRaser.getSelectedIndex() == 1 || cbRaser.getSelectedIndex() == 2) {
+            if (txtRasTill.getText().isBlank()) {
+                ok = false;
+                JOptionPane.showMessageDialog(null, "Ange antal");
+            }
         }
         return ok;
     }
