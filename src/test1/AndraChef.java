@@ -87,6 +87,7 @@ public class AndraChef extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel7.setText("Agent");
 
+        txtChef.setEditable(false);
         txtChef.setColumns(2);
         txtChef.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         txtChef.setRows(5);
