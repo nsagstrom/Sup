@@ -22,16 +22,14 @@ public class ValideringsKlass {
         }
         return rutaHarVarde;
     }
-    
-    public static boolean stringHarVarde(String instring){
+
+    public static boolean stringHarVarde(String instring) {
         boolean stringFinns = true;
-        if(instring.isEmpty()){
+        if (instring.isEmpty()) {
             stringFinns = false;
         }
         return stringFinns;
     }
-
-
 
     public static boolean taltest(JTextField taltest) {
         boolean arTal = true;
@@ -56,36 +54,36 @@ public class ValideringsKlass {
         }
         return langdOk;
     }
-    
-    public static boolean testLosenStrang(String losen){
+
+    public static boolean testLosenStrang(String losen) {
         boolean langdOk = true;
-        if(losen.length() > 6){
+        if (losen.length() > 6) {
             langdOk = false;
         }
         return langdOk;
     }
-    
-    public static boolean dublettAgentNamn(JTextField namn){
+
+    public static boolean dublettAgentNamn(JTextField namn) {
         int i = 0;
         boolean ejDublett = true;
-        
+
         String nyNamn = namn.getText();
         ArrayList<HashMap<String, String>> allaNuvarandeNamn = null;
         String namnCheck = "";
-        
+
         allaNuvarandeNamn = SqlFragor.fragaRader("SELECT Namn FROM agent");
-        
-        for(HashMap<String, String> a : allaNuvarandeNamn){
+
+        for (HashMap<String, String> a : allaNuvarandeNamn) {
             namnCheck = a.get("Namn");
-            
-            if(namnCheck.equals(nyNamn)){
+
+            if (namnCheck.equals(nyNamn)) {
                 ejDublett = false;
             }
         }
         System.out.println(namnCheck);
         return ejDublett;
     }
-    
+
     public static boolean dublettAlienNamn(JTextField namn) {
         boolean ejDublett = true;
         int i = 0;

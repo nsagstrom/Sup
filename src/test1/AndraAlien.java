@@ -315,6 +315,8 @@ public class AndraAlien extends javax.swing.JFrame {
                     + "\t" + info.get("Ras") + "\t" + info.get("Antal") + "\t" + info.get("Registreringsdatum")
                     + "\t" + info.get("Telefon") + "\t" + info.get("Losenord") + "\t"
                     + info.get("Benamning") + "\t" + info.get("Agent") + "\n");
+            
+            
         }
     }
 
@@ -436,14 +438,29 @@ public class AndraAlien extends javax.swing.JFrame {
 //        } else if (!ValideringsKlass.taltest(txtID)) {
 //            txtID.requestFocus();
 //        }  
+
+        String namnTest = SqlFragor.fragaSingel("SELECT Namn FROM alien WHERE Alien_ID = " + id + " AND Namn = '" +txtNamn.getText() +"';");
+        
+        
+        System.out.println("SELECT Namn FROM alien WHERE Alien_ID = " + id + " AND Namn = '" +txtNamn.getText() +"';");
+        
+        System.out.println(namnTest);
+
         if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
-        } else if(!ValideringsKlass.dublettAlienNamn(txtNamn)){
-            ok = false;
-            JOptionPane.showMessageDialog(null, "Finns redan alien med detta namn");
-            txtNamn.requestFocus();
+        } else if (namnTest == (null)){
+            if (!ValideringsKlass.dublettAlienNamn(txtNamn)) {
+                ok = false;
+                JOptionPane.showMessageDialog(null, "Finns redan alien med detta namn");
+                txtNamn.requestFocus();
+            }
+
+//        else if(!ValideringsKlass.dublettAlienNamn(txtNamn)){
+//            ok = false;
+//            JOptionPane.showMessageDialog(null, "Finns redan alien med detta namn");
+//            txtNamn.requestFocus();
         } else if (!ValideringsKlass.textFaltHarVarde(txtLosen)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");

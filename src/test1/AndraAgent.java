@@ -52,7 +52,6 @@ public class AndraAgent extends javax.swing.JFrame {
         txtAllInfo = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
         btnTillbaka = new javax.swing.JButton();
-        btnUppdatera = new javax.swing.JButton();
         checkAdmin = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -131,14 +130,6 @@ public class AndraAgent extends javax.swing.JFrame {
             }
         });
 
-        btnUppdatera.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        btnUppdatera.setText("Uppdatera");
-        btnUppdatera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUppdateraActionPerformed(evt);
-            }
-        });
-
         checkAdmin.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         checkAdmin.setText("Admin");
 
@@ -148,13 +139,8 @@ public class AndraAgent extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnUppdatera)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addGap(19, 19, 19))))
+                .addComponent(jScrollPane1)
+                .addGap(19, 19, 19))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -245,9 +231,7 @@ public class AndraAgent extends javax.swing.JFrame {
                             .addComponent(checkAdmin))))
                 .addGap(18, 18, 18)
                 .addComponent(landrad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(8, 8, 8)
-                .addComponent(btnUppdatera)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -312,6 +296,9 @@ public class AndraAgent extends javax.swing.JFrame {
 
     private boolean okUppgifter() {
         boolean ok = true;
+        
+         String namnTest = SqlFragor.fragaSingel("SELECT Namn FROM agent WHERE Agent_ID = " + txtID.getText() +" AND Namn = '" + txtNamn.getText() + "';");
+        
 
         if (!ValideringsKlass.textFaltHarVarde(txtID)) {
             ok = false;
@@ -324,10 +311,19 @@ public class AndraAgent extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
-        } else if(!ValideringsKlass.dublettAgentNamn(txtNamn)){
+        } 
+        else if (namnTest==(null)){ 
+            if(!ValideringsKlass.dublettAgentNamn(txtNamn)){
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn används redan av annan agent!");
             txtNamn.requestFocus();
+        }
+        
+        
+//        else if(!ValideringsKlass.dublettAgentNamn(txtNamn)){
+//            ok = false;
+//            JOptionPane.showMessageDialog(null, "Namn används redan av annan agent!");
+//            txtNamn.requestFocus();
         }else if (!ValideringsKlass.textFaltHarVarde(txtLosen)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
@@ -376,6 +372,8 @@ public class AndraAgent extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (okUppgifter()) {
             andraGrund();
+            txtAllInfo.setText("");
+            info();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -389,16 +387,10 @@ public class AndraAgent extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed
 
-    private void btnUppdateraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUppdateraActionPerformed
-        txtAllInfo.setText("");
-        info();
-    }//GEN-LAST:event_btnUppdateraActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOK;
     private javax.swing.JButton btnTillbaka;
-    private javax.swing.JButton btnUppdatera;
     private javax.swing.JComboBox<String> cbOmrade;
     private javax.swing.JCheckBox checkAdmin;
     private javax.swing.JButton jButton1;
