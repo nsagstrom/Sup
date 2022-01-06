@@ -347,6 +347,10 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
                 txtRasTill.setVisible(false);
                 lbRasInfo.setText("");
                 break;
+            case 4:
+                txtRasTill.setVisible(false);
+                lbRasInfo.setText("");
+                break;                
             default:
                 break;
         }

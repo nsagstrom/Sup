@@ -67,7 +67,7 @@ public class ValideringsKlass {
         int i = 0;
         boolean ejDublett = true;
 
-        String nyNamn = namn.getText();
+        String nyNamn = namn.getText().toLowerCase();
         ArrayList<HashMap<String, String>> allaNuvarandeNamn = null;
         String namnCheck = "";
 
@@ -75,12 +75,12 @@ public class ValideringsKlass {
 
         for (HashMap<String, String> a : allaNuvarandeNamn) {
             namnCheck = a.get("Namn");
+            String namnCheck2 = namnCheck.toLowerCase();
 
-            if (namnCheck.equals(nyNamn)) {
+            if (namnCheck2.equals(nyNamn)) {
                 ejDublett = false;
             }
         }
-        System.out.println(namnCheck);
         return ejDublett;
     }
 
@@ -88,7 +88,7 @@ public class ValideringsKlass {
         boolean ejDublett = true;
         int i = 0;
 
-        String nyNamn = namn.getText();
+        String nyNamn = namn.getText().toLowerCase();
         ArrayList<HashMap<String, String>> allaNuvarandeNamn = null;
         String namnCheck = "";
 
@@ -96,8 +96,9 @@ public class ValideringsKlass {
 
         for (HashMap<String, String> a : allaNuvarandeNamn) {
             namnCheck = a.get("Namn");
+            String namnCheck2 = namnCheck.toLowerCase();
 
-            if (namnCheck.equals(nyNamn)) {
+            if (namnCheck2.equals(nyNamn)) {
                 ejDublett = false;
             }
         }
