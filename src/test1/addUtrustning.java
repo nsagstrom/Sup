@@ -191,7 +191,7 @@ public class addUtrustning extends javax.swing.JFrame {
             txtBenamning.requestFocus();
         } else if (cbUtrustning.getSelectedIndex() == 0) {
             ok = false;
-            JOptionPane.showMessageDialog(null, "Ange vilken typ av utrustnign");
+            JOptionPane.showMessageDialog(null, "Ange vilken typ av utrustning");
             txtBenamning.requestFocus();
         } else if (cbUtrustning.getSelectedIndex() == 1) {
             if (!ValideringsKlass.taltest(txtTill)) {

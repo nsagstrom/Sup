@@ -22,7 +22,6 @@ public class AndraAlien extends javax.swing.JFrame {
      */
     public AndraAlien() {
         initComponents();
-//        info();
         Metoder.laggTillPlats(cbPlats);
         Metoder.laggTillRas(cbRaser);
         Metoder.laggTillAgent(cbAnsvarigAgent);
