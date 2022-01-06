@@ -5,6 +5,7 @@
 package test1;
 
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,11 +21,12 @@ public class addUtrustning extends javax.swing.JFrame {
         laggTillTyper();
         txtTill.setVisible(false);
     }
-    
-    private void laggTillTyper(){
+
+    private void laggTillTyper() {
         cbUtrustning.addItem("Vapen");
         cbUtrustning.addItem("Teknik");
         cbUtrustning.addItem("Kommunikation");
+        cbUtrustning.addItem("Annat");
     }
 
     /**
@@ -149,12 +151,16 @@ public class addUtrustning extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraActionPerformed
-        // TODO add your handling code here:
+        if (okUppgifter()) {
+            laggTill();
+        }
+    }//GEN-LAST:event_btnRegistreraActionPerformed
 
- 
+    private void laggTill() {
+
         String nyID = SqlFragor.nyID("utrustning", "Utrustnings_ID");
 
-        String fraga = "insert into utrustning(Utrustnings_ID, Benamning) VALUES(" + nyID + "," + "'" + txtBenamning.getText()+ "')";
+        String fraga = "insert into utrustning(Utrustnings_ID, Benamning) VALUES(" + nyID + "," + "'" + txtBenamning.getText() + "')";
         SqlFragor.laggTill(fraga);
 
         jKorrekt.setText(txtBenamning.getText() + " registrerad!");
@@ -175,7 +181,34 @@ public class addUtrustning extends javax.swing.JFrame {
                 SqlFragor.laggTill("INSERT INTO kommunikation (Utrustnings_ID, Overforingsteknik) VALUES (" + nyID + ",'" + txtTill.getText() + "');");
                 break;
         }
-    }//GEN-LAST:event_btnRegistreraActionPerformed
+    }
+
+    private boolean okUppgifter() {
+        boolean ok = true;
+        if (!ValideringsKlass.textFaltHarVarde(txtBenamning)) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Namn saknas");
+            txtBenamning.requestFocus();
+        } else if (cbUtrustning.getSelectedIndex() == 0) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Ange vilken typ av utrustnign");
+            txtBenamning.requestFocus();
+        } else if (cbUtrustning.getSelectedIndex() == 1) {
+            if (!ValideringsKlass.taltest(txtTill)) {
+                ok = false;
+                JOptionPane.showMessageDialog(null, "Ange kaliber i siffror");
+                txtTill.requestFocus();
+            }
+        } else if (cbUtrustning.getSelectedIndex() != 0 && cbUtrustning.getSelectedIndex() != 4) {
+            if (ValideringsKlass.textFaltHarVarde(txtTill)) {
+                ok = false;
+                JOptionPane.showMessageDialog(null, "Ange värde");
+                txtTill.requestFocus();
+            }
+        }
+
+        return ok;
+    }
 
     private void txtBenamningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBenamningActionPerformed
         // TODO add your handling code here:
@@ -195,7 +228,7 @@ public class addUtrustning extends javax.swing.JFrame {
 
     private void cbUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUtrustningActionPerformed
         int i = cbUtrustning.getSelectedIndex();
-        
+
         switch (i) {
             case 0:
                 lTyp.setText("");
