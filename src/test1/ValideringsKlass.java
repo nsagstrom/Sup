@@ -6,6 +6,7 @@ package test1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 /**
@@ -14,6 +15,7 @@ import javax.swing.JTextField;
  */
 public class ValideringsKlass {
 
+    //Validera så att ett TextField inte är tomt.
     public static boolean textFaltHarVarde(JTextField ruta) {
         boolean rutaHarVarde = true;
         if (ruta.getText().isEmpty()) {
@@ -23,6 +25,7 @@ public class ValideringsKlass {
         return rutaHarVarde;
     }
 
+    //Validera så sträng inte är tom.
     public static boolean stringHarVarde(String instring) {
         boolean stringFinns = true;
         if (instring.isEmpty()) {
@@ -31,6 +34,7 @@ public class ValideringsKlass {
         return stringFinns;
     }
 
+    //Validera så att ett TextField är ett tal.
     public static boolean taltest(JTextField taltest) {
         boolean arTal = true;
         String idid = taltest.getText();
@@ -44,6 +48,7 @@ public class ValideringsKlass {
         return arTal;
     }
 
+    //Validera ett TextField så att inputen inte är längre än 6 tecken, lösen.
     public static boolean testLangdLosen(JTextField losen) {
         boolean langdOk = true;
         String langd = losen.getText();
@@ -55,6 +60,7 @@ public class ValideringsKlass {
         return langdOk;
     }
 
+    //Validera en sträng så att den inte är längre än 6 tecken, lösen.
     public static boolean testLosenStrang(String losen) {
         boolean langdOk = true;
         if (losen.length() > 6) {
@@ -62,7 +68,8 @@ public class ValideringsKlass {
         }
         return langdOk;
     }
-
+    
+    //Validera dubletter av namn hos agenter.
     public static boolean dublettAgentNamn(JTextField namn) {
         int i = 0;
         boolean ejDublett = true;
@@ -83,7 +90,8 @@ public class ValideringsKlass {
         }
         return ejDublett;
     }
-
+    
+    //Validera dubletter av namn hos alien.
     public static boolean dublettAlienNamn(JTextField namn) {
         boolean ejDublett = true;
         int i = 0;
@@ -104,5 +112,16 @@ public class ValideringsKlass {
         }
 
         return ejDublett;
+    }
+    
+    //Validera så att positionen på ComboBox inte är noll.
+    public static boolean testaIndexPos(JComboBox position){
+        boolean indexOk = true;
+        
+        if(position.getSelectedIndex() == 0){
+            indexOk = false;
+            }
+        
+        return indexOk;
     }
 }
