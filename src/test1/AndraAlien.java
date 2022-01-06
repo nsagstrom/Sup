@@ -484,7 +484,7 @@ public class AndraAlien extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Ange datum");
         } else if (cbRaser.getSelectedIndex() == 1 || cbRaser.getSelectedIndex() == 2) {
-            if (txtRasTill.getText().isBlank()) {
+            if (!ValideringsKlass.taltest(txtRasTill)) {
                 ok = false;
                 JOptionPane.showMessageDialog(null, "Ange antal");
             }

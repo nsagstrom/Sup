@@ -309,7 +309,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj agent");
         } else if (cbRaser.getSelectedIndex() == 1 || cbRaser.getSelectedIndex() == 2) {
-            if (!ValideringsKlass.textFaltHarVarde(txtRasTill)) {
+            if (!ValideringsKlass.taltest(txtRasTill)) {
                 ok = false;
                 JOptionPane.showMessageDialog(null, "Ange antal");
             }
