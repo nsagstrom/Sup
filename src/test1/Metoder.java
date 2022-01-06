@@ -4,14 +4,16 @@
  */
 package test1;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JComboBox;
 
 /**
  *
  * @author nsags
  */
-
 public class Metoder {
 
     public static void laggTillPlats(JComboBox cb) {
@@ -68,5 +70,13 @@ public class Metoder {
         for (String p : allaAlien) {
             cb.addItem(p);
         }
+    }
+
+    public static String datum() {
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String datum = dateFormat.format(date);
+        return datum;
     }
 }

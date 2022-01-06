@@ -5,9 +5,6 @@
 package test1;
 
 import java.awt.event.KeyEvent;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,21 +22,12 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
      * Creates new form nyRegistreraAlien
      */
     public nyRegistreraAlien() {
-
         initComponents();
-        datum();
-
+        datum = Metoder.datum();
         Metoder.laggTillAgent(cbAnsvarigAgent);
         Metoder.laggTillPlats(cbPlats);
         Metoder.laggTillRas(cbRaser);
-
         txtRasTill.setVisible(false);
-    }
-
-    private void datum() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-        datum = dateFormat.format(date);
     }
 
     /**
@@ -285,11 +273,11 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
-        } else if(!ValideringsKlass.dublettAlienNamn(txtNamn)){
+        } else if (!ValideringsKlass.dublettAlienNamn(txtNamn)) {
             ok = false;
-            JOptionPane.showMessageDialog(null,"Finns redan alien med detta namn");
+            JOptionPane.showMessageDialog(null, "Finns redan alien med detta namn");
             txtNamn.requestFocus();
-        }else if (!ValideringsKlass.stringHarVarde(alienLosenord2)) {
+        } else if (!ValideringsKlass.stringHarVarde(alienLosenord2)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
             pwLosen.requestFocus();

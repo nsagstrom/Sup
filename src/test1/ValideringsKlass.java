@@ -4,14 +4,8 @@
  */
 package test1;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -37,13 +31,7 @@ public class ValideringsKlass {
         return stringFinns;
     }
 
-    public static String datum() {
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-        String datum = dateFormat.format(date);
-        return datum;
-    }
 
     public static boolean taltest(JTextField taltest) {
         boolean arTal = true;

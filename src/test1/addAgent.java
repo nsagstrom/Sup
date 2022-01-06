@@ -22,7 +22,7 @@ public class addAgent extends javax.swing.JFrame {
      */
     public addAgent() {
         initComponents();
-        datum = ValideringsKlass.datum();
+        datum = Metoder.datum();
         admin = "N";
         Metoder.laggTillOmrade(cbOmrade);
     }
