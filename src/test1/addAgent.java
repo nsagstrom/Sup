@@ -1,4 +1,4 @@
-  /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -55,11 +55,6 @@ public class addAgent extends javax.swing.JFrame {
         jLabel1.setText("Lägg till agent ");
 
         txtNamn.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        txtNamn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNamnActionPerformed(evt);
-            }
-        });
 
         txtTelefon.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
 
@@ -198,6 +193,56 @@ public class addAgent extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        private void laggTillAgent() {
+        String fragaID = SqlFragor.nyID("Agent", "Agent_ID");
+        String namn = txtNamn.getText();
+        String telefon = txtTelefon.getText();
+        String omrode = SqlFragor.fragaSingel("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + cbOmrade.getSelectedItem().toString() + "';");
+        losen = new String(pwLosen.getPassword());
+
+        String sqlAgent = "INSERT INTO agent (Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Omrade) \n"
+                + "VALUES (" + fragaID + ",'" + namn + "','" + telefon + "','" + datum + "','" + admin + "','" + losen + "'," + omrode + " );";
+
+        String sqlFaltAgent = "INSERT INTO faltagent VALUES (" + fragaID + ");";
+
+        SqlFragor.laggTill(sqlAgent);
+        SqlFragor.laggTill(sqlFaltAgent);
+        lReggad.setText("Agenten " + namn + " är registrerad!");
+    }
+
+    private boolean okUppgifter() {
+        boolean ok = true;
+
+        String alienLosenord2 = new String(pwLosen.getPassword());
+
+        if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Namn saknas");
+            txtNamn.requestFocus();
+        } else if (!ValideringsKlass.dublettAgentNamn(txtNamn)) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Namn används redan av annan agent!");
+            txtNamn.requestFocus();
+        } else if (!ValideringsKlass.textFaltHarVarde(txtTelefon)) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
+            txtTelefon.requestFocus();
+        } else if (!ValideringsKlass.stringHarVarde(alienLosenord2)) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Lösenord saknas");
+            pwLosen.requestFocus();
+        } else if (!ValideringsKlass.testLosenStrang(alienLosenord2)) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Lösenord får ej vara längre än sex tecken");
+            pwLosen.requestFocus();
+        } else if (cbOmrade.getSelectedIndex() == 0) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Välj plats");
+            cbOmrade.requestFocus();
+        }
+        return ok;
+    }
+    
     private void boxAdminKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_boxAdminKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
@@ -221,72 +266,10 @@ public class addAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_cbVisaLosenActionPerformed
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
-
-        boolean ok = okUppgifter();
-        String fragaID = SqlFragor.nyID("Agent", "Agent_ID");
-        String namn = txtNamn.getText();
-        String telefon = txtTelefon.getText();
-        String omrode = SqlFragor.fragaSingel("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + cbOmrade.getSelectedItem().toString() + "';");
-        losen = new String(pwLosen.getPassword());
-
-        if (ok) {
-            String sqlAgent = "INSERT INTO agent (Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Omrade) \n"
-                    + "VALUES (" + fragaID + ",'" + namn + "','" + telefon + "','" + datum + "','" + admin + "','" + losen + "'," + omrode + " );";
-
-            String sqlFaltAgent = "INSERT INTO faltagent VALUES (" + fragaID + ");";
-
-            SqlFragor.laggTill(sqlAgent);
-            SqlFragor.laggTill(sqlFaltAgent);
-            lReggad.setText("Agenten " + namn + " är registrerad!");
+        if (okUppgifter()) {
+            laggTillAgent();
         }
     }//GEN-LAST:event_btnOKActionPerformed
-
-    private boolean okUppgifter() {
-        boolean ok = true;
-
-        String finnsFraga = "SELECT Count(*) FROM agent WHERE Namn = '" + txtNamn.getText() + "';";
-
-        String antalFinns = SqlFragor.fragaSingel(finnsFraga);
-        int finns = Integer.parseInt(antalFinns);
-
-        String alienLosenord2 = new String(pwLosen.getPassword());
-
-        if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
-            ok = false;
-            JOptionPane.showMessageDialog(null, "Namn saknas");
-            txtNamn.requestFocus();
-        } else if(!ValideringsKlass.dublettAgentNamn(txtNamn)){
-            ok = false;
-            JOptionPane.showMessageDialog(null, "Namn används redan av annan agent!");
-            txtNamn.requestFocus();
-        }
-        
-//        else if (finns != 0) {
-//            ok = false;
-//            JOptionPane.showMessageDialog(null, "Namn används redan av en annan agent");
-//            txtNamn.requestFocus();
-//        } 
-        
-        else if (!ValideringsKlass.textFaltHarVarde(txtTelefon)) {
-            ok = false;
-            JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
-            txtTelefon.requestFocus();
-        } else if (!ValideringsKlass.stringHarVarde(alienLosenord2)) {
-            ok = false;
-            JOptionPane.showMessageDialog(null, "Lösenord saknas");
-            pwLosen.requestFocus();
-        } else if (!ValideringsKlass.testLosenStrang(alienLosenord2)) {
-            ok = false;
-            JOptionPane.showMessageDialog(null, "Lösenord får ej vara längre än sex tecken");
-            pwLosen.requestFocus();
-        } else if (cbOmrade.getSelectedIndex() == 0) {
-            ok = false;
-            JOptionPane.showMessageDialog(null, "Välj plats");
-            cbOmrade.requestFocus();
-        }
-        return ok;
-    }
-
 
     private void boxAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxAdminActionPerformed
         if (boxAdmin.isSelected()) {
@@ -299,10 +282,6 @@ public class addAgent extends javax.swing.JFrame {
         new agentAdminSida().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnTillbakaActionPerformed
-
-    private void txtNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNamnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

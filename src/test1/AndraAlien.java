@@ -316,52 +316,7 @@ public class AndraAlien extends javax.swing.JFrame {
         }
     }
 
-    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
-        if (forstaSida.arAdmin()) {
-            new agentAdminSida().setVisible(true);
-            dispose();
-        } else {
-            new agentSida().setVisible(true);
-            dispose();
-        }
-    }//GEN-LAST:event_btnTillbakaActionPerformed
-
-    private void cbRaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRaserActionPerformed
-        int i = cbRaser.getSelectedIndex();
-
-        switch (i) {
-            case 0:
-                // Välj Ras
-                txtRasTill.setVisible(false);
-                lbRasInfo.setText("");
-                break;
-            case 1:
-                // Boglodite
-                txtRasTill.setVisible(true);
-                lbRasInfo.setText("Antal boogies");
-                break;
-            case 2:
-                // Squid
-                txtRasTill.setVisible(true);
-                lbRasInfo.setText("Antal armar");
-                break;
-            case 3:
-                // Worm
-                txtRasTill.setVisible(false);
-                lbRasInfo.setText("");
-                break;
-            case 4:
-                // Annat
-                txtRasTill.setVisible(false);
-                lbRasInfo.setText("");
-            default:
-                break;
-        }
-    }//GEN-LAST:event_cbRaserActionPerformed
-
-    private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
-
-
+    private void sok() {
         txtAllInfo.setText("");
         if (ValideringsKlass.textFaltHarVarde(txtNamn)) {
             info();
@@ -407,34 +362,11 @@ public class AndraAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
         }
-    }//GEN-LAST:event_btnOKActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (okUppgifter()) {
-            andraGrund();
-            andraRas();
-            txtAllInfo.setText("");
-            info();
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void txtNamnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamnKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-
-            btnOK.doClick();
-        }
-    }//GEN-LAST:event_txtNamnKeyPressed
+    }
 
     private boolean okUppgifter() {
         boolean ok = true;
 
-//        if (txtID.getText().isBlank()) {
-//            ok = false;
-//            JOptionPane.showMessageDialog(null, "Ange id");
-//            txtID.requestFocus();
-//        } else if (!ValideringsKlass.taltest(txtID)) {
-//            txtID.requestFocus();
-//        }  
         String namnTest = SqlFragor.fragaSingel("SELECT Namn FROM alien WHERE Alien_ID = " + id + " AND Namn = '" + txtNamn.getText() + "';");
 
         if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
@@ -447,11 +379,6 @@ public class AndraAlien extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Finns redan alien med detta namn");
                 txtNamn.requestFocus();
             }
-
-//        else if(!ValideringsKlass.dublettAlienNamn(txtNamn)){
-//            ok = false;
-//            JOptionPane.showMessageDialog(null, "Finns redan alien med detta namn");
-//            txtNamn.requestFocus();
         } else if (!ValideringsKlass.textFaltHarVarde(txtLosen)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
@@ -543,6 +470,70 @@ public class AndraAlien extends javax.swing.JFrame {
                 break;
         }
     }
+
+    private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
+        if (forstaSida.arAdmin()) {
+            new agentAdminSida().setVisible(true);
+            dispose();
+        } else {
+            new agentSida().setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_btnTillbakaActionPerformed
+
+    private void cbRaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRaserActionPerformed
+        int i = cbRaser.getSelectedIndex();
+
+        switch (i) {
+            case 0:
+                // Välj Ras
+                txtRasTill.setVisible(false);
+                lbRasInfo.setText("");
+                break;
+            case 1:
+                // Boglodite
+                txtRasTill.setVisible(true);
+                lbRasInfo.setText("Antal boogies");
+                break;
+            case 2:
+                // Squid
+                txtRasTill.setVisible(true);
+                lbRasInfo.setText("Antal armar");
+                break;
+            case 3:
+                // Worm
+                txtRasTill.setVisible(false);
+                lbRasInfo.setText("");
+                break;
+            case 4:
+                // Annat
+                txtRasTill.setVisible(false);
+                lbRasInfo.setText("");
+            default:
+                break;
+        }
+    }//GEN-LAST:event_cbRaserActionPerformed
+
+    private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
+        sok();
+    }//GEN-LAST:event_btnOKActionPerformed
+
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (okUppgifter()) {
+            andraGrund();
+            andraRas();
+            txtAllInfo.setText("");
+            info();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtNamnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamnKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            btnOK.doClick();
+        }
+    }//GEN-LAST:event_txtNamnKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

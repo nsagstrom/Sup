@@ -4,7 +4,6 @@
  */
 package test1;
 
-import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -130,9 +129,7 @@ public class TaBortAgent extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
-        // TODO add your handling code here:
-
+    private void taBort() {
         //Det som väljs i komboboxen är den variabeln som vi använder i sql frågan för att specifera vilken alien som ska tas bort.
         String agentbort = cbAgenter.getSelectedItem().toString();
         String nyAnsvarig = cbNyAnsvar.getSelectedItem().toString();
@@ -168,8 +165,8 @@ public class TaBortAgent extends javax.swing.JFrame {
 
             jLKorrekt.setText(agentbort + " borttagen!");
         }
-    }//GEN-LAST:event_btnTaBortActionPerformed
-
+    }
+    
     private void nyAnsvar() {
         cbNyAnsvar.removeAllItems();
         cbNyAnsvar.addItem("Välj Agent");
@@ -182,8 +179,11 @@ public class TaBortAgent extends javax.swing.JFrame {
         }
     }
 
+    private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
+        taBort();
+    }//GEN-LAST:event_btnTaBortActionPerformed
+
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
-        // TODO add your handling code here:
         if (forstaSida.arAdmin()) {
             new agentAdminSida().setVisible(true);
             dispose();

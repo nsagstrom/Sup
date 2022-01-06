@@ -111,8 +111,7 @@ public class TaBortAlien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
-        // TODO add your handling code here:
-        
+       
         //Det som skrivs in i jFramen "jTAlien" är den variabeln som vi använder i sql frågan för att specifera vilken alien som ska tas bort.
         String alienbort = jTAlien.getText();
         String taBort = "SELECT Alien_ID FROM Alien WHERE Namn = '" + alienbort + "'";
