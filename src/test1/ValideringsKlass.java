@@ -80,7 +80,6 @@ public class ValideringsKlass {
                 ejDublett = false;
             }
         }
-        System.out.println(namnCheck);
         return ejDublett;
     }
 
