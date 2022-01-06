@@ -220,7 +220,11 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_cbVisaLosenActionPerformed
 
     private void btnLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillActionPerformed
+        laggTill();
+    }//GEN-LAST:event_btnLaggTillActionPerformed
 
+    private void laggTill(){
+        
 //        boolean ok = okUppgifter();
 
         String vilkenAgent = cbAnsvarigAgent.getSelectedItem().toString();
@@ -265,8 +269,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
                     break;
             }
         }
-    }//GEN-LAST:event_btnLaggTillActionPerformed
-
+    }
     private boolean okUppgifter() {
         boolean ok = true;
         
