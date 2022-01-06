@@ -20,7 +20,6 @@ public class AndraAlien extends javax.swing.JFrame {
     /**
      * Creates new form AndraAlien
      */
-
     public AndraAlien() {
         initComponents();
 //        info();
@@ -299,7 +298,6 @@ public class AndraAlien extends javax.swing.JFrame {
                 + "JOIN plats p on p.Plats_ID = alien.Plats\n"
                 + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID "
                 + "WHERE namn = '" + txtNamn.getText() + "';";
-        
 
         allInfo = SqlFragor.fragaRader(fraga);
 
@@ -315,8 +313,7 @@ public class AndraAlien extends javax.swing.JFrame {
                     + "\t" + info.get("Ras") + "\t" + info.get("Antal") + "\t" + info.get("Registreringsdatum")
                     + "\t" + info.get("Telefon") + "\t" + info.get("Losenord") + "\t"
                     + info.get("Benamning") + "\t" + info.get("Agent") + "\n");
-            
-            
+
         }
     }
 
@@ -365,51 +362,52 @@ public class AndraAlien extends javax.swing.JFrame {
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
 
-//        if (ValideringsKlass.taltest(txtID)) {
+
         txtAllInfo.setText("");
-        info();
-        String sok = "SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\n"
-                + "SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\n"
-                + "UNION\n"
-                + "SELECT Alien_ID  , 'Sqid' AS Ras, Antal_Armar AS Antal FROM squid\n"
-                + "UNION\n"
-                + "SELECT Alien_ID, 'Boglodite' AS Ras, Antal_Boogies AS Antal FROM boglodite\n"
-                + "UNION\n"
-                + "(SELECT Alien_ID, 'Annat', null FROM alien\n"
-                + "    WHERE Alien_ID NOT IN (SELECT Alien_ID AS id FROM alien\n"
-                + "    WHERE Alien_ID  IN (SELECT id FROM\n"
-                + "        (SELECT Alien_ID AS id  FROM squid\n"
-                + "        UNION SELECT Alien_ID as id FROM worm\n"
-                + "        UNION SELECT Alien_ID as id FROM boglodite) AS a)))) AS ras\n"
-                + "JOIN alien on ras.alien_id = alien.alien_id\n"
-                + "JOIN plats p on p.Plats_ID = alien.Plats\n"
-                + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID\n"
-                + "WHERE alien.Namn = '" + txtNamn.getText() + "' ;";
-        
-        
+        if (ValideringsKlass.textFaltHarVarde(txtNamn)) {
+            info();
+            String sok = "SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\n"
+                    + "SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\n"
+                    + "UNION\n"
+                    + "SELECT Alien_ID  , 'Sqid' AS Ras, Antal_Armar AS Antal FROM squid\n"
+                    + "UNION\n"
+                    + "SELECT Alien_ID, 'Boglodite' AS Ras, Antal_Boogies AS Antal FROM boglodite\n"
+                    + "UNION\n"
+                    + "(SELECT Alien_ID, 'Annat', null FROM alien\n"
+                    + "    WHERE Alien_ID NOT IN (SELECT Alien_ID AS id FROM alien\n"
+                    + "    WHERE Alien_ID  IN (SELECT id FROM\n"
+                    + "        (SELECT Alien_ID AS id  FROM squid\n"
+                    + "        UNION SELECT Alien_ID as id FROM worm\n"
+                    + "        UNION SELECT Alien_ID as id FROM boglodite) AS a)))) AS ras\n"
+                    + "JOIN alien on ras.alien_id = alien.alien_id\n"
+                    + "JOIN plats p on p.Plats_ID = alien.Plats\n"
+                    + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID\n"
+                    + "WHERE alien.Namn = '" + txtNamn.getText() + "' ;";
 
-        HashMap<String, String> uppgifter;
-        uppgifter = SqlFragor.fragaRad(sok);
+            HashMap<String, String> uppgifter;
+            uppgifter = SqlFragor.fragaRad(sok);
 
-        id = uppgifter.get("Alien_ID");
-        txtDatum.setText(uppgifter.get("Registreringsdatum"));
-        txtLosen.setText(uppgifter.get("Losenord"));
-        txtTele.setText(uppgifter.get("Telefon"));
-        txtRasTill.setText(uppgifter.get("Antal"));
-        cbAnsvarigAgent.setSelectedItem(uppgifter.get("Agent"));
-        cbPlats.setSelectedItem(uppgifter.get("Benamning"));
+            id = uppgifter.get("Alien_ID");
+            txtDatum.setText(uppgifter.get("Registreringsdatum"));
+            txtLosen.setText(uppgifter.get("Losenord"));
+            txtTele.setText(uppgifter.get("Telefon"));
+            txtRasTill.setText(uppgifter.get("Antal"));
+            cbAnsvarigAgent.setSelectedItem(uppgifter.get("Agent"));
+            cbPlats.setSelectedItem(uppgifter.get("Benamning"));
 
-
-        if (uppgifter.get("Ras").equalsIgnoreCase("Annat")) {
-            cbRaser.setSelectedIndex(4);
-        } else if (uppgifter.get("Ras").equalsIgnoreCase("Boglodite")) {
-            cbRaser.setSelectedIndex(1);
-        } else if (uppgifter.get("Ras").equalsIgnoreCase("Sqid")) {
-            cbRaser.setSelectedIndex(2);
-        } else if (uppgifter.get("Ras").equalsIgnoreCase("Worm")) {
-            cbRaser.setSelectedIndex(3);
+            if (uppgifter.get("Ras").equalsIgnoreCase("Annat")) {
+                cbRaser.setSelectedIndex(4);
+            } else if (uppgifter.get("Ras").equalsIgnoreCase("Boglodite")) {
+                cbRaser.setSelectedIndex(1);
+            } else if (uppgifter.get("Ras").equalsIgnoreCase("Sqid")) {
+                cbRaser.setSelectedIndex(2);
+            } else if (uppgifter.get("Ras").equalsIgnoreCase("Worm")) {
+                cbRaser.setSelectedIndex(3);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Namn saknas");
+            txtNamn.requestFocus();
         }
-//    }
     }//GEN-LAST:event_btnOKActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -438,14 +436,13 @@ public class AndraAlien extends javax.swing.JFrame {
 //        } else if (!ValideringsKlass.taltest(txtID)) {
 //            txtID.requestFocus();
 //        }  
-
-        String namnTest = SqlFragor.fragaSingel("SELECT Namn FROM alien WHERE Alien_ID = " + id + " AND Namn = '" +txtNamn.getText() +"';");
+        String namnTest = SqlFragor.fragaSingel("SELECT Namn FROM alien WHERE Alien_ID = " + id + " AND Namn = '" + txtNamn.getText() + "';");
 
         if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
-        } else if (namnTest == (null)){
+        } else if (namnTest == (null)) {
             if (!ValideringsKlass.dublettAlienNamn(txtNamn)) {
                 ok = false;
                 JOptionPane.showMessageDialog(null, "Finns redan alien med detta namn");
