@@ -124,4 +124,27 @@ public class ValideringsKlass {
         
         return indexOk;
     }
+    
+    //Validera så att telefonnumret innehåller korrekta tecken
+    public static boolean testaTeleNmr(JTextField teleNmr){
+        boolean nmrOk = true;
+        String nmr = teleNmr.getText();
+        
+        if(!nmr.matches("[0-9-+]+")){
+            nmrOk = false;
+        }
+        
+        return nmrOk;
+    }
+    
+    //Validera så att telefonnumret innehåller korrekta tecken, string
+    public static boolean testaTeleNmrString(String teleNmr){
+        boolean nmrOk = true;
+        
+        if(!teleNmr.matches("[0-9-+]+")){
+            nmrOk = false;
+        }
+        
+        return nmrOk;
+    }
 }

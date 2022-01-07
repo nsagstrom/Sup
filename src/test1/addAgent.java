@@ -231,6 +231,10 @@ public class addAgent extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
             txtTelefon.requestFocus();
+        } else if(!ValideringsKlass.testaTeleNmr(txtTelefon)){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Telfonnummer inte angivet korrekt");
+            txtTelefon.requestFocus();
         } else if (!ValideringsKlass.stringHarVarde(alienLosenord2)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
