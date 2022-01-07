@@ -337,6 +337,10 @@ public class AndraAgent extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
             txtTele.requestFocus();
+        } else if(!ValideringsKlass.testaTeleNmr(txtTele)){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Telefonnummer inte angivet korrekt");
+            txtTele.requestFocus();
         } else if (cbOmrade.getSelectedIndex() == 0) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj område");

@@ -297,6 +297,10 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
             txtTelefon.requestFocus();
+        } else if(!ValideringsKlass.testaTeleNmr(txtTelefon)){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Telefonnummer är inte angivet korrekt");
+            txtTelefon.requestFocus();
         } else if (cbPlats.getSelectedIndex() == 0) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj plats");

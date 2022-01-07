@@ -465,6 +465,10 @@ public class AndraAlien extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
             txtTele.requestFocus();
+        } else if(!ValideringsKlass.testaTeleNmr(txtTele)){
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Ogiltigt telefonnummer");
+            txtTele.requestFocus();
         } else if (cbPlats.getSelectedIndex() == 0) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Välj plats");
