@@ -279,6 +279,13 @@ public class AndraAlien extends javax.swing.JFrame {
     private void info() {
 
         ArrayList<HashMap<String, String>> allInfo;
+        
+//        För att kunna visa all information om alien som vi vill ändra behöves informationen
+//        om vilken ras den tillhör samt hur många boglo/armar som finns. Det olika raserna
+//        finns i olika tabeller och därför används unoin för att sätta ihop. Eftersom det 
+//        måste vara lika många kolumner för alla aliens behöver de aliens som inte
+//        har något värde tilldelas en fiktiv kolumn för att det ska gå att göra en union.
+//        Slutligen plocka bort de alien som finns i någon av det worm/squid/boglo från alien å att de inte visas två gånger.
 
         String fraga = "SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\n"
                 + "SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\n"
