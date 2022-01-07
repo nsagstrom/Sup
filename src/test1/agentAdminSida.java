@@ -25,31 +25,10 @@ public class agentAdminSida extends javax.swing.JFrame {
         initComponents();
         namn = forstaSida.aNamn();
         lblValkommen.setText("Välkommen " + namn);
-        laggTillAtgard();
         listaAllUtrustning();
         for (int i = 0; i < jTree1.getRowCount(); i++) {
             jTree1.expandRow(i);
         }
-    }
-
-    private void laggTillAtgard() {
-
-        cbKontrollAvAlien.addItem("Välj");
-        cbKontrollAvAlien.addItem("Alla Alier per ras");
-        cbKontrollAvAlien.addItem("Alla Alier per plats");
-        cbKontrollAvAlien.addItem("Alla Alier per datum");
-        cbKontrollAvAlien.addItem("Information om en alien");
-        cbKontrollAvAlien.addItem("Ta bort alien");
-        cbKontrollAvAlien.addItem("Ta bort agent");
-        cbKontrollAvAlien.addItem("Ta bort utrustning");
-
-        cbAtgarder.addItem("Välj");
-        cbAtgarder.addItem("Lägg till Vapen");
-        cbAtgarder.addItem("Lägg till Alien");
-        cbAtgarder.addItem("Lägg till Agent");
-        cbAtgarder.addItem("Ändra alien");
-        cbAtgarder.addItem("Ändra agent");
-        cbAtgarder.addItem("Ändra chef");
     }
 
     /**
@@ -61,14 +40,10 @@ public class agentAdminSida extends javax.swing.JFrame {
 
         jFrame1 = new javax.swing.JFrame();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        cbKontrollAvAlien = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
         lblValkommen = new javax.swing.JLabel();
         btnLoggaUt = new javax.swing.JButton();
         btnNylosen = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        cbAtgarder = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtfUtrustning = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
@@ -87,16 +62,6 @@ public class agentAdminSida extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        cbKontrollAvAlien.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        cbKontrollAvAlien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbKontrollAvAlienActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        jLabel2.setText("Kontroll av alien ");
 
         lblValkommen.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         lblValkommen.setText("jLabel1");
@@ -119,16 +84,6 @@ public class agentAdminSida extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel3.setText("Inloggad som administratör");
-
-        jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        jLabel4.setText("Åtgärder");
-
-        cbAtgarder.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        cbAtgarder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbAtgarderActionPerformed(evt);
-            }
-        });
 
         txtfUtrustning.setEditable(false);
         txtfUtrustning.setColumns(1);
@@ -206,27 +161,16 @@ public class agentAdminSida extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbAtgarder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbKontrollAvAlien, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2))
-                                .addGap(287, 287, 287))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblValkommen)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnLoggaUt, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnNylosen)))
-                                .addGap(96, 96, 96))))
+                                .addComponent(lblValkommen)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLoggaUt, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                                .addComponent(btnNylosen)))
+                        .addGap(96, 96, 96))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,18 +193,8 @@ public class agentAdminSida extends javax.swing.JFrame {
                         .addComponent(lblValkommen)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbAtgarder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cbKontrollAvAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
+                        .addComponent(jLabel5)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(87, 87, 87))
@@ -272,47 +206,6 @@ public class agentAdminSida extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cbKontrollAvAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKontrollAvAlienActionPerformed
-        // Välj inloggningstyp
-        int i = cbKontrollAvAlien.getSelectedIndex();
-
-        if (i == 0) {
-
-        }
-        switch (i) {
-            case 1:
-                new alienAvRas().setVisible(true);
-                dispose();
-                break;
-            case 2:
-                new allaAlienPlats().setVisible(true);
-                dispose();
-                break;
-            case 3:
-                new alienDatum().setVisible(true);
-                dispose();
-                break;
-            case 4:
-                new sökAllinfoAlien().setVisible(true);
-                dispose();
-                break;
-            case 5:
-                new TaBortAlien().setVisible(true);
-                dispose();
-                break;
-            case 6:
-                new TaBortAgent().setVisible(true);
-                dispose();
-                break;
-            case 7:
-                new TaBortUtrustning().setVisible(true);
-                dispose();
-                break;
-            default:
-                break;
-        }
-    }//GEN-LAST:event_cbKontrollAvAlienActionPerformed
 
     private void listaAllUtrustning() {
 
@@ -335,42 +228,6 @@ public class agentAdminSida extends javax.swing.JFrame {
         new NyttLosen().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnNylosenActionPerformed
-
-    private void cbAtgarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAtgarderActionPerformed
-        int i = cbAtgarder.getSelectedIndex();
-
-        if (i == 0) {
-
-        }
-        switch (i) {
-            case 1:
-                new addUtrustning().setVisible(true);
-                dispose();
-                break;
-            case 2:
-                new nyRegistreraAlien().setVisible(true);
-                dispose();
-                break;
-            case 3:
-                new addAgent().setVisible(true);
-                dispose();
-                break;
-            case 4:
-                new AndraAlien().setVisible(true);
-                dispose();
-                break;
-            case 5:
-                new AndraAgent().setVisible(true);
-                dispose();
-                break;
-            case 6:
-                new AndraChef().setVisible(true);
-                dispose();
-                break;
-            default:
-                break;
-        }
-    }//GEN-LAST:event_cbAtgarderActionPerformed
 
     private void jTree1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jTree1ComponentAdded
         // TODO add your handling code here:
@@ -491,12 +348,8 @@ public class agentAdminSida extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoggaUt;
     private javax.swing.JButton btnNylosen;
-    private javax.swing.JComboBox<String> cbAtgarder;
-    private javax.swing.JComboBox<String> cbKontrollAvAlien;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
