@@ -6,6 +6,7 @@ package test1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.tree.TreePath;
 
 /**
  *
@@ -14,6 +15,8 @@ import java.util.HashMap;
 public class agentSida extends javax.swing.JFrame {
 
     String namn;
+    private String typ;
+    private String fonster;
 
     /**
      * Creates new form agentSida
