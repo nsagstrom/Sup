@@ -51,7 +51,7 @@ public class NyttLosen extends javax.swing.JFrame {
         rubrik.setText("Byte av lösenord");
 
         btnAvbryt.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        btnAvbryt.setText("Avbryt");
+        btnAvbryt.setText("Tillbaka");
         btnAvbryt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAvbrytActionPerformed(evt);
@@ -141,7 +141,7 @@ public class NyttLosen extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(ltxtNuvarandelosen, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
