@@ -109,10 +109,8 @@ public class TaBortUtrustning extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
-        // TODO add your handling code here:
-        
-        //Det som skrivs in i jFramen "jTUtr" är den variabeln som vi använder i sql frågan för att specifera vilken alien som ska tas bort.
+    private void taBortUtrustning(){
+                //Det som skrivs in i jFramen "jTUtr" är den variabeln som vi använder i sql frågan för att specifera vilken alien som ska tas bort.
         String utrustningbort = jTUtr.getText();
         String idbortsql = "SELECT Utrustnings_ID FROM Utrustning WHERE Benamning = '" + utrustningbort + "'";
         //Kallar på metoden från SQLFragor-klassen för att ta bort Utrustnings_ID i flera tabeller (främmande nyckel).
@@ -138,6 +136,9 @@ public class TaBortUtrustning extends javax.swing.JFrame {
             SqlFragor.taBort(tabortutr);
             jTxtKorrekt.setText(utrustningbort + " borttagen!");
         }
+    }
+    private void btnTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortActionPerformed
+        taBortUtrustning();
     }//GEN-LAST:event_btnTaBortActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed

@@ -239,8 +239,7 @@ public class AndraAgent extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
-
+    private void sok() {
         if (ValideringsKlass.taltest(txtID)) {
             String sok = "SELECT Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Benamning FROM agent\n"
                     + "JOIN omrade o on agent.Omrade = o.Omrades_ID\n"
@@ -263,7 +262,7 @@ public class AndraAgent extends javax.swing.JFrame {
                 admin = "N";
             }
         }
-    }//GEN-LAST:event_btnOKActionPerformed
+    }
 
     private void info() {
 
@@ -296,9 +295,8 @@ public class AndraAgent extends javax.swing.JFrame {
 
     private boolean okUppgifter() {
         boolean ok = true;
-        
-         String namnTest = SqlFragor.fragaSingel("SELECT Namn FROM agent WHERE Agent_ID = " + txtID.getText() +" AND Namn = '" + txtNamn.getText() + "';");
-        
+
+        String namnTest = SqlFragor.fragaSingel("SELECT Namn FROM agent WHERE Agent_ID = " + txtID.getText() + " AND Namn = '" + txtNamn.getText() + "';");
 
         if (!ValideringsKlass.textFaltHarVarde(txtID)) {
             ok = false;
@@ -311,20 +309,13 @@ public class AndraAgent extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
             txtNamn.requestFocus();
-        } 
-        else if (namnTest==(null)){ 
-            if(!ValideringsKlass.dublettAgentNamn(txtNamn)){
-            ok = false;
-            JOptionPane.showMessageDialog(null, "Namn används redan av annan agent!");
-            txtNamn.requestFocus();
-        }
-        
-        
-//        else if(!ValideringsKlass.dublettAgentNamn(txtNamn)){
-//            ok = false;
-//            JOptionPane.showMessageDialog(null, "Namn används redan av annan agent!");
-//            txtNamn.requestFocus();
-        }else if (!ValideringsKlass.textFaltHarVarde(txtLosen)) {
+        } else if (namnTest == (null)) {
+            if (!ValideringsKlass.dublettAgentNamn(txtNamn)) {
+                ok = false;
+                JOptionPane.showMessageDialog(null, "Namn används redan av annan agent!");
+                txtNamn.requestFocus();
+            }
+        } else if (!ValideringsKlass.textFaltHarVarde(txtLosen)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Lösenord saknas");
             txtLosen.requestFocus();
@@ -365,6 +356,9 @@ public class AndraAgent extends javax.swing.JFrame {
         landrad.setText("Ändring genomförd (Hoppas vi)");
     }
 
+    private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
+        sok();
+    }//GEN-LAST:event_btnOKActionPerformed
 
     private void txtIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {

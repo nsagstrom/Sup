@@ -61,11 +61,6 @@ public class addUtrustning extends javax.swing.JFrame {
 
         txtBenamning.setColumns(4);
         txtBenamning.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        txtBenamning.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBenamningActionPerformed(evt);
-            }
-        });
 
         titel.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         titel.setText("Registrera utrustning");
@@ -150,12 +145,6 @@ public class addUtrustning extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraActionPerformed
-        if (okUppgifter()) {
-            laggTill();
-        }
-    }//GEN-LAST:event_btnRegistreraActionPerformed
-
     private void laggTill() {
 
         String nyID = SqlFragor.nyID("utrustning", "Utrustnings_ID");
@@ -199,7 +188,7 @@ public class addUtrustning extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ange kaliber i siffror");
                 txtTill.requestFocus();
             }
-        }  else if (cbUtrustning.getSelectedIndex() > 1 && cbUtrustning.getSelectedIndex() < 4) {
+        } else if (cbUtrustning.getSelectedIndex() > 1 && cbUtrustning.getSelectedIndex() < 4) {
             if (!ValideringsKlass.textFaltHarVarde(txtTill)) {
                 ok = false;
                 JOptionPane.showMessageDialog(null, "Ange värde");
@@ -210,11 +199,11 @@ public class addUtrustning extends javax.swing.JFrame {
         return ok;
     }
 
-    private void txtBenamningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBenamningActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_txtBenamningActionPerformed
+    private void btnRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistreraActionPerformed
+        if (okUppgifter()) {
+            laggTill();
+        }
+    }//GEN-LAST:event_btnRegistreraActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         if (forstaSida.arAdmin()) {

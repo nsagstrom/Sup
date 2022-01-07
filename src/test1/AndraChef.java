@@ -162,6 +162,75 @@ public class AndraChef extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void andraChef() {
+        int i = cbBefattning.getSelectedIndex();
+        boolean finns = true;
+
+        String nyChefID = "";
+        String omradeID = "";
+        String nuvarandeID = "";
+        ArrayList<HashMap<String, String>> allaNuvarandeID = null;
+        String idcheck = "";
+
+        nyChefID = SqlFragor.fragaSingel("SELECT Agent_ID FROM agent WHERE Namn = '" + cbAgenter.getSelectedItem() + "';");
+        allaNuvarandeID = SqlFragor.fragaRader("SELECT Agent_ID FROM omradeschef");
+
+        switch (i) {
+            case 1:
+                for (HashMap<String, String> a : allaNuvarandeID) {
+                    idcheck = a.get("Agent_ID");
+
+                    if (idcheck.equals(nyChefID)) {
+                        finns = true;
+                        break;
+                    } else {
+                        finns = false;
+                    }
+                }
+                if (!finns) {
+                    omradeID = SqlFragor.fragaSingel("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + cbVart.getSelectedItem() + "';");
+                    nuvarandeID = SqlFragor.fragaSingel("SELECT Agent_ID FROM omradeschef WHERE Omrade = " + omradeID + ";");
+
+                    SqlFragor.taBort("DELETE FROM omradeschef WHERE Agent_ID = " + nuvarandeID + ";");
+                    SqlFragor.laggTill("INSERT INTO omradeschef (Agent_ID, Omrade) VALUES (" + nyChefID + "," + omradeID + ");");
+                    landrad.setText("Ändring genomförd (Hoppas vi)");
+                    txtChef.setText("");
+                    vemArChef();
+
+                } else {
+                    String benamning = SqlFragor.fragaSingel("SELECT Benamning FROM omradeschef\n"
+                            + "JOIN omrade o on o.Omrades_ID = omradeschef.Omrade\n"
+                            + "WHERE Agent_ID = " + nyChefID);
+                    JOptionPane.showMessageDialog(null, "Vald agent är redan chef för " + benamning);
+                }
+                break;
+            case 2:
+                nuvarandeID = SqlFragor.fragaSingel("SELECT Agent_ID FROM kontorschef WHERE Kontorsbeteckning = '" + cbVart.getSelectedItem() + "';");
+                SqlFragor.taBort("DELETE FROM kontorschef WHERE Agent_ID = " + nuvarandeID + ";");
+                SqlFragor.laggTill("INSERT INTO kontorschef (Agent_ID, Kontorsbeteckning) VALUES (" + nyChefID + ",'" + cbVart.getSelectedItem() + "');");
+                landrad.setText("Ändring genomförd (Hoppas vi)");
+                break;
+        }
+    }
+
+    private void vemArChef() {
+
+        ArrayList<HashMap<String, String>> omradeChef;
+
+        String fraga = "SELECT Namn, Benamning FROM omradeschef\n"
+                + "JOIN omrade o on o.Omrades_ID = omradeschef.Omrade\n"
+                + "JOIN agent a on a.Agent_ID = omradeschef.Agent_ID;";
+
+        omradeChef = SqlFragor.fragaRader(fraga);
+
+        txtChef.append("Namn" + "\t" + "Chef för;" + "\n");
+
+        for (HashMap<String, String> chef : omradeChef) {
+            txtChef.append(chef.get("Namn") + "\t" + chef.get("Benamning") + "\n");
+        }
+    }
+
+
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         if (forstaSida.arAdmin()) {
             new agentAdminSida().setVisible(true);
@@ -190,88 +259,9 @@ public class AndraChef extends javax.swing.JFrame {
     }//GEN-LAST:event_cbBefattningActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int i = cbBefattning.getSelectedIndex();
-        boolean ok = true;
-        boolean finns = true;
-
-        String nyChefID = "";
-        String omradeID = "";
-        String nuvarandeID = "";
-        ArrayList<HashMap<String, String>> allaNuvarandeID = null;
-        String idcheck = "";
-
-        if (ok) {
-            nyChefID = SqlFragor.fragaSingel("SELECT Agent_ID FROM agent WHERE Namn = '" + cbAgenter.getSelectedItem() + "';");
-            allaNuvarandeID = SqlFragor.fragaRader("SELECT Agent_ID FROM omradeschef");
-            
-
-            switch (i) {
-                case 1:
-                    for (HashMap<String, String> a : allaNuvarandeID) {
-                        idcheck = a.get("Agent_ID");
-
-                        if (idcheck.equals(nyChefID)) {
-                            finns = true;
-                            break;
-                        } else {
-                            finns = false;
-                        }
-                    }
-                    if (!finns) {
-                        omradeID = SqlFragor.fragaSingel("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + cbVart.getSelectedItem() + "';");
-                        nuvarandeID = SqlFragor.fragaSingel("SELECT Agent_ID FROM omradeschef WHERE Omrade = " + omradeID + ";");
-
-                        SqlFragor.taBort("DELETE FROM omradeschef WHERE Agent_ID = " + nuvarandeID + ";");
-                        SqlFragor.laggTill("INSERT INTO omradeschef (Agent_ID, Omrade) VALUES (" + nyChefID + "," + omradeID + ");");
-                        landrad.setText("Ändring genomförd (Hoppas vi)");
-                        txtChef.setText("");
-                        vemArChef();
-                        
-                        System.out.println("DELETE FROM omradeschef WHERE Agent_ID = " + nuvarandeID + ";");
-                        System.out.println("INSERT INTO omradeschef (Agent_ID, Omrade) VALUES (" + nyChefID + "," + omradeID + ");");
-                        
-                        
-                        
-                        System.out.println(nyChefID + " ny chef id");
-                        System.out.println(omradeID + " områdes id");
-                        System.out.println(nuvarandeID + " nuvarande id" );
-                        System.out.println(allaNuvarandeID + " alla chefers id");
-                        System.out.println(idcheck + " test ");
-                        System.out.println();
-                        
-                    } else {
-                        String benamning = SqlFragor.fragaSingel("SELECT Benamning FROM omradeschef\n"
-                                + "JOIN omrade o on o.Omrades_ID = omradeschef.Omrade\n"
-                                + "WHERE Agent_ID = "+ nyChefID);
-                        JOptionPane.showMessageDialog(null, "Vald agent är redan chef för " + benamning);
-                    }
-                    break;
-                case 2:
-                    nuvarandeID = SqlFragor.fragaSingel("SELECT Agent_ID FROM kontorschef WHERE Kontorsbeteckning = '" + cbVart.getSelectedItem() + "';");
-                    SqlFragor.taBort("DELETE FROM kontorschef WHERE Agent_ID = " + nuvarandeID + ";");
-                    SqlFragor.laggTill("INSERT INTO kontorschef (Agent_ID, Kontorsbeteckning) VALUES (" + nyChefID + ",'" + cbVart.getSelectedItem() + "');");
-                    landrad.setText("Ändring genomförd (Hoppas vi)");
-                    break;
-            }
-        }
+        andraChef();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void vemArChef() {
-
-        ArrayList<HashMap<String, String>> omradeChef;
-
-        String fraga = "SELECT Namn, Benamning FROM omradeschef\n"
-                + "JOIN omrade o on o.Omrades_ID = omradeschef.Omrade\n"
-                + "JOIN agent a on a.Agent_ID = omradeschef.Agent_ID;";
-
-        omradeChef = SqlFragor.fragaRader(fraga);
-
-        txtChef.append("Namn" + "\t" + "Chef för;" + "\n");
-
-        for (HashMap<String, String> chef : omradeChef) {
-            txtChef.append(chef.get("Namn") + "\t" + chef.get("Benamning") + "\n");
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTillbaka;
