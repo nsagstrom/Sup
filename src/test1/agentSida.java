@@ -261,9 +261,6 @@ public class agentSida extends javax.swing.JFrame {
                 typ = part2.trim();
                 fonster = part3.trim();
 
-                System.out.println(typ);
-                System.out.println(fonster);
-
                 if (typ.equals("Lägg till:")) {
                     switch (fonster) {
                         case "Alien":
