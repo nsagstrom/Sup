@@ -194,17 +194,20 @@ public class addAgent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
         private void laggTillAgent() {
+            //Kallar på metod från SQL-Fragor klassen. Skall lägga till en agent och dess namn, telefon samt område, lösenord.
         String fragaID = SqlFragor.nyID("Agent", "Agent_ID");
         String namn = txtNamn.getText();
         String telefon = txtTelefon.getText();
         String omrode = SqlFragor.fragaSingel("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + cbOmrade.getSelectedItem().toString() + "';");
         losen = new String(pwLosen.getPassword());
-
+        
+        //Datum när agent registreras samt om den är admin eller ej.
         String sqlAgent = "INSERT INTO agent (Agent_ID, Namn, Telefon, Anstallningsdatum, Administrator, Losenord, Omrade) \n"
                 + "VALUES (" + fragaID + ",'" + namn + "','" + telefon + "','" + datum + "','" + admin + "','" + losen + "'," + omrode + " );";
 
         String sqlFaltAgent = "INSERT INTO faltagent VALUES (" + fragaID + ");";
 
+        //Kallar på laggTill metoden från SQL-Fragor klassen 
         SqlFragor.laggTill(sqlAgent);
         SqlFragor.laggTill(sqlFaltAgent);
         lReggad.setText("Agenten " + namn + " är registrerad!");
@@ -215,6 +218,7 @@ public class addAgent extends javax.swing.JFrame {
 
         String alienLosenord2 = new String(pwLosen.getPassword());
 
+        //If-statements som antingen uppfylls eller fortsätter till nästa if-sats.
         if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");
