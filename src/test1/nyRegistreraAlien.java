@@ -27,6 +27,7 @@ public class NyRegistreraAlien extends javax.swing.JFrame {
         Metoder.laggTillAgent(cbAnsvarigAgent);
         Metoder.laggTillPlats(cbPlats);
         Metoder.laggTillRas(cbRaser);
+        
         txtRasTill.setVisible(false);
     }
 
