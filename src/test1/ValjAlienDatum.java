@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
  *
  * @author nsags
  */
-public class AlienDatum extends javax.swing.JFrame {
+public class ValjAlienDatum extends javax.swing.JFrame {
 
     /**
      * Creates new form alienDatum
      */
-    public AlienDatum() {
+    public ValjAlienDatum() {
         
         initComponents();
 

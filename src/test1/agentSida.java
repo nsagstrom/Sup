@@ -322,7 +322,7 @@ public class AgentSida extends javax.swing.JFrame {
                             dispose();
                             break;
                         case "Registreringsdatum":
-                            new AlienDatum().setVisible(true);
+                            new ValjAlienDatum().setVisible(true);
                             dispose();
                             break;
                         case "Plats":
