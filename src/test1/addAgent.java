@@ -26,6 +26,7 @@ public class AddAgent extends javax.swing.JFrame {
         datum = Metoder.datum();
         admin = "N";
         Metoder.laggTillOmrade(cbOmrade);
+        String aa = "aa";
     }
 
     /**
