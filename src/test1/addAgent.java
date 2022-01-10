@@ -16,6 +16,7 @@ public class AddAgent extends javax.swing.JFrame {
     private String datum;
     private String admin;
     private String losen;
+    
 
     /**
      * Creates new form addAgent
