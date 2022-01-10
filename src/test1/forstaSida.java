@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author nsags
  */
-public class forstaSida extends javax.swing.JFrame {
+public class ForstaSida extends javax.swing.JFrame {
 
     private String agent;
     private String alien;
@@ -23,7 +23,7 @@ public class forstaSida extends javax.swing.JFrame {
     /**
      * Creates new form forstaSida
      */
-    public forstaSida() {
+    public ForstaSida() {
         initComponents();
         this.agent = "Agent";
         this.alien = "Alien";
@@ -206,10 +206,10 @@ public class forstaSida extends javax.swing.JFrame {
 
                 if (sysSvar.equals("N")) {
 
-                    new agentSida().setVisible(true);
+                    new AgentSida().setVisible(true);
                     dispose();
                 } else {
-                    new agentAdminSida().setVisible(true);
+                    new AgentAdminSida().setVisible(true);
                     dispose();
                 }
             } else {
@@ -225,7 +225,7 @@ public class forstaSida extends javax.swing.JFrame {
             String alienLosen = SqlFragor.fragaSingel(alienFragaLosenord);
 
             if (inAnvandare.equals(alienAnvandare) && inlosen.equals(alienLosen) && ValideringsKlass.textFaltHarVarde(txtVemInlogg) && ValideringsKlass.textFaltHarVarde(pwfalt)) {
-                new alienSida().setVisible(true);
+                new AlienSida().setVisible(true);
                 dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Fel användarnamn eller lösenord");

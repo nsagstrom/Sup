@@ -20,6 +20,6 @@ public class Start {
             Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
         }
         SqlFragor.setDatabas(idb);
-        new forstaSida().setVisible(true);
+        new ForstaSida().setVisible(true);
     }
 }

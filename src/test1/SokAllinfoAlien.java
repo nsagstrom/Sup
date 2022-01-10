@@ -10,12 +10,12 @@ import java.util.HashMap;
  *
  * @author timme
  */
-public class sökAllinfoAlien extends javax.swing.JFrame {
+public class SokAllinfoAlien extends javax.swing.JFrame {
 
     /**
      * Creates new form sökAllinfoAlien
      */
-    public sökAllinfoAlien() {
+    public SokAllinfoAlien() {
         initComponents();
         Metoder.laggTillAlien(cbAlien);
         
@@ -97,11 +97,11 @@ public class sökAllinfoAlien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
-        if (forstaSida.arAdmin()) {
-            new agentAdminSida().setVisible(true);
+        if (ForstaSida.arAdmin()) {
+            new AgentAdminSida().setVisible(true);
             dispose();
         } else {
-            new agentSida().setVisible(true);
+            new AgentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed

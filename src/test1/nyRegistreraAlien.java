@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author nsags
  */
-public class nyRegistreraAlien extends javax.swing.JFrame {
+public class NyRegistreraAlien extends javax.swing.JFrame {
 
     private String agentNr;
     private String datum;
@@ -21,7 +21,7 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
     /**
      * Creates new form nyRegistreraAlien
      */
-    public nyRegistreraAlien() {
+    public NyRegistreraAlien() {
         initComponents();
         datum = Metoder.datum();
         Metoder.laggTillAgent(cbAnsvarigAgent);
@@ -322,11 +322,11 @@ public class nyRegistreraAlien extends javax.swing.JFrame {
     }
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
-        if (forstaSida.arAdmin()) {
-            new agentAdminSida().setVisible(true);
+        if (ForstaSida.arAdmin()) {
+            new AgentAdminSida().setVisible(true);
             dispose();
         } else {
-            new agentSida().setVisible(true);
+            new AgentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed

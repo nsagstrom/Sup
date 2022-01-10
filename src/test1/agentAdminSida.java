@@ -12,7 +12,7 @@ import javax.swing.tree.TreePath;
  *
  * @author nsags
  */
-public class agentAdminSida extends javax.swing.JFrame {
+public class AgentAdminSida extends javax.swing.JFrame {
 
     String namn;
     private String typ;
@@ -21,9 +21,9 @@ public class agentAdminSida extends javax.swing.JFrame {
     /**
      * Creates new form agentAdminSida
      */
-    public agentAdminSida() {
+    public AgentAdminSida() {
         initComponents();
-        namn = forstaSida.aNamn();
+        namn = ForstaSida.aNamn();
         lblValkommen.setText("Välkommen " + namn);
         listaAllUtrustning();
         for (int i = 0; i < jTree1.getRowCount(); i++) {
@@ -196,7 +196,7 @@ public class agentAdminSida extends javax.swing.JFrame {
     }
 
     private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
-        new forstaSida().setVisible(true);
+        new ForstaSida().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnLoggaUtActionPerformed
 
@@ -230,15 +230,15 @@ public class agentAdminSida extends javax.swing.JFrame {
                 if (typ.equals("Lägg till:")) {
                     switch (fonster) {
                         case "Alien":
-                            new nyRegistreraAlien().setVisible(true);
+                            new NyRegistreraAlien().setVisible(true);
                             dispose();
                             break;
                         case "Agent":
-                            new addAgent().setVisible(true);
+                            new AddAgent().setVisible(true);
                             dispose();
                             break;
                         case "Utrustning":
-                            new addUtrustning().setVisible(true);
+                            new AddUtrustning().setVisible(true);
                             dispose();
                             break;
                         default:
@@ -284,15 +284,15 @@ public class agentAdminSida extends javax.swing.JFrame {
                 if (typ.equals("Sök upp:")) {
                     switch (fonster) {
                         case "Alien per ras":
-                            new alienAvRas().setVisible(true);
+                            new AlienAvRas().setVisible(true);
                             dispose();
                             break;
                         case "Registreringsdatum":
-                            new alienDatum().setVisible(true);
+                            new AlienDatum().setVisible(true);
                             dispose();
                             break;
                         case "Plats":
-                            new allaAlienPlats().setVisible(true);
+                            new AllaAlienPlats().setVisible(true);
                             dispose();
                             break;
                         default:
@@ -302,7 +302,7 @@ public class agentAdminSida extends javax.swing.JFrame {
                 if (typ.equals("Information:")) {
                     switch (fonster) {
                         case "Alien":
-                            new sökAllinfoAlien().setVisible(true);
+                            new SokAllinfoAlien().setVisible(true);
                             dispose();
                             break;
                         case "Agent":

@@ -175,18 +175,18 @@ public class NyttLosen extends javax.swing.JFrame {
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
 
-        if (forstaSida.arManniska()) {
+        if (ForstaSida.arManniska()) {
             if (nuvarandeLosen.equals(kontrollLosen)) {
                 String nyttlosen = new String(ltxtNyttLosen.getPassword());
-                if (forstaSida.aLosen().equals(nuvarandeLosen)) {
-                    SqlFragor.uppdatera("UPDATE agent SET Losenord = " + "'" + nyttlosen + "'" + " WHERE Namn = " + "'" + forstaSida.aNamn() + "'");
-                    if (forstaSida.arAdmin()) {
+                if (ForstaSida.aLosen().equals(nuvarandeLosen)) {
+                    SqlFragor.uppdatera("UPDATE agent SET Losenord = " + "'" + nyttlosen + "'" + " WHERE Namn = " + "'" + ForstaSida.aNamn() + "'");
+                    if (ForstaSida.arAdmin()) {
                         dispose();
-                        new agentAdminSida().setVisible(true);
+                        new AgentAdminSida().setVisible(true);
                         JOptionPane.showMessageDialog(null, "Lösenord har ändrats");
                     } else {
                         dispose();
-                        new agentSida().setVisible(true);
+                        new AgentSida().setVisible(true);
                         JOptionPane.showMessageDialog(null, "Lösenord har ändrats");
                     }
                 } else {
@@ -198,8 +198,8 @@ public class NyttLosen extends javax.swing.JFrame {
         } else {
             if (nuvarandeLosen.equals(kontrollLosen)) {
                 String nyttlosenAlien = new String(ltxtNyttLosen.getPassword());
-                if (forstaSida.aLosen().equals(nuvarandeLosen)) {
-                    SqlFragor.uppdatera("UPDATE alien SET Losenord = " + "'" + nyttlosenAlien + "'" + " WHERE Namn = " + "'" + forstaSida.aNamn() + "'");
+                if (ForstaSida.aLosen().equals(nuvarandeLosen)) {
+                    SqlFragor.uppdatera("UPDATE alien SET Losenord = " + "'" + nyttlosenAlien + "'" + " WHERE Namn = " + "'" + ForstaSida.aNamn() + "'");
                 } else {
                     JOptionPane.showMessageDialog(null, "Gamla lösenordet stämmer ej");
                 }
@@ -211,16 +211,16 @@ public class NyttLosen extends javax.swing.JFrame {
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
 
-        if (forstaSida.arManniska()) {
-            if (forstaSida.arAdmin()) {
-                new agentAdminSida().setVisible(true);
+        if (ForstaSida.arManniska()) {
+            if (ForstaSida.arAdmin()) {
+                new AgentAdminSida().setVisible(true);
                 dispose();
             } else {
-                new agentSida().setVisible(true);
+                new AgentSida().setVisible(true);
                 dispose();
             }
         } else {
-            new alienSida().setVisible(true);
+            new AlienSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnAvbrytActionPerformed

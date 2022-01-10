@@ -11,17 +11,17 @@ import java.util.HashMap;
  *
  * @author nsags
  */
-public class alienSida extends javax.swing.JFrame {
+public class AlienSida extends javax.swing.JFrame {
 
     private String namn;
 
     /**
      * Creates new form alienSida
      */
-    public alienSida() {
+    public AlienSida() {
 
         initComponents();
-        namn = forstaSida.aNamn();
+        namn = ForstaSida.aNamn();
         lblValkommen.setText("Välkommen " + namn);
         omradeAgent();
         listaAlienIomrade();
@@ -157,7 +157,7 @@ public class alienSida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoggaUtActionPerformed
-        new forstaSida().setVisible(true);
+        new ForstaSida().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnLoggaUtActionPerformed
 

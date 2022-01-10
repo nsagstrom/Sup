@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author timme
  */
-public class addUtrustning extends javax.swing.JFrame {
+public class AddUtrustning extends javax.swing.JFrame {
 
     /**
      * Creates new form addUtrustning
      */
-    public addUtrustning() {
+    public AddUtrustning() {
         initComponents();
         laggTillTyper();
         txtTill.setVisible(false);
@@ -206,11 +206,11 @@ public class addUtrustning extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistreraActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
-        if (forstaSida.arAdmin()) {
-            new agentAdminSida().setVisible(true);
+        if (ForstaSida.arAdmin()) {
+            new AgentAdminSida().setVisible(true);
             dispose();
         } else {
-            new agentSida().setVisible(true);
+            new AgentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed

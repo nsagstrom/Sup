@@ -11,9 +11,9 @@ import java.util.HashMap;
  *
  * @author nsags
  */
-public class allaAlienPlats extends javax.swing.JFrame {
+public class AllaAlienPlats extends javax.swing.JFrame {
 
-    public allaAlienPlats() {
+    public AllaAlienPlats() {
         initComponents();
         Metoder.laggTillPlats(cbValjPlats);
     }
@@ -114,11 +114,11 @@ public class allaAlienPlats extends javax.swing.JFrame {
     }//GEN-LAST:event_cbValjPlatsActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (forstaSida.arAdmin()) {
-            new agentAdminSida().setVisible(true);
+        if (ForstaSida.arAdmin()) {
+            new AgentAdminSida().setVisible(true);
             dispose();
         } else {
-            new agentSida().setVisible(true);
+            new AgentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author nsags
  */
-public class addAgent extends javax.swing.JFrame {
+public class AddAgent extends javax.swing.JFrame {
 
     private String datum;
     private String admin;
@@ -20,7 +20,7 @@ public class addAgent extends javax.swing.JFrame {
     /**
      * Creates new form addAgent
      */
-    public addAgent() {
+    public AddAgent() {
         initComponents();
         datum = Metoder.datum();
         admin = "N";
@@ -287,7 +287,7 @@ public class addAgent extends javax.swing.JFrame {
         }    }//GEN-LAST:event_boxAdminActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
-        new agentAdminSida().setVisible(true);
+        new AgentAdminSida().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnTillbakaActionPerformed
 

@@ -11,12 +11,12 @@ import java.util.HashMap;
  *
  * @author nsags
  */
-public class alienAvRas extends javax.swing.JFrame {
+public class AlienAvRas extends javax.swing.JFrame {
 
     /**
      * Creates new form alienAvRas
      */
-    public alienAvRas() {
+    public AlienAvRas() {
         initComponents();
         Metoder.laggTillRas(cbRaser);
     }
@@ -136,11 +136,11 @@ public class alienAvRas extends javax.swing.JFrame {
     }//GEN-LAST:event_cbRaserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (forstaSida.arAdmin()) {
-            new agentAdminSida().setVisible(true);
+        if (ForstaSida.arAdmin()) {
+            new AgentAdminSida().setVisible(true);
             dispose();
         } else {
-            new agentSida().setVisible(true);
+            new AgentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed

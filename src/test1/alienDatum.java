@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
  *
  * @author nsags
  */
-public class alienDatum extends javax.swing.JFrame {
+public class AlienDatum extends javax.swing.JFrame {
 
     /**
      * Creates new form alienDatum
      */
-    public alienDatum() {
+    public AlienDatum() {
         
         initComponents();
 
@@ -339,11 +339,11 @@ public class alienDatum extends javax.swing.JFrame {
     }//GEN-LAST:event_tbnOKActionPerformed
 
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
-        if (forstaSida.arAdmin()) {
-            new agentAdminSida().setVisible(true);
+        if (ForstaSida.arAdmin()) {
+            new AgentAdminSida().setVisible(true);
             dispose();
         } else {
-            new agentSida().setVisible(true);
+            new AgentSida().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnTillbakaActionPerformed
