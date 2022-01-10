@@ -38,9 +38,9 @@ public class NyttLosen extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        ltxtNuvarandelosen = new javax.swing.JPasswordField();
-        ltxtKontrollLosen = new javax.swing.JPasswordField();
-        ltxtNyttLosen = new javax.swing.JPasswordField();
+        txtNuvarandelosen = new javax.swing.JPasswordField();
+        txtKontrollLosen = new javax.swing.JPasswordField();
+        txtNyttLosen = new javax.swing.JPasswordField();
         cbVisaLosen = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,34 +70,19 @@ public class NyttLosen extends javax.swing.JFrame {
         jLabel2.setText("Ange nuvarande lösenord");
 
         jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        jLabel3.setText("Ange nuvarande lösenord igen");
+        jLabel3.setText("Ange nytt lösenord");
 
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        jLabel4.setText("Ange nytt lösenord");
+        jLabel4.setText("Ange nytt lösenord igen");
 
-        ltxtNuvarandelosen.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        ltxtNuvarandelosen.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                ltxtNuvarandelosenCaretUpdate(evt);
-            }
-        });
+        txtNuvarandelosen.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
 
-        ltxtKontrollLosen.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        ltxtKontrollLosen.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                ltxtKontrollLosenCaretUpdate(evt);
-            }
-        });
+        txtKontrollLosen.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
 
-        ltxtNyttLosen.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        ltxtNyttLosen.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                ltxtNyttLosenCaretUpdate(evt);
-            }
-        });
-        ltxtNyttLosen.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtNyttLosen.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        txtNyttLosen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ltxtNyttLosenKeyPressed(evt);
+                txtNyttLosenKeyPressed(evt);
             }
         });
 
@@ -125,10 +110,12 @@ public class NyttLosen extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
                     .addComponent(rubrik)
+                    .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ltxtKontrollLosen)
-                            .addComponent(ltxtNyttLosen, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtNuvarandelosen, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtKontrollLosen, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNyttLosen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(58, 58, 58)
@@ -137,10 +124,7 @@ public class NyttLosen extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(lstammer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(46, 46, 46)
-                        .addComponent(btnAvbryt))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(ltxtNuvarandelosen, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnAvbryt)))
                 .addContainerGap(200, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -151,20 +135,20 @@ public class NyttLosen extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ltxtNuvarandelosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNuvarandelosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lstammer, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ltxtKontrollLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtKontrollLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAvbryt)
                     .addComponent(btnOk)
-                    .addComponent(ltxtNyttLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNyttLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(cbVisaLosen)
                 .addContainerGap(104, Short.MAX_VALUE))
@@ -175,39 +159,119 @@ public class NyttLosen extends javax.swing.JFrame {
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
 
-        if (ForstaSida.arManniska()) {
-            if (nuvarandeLosen.equals(kontrollLosen)) {
-                String nyttlosen = new String(ltxtNyttLosen.getPassword());
-                if (ForstaSida.aLosen().equals(nuvarandeLosen)) {
-                    SqlFragor.uppdatera("UPDATE agent SET Losenord = " + "'" + nyttlosen + "'" + " WHERE Namn = " + "'" + ForstaSida.aNamn() + "'");
-                    if (ForstaSida.arAdmin()) {
-                        dispose();
-                        new AgentAdminSida().setVisible(true);
-                        JOptionPane.showMessageDialog(null, "Lösenord har ändrats");
-                    } else {
-                        dispose();
-                        new AgentSida().setVisible(true);
-                        JOptionPane.showMessageDialog(null, "Lösenord har ändrats");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Gamla lösenordet stämmer ej");
-                }
+        if (okUppgifter()) {
+            if (ForstaSida.arManniska()) {
+                nyttLosenAgent();
             } else {
-                JOptionPane.showMessageDialog(null, "Det gamla lösenordet stämmer ej med varandra");
-            }
-        } else {
-            if (nuvarandeLosen.equals(kontrollLosen)) {
-                String nyttlosenAlien = new String(ltxtNyttLosen.getPassword());
-                if (ForstaSida.aLosen().equals(nuvarandeLosen)) {
-                    SqlFragor.uppdatera("UPDATE alien SET Losenord = " + "'" + nyttlosenAlien + "'" + " WHERE Namn = " + "'" + ForstaSida.aNamn() + "'");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Gamla lösenordet stämmer ej");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Det gamla lösenordet stämmer ej med varandra");
+                nyttLosenAlien();
             }
         }
+
+//        if (ForstaSida.arManniska()) {
+//            if (nuvarandeLosen.equals(kontrollLosen)) {
+//                String nyttlosen = new String(ltxtNyttLosen.getPassword());
+//                if (ForstaSida.aLosen().equals(nuvarandeLosen)) {
+//                    SqlFragor.uppdatera("UPDATE agent SET Losenord = " + "'" + nyttlosen + "'" + " WHERE Namn = " + "'" + ForstaSida.aNamn() + "'");
+//                    if (ForstaSida.arAdmin()) {
+//                        dispose();
+//                        new AgentAdminSida().setVisible(true);
+//                        JOptionPane.showMessageDialog(null, "Lösenord har ändrats");
+//                    } else {
+//                        dispose();
+//                        new AgentSida().setVisible(true);
+//                        JOptionPane.showMessageDialog(null, "Lösenord har ändrats");
+//                    }
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Gamla lösenordet stämmer ej");
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Det gamla lösenordet stämmer ej med varandra");
+//            }
+//        } else {
+//            if (nuvarandeLosen.equals(kontrollLosen)) {
+//                String nyttlosenAlien = new String(ltxtNyttLosen.getPassword());
+//                if (ForstaSida.aLosen().equals(nuvarandeLosen)) {
+//                    SqlFragor.uppdatera("UPDATE alien SET Losenord = " + "'" + nyttlosenAlien + "'" + " WHERE Namn = " + "'" + ForstaSida.aNamn() + "'");
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Gamla lösenordet stämmer ej");
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Det gamla lösenordet stämmer ej med varandra");
+//            }
+//        }
     }//GEN-LAST:event_btnOkActionPerformed
+
+    private void nyttLosenAgent() {
+
+        nuvarandeLosen = new String(txtNuvarandelosen.getPassword());
+        String nyttLosen = new String(txtNyttLosen.getPassword());
+        kontrollLosen = new String(txtKontrollLosen.getPassword());
+        String reggatLosenAgent = SqlFragor.fragaSingel("SELECT Losenord FROM agent WHERE Namn = '" + ForstaSida.aNamn() + "';");
+
+        if (nyttLosen.equals(kontrollLosen)) {
+            if (reggatLosenAgent.equals(nuvarandeLosen)) {
+                SqlFragor.uppdatera("UPDATE agent SET Losenord = " + "'" + nyttLosen + "'" + " WHERE Namn = " + "'" + ForstaSida.aNamn() + "'");
+                if (ForstaSida.arAdmin()) {
+                    dispose();
+                    new AgentAdminSida().setVisible(true);
+                    JOptionPane.showMessageDialog(null, "Lösenord har ändrats");
+                } else {
+                    dispose();
+                    new AgentSida().setVisible(true);
+                    JOptionPane.showMessageDialog(null, "Lösenord har ändrats");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Gamla lösenordet stämmer ej");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Det nya lösenordet stämmer ej med varandra");
+        }
+    }
+
+    private void nyttLosenAlien() {
+
+        nuvarandeLosen = new String(txtNuvarandelosen.getPassword());
+        String nyttlosenAlien = new String(txtNyttLosen.getPassword());
+        kontrollLosen = new String(txtKontrollLosen.getPassword());
+        String reggatLosenAlien = SqlFragor.fragaSingel("SELECT Losenord FROM alien WHERE Namn = '" + ForstaSida.aNamn() + "';");
+
+        if (nyttlosenAlien.equals(kontrollLosen)) {
+            if (reggatLosenAlien.equals(nuvarandeLosen)) {
+                SqlFragor.uppdatera("UPDATE alien SET Losenord = " + "'" + nyttlosenAlien + "'" + " WHERE Namn = " + "'" + ForstaSida.aNamn() + "'");
+                dispose();
+                new AlienSida().setVisible(true);
+                JOptionPane.showMessageDialog(null, "Lösenord har ändrats");
+            } else {
+                JOptionPane.showMessageDialog(null, "Gamla lösenordet stämmer ej");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Det nya lösenordet stämmer ej med varandra");
+        }
+    }
+
+    private boolean okUppgifter() {
+        boolean ok = true;
+
+        if (!ValideringsKlass.textFaltHarVarde(txtNuvarandelosen)) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Ange nuvarande lösenord");
+            txtNuvarandelosen.requestFocus();
+        } else if (!ValideringsKlass.textFaltHarVarde(txtKontrollLosen)) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Ange nytt lösenord");
+            txtKontrollLosen.requestFocus();
+        } else if (!ValideringsKlass.textFaltHarVarde(txtNyttLosen)) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Ange nytt lösenord");
+            txtNyttLosen.requestFocus();
+        } else if (!ValideringsKlass.testLangdLosen(txtNyttLosen)) {
+            ok = false;
+            JOptionPane.showMessageDialog(null, "Lösenord får ej vara längre än sex tecken");
+            txtKontrollLosen.requestFocus();
+            txtKontrollLosen.selectAll();
+        }
+        return ok;
+    }
 
     private void btnAvbrytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvbrytActionPerformed
 
@@ -227,34 +291,18 @@ public class NyttLosen extends javax.swing.JFrame {
 
     private void cbVisaLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVisaLosenActionPerformed
         if (cbVisaLosen.isSelected()) {
-            ltxtNyttLosen.setEchoChar((char) 0);
+            txtNyttLosen.setEchoChar((char) 0);
         } else {
-            ltxtNyttLosen.setEchoChar('*');
+            txtNyttLosen.setEchoChar('*');
         }
     }//GEN-LAST:event_cbVisaLosenActionPerformed
 
-    private void ltxtNyttLosenCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_ltxtNyttLosenCaretUpdate
-        nuvarandeLosen = new String(ltxtNuvarandelosen.getPassword());
-    }//GEN-LAST:event_ltxtNyttLosenCaretUpdate
-
-    private void ltxtKontrollLosenCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_ltxtKontrollLosenCaretUpdate
-        kontrollLosen = new String(ltxtKontrollLosen.getPassword());
-
-        if (nuvarandeLosen.equals(kontrollLosen)) {
-            lstammer.setText("Stämmer");
-        }
-    }//GEN-LAST:event_ltxtKontrollLosenCaretUpdate
-
-    private void ltxtNuvarandelosenCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_ltxtNuvarandelosenCaretUpdate
-        nuvarandeLosen = new String(ltxtNuvarandelosen.getPassword());
-    }//GEN-LAST:event_ltxtNuvarandelosenCaretUpdate
-
-    private void ltxtNyttLosenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ltxtNyttLosenKeyPressed
+    private void txtNyttLosenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNyttLosenKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
             btnOk.doClick();
         }
-    }//GEN-LAST:event_ltxtNyttLosenKeyPressed
+    }//GEN-LAST:event_txtNyttLosenKeyPressed
 
     private void cbVisaLosenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbVisaLosenKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -275,9 +323,9 @@ public class NyttLosen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lstammer;
-    private javax.swing.JPasswordField ltxtKontrollLosen;
-    private javax.swing.JPasswordField ltxtNuvarandelosen;
-    private javax.swing.JPasswordField ltxtNyttLosen;
     private javax.swing.JLabel rubrik;
+    private javax.swing.JPasswordField txtKontrollLosen;
+    private javax.swing.JPasswordField txtNuvarandelosen;
+    private javax.swing.JPasswordField txtNyttLosen;
     // End of variables declaration//GEN-END:variables
 }

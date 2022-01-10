@@ -27,7 +27,9 @@ public class AgentSida extends javax.swing.JFrame {
         namn = ForstaSida.aNamn();
         lblValkommen.setText("Välkommen " + namn);
         listaAllUtrustning();
-        toppLista();
+        toppListaSvealand();
+        toppListaGotaland();
+        toppListaNorrland();
         for (int i = 0; i < jTree1.getRowCount(); i++) {
             jTree1.expandRow(i);
         }
@@ -45,11 +47,16 @@ public class AgentSida extends javax.swing.JFrame {
         btnNylosen = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtfUtrustning = new javax.swing.JTextArea();
-        txtTopp = new javax.swing.JTextArea();
+        txtTopp3 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
+        txtTopp1 = new javax.swing.JTextArea();
+        txtTopp2 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,14 +86,14 @@ public class AgentSida extends javax.swing.JFrame {
         txtfUtrustning.setToolTipText("");
         jScrollPane1.setViewportView(txtfUtrustning);
 
-        txtTopp.setEditable(false);
-        txtTopp.setColumns(2);
-        txtTopp.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        txtTopp.setRows(3);
-        txtTopp.setTabSize(3);
-        txtTopp.setToolTipText("");
-        txtTopp.setAutoscrolls(false);
-        txtTopp.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        txtTopp3.setEditable(false);
+        txtTopp3.setColumns(2);
+        txtTopp3.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        txtTopp3.setRows(3);
+        txtTopp3.setTabSize(4);
+        txtTopp3.setToolTipText("");
+        txtTopp3.setAutoscrolls(false);
+        txtTopp3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel1.setText("Agenter som ansvarar över flest aliens");
@@ -137,6 +144,30 @@ public class AgentSida extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTree1);
 
+        txtTopp1.setEditable(false);
+        txtTopp1.setColumns(2);
+        txtTopp1.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        txtTopp1.setRows(3);
+        txtTopp1.setTabSize(4);
+        txtTopp1.setToolTipText("");
+        txtTopp1.setAutoscrolls(false);
+        txtTopp1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        txtTopp2.setEditable(false);
+        txtTopp2.setColumns(2);
+        txtTopp2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        txtTopp2.setRows(3);
+        txtTopp2.setTabSize(4);
+        txtTopp2.setToolTipText("");
+        txtTopp2.setAutoscrolls(false);
+        txtTopp2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        jLabel2.setText("Svealand");
+
+        jLabel3.setText("Götaland");
+
+        jLabel4.setText("Norrland");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,69 +178,131 @@ public class AgentSida extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(txtTopp, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(115, 115, 115)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(88, 88, 88))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(lblValkommen)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnNylosen)
                             .addComponent(btnLoggaUt, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(77, 77, 77))))
+                        .addGap(60, 60, 60))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTopp1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTopp2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel5))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtTopp3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(49, 49, 49))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(264, 264, 264))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 70, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblValkommen)
+                    .addComponent(btnLoggaUt))
+                .addGap(18, 18, 18)
+                .addComponent(btnNylosen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel5))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblValkommen)
-                            .addComponent(btnLoggaUt))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnNylosen)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTopp)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
-                        .addGap(70, 70, 70)))
-                .addGap(0, 35, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtTopp3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTopp1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTopp2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(70, 70, 70))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void toppLista() {
+    private void toppListaSvealand() {
 
         ArrayList<HashMap<String, String>> topp;
 
         String fraga = "SELECT a.Namn , COUNT(Ansvarig_Agent) AS Antal FROM alien\n"
                 + "JOIN agent a on a.Agent_ID = alien.Ansvarig_Agent\n"
+                + "WHERE Omrade = 1\n"
                 + "GROUP BY Ansvarig_Agent\n"
-                + "ORDER BY COUNT(Ansvarig_Agent) DESC;";
+                + "ORDER BY COUNT(Ansvarig_Agent) DESC "
+                + "LIMIT 3;";
         topp = SqlFragor.fragaRader(fraga);
 
-        txtTopp.append("Namn" + "   " + "Antal" + "\n");
+        System.out.println(fraga);
+
+        txtTopp1.append("Namn" + "   " + "Antal" + "\n");
         for (HashMap<String, String> t : topp) {
-            txtTopp.append(t.get("Namn") + "   " + t.get("Antal") + "\n");
+            txtTopp1.append(t.get("Namn") + "   " + t.get("Antal") + "\n");
+        }
+    }
+
+    private void toppListaGotaland() {
+
+        ArrayList<HashMap<String, String>> topp;
+
+        String fraga = "SELECT a.Namn , COUNT(Ansvarig_Agent) AS Antal FROM alien\n"
+                + "JOIN agent a on a.Agent_ID = alien.Ansvarig_Agent\n"
+                + "WHERE Omrade = 2\n"
+                + "GROUP BY Ansvarig_Agent\n"
+                + "ORDER BY COUNT(Ansvarig_Agent) DESC "
+                + "LIMIT 3;";
+        topp = SqlFragor.fragaRader(fraga);
+
+        System.out.println(fraga);
+
+        txtTopp2.append("Namn" + "   " + "Antal" + "\n");
+        for (HashMap<String, String> t : topp) {
+            txtTopp2.append(t.get("Namn") + "   " + t.get("Antal") + "\n");
+        }
+    }
+
+    private void toppListaNorrland() {
+
+        ArrayList<HashMap<String, String>> topp;
+
+        String fraga = "SELECT a.Namn , COUNT(Ansvarig_Agent) AS Antal FROM alien\n"
+                + "JOIN agent a on a.Agent_ID = alien.Ansvarig_Agent\n"
+                + "WHERE Omrade = 4\n"
+                + "GROUP BY Ansvarig_Agent\n"
+                + "ORDER BY COUNT(Ansvarig_Agent) DESC "
+                + "LIMIT 3;";
+        topp = SqlFragor.fragaRader(fraga);
+
+        System.out.println(fraga);
+
+        txtTopp3.append("Namn" + "   " + "Antal" + "\n");
+        for (HashMap<String, String> t : topp) {
+            txtTopp3.append(t.get("Namn") + "   " + t.get("Antal") + "\n");
         }
     }
 
@@ -360,12 +453,17 @@ public class AgentSida extends javax.swing.JFrame {
     private javax.swing.JButton btnLoggaUt;
     private javax.swing.JButton btnNylosen;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTree jTree1;
     private javax.swing.JLabel lblValkommen;
-    private javax.swing.JTextArea txtTopp;
+    private javax.swing.JTextArea txtTopp1;
+    private javax.swing.JTextArea txtTopp2;
+    private javax.swing.JTextArea txtTopp3;
     private javax.swing.JTextArea txtfUtrustning;
     // End of variables declaration//GEN-END:variables
 }

@@ -30,10 +30,12 @@
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <Component id="rubrik" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="ltxtKontrollLosen" max="32767" attributes="0"/>
-                          <Component id="ltxtNyttLosen" pref="134" max="32767" attributes="0"/>
+                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txtNuvarandelosen" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtKontrollLosen" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtNyttLosen" alignment="0" pref="134" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
@@ -48,10 +50,6 @@
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Component id="btnAvbryt" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="ltxtNuvarandelosen" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
-                  </Group>
               </Group>
               <EmptySpace pref="200" max="32767" attributes="0"/>
           </Group>
@@ -65,13 +63,13 @@
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="ltxtNuvarandelosen" min="-2" max="-2" attributes="0"/>
+              <Component id="txtNuvarandelosen" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="lstammer" min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="ltxtKontrollLosen" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtKontrollLosen" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -79,7 +77,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAvbryt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnOk" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ltxtNyttLosen" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNyttLosen" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="cbVisaLosen" min="-2" max="-2" attributes="0"/>
@@ -139,7 +137,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Book Antiqua" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ange nuvarande l&#xf6;senord igen"/>
+        <Property name="text" type="java.lang.String" value="Ange nytt l&#xf6;senord"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -147,38 +145,31 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Book Antiqua" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ange nytt l&#xf6;senord"/>
+        <Property name="text" type="java.lang.String" value="Ange nytt l&#xf6;senord igen"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="ltxtNuvarandelosen">
+    <Component class="javax.swing.JPasswordField" name="txtNuvarandelosen">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="OCR A Extended" size="12" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="txtKontrollLosen">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="OCR A Extended" size="12" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="txtNyttLosen">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="OCR A Extended" size="12" style="0"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="ltxtNuvarandelosenCaretUpdate"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JPasswordField" name="ltxtKontrollLosen">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="OCR A Extended" size="12" style="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="ltxtKontrollLosenCaretUpdate"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JPasswordField" name="ltxtNyttLosen">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="OCR A Extended" size="12" style="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="ltxtNyttLosenCaretUpdate"/>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ltxtNyttLosenKeyPressed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNyttLosenKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="cbVisaLosen">

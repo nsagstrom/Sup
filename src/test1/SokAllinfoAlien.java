@@ -38,6 +38,7 @@ public class SokAllinfoAlien extends javax.swing.JFrame {
         jRubrik.setFont(new java.awt.Font("Book Antiqua", 0, 20)); // NOI18N
         jRubrik.setText("All info om Alien");
 
+        jTextInfo.setEditable(false);
         jTextInfo.setColumns(2);
         jTextInfo.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         jTextInfo.setRows(5);
@@ -109,20 +110,48 @@ public class SokAllinfoAlien extends javax.swing.JFrame {
     private void cbAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAlienActionPerformed
         //För att en combobox skall kunna visa vilka Aliens det finns "på den" så skriver vi getSelectedItem().toString().
         //För att hämta den valda alien samt att det ska stå i textform.
+        
+        int i = cbAlien.getSelectedIndex();
+        
+        if(i !=0){
         String aNamn = cbAlien.getSelectedItem().toString();
         //
         HashMap<String, String> info;
-        info = SqlFragor.fragaRad("SELECT * FROM alien WHERE NAMN = '" + aNamn + "'");
         
-        String fragaAnsvarig = "SELECT agent.Namn FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
-        //Metod från SQLFragor-klassen.
-        String ansvarig = SqlFragor.fragaSingel(fragaAnsvarig);
-        String fragaPlats = "SELECT Benamning FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
-        String plats = SqlFragor.fragaSingel(fragaPlats);
+        String sok = "SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\n"
+                    + "SELECT Alien_ID  , 'Worm' AS Ras, '' AS antal FROM worm\n"
+                    + "UNION\n"
+                    + "SELECT Alien_ID  , 'Squid' AS Ras, Antal_Armar AS Antal FROM squid\n"
+                    + "UNION\n"
+                    + "SELECT Alien_ID, 'Boglodite' AS Ras, Antal_Boogies AS Antal FROM boglodite\n"
+                    + "UNION\n"
+                    + "(SELECT Alien_ID, 'Annat', '' FROM alien\n"
+                    + "    WHERE Alien_ID NOT IN (SELECT Alien_ID AS id FROM alien\n"
+                    + "    WHERE Alien_ID  IN (SELECT id FROM\n"
+                    + "        (SELECT Alien_ID AS id  FROM squid\n"
+                    + "        UNION SELECT Alien_ID as id FROM worm\n"
+                    + "        UNION SELECT Alien_ID as id FROM boglodite) AS a)))) AS ras\n"
+                    + "JOIN alien on ras.alien_id = alien.alien_id\n"
+                    + "JOIN plats p on p.Plats_ID = alien.Plats\n"
+                    + "JOIN (SELECT Namn AS Agent, Agent_ID FROM agent) AS agent on alien.Ansvarig_Agent = agent.Agent_ID\n"
+                    + "WHERE alien.Namn = '" + aNamn + "' ;";
+        
+        info = SqlFragor.fragaRad(sok);
+        
+//        String fragaAnsvarig = "SELECT agent.Namn FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
+//        //Metod från SQLFragor-klassen.
+//        String ansvarig = SqlFragor.fragaSingel(fragaAnsvarig);
+//        String fragaPlats = "SELECT Benamning FROM alien join plats ON alien.Plats = plats.Plats_ID join agent On alien.Ansvarig_Agent = agent.Agent_ID WHERE Agent_ID = " + info.get("Ansvarig_Agent") + " LIMIT 1";
+//        String plats = SqlFragor.fragaSingel(fragaPlats);
         
         //Texten som skrivs ut är det som står innanför parameterna. "\n" skjuter ner texten efter en rad.
         jTextInfo.setText("Namn: " + info.get("Namn") + "\n" + "Registreringsdatum: " + info.get("Registreringsdatum") + "\n" + "Telefon: "
-                + info.get("Telefon") + "\n" + "Plats: " + plats + "\n" + "Ansvarig agent: " + ansvarig);
+                + info.get("Telefon") + "\n" + "Plats: " + info.get("Benamning") + "\n" + "Ansvarig agent: " + info.get("Agent") + "\n" + "Ras: "
+                + info.get("Ras") + "\n" + "Antal delar: " + info.get("Antal"));
+        }
+        else{
+            jTextInfo.setText("");
+        }
     }//GEN-LAST:event_cbAlienActionPerformed
 
 
