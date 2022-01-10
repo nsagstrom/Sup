@@ -220,6 +220,7 @@ public class AddAgent extends javax.swing.JFrame {
         String alienLosenord2 = new String(pwLosen.getPassword());
 
         //If-statements som antingen uppfylls eller fortsätter till nästa if-sats.
+        
         if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Namn saknas");

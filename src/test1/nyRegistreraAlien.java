@@ -325,7 +325,7 @@ public class NyRegistreraAlien extends javax.swing.JFrame {
     private void btnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTillbakaActionPerformed
         if (ForstaSida.arAdmin()) {
             new AgentAdminSida().setVisible(true);
-            dispose();
+            dispose();    
         } else {
             new AgentSida().setVisible(true);
             dispose();

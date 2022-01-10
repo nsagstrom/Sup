@@ -164,6 +164,7 @@ public class AddUtrustning extends javax.swing.JFrame {
             case 2:
                 //Teknik
                 SqlFragor.laggTill("INSERT INTO teknik (Utrustnings_ID, Kraftkalla) VALUES (" + nyID + ",'" + txtTill.getText() + "');");
+                
                 break;
             case 3:
                 //Kommunikation
