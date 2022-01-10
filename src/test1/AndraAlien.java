@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 public class AndraAlien extends javax.swing.JFrame {
 
     private String id;
+    private String namn;
 
     /**
      * Creates new form AndraAlien
@@ -279,18 +280,17 @@ public class AndraAlien extends javax.swing.JFrame {
     private void info() {
 
         ArrayList<HashMap<String, String>> allInfo;
-        
+
 //        För att kunna visa all information om alien som vi vill ändra behöves informationen
 //        om vilken ras den tillhör samt hur många boglo/armar som finns. Det olika raserna
 //        finns i olika tabeller och därför används unoin för att sätta ihop. Eftersom det 
 //        måste vara lika många kolumner för alla aliens behöver de aliens som inte
 //        har något värde tilldelas en fiktiv kolumn för att det ska gå att göra en union.
 //        Slutligen plocka bort de alien som finns i någon av det worm/squid/boglo från alien å att de inte visas två gånger.
-
         String fraga = "SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\n"
                 + "SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\n"
                 + "UNION\n"
-                + "SELECT Alien_ID  , 'Sqid' AS Ras, Antal_Armar AS Antal FROM squid\n"
+                + "SELECT Alien_ID  , 'Squid' AS Ras, Antal_Armar AS Antal FROM squid\n"
                 + "UNION\n"
                 + "SELECT Alien_ID, 'Boglodite' AS Ras, Antal_Boogies AS Antal FROM boglodite\n"
                 + "UNION\n"
@@ -325,12 +325,15 @@ public class AndraAlien extends javax.swing.JFrame {
 
     private void sok() {
         txtAllInfo.setText("");
-        if (ValideringsKlass.textFaltHarVarde(txtNamn)) {
+        String giltig = SqlFragor.fragaSingel("SELECT Namn From Alien WHERE Namn = '" + txtNamn.getText() + "';");
+        if (giltig == null) {
+            JOptionPane.showMessageDialog(null, "Alien finns inte");
+        } else if (ValideringsKlass.textFaltHarVarde(txtNamn)) {
             info();
             String sok = "SELECT alien.Alien_ID, Ras, alien.Namn AS Namn ,Registreringsdatum,alien.Losenord,alien.Telefon,Benamning, Agent AS Agent , Antal FROM (\n"
                     + "SELECT Alien_ID  , 'Worm' AS Ras, null AS antal FROM worm\n"
                     + "UNION\n"
-                    + "SELECT Alien_ID  , 'Sqid' AS Ras, Antal_Armar AS Antal FROM squid\n"
+                    + "SELECT Alien_ID  , 'Squid' AS Ras, Antal_Armar AS Antal FROM squid\n"
                     + "UNION\n"
                     + "SELECT Alien_ID, 'Boglodite' AS Ras, Antal_Boogies AS Antal FROM boglodite\n"
                     + "UNION\n"
@@ -348,6 +351,7 @@ public class AndraAlien extends javax.swing.JFrame {
             HashMap<String, String> uppgifter;
             uppgifter = SqlFragor.fragaRad(sok);
 
+            namn = uppgifter.get("Namn");
             id = uppgifter.get("Alien_ID");
             txtDatum.setText(uppgifter.get("Registreringsdatum"));
             txtLosen.setText(uppgifter.get("Losenord"));
@@ -375,6 +379,7 @@ public class AndraAlien extends javax.swing.JFrame {
         boolean ok = true;
 
         String namnTest = SqlFragor.fragaSingel("SELECT Namn FROM alien WHERE Alien_ID = " + id + " AND Namn = '" + txtNamn.getText() + "';");
+       
 
         if (!ValideringsKlass.textFaltHarVarde(txtNamn)) {
             ok = false;
@@ -399,7 +404,7 @@ public class AndraAlien extends javax.swing.JFrame {
             ok = false;
             JOptionPane.showMessageDialog(null, "Telefonnummer saknas");
             txtTele.requestFocus();
-        } else if(!ValideringsKlass.testaTeleNmr(txtTele)){
+        } else if (!ValideringsKlass.testaTeleNmr(txtTele)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Ogiltigt telefonnummer");
             txtTele.requestFocus();
@@ -417,7 +422,11 @@ public class AndraAlien extends javax.swing.JFrame {
         } else if (!ValideringsKlass.textFaltHarVarde(txtDatum)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Ange datum");
-        } else if (cbRaser.getSelectedIndex() == 1 || cbRaser.getSelectedIndex() == 2) {
+        } 
+        else if (!ValideringsKlass.kollaDatumCheck(txtDatum.getText())) {
+            ok = false;
+        } 
+        else if (cbRaser.getSelectedIndex() == 1 || cbRaser.getSelectedIndex() == 2) {
             if (!ValideringsKlass.taltest(txtRasTill)) {
                 ok = false;
                 JOptionPane.showMessageDialog(null, "Ange antal");
@@ -433,10 +442,13 @@ public class AndraAlien extends javax.swing.JFrame {
 
         String uppdatera = "UPDATE alien\n"
                 + "SET  Registreringsdatum = '" + txtDatum.getText() + "', Losenord =  '" + txtLosen.getText() + "', Namn = '" + txtNamn.getText()
-                + "', Telefon = '" + txtTele.getText() + "', Plats = " + platsID + ", Ansvarig_Agent = " + agentID + " WHERE alien.Namn = '" + txtNamn.getText() + "' ;";
+                + "', Telefon = '" + txtTele.getText() + "', Plats = " + platsID + ", Ansvarig_Agent = " + agentID + " WHERE alien.Namn = '" + namn + "' ;";
 
         SqlFragor.uppdatera(uppdatera);
         landrad.setText("Ändring genomförd (Hoppas vi)");
+
+
+        namn = txtNamn.getText();
     }
 
     private void andraRas() {

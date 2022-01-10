@@ -7,6 +7,7 @@ package test1;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -146,5 +147,17 @@ public class ValideringsKlass {
         }
         
         return nmrOk;
+    }
+    
+        public static boolean kollaDatumCheck(String datum) {
+        boolean resultat = false;
+
+        if (datum.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            resultat = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Fel datumformat, prova igen enligt 'YYYY-MM-DD'");
+        }
+
+        return resultat;
     }
 }

@@ -339,11 +339,19 @@ public class AndraAgent extends javax.swing.JFrame {
         } else if (!ValideringsKlass.textFaltHarVarde(txtDatum)) {
             ok = false;
             JOptionPane.showMessageDialog(null, "Ange datum");
+        } else if (!ValideringsKlass.kollaDatumCheck(txtDatum.getText())) {
+            ok = false;
         }
         return ok;
     }
 
     private void andraGrund() {
+
+        if(checkAdmin.isSelected()){
+            admin = "J";
+        }else {
+            admin  = "N";
+        }
 
         String omradeID = SqlFragor.fragaSingel("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + cbOmrade.getSelectedItem() + "';");
 
