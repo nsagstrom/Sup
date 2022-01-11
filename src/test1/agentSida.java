@@ -99,7 +99,7 @@ public class AgentSida extends javax.swing.JFrame {
         jLabel1.setText("Agenter som ansvarar över flest aliens");
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        jLabel5.setText("Utcheckad utustning");
+        jLabel5.setText("Utcheckad utrustning");
 
         jTree1.setBorder(null);
         jTree1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
