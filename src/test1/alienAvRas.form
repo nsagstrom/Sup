@@ -109,6 +109,7 @@
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="txtAreaAlienRas">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="OCR A Extended" size="12" style="0"/>

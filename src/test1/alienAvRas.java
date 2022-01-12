@@ -50,6 +50,7 @@ public class AlienAvRas extends javax.swing.JFrame {
             }
         });
 
+        txtAreaAlienRas.setEditable(false);
         txtAreaAlienRas.setColumns(20);
         txtAreaAlienRas.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
         txtAreaAlienRas.setRows(5);
